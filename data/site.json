@@ -56,6 +56,15 @@
     { "id": "psy", "ar": "مرافقة نفسية", "fr": "Accompagnement", "en": "Support & therapy" }
   ],
   "soins": [
+    { "id": "consultation", "categorie": "psy", "icone": "heart", "theme": "rose", "image": "", "en_ligne": true,
+      "titre": { "ar": "استشارة أولى وتوجيه", "fr": "Consultation d'orientation", "en": "Guidance Consultation" },
+      "duree": { "ar": "30 دقيقة", "fr": "30 min", "en": "30 min" },
+      "prix": { "tnd": "50", "eur": "20", "usd": "22" },
+      "description": {
+        "ar": "نتعرّف على وضعك واحتياجاتك، وأقترح عليك المسار والجلسات الأنسب لك، مع أولى النصائح العملية.",
+        "fr": "Nous faisons le point sur votre situation et vos besoins, je vous propose le parcours et les soins les plus adaptés, avec de premiers conseils concrets.",
+        "en": "We look at your situation and needs together, and I suggest the most suitable path and sessions, with first practical advice."
+      } },
     { "id": "soin-energetique", "categorie": "energie", "icone": "energy", "theme": "violet", "image": "", "en_ligne": true,
       "titre": { "ar": "العلاج الطاقي", "fr": "Soin énergétique", "en": "Energy Healing" },
       "duree": { "ar": "60 دقيقة", "fr": "60 min", "en": "60 min" },
@@ -274,7 +283,7 @@
     { "q": { "ar": "هل العلاج الطاقي عن بعد فعّال؟", "fr": "Un soin énergétique à distance est-il efficace ?", "en": "Does remote energy healing work?" },
       "r": { "ar": "الطاقة لا تعرف المسافات. يجلس الحريف في مكان هادئ وأقوم بالعلاج عن بعد، ثم نتحدث عن الإحساس والنتائج.", "fr": "L'énergie ne connaît pas la distance. Vous vous installez au calme, je réalise le soin à distance, puis nous échangeons sur vos ressentis.", "en": "Energy knows no distance. You relax in a quiet place while I perform the session remotely, then we talk about what you felt." } },
     { "q": { "ar": "كيف تكون الجلسة الأولى؟", "fr": "Comment se passe une première séance ?", "en": "What happens in a first session?" },
-      "r": { "ar": "نبدأ بحوار لفهم طلبك، ثم أقترح عليك العلاج الأنسب. يمكنك أيضاً حجز مكالمة تعارف مجانية مدتها 15 دقيقة.", "fr": "Nous commençons par un échange pour comprendre votre demande, puis je propose le soin le plus adapté. Vous pouvez aussi réserver un appel découverte gratuit de 15 min.", "en": "We start with a conversation to understand your needs, then I suggest the most suitable session. You can also book a free 15-minute discovery call." } },
+      "r": { "ar": "نبدأ بحوار لفهم طلبك، ثم أقترح عليك العلاج الأنسب. إذا لم تكن متأكداً من البداية، احجز «استشارة أولى وتوجيه» (30 دقيقة).", "fr": "Nous commençons par un échange pour comprendre votre demande, puis je propose le soin le plus adapté. Si vous hésitez, réservez une « Consultation d'orientation » (30 min).", "en": "We start with a conversation to understand your needs, then I suggest the most suitable session. Not sure where to start? Book a 30-min Guidance Consultation." } },
     { "q": { "ar": "هل تعوّض الجلسات العلاج الطبي؟", "fr": "Les soins remplacent-ils un traitement médical ?", "en": "Do sessions replace medical treatment?" },
       "r": { "ar": "لا. العلاجات الشمولية مكمّلة ولا تعوّض بأي حال استشارة أو علاجاً طبياً.", "fr": "Non. Les soins holistiques sont complémentaires et ne remplacent pas un avis ou un traitement médical.", "en": "No. Holistic sessions are complementary and never replace medical advice or treatment." } },
     { "q": { "ar": "كيف أحجز وأدفع؟", "fr": "Comment réserver et payer ?", "en": "How do I book and pay?" },
