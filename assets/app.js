@@ -27,7 +27,7 @@
       send_wa: 'إرسال عبر واتساب', send_order: 'إرسال الطلب عبر واتساب', add_cart: 'أضف للسلة', add: 'أضف للسلة', choose_reading: 'اختر نوع القراءة ←',
       faq_title: 'أسئلة شائعة', follow_title: 'تابعني يومياً', follow_text: 'نصائح، طاقة اليوم، قراءات مجانية ولايفات على شبكات التواصل.',
       install: '📲 ثبّت التطبيق', install_ios: 'على iPhone: اضغط زر المشاركة ⬆️ ثم «إضافة إلى الشاشة الرئيسية».',
-      footer_contact: 'تواصل', footer_links: 'روابط', footer_admin: 'لوحة التحكم', rights: 'جميع الحقوق محفوظة.', legal: 'الشروط والخصوصية', accept_terms: 'بإرسال الطلب، أنت توافق على', disclaimer: 'العلاجات الشمولية مكمّلة ولا تعوّض الاستشارة الطبية.',
+      footer_contact: 'تواصل', footer_links: 'روابط', footer_admin: 'لوحة التحكم', rights: 'جميع الحقوق محفوظة.', legal: 'الشروط والخصوصية', nl_eyebrow: 'هدية لك 🎁', nl_title: 'احصل على تأمل مجاني', nl_text: 'تأمل موجّه لتهدئة الذهن وإعادة التوازن لطاقتك، + طاقة كل شهر ومواعيد الأحداث مباشرة في بريدك.', nl_name: 'اسمك', nl_email: 'بريدك الإلكتروني', nl_btn: 'أرسل لي التأمل ✨', nl_ok: '✓ شكراً! تأملك المجاني في انتظارك 💜', nl_go: '🧘 استمع للتأمل الآن', nl_err: 'الرجاء كتابة بريد إلكتروني صحيح.', nl_privacy: 'لا رسائل مزعجة. يمكنك إلغاء الاشتراك في أي وقت.', accept_terms: 'بإرسال الطلب، أنت توافق على', disclaimer: 'العلاجات الشمولية مكمّلة ولا تعوّض الاستشارة الطبية.',
       cart_title: 'سلّتك', cart_empty: 'سلّتك فارغة 🌿', total: 'المجموع', chat: 'كيف يمكنني مساعدتك؟',
       bn_home: 'الرئيسية', bn_tarot: 'تاروت', bn_events: 'أحداث الشهر', bn_cart: 'السلة',
       online: 'أونلاين', new: 'جديد', places: 'أماكن', cards: 'أوراق', selected: '✓ تم الاختيار',
@@ -74,7 +74,7 @@
       send_wa: 'Envoyer via WhatsApp', send_order: 'Envoyer la commande via WhatsApp', add_cart: 'Ajouter au panier', add: 'Ajouter', choose_reading: 'Choisir le tirage →',
       faq_title: 'Questions fréquentes', follow_title: 'Suivez-moi au quotidien', follow_text: "Conseils, énergie du jour, tirages gratuits et lives sur les réseaux sociaux.",
       install: "📲 Installer l'application", install_ios: "Sur iPhone : touchez Partager ⬆️ puis « Sur l'écran d'accueil ».",
-      footer_contact: 'Contact', footer_links: 'Liens', footer_admin: 'Espace admin', rights: 'Tous droits réservés.', legal: 'Mentions légales & CGV', accept_terms: 'En envoyant, vous acceptez les', disclaimer: 'Les soins holistiques sont complémentaires et ne remplacent pas un avis médical.',
+      footer_contact: 'Contact', footer_links: 'Liens', footer_admin: 'Espace admin', rights: 'Tous droits réservés.', legal: 'Mentions légales & CGV', nl_eyebrow: 'Un cadeau pour vous 🎁', nl_title: 'Recevez une méditation offerte', nl_text: 'Une méditation guidée pour apaiser le mental et rééquilibrer votre énergie, + l’énergie du mois et les dates des événements directement dans votre boîte mail.', nl_name: 'Votre prénom', nl_email: 'Votre e-mail', nl_btn: 'Envoyez-moi la méditation ✨', nl_ok: '✓ Merci ! Votre méditation offerte vous attend 💜', nl_go: '🧘 Écouter la méditation', nl_err: 'Merci d’indiquer un e-mail valide.', nl_privacy: 'Pas de spam. Désinscription possible à tout moment.', accept_terms: 'En envoyant, vous acceptez les', disclaimer: 'Les soins holistiques sont complémentaires et ne remplacent pas un avis médical.',
       cart_title: 'Votre panier', cart_empty: 'Votre panier est vide 🌿', total: 'Total', chat: 'Comment puis-je vous aider ?',
       bn_home: 'Accueil', bn_tarot: 'Tarot', bn_events: 'Événements', bn_cart: 'Panier',
       online: 'En ligne', new: 'Nouveau', places: 'places', cards: 'cartes', selected: '✓ Sélectionné',
@@ -121,7 +121,7 @@
       send_wa: 'Send via WhatsApp', send_order: 'Send order via WhatsApp', add_cart: 'Add to cart', add: 'Add to cart', choose_reading: 'Choose reading →',
       faq_title: 'FAQ', follow_title: 'Follow me daily', follow_text: 'Tips, daily energy, free readings and lives on social media.',
       install: '📲 Install the app', install_ios: 'On iPhone: tap Share ⬆️ then "Add to Home Screen".',
-      footer_contact: 'Contact', footer_links: 'Links', footer_admin: 'Admin', rights: 'All rights reserved.', legal: 'Legal & terms', accept_terms: 'By sending, you accept the', disclaimer: 'Holistic sessions are complementary and do not replace medical advice.',
+      footer_contact: 'Contact', footer_links: 'Links', footer_admin: 'Admin', rights: 'All rights reserved.', legal: 'Legal & terms', nl_eyebrow: 'A gift for you 🎁', nl_title: 'Get a free meditation', nl_text: 'A guided meditation to calm your mind and rebalance your energy, + the energy of the month and event dates straight to your inbox.', nl_name: 'Your first name', nl_email: 'Your email', nl_btn: 'Send me the meditation ✨', nl_ok: '✓ Thank you! Your free meditation is waiting 💜', nl_go: '🧘 Listen now', nl_err: 'Please enter a valid email.', nl_privacy: 'No spam. Unsubscribe anytime.', accept_terms: 'By sending, you accept the', disclaimer: 'Holistic sessions are complementary and do not replace medical advice.',
       cart_title: 'Your cart', cart_empty: 'Your cart is empty 🌿', total: 'Total', chat: 'How can I help you?',
       bn_home: 'Home', bn_tarot: 'Tarot', bn_events: 'Events', bn_cart: 'Cart',
       online: 'Online', new: 'New', places: 'spots', cards: 'cards', selected: '✓ Selected',
@@ -693,6 +693,28 @@
     if (cp && cp.closest('.pay-details')) { try { await navigator.clipboard.writeText(cp.dataset.copy); } catch {} const o = cp.textContent; cp.textContent = t('copied'); setTimeout(() => cp.textContent = o, 1500); }
   });
   window.CH_HOOKS = window.CH_HOOKS || []; window.CH_HOOKS.push(renderPayInline);
+
+  // ================= NEWSLETTER =================
+  function renderNewsletter() {
+    $$('.js-newsletter').forEach(box => {
+      let done = false; try { done = !!localStorage.getItem('ch_sub'); } catch {}
+      box.innerHTML = `<div class="nl-text"><span class="eyebrow light">${esc(t('nl_eyebrow'))}</span><h2>${esc(t('nl_title'))}</h2><p>${esc(t('nl_text'))}</p></div>` +
+        (done ? `<div class="nl-done"><p>${esc(t('nl_ok'))}</p><a class="btn btn-gold" href="meditations.html">${esc(t('nl_go'))}</a></div>`
+          : `<form class="nl-form" novalidate><input name="name" placeholder="${esc(t('nl_name'))}" autocomplete="given-name"><input name="email" type="email" dir="ltr" placeholder="${esc(t('nl_email'))}" autocomplete="email" required>
+             <button class="btn btn-gold" type="submit">${esc(t('nl_btn'))}</button><small class="nl-err" hidden></small><small>${esc(t('nl_privacy'))}</small></form>`);
+    });
+  }
+  document.addEventListener('submit', async e => {
+    const f = e.target.closest('.nl-form'); if (!f) return;
+    e.preventDefault();
+    const email = f.email.value.trim(), err = f.querySelector('.nl-err');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { err.textContent = t('nl_err'); err.hidden = false; return; }
+    f.querySelector('button').disabled = true;
+    try { if (window.sb) await window.sb.from('subscribers').insert({ email, name: f.name.value.trim(), lang, source: document.body.dataset.page || '', timezone: TZ }); } catch (x) { /* duplicates are fine */ }
+    try { localStorage.setItem('ch_sub', email); } catch {}
+    renderNewsletter();
+  });
+  window.CH_HOOKS = window.CH_HOOKS || []; window.CH_HOOKS.push(renderNewsletter);
 
   function sendWA(lines) {
     const num = (DATA?.settings?.whatsapp || '').replace(/\D/g, '');
