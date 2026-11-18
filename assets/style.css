@@ -428,6 +428,8 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .pay-details pre{flex:1;font-family:ui-monospace,Consolas,monospace;font-size:.92rem;white-space:pre-wrap;word-break:break-all;margin:0;text-align:left}
 .pay-after{font-size:.9rem;color:var(--muted);text-align:center}
 .pay-none{color:var(--muted);text-align:center}
+.btn-wa{background:#25d366;color:#fff}.btn-wa:hover{background:#1ebe5b}
+.btn-wa svg{stroke:#fff;stroke-width:1.8}
 
 /* tarot page */
 .hero-tarot{background:linear-gradient(125deg,#2c2a6b,#5b3483 50%,#8a3d6b)}
