@@ -404,6 +404,15 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .vdialog::backdrop{background:rgba(10,5,20,.8)}
 .vdialog .icon-btn{position:absolute;top:-48px;inset-inline-end:0;color:#fff;background:rgba(255,255,255,.15)}
 
+/* ===== 3D ===== */
+.hero3d{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0;animation:fadeIn3d 1.6s ease forwards}
+@keyframes fadeIn3d{to{opacity:var(--o3d,1)}}
+.hero.has3d .mandala{display:none}
+.hero .hero-text,.hero .stats{z-index:1}
+.tilting{position:relative;transition:transform .08s linear,box-shadow .2s!important;box-shadow:0 22px 50px -24px rgba(60,30,90,.45)!important;will-change:transform}
+.tilting::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,236,190,.38),transparent 48%);mix-blend-mode:soft-light}
+.pcard,.pack,.abo,.lecture,.medit,.step,.who-item{transition:transform .35s ease,box-shadow .25s}
+
 /* ===== payment methods ===== */
 .paydlg{border:0;border-radius:22px;padding:0;width:min(520px,94vw);max-height:90vh;margin:auto;box-shadow:0 30px 80px rgba(0,0,0,.35)}
 .paydlg::backdrop{background:rgba(20,10,30,.55)}
