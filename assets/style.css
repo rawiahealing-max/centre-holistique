@@ -404,6 +404,31 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .vdialog::backdrop{background:rgba(10,5,20,.8)}
 .vdialog .icon-btn{position:absolute;top:-48px;inset-inline-end:0;color:#fff;background:rgba(255,255,255,.15)}
 
+/* ===== payment methods ===== */
+.paydlg{border:0;border-radius:22px;padding:0;width:min(520px,94vw);max-height:90vh;margin:auto;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.paydlg::backdrop{background:rgba(20,10,30,.55)}
+.paydlg-head{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}
+.paydlg-body{padding:1rem 1.2rem 1.3rem;display:grid;gap:.9rem;overflow:auto}
+.pay-inline{display:grid;gap:.9rem;background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(1rem,3vw,1.6rem)}
+.pay-sent{background:#e5f4eb;color:#1f8a4c;font-weight:700;padding:.7rem 1rem;border-radius:12px}
+.pay-total{display:flex;justify-content:space-between;align-items:center;background:var(--primary-ll);border-radius:12px;padding:.8rem 1rem;font-size:1.05rem}
+.pay-total b{font-size:1.3rem;color:var(--primary-d)}
+.pay-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--primary-ll);border-radius:12px;padding:4px}
+.pay-tabs button{border:0;background:none;border-radius:9px;padding:.65rem;font:inherit;font-weight:700;cursor:pointer;color:var(--muted)}
+.pay-tabs button.active{background:#fff;color:var(--primary-d);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.pay-list{display:grid;gap:.55rem}
+.pay-item{border:1px solid var(--line);border-radius:14px;background:#fff}
+.pay-item summary{display:flex;align-items:center;gap:.7rem;padding:.85rem 1rem;cursor:pointer;list-style:none}
+.pay-item summary::after{content:"+";margin-inline-start:auto;color:var(--primary);font-size:1.3rem;transition:.2s}
+.pay-item[open] summary::after{transform:rotate(45deg)}
+.pay-ico{font-size:1.4rem}
+.pay-body{padding:0 1rem 1rem;display:grid;gap:.6rem}
+.pay-body p{color:var(--muted);font-size:.92rem}
+.pay-details{display:flex;gap:.6rem;align-items:center;background:var(--tint);border:1px dashed #d8cbe6;border-radius:12px;padding:.6rem .8rem}
+.pay-details pre{flex:1;font-family:ui-monospace,Consolas,monospace;font-size:.92rem;white-space:pre-wrap;word-break:break-all;margin:0;text-align:left}
+.pay-after{font-size:.9rem;color:var(--muted);text-align:center}
+.pay-none{color:var(--muted);text-align:center}
+
 /* tarot page */
 .hero-tarot{background:linear-gradient(125deg,#2c2a6b,#5b3483 50%,#8a3d6b)}
 .tarot-deco{position:absolute;inset-inline-end:6%;top:50%;transform:translateY(-50%);width:220px;height:200px;pointer-events:none}
