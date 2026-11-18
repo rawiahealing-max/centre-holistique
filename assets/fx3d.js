@@ -30,6 +30,7 @@
   // ---------------- 3D HERO ----------------
   const hero = document.querySelector('[data-page="home"] .hero');
   if (!hero || reduce) return;
+  return; // WebGL hero disabled: rendering glitches on some PCs (replaced by the lightweight SVG version in style.css)
   const weak = (navigator.deviceMemory && navigator.deviceMemory < 2) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 3);
   if (weak) return;
   try { const c = document.createElement('canvas'); if (!(c.getContext('webgl') || c.getContext('experimental-webgl'))) return; } catch (e) { return; }
