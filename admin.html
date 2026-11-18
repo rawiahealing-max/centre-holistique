@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>لوحة التحكم – Centre Holistique</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#7b4fa8;--pd:#24152f;--pl:#f1eaf8;--bg:#f7f4fa;--ink:#1f1a24;--muted:#6e6676;--line:#ece7f1;--ok:#1f8a4c;--bad:#c62828}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Tajawal,system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+h2{font-size:1.4rem;font-weight:800}h3{font-size:1.1rem;font-weight:700}
+.top{background:var(--pd);color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:10}
+.top .brand{display:flex;gap:10px;align-items:center;font-weight:700;font-size:1.15rem}
+.top a{color:#f0d79a;font-size:.9rem}
+.wrap{width:min(1100px,100% - 32px);margin:24px auto 100px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{border:1px solid var(--line);background:#fff;padding:9px 15px;border-radius:12px;cursor:pointer;font:inherit;font-size:.93rem;color:var(--muted)}
+.tabs button.active{background:var(--p);color:#fff;border-color:var(--p)}
+label{display:grid;gap:5px;font-size:.85rem;font-weight:700}
+input,select,textarea{font:inherit;font-weight:400;font-size:.95rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fcfaff;width:100%;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--p)}
+.g2{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.full{grid-column:1/-1}
+.btn{border:0;border-radius:10px;padding:10px 16px;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;background:var(--p);color:#fff}
+.btn.gold{background:#c9a45a;color:var(--pd)}
+.btn.line{background:#fff;color:var(--p);border:1px solid var(--line)}
+.btn.danger{background:#fff;color:var(--bad);border:1px solid #f3cfcc}
+.btn:disabled{opacity:.5}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.between{justify-content:space-between}
+.item{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:10px;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.item small{color:var(--muted)}
+.pill{font-size:.72rem;padding:2px 9px;border-radius:999px;background:var(--pl);color:var(--p);margin-inline-start:6px}
+.pill.off{background:#fbe7e5;color:var(--bad)}
+.status{font-size:.9rem;padding:10px 14px;border-radius:10px;margin-top:12px}
+.status.ok{background:#e5f4eb;color:var(--ok)}.status.err{background:#fdecea;color:var(--bad)}.status.info{background:var(--pl);color:var(--p)}
+.muted{color:var(--muted);font-size:.92rem;line-height:1.7}
+.dirty{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--pd);color:#fff;padding:10px 12px 10px 18px;border-radius:14px;display:flex;gap:14px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);z-index:20;font-size:.92rem;white-space:nowrap}
+dialog{border:0;border-radius:18px;padding:0;width:min(680px,100% - 24px);margin:auto;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(36,21,47,.55)}
+dialog form{padding:22px;display:grid;gap:14px;max-height:88vh;overflow:auto}
+ol.help{padding-inline-start:20px;line-height:1.9}
+.hint{font-weight:400;color:var(--muted);font-size:.78rem}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="brand"><img src="assets/favicon.svg" width="30" height="30" alt=""> لوحة التحكم</div>
+  <div class="row"><span id="conn-label" dir="ltr" style="font-size:.85rem;opacity:.8"></span><a href="index.html" target="_blank">عرض الموقع ↗</a></div>
+</div>
+
+<div class="wrap">
+  <section class="panel" id="login">
+    <h2>الدخول عبر GitHub</h2>
+    <p class="muted" style="margin:6px 0 16px">كل تعديل تقوم به يُحفظ مباشرة في مستودع GitHub الخاص بك، ويتحدّث الموقع تلقائياً بعد حوالي دقيقة.</p>
+    <div class="g2">
+      <label>اسم المستخدم في GitHub<input id="owner" dir="ltr" placeholder="ex: rawiahealing"></label>
+      <label>اسم المستودع (repository)<input id="repo" dir="ltr" placeholder="ex: centre-holistique"></label>
+      <label>الفرع (branch)<input id="branch" dir="ltr" value="main"></label>
+      <label class="full">رمز الدخول (token)<input id="token" dir="ltr" type="password" autocomplete="off" placeholder="github_pat_…"></label>
+    </div>
+    <div class="row" style="margin-top:16px">
+      <button class="btn gold" id="btn-connect">دخول</button>
+      <label style="display:flex;gap:8px;align-items:center;font-weight:400;color:var(--muted)"><input type="checkbox" id="remember" checked style="width:auto"> تذكّرني على هذا الجهاز</label>
+    </div>
+    <div id="login-status"></div>
+    <details style="margin-top:18px"><summary class="muted" style="cursor:pointer">كيف أحصل على الرمز (token)؟</summary>
+      <ol class="help muted" style="margin-top:10px">
+        <li>في GitHub: <b dir="ltr">Settings → Developer settings → Personal access tokens → Fine-grained tokens</b></li>
+        <li>اضغط <b>Generate new token</b>، اختر <i>Only select repositories</i> ثم اختر مستودع الموقع.</li>
+        <li>في <b>Permissions → Contents</b> اختر <b>Read and write</b>.</li>
+        <li>انسخ الرمز والصقه هنا. لا تشاركه مع أي شخص.</li>
+      </ol>
+    </details>
+  </section>
+
+  <section id="app" hidden>
+    <div class="tabs" id="tabs">
+      <button data-tab="formations" class="active">🎓 الدورات</button>
+      <button data-tab="soins">🌿 الجلسات</button>
+      <button data-tab="packs">🎁 الباقات</button>
+      <button data-tab="temoignages">💬 آراء الحرفاء</button>
+      <button data-tab="faq">❓ الأسئلة</button>
+      <button data-tab="settings">⚙️ الملف والتواصل</button>
+    </div>
+
+    <div class="panel" id="list-panel">
+      <div class="row between"><h2 id="list-title"></h2><button class="btn gold" id="btn-add">+ إضافة</button></div>
+      <div id="list"></div>
+    </div>
+
+    <div class="panel" id="settings-panel" hidden>
+      <h2>الملف الشخصي والتواصل</h2>
+      <div class="g2" id="settings-form" style="margin-top:14px"></div>
+      <label style="margin-top:14px">أصناف الجلسات <span class="hint">(افصل بينها بفاصلة ,)</span><input id="cats"></label>
+      <h3 style="margin-top:24px">الصورة الشخصية</h3>
+      <p class="muted">صورة JPG (عمودية، يفضّل 800×1000).</p>
+      <div class="row" style="margin-top:10px"><input type="file" id="photo" accept="image/jpeg" style="max-width:320px"><button class="btn line" id="btn-photo">رفع الصورة</button></div>
+      <h3 style="margin-top:24px">رفع صورة لجلسة أو دورة</h3>
+      <p class="muted">ارفع الصورة هنا، ثم انسخ الرابط الذي يظهر وضعه في خانة «صورة» للجلسة أو الدورة.</p>
+      <div class="row" style="margin-top:10px"><input type="file" id="img" accept="image/jpeg,image/png,image/webp" style="max-width:320px"><button class="btn line" id="btn-img">رفع</button></div>
+    </div>
+
+    <div class="panel">
+      <div class="row between">
+        <div><h3>الحفظ</h3><p class="muted">انشر تعديلاتك على الموقع.</p></div>
+        <div class="row"><button class="btn line" id="btn-export">نسخة احتياطية (.json)</button><button class="btn line" id="btn-logout">خروج</button></div>
+      </div>
+      <div id="save-status"></div>
+    </div>
+  </section>
+</div>
+
+<div class="dirty" id="dirty" hidden>تعديلات غير منشورة <button class="btn gold" id="btn-save">انشر على الموقع</button></div>
+<dialog id="dlg"><form method="dialog" id="dlg-form"></form></dialog>
+
+<script>
+(() => {
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const b64enc = str => btoa(unescape(encodeURIComponent(str)));
+const b64dec = b => decodeURIComponent(escape(atob(b.replace(/\n/g, ''))));
+const slug = s => { const x = (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); return (x || 'item') + '-' + Date.now().toString(36); };
+const FILE = 'data/site.json';
+const ICONS = ['energy','book','cards','tree','mind','hands','lotus','star','heart','moon','crystal','gift'];
+const THEMES = ['violet','indigo','rose','green','blue','gold'];
+const IMG = ['image','صورة (رابط) — اختياري','text'];
+
+const SCHEMAS = {
+  formations: { title: 'الدورات التكوينية', label: x => x.titre, sub: x => [x.date, x.mode, x.prix && x.prix + ' د.ت'].filter(Boolean).join(' · '),
+    fields: [['titre','العنوان'],['categorie','الصنف (مثلاً Reiki)'],['date','التاريخ','date'],['duree','المدة (مثلاً يومان)'],['mode','الطريقة','select',['حضوري','أونلاين','حضوري + أونلاين']],
+      ['places','عدد الأماكن','number'],['prix','السعر','number'],['ancien_prix','السعر القديم (للتخفيض) — اختياري','number'],
+      ['icone','الأيقونة','select',ICONS],['theme','اللون','select',THEMES],IMG,['description','الوصف','textarea'],
+      ['nouveau','شارة «جديد»','checkbox',null,false],['actif','ظاهرة في الموقع','checkbox',null,true]] },
+  soins: { title: 'الجلسات والاستشارات', label: x => (x.sous_titre ? x.sous_titre + ' – ' : '') + x.titre, sub: x => [x.categorie, x.duree, x.prix && x.prix + ' د.ت'].filter(Boolean).join(' · '),
+    fields: [['sous_titre','الاسم بالعربية'],['titre','الاسم بالفرنسية'],['categorie','الصنف','cat'],['duree','المدة (مثلاً 60 دقيقة)'],['prix','السعر','number'],
+      ['icone','الأيقونة','select',ICONS],['theme','اللون','select',THEMES],IMG,['note','التقييم (مثلاً 4.9) — اختياري'],['avis','عدد التقييمات — اختياري','number'],['description','الوصف','textarea']] },
+  packs: { title: 'الباقات', label: x => x.titre, sub: x => [x.contenu, x.prix && x.prix + ' د.ت'].filter(Boolean).join(' · '),
+    fields: [['titre','اسم الباقة'],['contenu','محتوى الباقة','textarea'],['nb','عدد الجلسات','number'],['prix','سعر الباقة','number'],['ancien_prix','السعر بدون باقة','number'],
+      ['theme','اللون','select',THEMES],['actif','ظاهرة في الموقع','checkbox',null,true]] },
+  temoignages: { title: 'آراء الحرفاء', label: x => x.nom, sub: x => x.service, fields: [['nom','الاسم'],['service','الجلسة / الدورة'],['texte','الرأي','textarea']] },
+  faq: { title: 'الأسئلة الشائعة', label: x => x.q, sub: x => (x.r||'').slice(0,90) + '…', fields: [['q','السؤال'],['r','الجواب','textarea']] }
+};
+const SETTINGS = [['nom_centre','اسم المركز'],['slogan','الشعار'],['intro','نص تعريفي قصير','textarea'],['praticienne','اسمك'],['titre_praticienne','صفتك'],
+  ['bio','التعريف بك (فقرة 1)','textarea'],['bio2','التعريف بك (فقرة 2)','textarea'],['annees_experience','سنوات الخبرة'],['clients','عدد الأشخاص المرافَقين'],['formes','عدد المتكوّنين'],
+  ['telephone','الهاتف (يظهر في الموقع)'],['whatsapp','رقم واتساب (أرقام فقط مع 216، مثلاً 21612345678)'],['email','البريد الإلكتروني'],['adresse','العنوان'],['horaires','أوقات العمل'],
+  ['instagram','رابط إنستغرام'],['facebook','رابط فيسبوك'],['devise','العملة']];
+
+let cfg = {}, data = null, sha = null, tab = 'formations', dirty = false;
+const status = (el, t, m) => $(el).innerHTML = `<div class="status ${t}">${m}</div>`;
+const setDirty = v => { dirty = v; $('#dirty').hidden = !v; };
+addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+async function gh(path, opts = {}) {
+  const r = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/${path}`, { ...opts,
+    headers: { Authorization: `Bearer ${cfg.token}`, Accept: 'application/vnd.github+json', ...(opts.headers||{}) } });
+  if (!r.ok) { const t = await r.json().catch(() => ({})); throw new Error(`${r.status} – ${t.message || r.statusText}`); }
+  return r.json();
+}
+async function load() {
+  const f = await gh(`contents/${FILE}?ref=${encodeURIComponent(cfg.branch)}&t=${Date.now()}`);
+  sha = f.sha; data = JSON.parse(b64dec(f.content));
+  ['soins','formations','packs','temoignages','faq','categories'].forEach(k => data[k] ??= []); data.settings ??= {};
+}
+async function save() {
+  const b = $('#btn-save'); b.disabled = true;
+  try {
+    const res = await gh(`contents/${FILE}`, { method: 'PUT', body: JSON.stringify({ message: 'تحديث المحتوى من لوحة التحكم',
+      content: b64enc(JSON.stringify(data, null, 2) + '\n'), sha, branch: cfg.branch }) });
+    sha = res.content.sha; setDirty(false); status('#save-status', 'ok', '✓ تم النشر! سيتحدّث الموقع خلال دقيقة تقريباً.');
+  } catch (e) { status('#save-status', 'err', 'خطأ في النشر: ' + esc(e.message) + (e.message.startsWith('409') ? ' — أعد تحميل الصفحة.' : '')); }
+  finally { b.disabled = false; }
+}
+async function upload(path, b64, msg) {
+  let old; try { old = (await gh(`contents/${path}?ref=${encodeURIComponent(cfg.branch)}`)).sha; } catch {}
+  return gh(`contents/${path}`, { method: 'PUT', body: JSON.stringify({ message: msg, content: b64, sha: old, branch: cfg.branch }) });
+}
+const readB64 = file => new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result.split(',')[1]); fr.readAsDataURL(file); });
+
+// login
+try { const s = JSON.parse(localStorage.getItem('ch_admin') || 'null'); if (s) ['owner','repo','branch','token'].forEach(k => $('#' + k).value = s[k] || ''); } catch {}
+$('#btn-connect').onclick = async () => {
+  cfg = { owner: $('#owner').value.trim(), repo: $('#repo').value.trim(), branch: $('#branch').value.trim() || 'main', token: $('#token').value.trim() };
+  if (!cfg.owner || !cfg.repo || !cfg.token) return status('#login-status', 'err', 'الرجاء ملء كل الخانات.');
+  status('#login-status', 'info', 'جارٍ الاتصال…');
+  try {
+    await load();
+    try { $('#remember').checked ? localStorage.setItem('ch_admin', JSON.stringify(cfg)) : localStorage.removeItem('ch_admin'); } catch {}
+    $('#login').hidden = true; $('#app').hidden = false; $('#conn-label').textContent = `${cfg.owner}/${cfg.repo}`; renderTab();
+  } catch (e) { status('#login-status', 'err', 'تعذّر الاتصال: ' + esc(e.message)); }
+};
+$('#btn-logout').onclick = () => { if (dirty && !confirm('هناك تعديلات غير منشورة. الخروج على أي حال؟')) return; try { localStorage.removeItem('ch_admin'); } catch {} setDirty(false); location.reload(); };
+
+$('#tabs').onclick = e => { const b = e.target.closest('button'); if (!b) return; tab = b.dataset.tab;
+  document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('active', x === b)); renderTab(); };
+
+function renderTab() {
+  const isSet = tab === 'settings';
+  $('#list-panel').hidden = isSet; $('#settings-panel').hidden = !isSet;
+  if (isSet) return renderSettings();
+  const S = SCHEMAS[tab], arr = data[tab];
+  $('#list-title').textContent = S.title;
+  const vis = x => ('actif' in x) ? (x.actif === false ? '<span class="pill off">مخفية</span>' : '<span class="pill">ظاهرة</span>') : '';
+  $('#list').innerHTML = arr.length ? arr.map((x, i) => `
+    <div class="item"><div><b>${esc(S.label(x))}</b>${vis(x)}<br><small>${esc(S.sub(x) || '')}</small></div>
+    <div class="row"><button class="btn line" data-act="up" data-i="${i}" ${i ? '' : 'disabled'} title="إلى الأعلى">↑</button>
+      <button class="btn line" data-act="edit" data-i="${i}">تعديل</button><button class="btn danger" data-act="del" data-i="${i}">حذف</button></div></div>`).join('')
+    : '<p class="muted" style="margin-top:14px">لا يوجد شيء بعد. اضغط «إضافة».</p>';
+}
+$('#list').onclick = e => {
+  const b = e.target.closest('button[data-act]'); if (!b) return; const i = +b.dataset.i, arr = data[tab];
+  if (b.dataset.act === 'edit') openEditor(i);
+  if (b.dataset.act === 'del' && confirm(`حذف «${SCHEMAS[tab].label(arr[i])}»؟`)) { arr.splice(i, 1); setDirty(true); renderTab(); }
+  if (b.dataset.act === 'up' && i) { [arr[i-1], arr[i]] = [arr[i], arr[i-1]]; setDirty(true); renderTab(); }
+};
+$('#btn-add').onclick = () => openEditor(-1);
+
+function field([k, label, type, opts, def], val) {
+  if (type === 'textarea') return `<label class="full">${label}<textarea name="${k}" rows="4">${esc(val)}</textarea></label>`;
+  if (type === 'cat') opts = data.categories || [], type = 'select';
+  if (type === 'select') { const o = opts.includes(val) || !val ? opts : [val, ...opts];
+    return `<label>${label}<select name="${k}">${o.map(x => `<option ${x === val ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select></label>`; }
+  if (type === 'checkbox') { const on = val === '' ? def : val !== false;
+    return `<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="${k}" style="width:auto" ${on ? 'checked' : ''}> ${label}</label>`; }
+  return `<label>${label}<input name="${k}" type="${type || 'text'}" value="${esc(val)}"></label>`;
+}
+function openEditor(i) {
+  const S = SCHEMAS[tab], item = i >= 0 ? data[tab][i] : {}, f = $('#dlg-form'), dlg = $('#dlg');
+  f.innerHTML = `<h2>${i >= 0 ? 'تعديل' : 'إضافة'} – ${S.title}</h2><div class="g2">${S.fields.map(x => field(x, item[x[0]] ?? '')).join('')}</div>
+    <div class="row" style="justify-content:flex-end"><button class="btn line" value="cancel" formnovalidate>إلغاء</button><button class="btn gold" value="ok">حفظ</button></div>`;
+  dlg.returnValue = ''; dlg.showModal();
+  dlg.onclose = () => {
+    if (dlg.returnValue !== 'ok') return;
+    const out = { ...item };
+    S.fields.forEach(([k, , type]) => { const el = f.elements[k]; out[k] = type === 'checkbox' ? el.checked : el.value.trim(); });
+    if (!out.id && ['formations','soins','packs'].includes(tab)) out.id = slug(out.titre);
+    i >= 0 ? (data[tab][i] = out) : data[tab].push(out);
+    setDirty(true); renderTab();
+  };
+}
+function renderSettings() {
+  $('#settings-form').innerHTML = SETTINGS.map(x => field(x, data.settings[x[0]] ?? '')).join('');
+  $('#cats').value = (data.categories || []).join(', ');
+}
+$('#settings-form').oninput = e => { if (e.target.name) { data.settings[e.target.name] = e.target.value; setDirty(true); } };
+$('#cats').oninput = e => { data.categories = e.target.value.split(/[,،]/).map(s => s.trim()).filter(Boolean); setDirty(true); };
+
+$('#btn-photo').onclick = async () => {
+  const file = $('#photo').files[0]; if (!file) return status('#save-status', 'err', 'اختر صورة JPG.');
+  if (file.size > 4e6) return status('#save-status', 'err', 'الصورة كبيرة جداً (الحد 4 ميغا).');
+  status('#save-status', 'info', 'جارٍ رفع الصورة…');
+  try { await upload('assets/portrait.jpg', await readB64(file), 'صورة شخصية جديدة'); status('#save-status', 'ok', '✓ تم رفع الصورة. ستظهر في الموقع خلال دقيقة.'); }
+  catch (e) { status('#save-status', 'err', 'خطأ: ' + esc(e.message)); }
+};
+$('#btn-img').onclick = async () => {
+  const file = $('#img').files[0]; if (!file) return status('#save-status', 'err', 'اختر صورة.');
+  if (file.size > 4e6) return status('#save-status', 'err', 'الصورة كبيرة جداً (الحد 4 ميغا).');
+  const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z]/g, '');
+  const path = `assets/images/${Date.now().toString(36)}.${ext}`;
+  status('#save-status', 'info', 'جارٍ الرفع…');
+  try { await upload(path, await readB64(file), 'صورة جديدة'); status('#save-status', 'ok', `✓ تم الرفع. الرابط الذي تضعه في خانة «صورة»: <b dir="ltr">${path}</b>`); }
+  catch (e) { status('#save-status', 'err', 'خطأ: ' + esc(e.message)); }
+};
+$('#btn-save').onclick = save;
+$('#btn-export').onclick = () => { const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })); a.download = 'site-backup.json'; a.click(); };
+})();
+</script>
+</body>
+</html>
