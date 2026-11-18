@@ -86,6 +86,7 @@
     if (v === 'orders') return vOrders(V);
     if (v === 'clients') return vClients(V);
     if (v === 'chat') return vChat(V);
+    if (v === 'newsletter') return vNewsletter(V);
     if (v === 'lessons') return vLessons(V);
     if (v === 'medits') return vMedits(V);
     if (v === 'media') return vMedia(V);
@@ -209,6 +210,27 @@
     };
     const mk = $('#mkadmin'); if (mk) mk.onclick = async () => { if (!confirm('متأكّد؟ المسؤول يتحكّم في كل شي.')) return; await sb.from('profiles').update({ role: c.role === 'admin' ? 'client' : 'admin' }).eq('id', c.id); d.close(); vClients(V); };
     $('#tochat').onclick = e => { e.preventDefault(); d.close(); chatRoom = 'dm:' + c.id; go('chat'); };
+  }
+
+  // ================= NEWSLETTER =================
+  async function vNewsletter(V) {
+    const { data: subs, error } = await sb.from('subscribers').select('*').order('created_at', { ascending: false });
+    if (error) { V.innerHTML = `<div class="status err">${esc(error.message)}<br>إذا مكتوب «subscribers does not exist»: لازم تخدّم كود SQL متاع النشرة في Supabase.</div>`; return; }
+    const list = subs || [];
+    V.innerHTML = `<div class="stats"><div class="stat"><b>${list.length}</b><span>💌 مشترك في النشرة</span></div>
+        <div class="stat"><b>${list.filter(s => Date.now() - new Date(s.created_at) < 7 * 864e5).length}</b><span>جدد هالجمعة</span></div></div>
+      <div class="panel"><div class="row between"><p class="muted">انسخ الإيميلات وابعثلهم من Gmail (حطّهم في <b>Cci / BCC</b> باش ما يشوفوش بعضهم)، ولا حمّل الملف وارفعو في Brevo.</p>
+        <div class="row"><button class="btn gold" id="nl-copy">📋 انسخ الإيميلات الكل</button><button class="btn line" id="nl-csv">⬇️ تحميل Excel (CSV)</button></div></div></div>
+      <div class="panel" style="padding:0;overflow:auto"><table><thead><tr><th>الاسم</th><th>الإيميل</th><th>اللغة</th><th>التاريخ</th><th></th></tr></thead><tbody>
+      ${list.map(s => `<tr><td>${esc(s.name || '—')}</td><td dir="ltr">${esc(s.email)}</td><td>${esc((s.lang || '').toUpperCase())}</td><td>${esc(fmtD(s.created_at))}</td><td><button class="btn danger sm" data-del-sub="${s.id}">🗑</button></td></tr>`).join('') || '<tr><td colspan="5" class="muted">ما فمّا حتى مشترك لتوا.</td></tr>'}
+      </tbody></table></div>`;
+    $('#nl-copy').onclick = async () => { const t = list.map(s => s.email).join(', '); try { await navigator.clipboard.writeText(t); toast(`✓ تنسخو ${list.length} إيميل`); } catch { prompt('انسخ:', t); } };
+    $('#nl-csv').onclick = () => {
+      const rows = [['name', 'email', 'lang', 'date'], ...list.map(s => [s.name || '', s.email, s.lang || '', s.created_at])];
+      const csv = '﻿' + rows.map(r => r.map(x => '"' + String(x).replace(/"/g, '""') + '"').join(',')).join('\n');
+      const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = 'newsletter-centre-holistique.csv'; a.click();
+    };
+    V.querySelectorAll('[data-del-sub]').forEach(b => b.onclick = async () => { if (!confirm('تفسخ المشترك؟')) return; await sb.from('subscribers').delete().eq('id', b.dataset.delSub); vNewsletter(V); });
   }
 
   // ================= CHAT =================
