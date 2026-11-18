@@ -647,7 +647,10 @@
     { id: 'd17', zone: 'tn', icone: '📮', titre: { ar: 'D17 (البريد التونسي)', fr: 'D17 (La Poste)', en: 'D17 (Tunisian Post)' }, details: '28 550 802',
       instructions: { ar: 'أرسل المبلغ من تطبيق D17 إلى هذا الرقم', fr: "Envoyez le montant depuis l'appli D17 à ce numéro", en: 'Send the amount from the D17 app to this number' } },
     { id: 'attijari', zone: 'tn', icone: '🏦', titre: { ar: 'تحويل بنكي — Attijari Bank', fr: 'Virement bancaire — Attijari Bank', en: 'Bank transfer — Attijari Bank' }, details: 'RIB : 04 149 2310087195269 23\nRawia Ghorbel',
-      instructions: { ar: 'حوّل المبلغ إلى هذا الحساب', fr: 'Virez le montant sur ce compte', en: 'Transfer the amount to this account' } }
+      instructions: { ar: 'حوّل المبلغ إلى هذا الحساب', fr: 'Virez le montant sur ce compte', en: 'Transfer the amount to this account' } },
+    ...[['moneygram', '💸', 'MoneyGram'], ['ria', '💱', 'Ria Money Transfer'], ['western', '🌍', 'Western Union']].map(([id, icone, name]) => ({
+      id, zone: 'intl', icone, titre: { ar: name, fr: name, en: name }, details: 'RAWIA GHORBEL\nTunisie / Tunisia',
+      instructions: { ar: 'أرسل المبلغ بهذا الاسم — البلد: تونس', fr: 'Envoyez le montant à ce nom — Pays : Tunisie', en: 'Send the amount to this name — Country: Tunisia' } }))
   ];
   const payAll = () => (DATA?.paiements || PAY_DEFAULT).filter(p => p.actif !== false && (p.details || p.lien));
   function payMethods(zone) { return payAll().filter(p => p.zone === zone || p.zone === 'both'); }
