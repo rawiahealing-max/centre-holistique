@@ -233,6 +233,7 @@
   const chatScroll = () => $('#chat').classList.toggle('compact', scrollY > 300);
   addEventListener('scroll', chatScroll, { passive: true }); chatScroll();
 
+  applyStatic(); // show the right language immediately, before the content arrives
   (window.loadSiteContent ? window.loadSiteContent() : fetch('data/site.json?v=' + Date.now()).then(r => r.json()))
     .then(d => { DATA = d; renderAll(); }).catch(() => {
       document.body.insertAdjacentHTML('afterbegin', '<p style="background:#fde;padding:8px;text-align:center">Content could not be loaded.</p>');
