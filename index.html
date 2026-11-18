@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Centre Holistique – جلسات طاقية، قراءات ودورات تكوينية</title>
+  <meta name="description" content="Centre Holistique: علاج طاقي، ريكي، السجلات الأكاشية، التاروت، الأبراج العائلية، استشارة نفسية ودورات تكوينية معتمدة.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#accueil" class="brand" aria-label="الرئيسية">
+      <img src="assets/favicon.svg" alt="" width="38" height="38">
+      <span class="brand-name" data-s="nom_centre">Centre Holistique</span>
+    </a>
+    <nav class="menu" id="menu">
+      <a href="#accueil">الرئيسية</a>
+      <a href="#seances">الجلسات</a>
+      <a href="#formations">الدورات</a>
+      <a href="#packs">الباقات</a>
+      <a href="#apropos">من أنا</a>
+      <a href="#faq">أسئلة شائعة</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="cart-btn" aria-label="السلة">
+        <svg viewBox="0 0 24 24"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg>
+        <span class="badge" id="cart-count" hidden>0</span>
+      </button>
+      <button class="icon-btn burger" id="burger" aria-label="القائمة">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero-wrap" id="accueil">
+  <div class="container">
+    <div class="hero">
+      <svg class="mandala" viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width=".5">
+        <circle cx="100" cy="100" r="95"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="45"/>
+        <g id="pet"><ellipse cx="100" cy="55" rx="14" ry="40"/></g>
+        <use href="#pet" transform="rotate(30 100 100)"/><use href="#pet" transform="rotate(60 100 100)"/><use href="#pet" transform="rotate(90 100 100)"/>
+        <use href="#pet" transform="rotate(120 100 100)"/><use href="#pet" transform="rotate(150 100 100)"/><use href="#pet" transform="rotate(180 100 100)"/>
+        <use href="#pet" transform="rotate(210 100 100)"/><use href="#pet" transform="rotate(240 100 100)"/><use href="#pet" transform="rotate(270 100 100)"/>
+        <use href="#pet" transform="rotate(300 100 100)"/><use href="#pet" transform="rotate(330 100 100)"/></g></svg>
+      <div class="hero-text">
+        <span class="chip-light">طاقة · وعي · شفاء</span>
+        <h1 data-s="slogan">رحلتك نحو التوازن بين الجسد والقلب والروح</h1>
+        <p data-s="intro"></p>
+        <div class="hero-cta">
+          <a href="#seances" class="btn btn-white">اكتشف الجلسات</a>
+          <a href="#formations" class="btn btn-outline-light">الدورات التكوينية</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div><strong data-s="annees_experience">8+</strong><span>سنوات خبرة</span></div>
+        <div><strong data-s="clients">1200+</strong><span>شخص رافقتهم</span></div>
+        <div><strong data-s="formes">300+</strong><span>متكوّن</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEANCES -->
+<section class="block" id="seances">
+  <div class="container">
+    <div class="block-head">
+      <h2>اكتشف الجلسات</h2>
+      <div class="select-wrap"><select id="cat-filter" aria-label="تصفية حسب الصنف"><option value="">كل الجلسات</option></select></div>
+    </div>
+    <div class="rail-wrap">
+      <button class="rail-arrow prev" data-rail="soins-row" aria-label="السابق">›</button>
+      <div class="rail" id="soins-row"></div>
+      <button class="rail-arrow next" data-rail="soins-row" aria-label="التالي">‹</button>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATIONS -->
+<section class="block" id="formations">
+  <div class="container">
+    <div class="block-head">
+      <h2>الدورات التكوينية</h2>
+      <span class="sub">شهادة معتمدة · حضوري أو أونلاين</span>
+    </div>
+    <div class="rail-wrap">
+      <button class="rail-arrow prev" data-rail="formations-row" aria-label="السابق">›</button>
+      <div class="rail" id="formations-row"></div>
+      <button class="rail-arrow next" data-rail="formations-row" aria-label="التالي">‹</button>
+    </div>
+    <p class="empty" id="formations-empty" hidden>دورات جديدة قريباً. راسلني لتكون أول من يعلم.</p>
+  </div>
+</section>
+
+<!-- PACKS -->
+<section class="block block-tint" id="packs">
+  <div class="container">
+    <div class="block-head center">
+      <h2>تصفّح الباقات</h2>
+      <span class="sub">جلسات أكثر، بسعر أقل</span>
+    </div>
+    <div class="packs" id="packs-list"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="block" id="apropos">
+  <div class="container about">
+    <div class="about-visual">
+      <div class="portrait">
+        <img id="portrait" src="assets/portrait.jpg" alt="الصورة الشخصية" onerror="this.remove()">
+        <div class="portrait-ph"><span id="initiale">R</span></div>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">من أنا</span>
+      <h2>أنا <span class="accent" data-s="praticienne">Rawia</span></h2>
+      <p class="lead" data-s="titre_praticienne"></p>
+      <p data-s="bio"></p>
+      <p data-s="bio2"></p>
+      <ul class="values">
+        <li><b>لطف واحتواء</b> — مساحة بلا أحكام</li>
+        <li><b>سرية تامة</b> — قصتك تبقى ملكك</li>
+        <li><b>نظرة شمولية</b> — الجسد، المشاعر، الطاقة والروح</li>
+      </ul>
+      <a href="#reservation" class="btn btn-primary">احجز موعدك</a>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="block block-tint">
+  <div class="container">
+    <div class="block-head center"><h2>كيف تتم الجلسة؟</h2></div>
+    <div class="steps">
+      <div class="step"><span>1</span><h3>الحجز</h3><p>اختر جلستك وأضفها للسلة أو احجز مباشرة.</p></div>
+      <div class="step"><span>2</span><h3>التأكيد</h3><p>أتواصل معك على واتساب لتأكيد الموعد والدفع.</p></div>
+      <div class="step"><span>3</span><h3>الجلسة</h3><p>في المركز أو عن بعد، في إطار آمن ومريح.</p></div>
+      <div class="step"><span>4</span><h3>المتابعة</h3><p>نصائح شخصية ومتابعة لتثبيت النتائج.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="block" id="temoignages">
+  <div class="container">
+    <div class="block-head"><h2>آراء الحرفاء</h2></div>
+    <div class="rail" id="testi-row"></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="block block-tint" id="reservation">
+  <div class="container booking">
+    <div class="booking-info">
+      <span class="eyebrow">حجز موعد</span>
+      <h2>احجز جلستك مباشرة</h2>
+      <p>املأ الاستمارة وسيصلني طلبك على واتساب، وأؤكد لك الموعد في أقرب وقت.</p>
+      <ul class="contact-mini">
+        <li><span class="ico">☎</span> <span dir="ltr" data-s="telephone"></span></li>
+        <li><span class="ico">✉</span> <span data-s="email"></span></li>
+        <li><span class="ico">◷</span> <span data-s="horaires"></span></li>
+      </ul>
+    </div>
+    <form class="form" id="booking-form" novalidate>
+      <div class="row2">
+        <label>الاسم واللقب *<input name="nom" required autocomplete="name"></label>
+        <label>الهاتف *<input name="tel" type="tel" dir="ltr" required autocomplete="tel"></label>
+      </div>
+      <label>الجلسة أو الدورة *<select name="choix" id="choix" required></select></label>
+      <div class="row2">
+        <label>التاريخ المفضّل<input name="date" type="date"></label>
+        <label>الوقت<select name="heure"><option value="">غير مهم</option><option>09:00</option><option>10:30</option><option>12:00</option><option>14:00</option><option>15:30</option><option>17:00</option><option>18:30</option></select></label>
+      </div>
+      <label>الطريقة<select name="mode"><option>في المركز</option><option>عن بعد (فيديو)</option></select></label>
+      <label>رسالتك / نيّتك<textarea name="message" rows="3" placeholder="حدّثني باختصار عن طلبك…"></textarea></label>
+      <label class="check"><input type="checkbox" name="ok"> أوافق على أن يتم التواصل معي لتأكيد الطلب.</label>
+      <p class="form-error" id="form-error" hidden></p>
+      <button class="btn btn-primary btn-block" type="submit">إرسال عبر واتساب</button>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block" id="faq">
+  <div class="container narrow">
+    <div class="block-head center"><h2>أسئلة شائعة</h2></div>
+    <div class="faq" id="faq-list"></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="container footer-grid">
+    <div>
+      <a href="#accueil" class="brand light"><img src="assets/favicon.svg" alt="" width="36" height="36"><span class="brand-name" data-s="nom_centre"></span></a>
+      <p data-s="slogan"></p>
+      <div class="socials">
+        <a id="lnk-ig" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg></a>
+        <a id="lnk-fb" href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v7h4v-7h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg></a>
+        <a id="lnk-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>تواصل</h4>
+      <p><span data-s="adresse"></span><br><span dir="ltr" data-s="telephone"></span><br><span data-s="email"></span></p>
+      <p data-s="horaires"></p>
+    </div>
+    <div>
+      <h4>روابط</h4>
+      <p><a href="#seances">الجلسات</a><br><a href="#formations">الدورات</a><br><a href="#packs">الباقات</a><br><a href="admin.html">لوحة التحكم</a></p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span id="year"></span> <span data-s="nom_centre"></span>. جميع الحقوق محفوظة.</p>
+    <p class="disclaimer">العلاجات الشمولية مكمّلة ولا تعوّض الاستشارة الطبية.</p>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay" hidden></div>
+<aside class="drawer" id="drawer" aria-label="السلة" aria-hidden="true">
+  <div class="drawer-head"><h3>سلّتك</h3><button class="icon-btn" id="drawer-close" aria-label="إغلاق">✕</button></div>
+  <div class="drawer-body">
+    <div id="cart-items"></div>
+    <p class="empty-cart" id="cart-empty">سلّتك فارغة. أضف جلسة أو دورة 🌿</p>
+    <form id="checkout" class="form compact" hidden novalidate>
+      <div class="total"><span>المجموع</span><strong id="cart-total"></strong></div>
+      <label>الاسم واللقب *<input name="nom" autocomplete="name"></label>
+      <label>الهاتف *<input name="tel" type="tel" dir="ltr" autocomplete="tel"></label>
+      <label>ملاحظة<textarea name="message" rows="2" placeholder="مثلاً: الأوقات التي تناسبك"></textarea></label>
+      <p class="form-error" id="checkout-error" hidden></p>
+      <button class="btn btn-primary btn-block" type="submit">إرسال الطلب عبر واتساب</button>
+    </form>
+  </div>
+</aside>
+
+<div class="toast" id="toast" hidden></div>
+
+<!-- CHAT BUBBLE -->
+<a class="chat" id="chat" href="#" target="_blank" rel="noopener">
+  <span class="chat-pill"><i></i> كيف يمكنني مساعدتك؟</span>
+  <span class="chat-logo"><img src="assets/favicon.svg" alt="" width="40" height="40"></span>
+</a>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="bottom-nav" id="bottom-nav">
+  <a href="#accueil" class="active"><svg viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></svg>الرئيسية</a>
+  <a href="#seances"><svg viewBox="0 0 24 24"><path d="M12 4c2.5 3 2.5 8 0 12c-2.5-4-2.5-9 0-12zM12 16c-1.5-4-5-6.5-9-6.5c.5 4 4 7 9 6.5zM12 16c1.5-4 5-6.5 9-6.5c-.5 4-4 7-9 6.5z"/></svg>الجلسات</a>
+  <a href="#formations"><svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5zM7 11.5V16c3 2 7 2 10 0v-4.5"/></svg>الدورات</a>
+  <a href="#cart" id="bn-cart"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg>السلة</a>
+</nav>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
