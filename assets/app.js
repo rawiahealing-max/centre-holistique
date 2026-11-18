@@ -5,10 +5,10 @@
     ar: {
       topbar: '🌐 جلسات أونلاين في كل العالم · ردّ خلال 24 ساعة',
       nav_seances: 'الجلسات', nav_tarot: 'تاروت وأوراكل', nav_formations: 'الدورات', nav_cercle: 'الاشتراك الشهري', nav_events: 'أحداث الشهر', nav_about: 'من أنا', nav_faq: 'أسئلة',
-      hero_chip: 'طاقة · وعي · شفاء', cta_discovery: '📞 مكالمة تعارف مجانية (15 دقيقة)', cta_discover: 'اكتشف الجلسات',
+      hero_chip: 'طاقة · وعي · شفاء', cta_discovery: '📅 احجز استشارة', cta_discover: 'اكتشف الجلسات',
       trust_online: '🌐 أونلاين في كل العالم', trust_private: '🔒 سرية تامة', trust_certified: '🎓 معالجة ومكوّنة معتمدة', trust_langs: '💬 عربي · Français · English',
       stat_years: 'سنوات خبرة', stat_clients: 'شخص رافقتهم', stat_trained: 'متكوّن', stat_countries: 'بلد',
-      who_title: 'هل تعيش واحدة من هذه الحالات؟', who_sub: 'لست وحدك، ويوجد طريق.', who_1: 'ضغط، قلق أو تعب لا ينتهي', who_2: 'نفس المشاكل تتكرر في حياتك', who_3: 'علاقات صعبة أو جروح عاطفية', who_4: 'توتر وثقل في العائلة', who_5: 'ضياع وتبحث عن رسالة حياتك', who_6: 'طاقة منخفضة وانسدادات', who_cta: 'احكيلي على وضعك — مكالمة مجانية',
+      who_title: 'هل تعيش واحدة من هذه الحالات؟', who_sub: 'لست وحدك، ويوجد طريق.', who_1: 'ضغط، قلق أو تعب لا ينتهي', who_2: 'نفس المشاكل تتكرر في حياتك', who_3: 'علاقات صعبة أو جروح عاطفية', who_4: 'توتر وثقل في العائلة', who_5: 'ضياع وتبحث عن رسالة حياتك', who_6: 'طاقة منخفضة وانسدادات', who_cta: 'احجز استشارة توجيه (30 دقيقة)',
       seances_title: 'اكتشف الجلسات', all_cats: 'كل الجلسات',
       promo_tarot_title: 'تاروت وأوراكل', promo_tarot_text: 'قراءة الحب، العمل، السنة القادمة، أوراكل الملائكة… اختر نوع القراءة والطريقة التي تناسبك.', promo_tarot_btn: 'اختر قراءتك ←',
       formations_title: 'الدورات التكوينية', formations_sub: 'شهادة معتمدة · حضوري أو أونلاين',
@@ -45,10 +45,10 @@
     fr: {
       topbar: '🌐 Séances en ligne dans le monde entier · réponse sous 24 h',
       nav_seances: 'Séances', nav_tarot: 'Tarot & Oracle', nav_formations: 'Formations', nav_cercle: 'Abonnement', nav_events: 'Événements', nav_about: 'À propos', nav_faq: 'FAQ',
-      hero_chip: 'Énergie · Conscience · Guérison', cta_discovery: '📞 Appel découverte gratuit (15 min)', cta_discover: 'Découvrir les séances',
+      hero_chip: 'Énergie · Conscience · Guérison', cta_discovery: '📅 Réserver une consultation', cta_discover: 'Découvrir les séances',
       trust_online: '🌐 En ligne partout dans le monde', trust_private: '🔒 Confidentialité totale', trust_certified: '🎓 Thérapeute & formatrice certifiée', trust_langs: '💬 عربي · Français · English',
       stat_years: "ans d'expérience", stat_clients: 'personnes accompagnées', stat_trained: 'élèves formés', stat_countries: 'pays',
-      who_title: 'Vous reconnaissez-vous ?', who_sub: "Vous n'êtes pas seul(e), il existe un chemin.", who_1: 'Stress, anxiété ou fatigue persistante', who_2: 'Les mêmes problèmes se répètent', who_3: 'Relations difficiles, blessures affectives', who_4: 'Tensions et poids familiaux', who_5: 'Perdu(e), en quête de sens', who_6: 'Énergie basse et blocages', who_cta: 'Parlez-moi de vous — appel gratuit',
+      who_title: 'Vous reconnaissez-vous ?', who_sub: "Vous n'êtes pas seul(e), il existe un chemin.", who_1: 'Stress, anxiété ou fatigue persistante', who_2: 'Les mêmes problèmes se répètent', who_3: 'Relations difficiles, blessures affectives', who_4: 'Tensions et poids familiaux', who_5: 'Perdu(e), en quête de sens', who_6: 'Énergie basse et blocages', who_cta: "Réserver une consultation d'orientation (30 min)",
       seances_title: 'Découvrez les séances', all_cats: 'Toutes les séances',
       promo_tarot_title: 'Tarot & Oracle', promo_tarot_text: "Amour, travail, année à venir, Oracle des Anges… choisissez votre tirage et le format qui vous convient.", promo_tarot_btn: 'Choisir mon tirage →',
       formations_title: 'Formations', formations_sub: 'Certifiantes · en présentiel ou en ligne',
@@ -85,10 +85,10 @@
     en: {
       topbar: '🌐 Online sessions worldwide · reply within 24 h',
       nav_seances: 'Sessions', nav_tarot: 'Tarot & Oracle', nav_formations: 'Trainings', nav_cercle: 'Membership', nav_events: 'Events', nav_about: 'About', nav_faq: 'FAQ',
-      hero_chip: 'Energy · Awareness · Healing', cta_discovery: '📞 Free discovery call (15 min)', cta_discover: 'Explore sessions',
+      hero_chip: 'Energy · Awareness · Healing', cta_discovery: '📅 Book a consultation', cta_discover: 'Explore sessions',
       trust_online: '🌐 Online worldwide', trust_private: '🔒 Fully confidential', trust_certified: '🎓 Certified therapist & trainer', trust_langs: '💬 عربي · Français · English',
       stat_years: 'years of experience', stat_clients: 'people supported', stat_trained: 'students trained', stat_countries: 'countries',
-      who_title: 'Does this sound like you?', who_sub: "You're not alone, and there is a way forward.", who_1: 'Stress, anxiety or constant fatigue', who_2: 'The same problems keep repeating', who_3: 'Difficult relationships or emotional wounds', who_4: 'Family tension and heaviness', who_5: 'Feeling lost, searching for purpose', who_6: 'Low energy and blockages', who_cta: 'Tell me about it — free call',
+      who_title: 'Does this sound like you?', who_sub: "You're not alone, and there is a way forward.", who_1: 'Stress, anxiety or constant fatigue', who_2: 'The same problems keep repeating', who_3: 'Difficult relationships or emotional wounds', who_4: 'Family tension and heaviness', who_5: 'Feeling lost, searching for purpose', who_6: 'Low energy and blockages', who_cta: 'Book a guidance consultation (30 min)',
       seances_title: 'Explore sessions', all_cats: 'All sessions',
       promo_tarot_title: 'Tarot & Oracle', promo_tarot_text: 'Love, career, the year ahead, Angel Oracle… choose your reading and the format that suits you.', promo_tarot_btn: 'Choose my reading →',
       formations_title: 'Trainings', formations_sub: 'Certified · in person or online',
@@ -505,7 +505,11 @@
     const ev = e.target.closest('[data-event]');
     if (ev) { const x = findItem('evenements', ev.dataset.event); if (x) sendWA([`${t('m_event')}: ${L(x.titre)}`, `📅 ${fmtDate(x.date)} · ${x.heure} (${t('tunis_time')})`, `${t('lbl_tz')}: ${TZ}`]); return; }
     const disc = e.target.closest('.js-discovery');
-    if (disc) { e.preventDefault(); sendWA([t('m_discovery'), `${t('lbl_tz')}: ${TZ}`, `${t('w_lang')}: ${lang.toUpperCase()}`]); }
+    if (disc) {
+      e.preventDefault();
+      const sel = $('#booking-form select[name=choix]');
+      if (sel) { sel.value = 'soins:consultation'; $('#reservation').scrollIntoView({ behavior: 'smooth' }); setTimeout(() => $('#booking-form input[name=nom]').focus({ preventScroll: true }), 700); }
+    }
   });
 
   // rails
