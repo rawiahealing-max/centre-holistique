@@ -1,0 +1,64 @@
+{
+  "settings": {
+    "nom_centre": "Centre Holistique",
+    "slogan": "رحلتك نحو التوازن بين الجسد والقلب والروح",
+    "intro": "جلسات علاجية طاقية، قراءات، استشارات نفسية ودورات تكوينية معتمدة — في المركز أو عن بعد.",
+    "praticienne": "Rawia",
+    "titre_praticienne": "معالجة شمولية ومكوّنة",
+    "bio": "شغفي هو الإنسان في كليّته. أرافق منذ سنوات الأشخاص الباحثين عن التوازن والشفاء الداخلي والمعنى. تكوّنت في العلاج الطاقي، الريكي، قراءة السجلات الأكاشية، التاروت، الأبراج العائلية والمرافقة النفسية، وأقدّم لك مساحة آمنة، سرية وخالية من الأحكام.",
+    "bio2": "رسالتي: أن أساعدك على التحرر مما يعيقك، وأن تعود للاتصال بقوتك الداخلية، وأن أنقل لك هذه الأدوات من خلال دورات تكوينية واضحة ومعتمدة.",
+    "annees_experience": "8+",
+    "clients": "1200+",
+    "formes": "300+",
+    "telephone": "+216 26 660 344",
+    "whatsapp": "21626660344",
+    "email": "rawiahealing@gmail.com",
+    "adresse": "تونس",
+    "horaires": "من الإثنين إلى السبت: 9:00 – 19:00",
+    "instagram": "https://instagram.com/",
+    "facebook": "https://facebook.com/",
+    "devise": "د.ت"
+  },
+  "categories": ["جلسات طاقية", "قراءات", "مرافقة نفسية"],
+  "soins": [
+    { "id": "soin-energetique", "titre": "Soin Énergétique", "sous_titre": "العلاج الطاقي", "categorie": "جلسات طاقية", "icone": "energy", "theme": "violet", "image": "", "duree": "60 دقيقة", "prix": "120", "note": "", "avis": "",
+      "description": "إعادة توازن مراكز الطاقة (الشاكرات) والهالة لتحرير التوتر والتعب والانسدادات العاطفية." },
+    { "id": "annales-akashiques", "titre": "Annales Akashiques", "sous_titre": "قراءة السجلات الأكاشية", "categorie": "قراءات", "icone": "book", "theme": "indigo", "image": "", "duree": "75 دقيقة", "prix": "150", "note": "", "avis": "",
+      "description": "الوصول إلى ذاكرة روحك لفهم الأنماط المتكررة ورسالة حياتك وتلقي إرشادات ثمينة." },
+    { "id": "tarot", "titre": "Tarot Reading", "sous_titre": "قراءة التاروت", "categorie": "قراءات", "icone": "cards", "theme": "rose", "image": "", "duree": "45 دقيقة", "prix": "90", "note": "", "avis": "",
+      "description": "قراءة حدسية ولطيفة لتوضيح وضعية، قرار، أو مرحلة انتقالية في حياتك." },
+    { "id": "constellation-familiale", "titre": "Constellation Familiale", "sous_titre": "الأبراج العائلية", "categorie": "مرافقة نفسية", "icone": "tree", "theme": "green", "image": "", "duree": "90 دقيقة", "prix": "180", "note": "", "avis": "",
+      "description": "كشف الولاءات الخفية والذاكرة العابرة للأجيال لتهدئة العلاقات العائلية والمضي بحرية." },
+    { "id": "consultation-psychologique", "titre": "Consultation Psychologique", "sous_titre": "استشارة نفسية", "categorie": "مرافقة نفسية", "icone": "mind", "theme": "blue", "image": "", "duree": "60 دقيقة", "prix": "100", "note": "", "avis": "",
+      "description": "مرافقة تصغي لمشاعرك: القلق، الضغط، الثقة بالنفس، الفقد، العلاقات… لتستعيد الوضوح والسكينة." },
+    { "id": "reiki", "titre": "Soin Reiki", "sous_titre": "جلسة ريكي", "categorie": "جلسات طاقية", "icone": "hands", "theme": "gold", "image": "", "duree": "60 دقيقة", "prix": "110", "note": "", "avis": "",
+      "description": "تقنية يابانية لنقل الطاقة الكونية بوضع اليدين، لاسترخاء عميق وشفاء ذاتي طبيعي." },
+    { "id": "meditation", "titre": "Méditation guidée", "sous_titre": "تأمل وتنفس موجّه", "categorie": "جلسات طاقية", "icone": "lotus", "theme": "violet", "image": "", "duree": "45 دقيقة", "prix": "70", "note": "", "avis": "",
+      "description": "جلسة فردية للتأمل والتنفس الواعي لتهدئة الذهن، إدارة الضغط وتثبيت طاقتك." },
+    { "id": "coaching", "titre": "Coaching holistique", "sous_titre": "كوتشينغ الحياة", "categorie": "مرافقة نفسية", "icone": "star", "theme": "rose", "image": "", "duree": "60 دقيقة", "prix": "120", "note": "", "avis": "",
+      "description": "تحديد أهدافك، التخلص من المعتقدات المقيّدة وبناء خطة عمل متناغمة مع قيمك العميقة." }
+  ],
+  "formations": [
+    { "id": "reiki-niveau-1", "titre": "Formation Reiki Usui – المستوى 1", "categorie": "Reiki", "icone": "hands", "theme": "gold", "image": "", "date": "2026-12-12", "duree": "يومان", "mode": "حضوري", "places": "12", "prix": "450", "ancien_prix": "", "nouveau": true, "actif": true,
+      "description": "مدخل إلى الريكي: التاريخ والمبادئ، العلاج الذاتي وأولى الجلسات على الآخرين. شهادة في نهاية التكوين." },
+    { "id": "tarot-debutant", "titre": "Tarot intuitif – مستوى مبتدئ", "categorie": "Tarot", "icone": "cards", "theme": "rose", "image": "", "date": "2027-01-10", "duree": "3 حصص", "mode": "أونلاين", "places": "15", "prix": "300", "ancien_prix": "", "nouveau": true, "actif": true,
+      "description": "تعلّم رمزية الأركانا الكبرى الـ22، أهم طرق السحب، وطوّر حدسك لقراءات دقيقة." },
+    { "id": "soins-energetiques", "titre": "ممارس في العلاج الطاقي", "categorie": "Énergétique", "icone": "energy", "theme": "violet", "image": "", "date": "2027-02-07", "duree": "4 أيام", "mode": "حضوري", "places": "10", "prix": "900", "ancien_prix": "", "nouveau": false, "actif": true,
+      "description": "الشاكرات، الهالة، التنظيف والحماية الطاقية، بروتوكولات علاج كاملة. تكوين معتمد مع إشراف." }
+  ],
+  "packs": [
+    { "id": "pack-renaissance", "titre": "باقة التحرر الطاقي", "contenu": "3 جلسات علاج طاقي + جلسة ريكي", "nb": "4", "prix": "430", "ancien_prix": "530", "theme": "violet", "actif": true },
+    { "id": "pack-ame", "titre": "باقة رسالة الروح", "contenu": "قراءة السجلات الأكاشية + قراءة تاروت + كوتشينغ", "nb": "3", "prix": "310", "ancien_prix": "360", "theme": "indigo", "actif": true },
+    { "id": "pack-famille", "titre": "باقة الشفاء العائلي", "contenu": "جلسة أبراج عائلية + استشارتان نفسيتان", "nb": "3", "prix": "330", "ancien_prix": "380", "theme": "green", "actif": true }
+  ],
+  "temoignages": [
+    { "nom": "مثال – غيّريه", "texte": "اكتبي هنا رأي حريفة حقيقية من لوحة التحكم.", "service": "الأبراج العائلية" },
+    { "nom": "مثال – غيّريه", "texte": "اكتبي هنا رأي حريف حقيقي من لوحة التحكم.", "service": "جلسة ريكي" }
+  ],
+  "faq": [
+    { "q": "كيف تكون الجلسة الأولى؟", "r": "نبدأ بحوار لفهم طلبك، ثم أقترح عليك العلاج الأنسب. كل شيء يتم باحترام إيقاعك." },
+    { "q": "هل الجلسات متوفرة عن بعد؟", "r": "نعم. القراءات (السجلات الأكاشية، التاروت)، الاستشارات النفسية والكوتشينغ متوفرة عبر الفيديو، ويمكن أيضاً إجراء العلاج الطاقي عن بعد." },
+    { "q": "هل تعوّض الجلسات العلاج الطبي؟", "r": "لا. العلاجات الشمولية مكمّلة ولا تعوّض بأي حال استشارة أو علاجاً طبياً." },
+    { "q": "كيف أحجز وأدفع؟", "r": "أضف الجلسات أو الدورات إلى السلة ثم أرسل طلبك: يصلني مباشرة على واتساب، وأؤكد لك الموعد وطريقة الدفع." }
+  ]
+}
