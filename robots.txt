@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /centre-holistique/admin.html
+
+Sitemap: https://rawiahealing-max.github.io/centre-holistique/sitemap.xml
