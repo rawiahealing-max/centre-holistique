@@ -50,7 +50,7 @@
     const { data } = await sb.from('site_content').select('data').eq('id', 1).maybeSingle();
     if (data && data.data) {
       content = data.data;
-      if (window.applyContentPatches && window.applyContentPatches(content)) { setDirty(true); toast('✨ فما إضافات جديدة (ThetaHealing…) — اضغط «انشر على الموقع» باش تتحفظ'); }
+      if (window.applyContentPatches && window.applyContentPatches(content)) { setDirty(true); toast('✨ فما إضافات جديدة من Claude — اضغط «انشر على الموقع» باش تتحفظ'); }
       return;
     }
     // first time: import the content from the static file
