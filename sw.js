@@ -1,6 +1,6 @@
 // Service worker: network-first for pages and data (always fresh), cache fallback when offline
-const CACHE = 'ch-v3';
-const CORE = ['./', './index.html', './tarot.html', './assets/style.css', './assets/app.js', './assets/favicon.svg', './assets/icon-192.png', './data/site.json', './manifest.webmanifest'];
+const CACHE = 'ch-v4';
+const CORE = ['./', './index.html', './tarot.html', './meditations.html', './account.html', './assets/style.css', './assets/app.js', './assets/sb.js', './assets/account.js', './assets/meditations.js', './assets/favicon.svg', './assets/icon-192.png', './data/site.json', './manifest.webmanifest'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
