@@ -121,5 +121,19 @@ window.applyContentPatches = function (D) {
         { ar: 'لايف مفتوح للجميع على إنستغرام. اسألوا كل ما تريدون!', fr: 'Live ouvert à tous sur Instagram. Posez toutes vos questions !', en: 'Open live on Instagram for everyone. Ask me anything!' })
     ];
   });
+  once('bio-guide-2026-11', () => {
+    const s = D.settings = D.settings || {};
+    s.titre_praticienne = { ar: 'مرشدة ومعلّمة روحية · معالجة شمولية', fr: 'Guide et enseignante spirituelle · Thérapeute holistique', en: 'Spiritual guide & teacher · Holistic healer' };
+    s.bio = {
+      ar: 'أنا مرشدة ومعلّمة روحية ومعالجة شمولية. رسالتي أن أرافقك لتكتشف النور الذي يسكن داخلك منذ الأزل… ذلك النور الذي غطّته الجروح والمخاوف وضجيج الحياة. معاً، نحرّر ما يُثقل قلبك، نشفي الذكريات التي تؤلمك، ونعيد وصلك بحكمتك الداخلية وبقوّتك الحقيقية.',
+      fr: 'Je suis guide et enseignante spirituelle, thérapeute holistique. Ma mission : vous accompagner à redécouvrir la lumière qui vit en vous depuis toujours… cette lumière que les blessures, les peurs et le bruit du monde ont parfois voilée. Ensemble, nous libérons ce qui pèse sur votre cœur, nous apaisons les mémoires douloureuses et nous vous reconnectons à votre sagesse intérieure et à votre véritable puissance.',
+      en: 'I am a spiritual guide, teacher and holistic healer. My mission is to walk beside you as you rediscover the light that has always lived within you… the light that wounds, fears and the noise of life may have covered. Together, we release what weighs on your heart, heal the memories that still hurt, and reconnect you with your inner wisdom and your true power.'
+    };
+    s.bio2 = {
+      ar: 'من خلال الريكي، الثيتا هيلينغ (ThetaHealing®)، العلاج الطاقي، قراءة السجلات الأكاشية، التاروت والأبراج العائلية، أفتح لك مساحة آمنة ودافئة وخالية من الأحكام… مساحة تتنفّس فيها، تتشافى، وتتذكّر من أنت حقاً. لأنك لم تأتِ إلى هذه الحياة لتعيش نصفها… بل لتُشرق ✨',
+      fr: 'À travers le Reiki, le ThetaHealing®, les soins énergétiques, les Annales Akashiques, le Tarot et les Constellations familiales, je vous offre un espace sûr, chaleureux et sans jugement… un lieu pour respirer, guérir et vous souvenir de qui vous êtes vraiment. Parce que vous n’êtes pas venu(e) au monde pour vivre à moitié… mais pour rayonner ✨',
+      en: 'Through Reiki, ThetaHealing®, energy healing, Akashic Records, Tarot and Family Constellations, I offer you a safe, warm and non-judgmental space… a place to breathe, to heal, and to remember who you truly are. Because you did not come into this life to live it halfway… but to shine ✨'
+    };
+  });
   return changed;
 };
