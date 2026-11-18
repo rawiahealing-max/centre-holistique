@@ -40,7 +40,14 @@
       tarot_how_title: 'كيف تتم القراءة؟', fmt_video_t: 'فيديو مباشر', fmt_video_d: 'نلتقي على Zoom أو واتساب فيديو، أسحب الأوراق أمامك ونتحدث معاً.', fmt_ecrit_t: 'قراءة مكتوبة', fmt_ecrit_d: 'تصلك القراءة مفصّلة مع صور الأوراق في ملف PDF خلال 48 ساعة.', fmt_vocal_t: 'رسالة صوتية', fmt_vocal_d: 'تصلك القراءة كرسالة صوتية على واتساب مع صورة السحب.',
       tarot_disclaimer: 'القراءات أداة للتأمل والتوجيه، ولا تعوّض نصيحة طبية أو قانونية أو مالية.', no_reading: 'لم تختر قراءة بعد.',
       m_booking: '🌿 طلب موعد جديد', m_order: '🛒 طلب جديد من الموقع', m_gift: '🎁 طلب بطاقة هدية', m_tarot: '🔮 طلب قراءة', m_discovery: 'مرحباً! أريد حجز مكالمة التعارف المجانية (15 دقيقة).', m_event: '📅 أريد المشاركة في', m_join: '✨ أريد الاشتراك في',
-      w_date: 'التاريخ المفضّل', w_time_local: 'الوقت بتوقيتي', w_time_tunis: 'بتوقيت تونس', w_mode: 'الطريقة', w_msg: 'الرسالة', w_from: 'من', w_to: 'إلى', w_choice: 'الاختيار', w_format: 'الطريقة', w_question: 'السؤال', w_birth: 'تاريخ الميلاد', w_email: 'البريد', w_total: 'المجموع', w_currency: 'العملة', w_lang: 'اللغة', w_billing: 'الدفع'
+      w_date: 'التاريخ المفضّل', w_time_local: 'الوقت بتوقيتي', w_time_tunis: 'بتوقيت تونس', w_mode: 'الطريقة', w_msg: 'الرسالة', w_from: 'من', w_to: 'إلى', w_choice: 'الاختيار', w_format: 'الطريقة', w_question: 'السؤال', w_birth: 'تاريخ الميلاد', w_email: 'البريد', w_total: 'المجموع', w_currency: 'العملة', w_lang: 'اللغة', w_billing: 'الدفع',
+      pay_title: 'طرق الدفع', pay_sub: 'من تونس أو من أي بلد في العالم', pay_tn: '🇹🇳 من تونس', pay_intl: '🌍 من الخارج',
+      pay_d17_t: 'D17 (البريد التونسي)', pay_d17_d: 'أرسل المبلغ من تطبيق D17 إلى هذا الرقم:', pay_flouci_t: 'Flouci', pay_flouci_d: 'أرسل المبلغ من تطبيق Flouci إلى هذا الرقم:',
+      pay_rib_t: 'تحويل بنكي', pay_rib_d: 'حوّل المبلغ إلى هذا الحساب (RIB):', pay_intlbank_t: 'تحويل بنكي دولي (Wise…)', pay_intlbank_d: 'من بنكك أو من Wise إلى هذا الحساب في تونس (IBAN: TN59 + RIB):',
+      pay_payoneer_t: 'بطاقة بنكية Visa / Mastercard', pay_payoneer_d: 'ادفع بأمان ببطاقتك عبر Payoneer:', pay_payoneer_btn: '💳 ادفع بالبطاقة', pay_payoneer_mail: 'أرسل لي طلب دفع Payoneer على بريدك — أو استعمل هذا البريد:',
+      pay_wu_t: 'Western Union / MoneyGram / Ria', pay_wu_d: 'أرسل المبلغ باسم:', pay_city: 'المدينة', pay_country: 'البلد: تونس',
+      pay_after: '📸 بعد الدفع، أرسل صورة الوصل على واتساب وسأؤكد حجزك في أقرب وقت.', pay_proof_btn: '📸 أرسل الوصل على واتساب', pay_total: 'المبلغ',
+      pay_none: 'تواصل معي على واتساب لأرسل لك طريقة الدفع المناسبة لبلدك.', copy: 'نسخ', copied: '✓ تم النسخ', close: 'إغلاق', pay_open: '💳 طرق الدفع', pay_order_sent: '✓ تم إرسال طلبك! اختر طريقة الدفع:'
     },
     fr: {
       topbar: '🌐 Séances en ligne dans le monde entier · réponse sous 24 h',
@@ -80,7 +87,14 @@
       tarot_how_title: 'Comment se passe le tirage ?', fmt_video_t: 'Visio en direct', fmt_video_d: "Nous nous retrouvons sur Zoom ou WhatsApp, je tire les cartes devant vous et nous échangeons.", fmt_ecrit_t: 'Lecture écrite', fmt_ecrit_d: 'Vous recevez une lecture détaillée avec les photos des cartes en PDF sous 48 h.', fmt_vocal_t: 'Message vocal', fmt_vocal_d: 'Vous recevez la lecture en message vocal WhatsApp avec la photo du tirage.',
       tarot_disclaimer: "Les tirages sont un outil de réflexion et de guidance ; ils ne remplacent pas un avis médical, juridique ou financier.", no_reading: "Aucun tirage choisi pour l'instant.",
       m_booking: '🌿 Nouvelle demande de rendez-vous', m_order: '🛒 Nouvelle commande', m_gift: '🎁 Demande de carte cadeau', m_tarot: '🔮 Demande de tirage', m_discovery: "Bonjour ! J'aimerais réserver l'appel découverte gratuit (15 min).", m_event: '📅 Je souhaite participer à', m_join: '✨ Je souhaite rejoindre',
-      w_date: 'Date souhaitée', w_time_local: 'Heure chez moi', w_time_tunis: 'Heure de Tunis', w_mode: 'Format', w_msg: 'Message', w_from: 'De', w_to: 'Pour', w_choice: 'Choix', w_format: 'Format', w_question: 'Question', w_birth: 'Date de naissance', w_email: 'E-mail', w_total: 'Total', w_currency: 'Devise', w_lang: 'Langue', w_billing: 'Facturation'
+      w_date: 'Date souhaitée', w_time_local: 'Heure chez moi', w_time_tunis: 'Heure de Tunis', w_mode: 'Format', w_msg: 'Message', w_from: 'De', w_to: 'Pour', w_choice: 'Choix', w_format: 'Format', w_question: 'Question', w_birth: 'Date de naissance', w_email: 'E-mail', w_total: 'Total', w_currency: 'Devise', w_lang: 'Langue', w_billing: 'Facturation',
+      pay_title: 'Moyens de paiement', pay_sub: "Depuis la Tunisie ou n'importe quel pays", pay_tn: '🇹🇳 Depuis la Tunisie', pay_intl: "🌍 Depuis l'étranger",
+      pay_d17_t: 'D17 (La Poste)', pay_d17_d: "Envoyez le montant depuis l'application D17 à ce numéro :", pay_flouci_t: 'Flouci', pay_flouci_d: "Envoyez le montant depuis l'application Flouci à ce numéro :",
+      pay_rib_t: 'Virement bancaire', pay_rib_d: 'Virez le montant sur ce compte (RIB) :', pay_intlbank_t: 'Virement international (Wise…)', pay_intlbank_d: 'Depuis votre banque ou Wise vers ce compte en Tunisie (IBAN : TN59 + RIB) :',
+      pay_payoneer_t: 'Carte bancaire Visa / Mastercard', pay_payoneer_d: 'Payez en toute sécurité par carte via Payoneer :', pay_payoneer_btn: '💳 Payer par carte', pay_payoneer_mail: 'Je vous envoie une demande de paiement Payoneer par e-mail — ou utilisez cette adresse :',
+      pay_wu_t: 'Western Union / MoneyGram / Ria', pay_wu_d: 'Envoyez le montant au nom de :', pay_city: 'Ville', pay_country: 'Pays : Tunisie',
+      pay_after: '📸 Après le paiement, envoyez la photo du reçu sur WhatsApp et je confirme votre réservation rapidement.', pay_proof_btn: '📸 Envoyer le reçu sur WhatsApp', pay_total: 'Montant',
+      pay_none: 'Contactez-moi sur WhatsApp pour recevoir le moyen de paiement adapté à votre pays.', copy: 'Copier', copied: '✓ Copié', close: 'Fermer', pay_open: '💳 Moyens de paiement', pay_order_sent: '✓ Demande envoyée ! Choisissez votre moyen de paiement :'
     },
     en: {
       topbar: '🌐 Online sessions worldwide · reply within 24 h',
@@ -120,7 +134,14 @@
       tarot_how_title: 'How does a reading work?', fmt_video_t: 'Live video', fmt_video_d: 'We meet on Zoom or WhatsApp video, I draw the cards in front of you and we talk.', fmt_ecrit_t: 'Written reading', fmt_ecrit_d: 'You receive a detailed reading with photos of the cards as a PDF within 48 h.', fmt_vocal_t: 'Voice message', fmt_vocal_d: 'You receive the reading as a WhatsApp voice message with a photo of the spread.',
       tarot_disclaimer: 'Readings are a tool for reflection and guidance; they do not replace medical, legal or financial advice.', no_reading: 'No reading selected yet.',
       m_booking: '🌿 New booking request', m_order: '🛒 New order', m_gift: '🎁 Gift card request', m_tarot: '🔮 Reading request', m_discovery: "Hello! I'd like to book the free 15-min discovery call.", m_event: "📅 I'd like to join", m_join: "✨ I'd like to join",
-      w_date: 'Preferred date', w_time_local: 'My local time', w_time_tunis: 'Tunis time', w_mode: 'Format', w_msg: 'Message', w_from: 'From', w_to: 'To', w_choice: 'Choice', w_format: 'Format', w_question: 'Question', w_birth: 'Date of birth', w_email: 'Email', w_total: 'Total', w_currency: 'Currency', w_lang: 'Language', w_billing: 'Billing'
+      w_date: 'Preferred date', w_time_local: 'My local time', w_time_tunis: 'Tunis time', w_mode: 'Format', w_msg: 'Message', w_from: 'From', w_to: 'To', w_choice: 'Choice', w_format: 'Format', w_question: 'Question', w_birth: 'Date of birth', w_email: 'Email', w_total: 'Total', w_currency: 'Currency', w_lang: 'Language', w_billing: 'Billing',
+      pay_title: 'Payment methods', pay_sub: 'From Tunisia or anywhere in the world', pay_tn: '🇹🇳 From Tunisia', pay_intl: '🌍 From abroad',
+      pay_d17_t: 'D17 (La Poste)', pay_d17_d: 'Send the amount from the D17 app to this number:', pay_flouci_t: 'Flouci', pay_flouci_d: 'Send the amount from the Flouci app to this number:',
+      pay_rib_t: 'Bank transfer', pay_rib_d: 'Transfer the amount to this account (RIB):', pay_intlbank_t: 'International transfer (Wise…)', pay_intlbank_d: 'From your bank or Wise to this account in Tunisia (IBAN: TN59 + RIB):',
+      pay_payoneer_t: 'Card payment Visa / Mastercard', pay_payoneer_d: 'Pay securely by card via Payoneer:', pay_payoneer_btn: '💳 Pay by card', pay_payoneer_mail: "I'll email you a Payoneer payment request — or use this address:",
+      pay_wu_t: 'Western Union / MoneyGram / Ria', pay_wu_d: 'Send the amount to:', pay_city: 'City', pay_country: 'Country: Tunisia',
+      pay_after: "📸 After paying, send a photo of the receipt on WhatsApp and I'll confirm your booking quickly.", pay_proof_btn: '📸 Send receipt on WhatsApp', pay_total: 'Amount',
+      pay_none: "Message me on WhatsApp and I'll send you the right payment method for your country.", copy: 'Copy', copied: '✓ Copied', close: 'Close', pay_open: '💳 Payment methods', pay_order_sent: '✓ Request sent! Choose how to pay:'
     }
   };
 
@@ -472,6 +493,7 @@
       note: [v('question') && `${t('w_question')}: ${v('question')}`, v('naissance') && `${t('w_birth')}: ${v('naissance')}`].filter(Boolean).join('\n'),
       items: [{ type: 'lectures', id: sel.id, format: fmt.id, title: L(sel.titre), price: money(sel.prix), option: L(fmt) }] });
     sendWA(lines);
+    showPay(money(sel.prix));
   });
   $('#tarot-add')?.addEventListener('click', () => {
     if (!tarotCheck()) return;
@@ -533,8 +555,10 @@
     if (f.message.value.trim()) out.push(`${t('f_note')}: ${f.message.value.trim()}`);
     saveOrder({ name: nom, phone: tel, note: f.message.value.trim(), total: totals(lines),
       items: lines.map(({ c, it, p, fmt }) => ({ type: c.type, id: c.id, format: c.format, title: L(it.titre), price: p ? fmtMoney(p.v, p.c) : '', option: fmt })) });
+    const tot = totals(lines);
     sendWA(out);
-    cart = []; store.set('ch_cart2', cart); renderCart();
+    cart = []; store.set('ch_cart2', cart); renderCart(); closeCart();
+    showPay(tot);
   });
 
   // global clicks: favourites, add, join, event, discovery
@@ -596,6 +620,7 @@
         note: lines.slice(4).join('\n'),
         items: [{ type: ty, id, title: it ? L(it.titre) : '', price: it ? money(it.prix) : '', option: v('mode') }] });
       sendWA(lines);
+      showPay(it ? money(it.prix) : '');
     });
   }
   const gf = $('#gift-form');
@@ -612,7 +637,52 @@
     saveOrder({ name: v('from'), note: `🎁 ${t('w_to')}: ${v('to')}\n${v('msg')}`, total: it ? money(it.prix) : '',
       items: [{ type: ty, id, title: it ? '🎁 ' + L(it.titre) : '🎁', price: it ? money(it.prix) : '', option: 'gift' }] });
     sendWA(lines);
+    showPay(it ? money(it.prix) : '');
   });
+
+  // ================= PAYMENT METHODS =================
+  let payZone = TZ === 'Africa/Tunis' ? 'tn' : 'intl';
+  function payMethods(zone) { return (DATA?.paiements || []).filter(p => p.actif !== false && (p.details || p.lien) && (p.zone === zone || p.zone === 'both')); }
+  function payHTML(total, sent) {
+    const all = (DATA?.paiements || []).filter(p => p.actif !== false && (p.details || p.lien));
+    if (!all.length) return `<p class="pay-none">${esc(t('pay_none'))}</p><a class="btn btn-primary" href="${esc($('#chat').href)}" target="_blank" rel="noopener">WhatsApp</a>`;
+    const hasTn = payMethods('tn').length, hasIntl = payMethods('intl').length;
+    if (!hasTn) payZone = 'intl'; if (!hasIntl) payZone = 'tn';
+    const list = payMethods(payZone);
+    return `${sent ? `<p class="pay-sent">${esc(t('pay_order_sent'))}</p>` : ''}
+      ${total ? `<div class="pay-total"><span>${esc(t('pay_total'))}</span><b>${esc(total)}</b></div>` : ''}
+      ${hasTn && hasIntl ? `<div class="pay-tabs"><button data-pz="tn" class="${payZone === 'tn' ? 'active' : ''}">${esc(t('pay_tn'))}</button><button data-pz="intl" class="${payZone === 'intl' ? 'active' : ''}">${esc(t('pay_intl'))}</button></div>` : ''}
+      <div class="pay-list">${list.map(p => `<details class="pay-item" ${list.length === 1 ? 'open' : ''}><summary><span class="pay-ico">${esc(p.icone || '💳')}</span><b>${esc(L(p.titre))}</b></summary>
+        <div class="pay-body">${L(p.instructions) ? `<p>${esc(L(p.instructions))}</p>` : ''}
+          ${p.details ? `<div class="pay-details"><pre dir="ltr">${esc(p.details)}</pre><button type="button" class="btn btn-soft add" data-copy="${esc(p.details)}">${esc(t('copy'))}</button></div>` : ''}
+          ${p.lien ? `<a class="btn btn-primary" href="${esc(p.lien)}" target="_blank" rel="noopener">${esc(t('pay_payoneer_btn'))}</a>` : ''}</div></details>`).join('')}</div>
+      <p class="pay-after">${esc(t('pay_after'))}</p>
+      <a class="btn btn-primary btn-block" href="${esc($('#chat').href)}?text=${encodeURIComponent('📸 ' + t('pay_proof_btn').replace(/^\S+\s/, '') + (total ? ' — ' + total : ''))}" target="_blank" rel="noopener">${esc(t('pay_proof_btn'))}</a>`;
+  }
+  function showPay(total) {
+    let d = $('#paydlg');
+    if (!d) {
+      document.body.insertAdjacentHTML('beforeend', `<dialog id="paydlg" class="paydlg"><div class="paydlg-head"><h3></h3><button class="icon-btn" data-close aria-label="close">✕</button></div><div class="paydlg-body"></div></dialog>`);
+      d = $('#paydlg');
+      d.addEventListener('click', e => { if (e.target === d || e.target.closest('[data-close]')) d.close(); });
+    }
+    d.dataset.total = total || '';
+    d.querySelector('h3').textContent = t('pay_title');
+    d.querySelector('.paydlg-body').innerHTML = payHTML(total, true);
+    if (!d.open) d.showModal();
+  }
+  function renderPayInline() {
+    const el = $('#pay-inline'); if (!el) return;
+    $('#paiement').hidden = !(DATA?.paiements || []).some(p => p.actif !== false && (p.details || p.lien));
+    el.innerHTML = payHTML('', false);
+  }
+  document.addEventListener('click', async e => {
+    const pz = e.target.closest('[data-pz]');
+    if (pz) { payZone = pz.dataset.pz; const d = $('#paydlg'); if (d && d.open && d.contains(pz)) d.querySelector('.paydlg-body').innerHTML = payHTML(d.dataset.total, true); else renderPayInline(); return; }
+    const cp = e.target.closest('[data-copy]');
+    if (cp && cp.closest('.pay-details')) { try { await navigator.clipboard.writeText(cp.dataset.copy); } catch {} const o = cp.textContent; cp.textContent = t('copied'); setTimeout(() => cp.textContent = o, 1500); }
+  });
+  window.CH_HOOKS = window.CH_HOOKS || []; window.CH_HOOKS.push(renderPayInline);
 
   function sendWA(lines) {
     const num = (DATA?.settings?.whatsapp || '').replace(/\D/g, '');
