@@ -135,6 +135,37 @@ window.applyContentPatches = function (D) {
       en: 'Through Reiki, ThetaHealing®, energy healing, Akashic Records, Tarot and Family Constellations, I offer you a safe, warm and non-judgmental space… a place to breathe, to heal, and to remember who you truly are. Because you did not come into this life to live it halfway… but to shine ✨'
     };
   });
+  once('access-bars-2026-11', () => {
+    D.soins = D.soins || [];
+    if (!D.soins.some(x => x.id === 'access-bars')) {
+      const bars = {
+        id: 'access-bars', categorie: 'energie', icone: 'lotus', theme: 'gold', image: '', en_ligne: false,
+        titre: { ar: 'جلسة أكسس بارز Access Bars®', fr: 'Séance Access Bars®', en: 'Access Bars® Session' },
+        duree: { ar: '60–90 دقيقة', fr: '60–90 min', en: '60–90 min' },
+        prix: { tnd: '120', eur: '45', usd: '50' },
+        description: {
+          ar: 'جلسة لطيفة من مدرسة Access Consciousness®، يتم فيها لمس 32 نقطة على الرأس بخفّة، لتساعدك على تحرير الأفكار والمعتقدات والمشاعر المخزّنة، وتهدئة الذهن، والشعور بخفّة ومساحة أكبر في حياتك. في المركز.',
+          fr: 'Une séance douce issue d’Access Consciousness® : 32 points sont légèrement touchés sur la tête pour aider à libérer pensées, croyances et émotions accumulées, apaiser le mental et retrouver légèreté et espace dans votre vie. Au centre.',
+          en: 'A gentle session from Access Consciousness®: 32 points on the head are lightly touched to help release stored thoughts, beliefs and emotions, quiet the mind and bring more lightness and space into your life. At the centre.'
+        }
+      };
+      const i = D.soins.findIndex(x => x.id === 'thetahealing');
+      D.soins.splice(i >= 0 ? i + 1 : D.soins.length, 0, bars);
+    }
+    const s = D.settings = D.settings || {};
+    const rep = (key, l, find, by) => { if (s[key] && s[key][l] && !/Access/i.test(s[key][l]) && s[key][l].includes(find)) s[key][l] = s[key][l].replace(find, by); };
+    rep('bio2', 'ar', 'الثيتا هيلينغ (ThetaHealing®)،', 'الثيتا هيلينغ (ThetaHealing®)، الأكسس بارز (Access Bars®)،');
+    rep('bio2', 'fr', 'le ThetaHealing®,', 'le ThetaHealing®, les Access Bars®,');
+    rep('bio2', 'en', 'ThetaHealing®,', 'ThetaHealing®, Access Bars®,');
+    if (s.certifs && typeof s.certifs === 'object') {
+      const line = { ar: 'ممارسة Access Bars® – مدرسة Access Consciousness®', fr: 'Praticienne Access Bars® – Access Consciousness®', en: 'Access Bars® practitioner – Access Consciousness®' };
+      ['ar', 'fr', 'en'].forEach(l => {
+        if (!s.certifs[l] || /Access/i.test(s.certifs[l])) return;
+        const lines = s.certifs[l].split('\n'), j = lines.findIndex(x => /theta/i.test(x));
+        lines.splice(j >= 0 ? j + 1 : 1, 0, line[l]); s.certifs[l] = lines.join('\n');
+      });
+    }
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
