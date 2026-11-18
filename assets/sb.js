@@ -80,5 +80,44 @@ window.applyContentPatches = function (D) {
       ['ar', 'fr', 'en'].forEach(l => { if (s.certifs[l] && !/theta/i.test(s.certifs[l])) s.certifs[l] = s.certifs[l].split('\n').reduce((a, x, i) => (i === 0 ? [x, line[l]] : [...a, x]), []).join('\n'); });
     }
   });
+  once('membership-plan-2026-11', () => {
+    const lumiere = (D.abonnements || []).find(a => a.id === 'cercle-lumiere');
+    const ame = (D.abonnements || []).find(a => a.id === 'cercle-ame');
+    if (lumiere) {
+      lumiere.accroche = { ar: 'رحلة شهرية بثيمة جديدة كل شهر', fr: 'Un voyage mensuel, un nouveau thème chaque mois', en: 'A monthly journey with a new theme each month' };
+      lumiere.avantages = {
+        ar: 'تأمل القمر الجديد مباشر كل شهر + وضع النوايا\n«طاقة الشهر»: قراءة تاروت جماعية مسجّلة\nتأمل جديد مسجّل كل شهر على ثيمة الشهر\nشات الدائرة: مجتمع داعم ومتابعة يومية\nهدية الترحيب: تأمل «بداية الرحلة» + دليل PDF\nتخفيض 10% على كل الجلسات',
+        fr: 'Méditation de Nouvelle Lune en direct chaque mois + intentions\n« Énergie du mois » : tirage de Tarot collectif enregistré\nUne nouvelle méditation enregistrée chaque mois sur le thème du mois\nChat du Cercle : communauté bienveillante et suivi quotidien\nCadeau de bienvenue : méditation « Début du voyage » + guide PDF\n-10 % sur toutes les séances',
+        en: 'Live New Moon meditation every month + intentions\n"Energy of the month": recorded collective Tarot reading\nA new recorded meditation every month on the monthly theme\nCircle chat: caring community and daily follow-up\nWelcome gift: "Start of the journey" meditation + PDF guide\n10% off every session'
+      };
+    }
+    if (ame) {
+      ame.accroche = { ar: 'الأكثر اختياراً — مرافقة كاملة كل شهر', fr: 'Le plus choisi — un accompagnement complet chaque mois', en: 'Most popular — full support every month' };
+      ame.avantages = {
+        ar: 'كل مزايا «دائرة النور»\nجلسة فردية 30 دقيقة كل شهر: قراءة، ثيتا هيلينغ أو علاج طاقي\nطقوس البدر + ريكي جماعي عن بعد (مباشر)\nلايف أسئلة وأجوبة شهري\nورشة شهرية صغيرة على ثيمة الشهر + تمارين PDF\nمكتبة كل التسجيلات والتأملات\nبعد 3 أشهر: قراءة تاروت مجانية 🎁\nتخفيض 20% على الجلسات والدورات',
+        fr: 'Tous les avantages du Cercle Lumière\n1 séance individuelle de 30 min par mois : lecture, ThetaHealing® ou soin énergétique\nRituel de Pleine Lune + Reiki collectif à distance (en direct)\nLive Questions/Réponses mensuel\nAtelier mensuel sur le thème du mois + exercices PDF\nBibliothèque de tous les replays et méditations\nAprès 3 mois : un tirage de Tarot offert 🎁\n-20 % sur les séances et formations',
+        en: 'Everything in Light Circle\n1 private 30-min session each month: reading, ThetaHealing® or energy healing\nFull Moon ritual + remote group Reiki (live)\nMonthly live Q&A\nMonthly workshop on the theme + PDF exercises\nLibrary of all replays and meditations\nAfter 3 months: a free Tarot reading 🎁\n20% off sessions and trainings'
+      };
+    }
+    // December 2026 programme — theme: "Release & close the year"
+    const ev = (id, date, heure, icone, theme, membres, titre, description) => ({ id, date, heure, icone, theme, membres, actif: true, titre, description });
+    D.evenements = [
+      ev('dec-energie', '2026-12-01', '19:00', 'cards', 'rose', true,
+        { ar: '🔮 طاقة ديسمبر + تأمل الشهر', fr: '🔮 Énergie de décembre + méditation du mois', en: '🔮 December energy + meditation of the month' },
+        { ar: 'ثيمة الشهر: «التحرر وغلق السنة». قراءة تاروت جماعية وتأمل «أترك ما لم يعد يخدمني».', fr: 'Thème du mois : « Lâcher-prise et clôturer l’année ». Tirage collectif et méditation « Je laisse partir ce qui ne me sert plus ».', en: 'Theme of the month: "Release & close the year". Collective reading and "Letting go of what no longer serves me" meditation.' }),
+      ev('dec-nouvelle-lune', '2026-12-09', '20:00', 'moon', 'indigo', true,
+        { ar: '🌑 تأمل القمر الجديد', fr: '🌑 Méditation de Nouvelle Lune', en: '🌑 New Moon Meditation' },
+        { ar: 'نضع نوايا العام الجديد معاً في تأمل موجّه مباشر.', fr: 'Posons ensemble nos intentions pour la nouvelle année en méditation guidée.', en: 'Set your intentions for the new year together in a live guided meditation.' }),
+      ev('dec-atelier', '2026-12-16', '20:00', 'book', 'gold', true,
+        { ar: '📚 ورشة: رسالة إلى نفسي للعام القادم', fr: '📚 Atelier : lettre à moi-même pour l’année à venir', en: '📚 Workshop: a letter to myself for the year ahead' },
+        { ar: 'ورشة كتابة علاجية + تمارين PDF، لدائرة الروح.', fr: 'Atelier d’écriture thérapeutique + exercices PDF, pour le Cercle Âme.', en: 'Therapeutic writing workshop + PDF exercises, for the Soul Circle.' }),
+      ev('dec-pleine-lune', '2026-12-24', '20:30', 'crystal', 'violet', true,
+        { ar: '🌕 طقوس البدر + ريكي جماعي', fr: '🌕 Rituel de Pleine Lune + Reiki collectif', en: '🌕 Full Moon ritual + group Reiki' },
+        { ar: 'نتحرر مما حملناه طوال السنة، ثم جلسة ريكي جماعية عن بعد.', fr: 'Libérons ce que nous avons porté toute l’année, puis soin Reiki collectif à distance.', en: 'Release what we carried all year, then a remote group Reiki session.' }),
+      ev('dec-live', '2026-12-28', '19:00', 'mind', 'blue', false,
+        { ar: '🎤 لايف مجاني: أسئلة وأجوبة', fr: '🎤 Live gratuit : Questions / Réponses', en: '🎤 Free Live: Q&A' },
+        { ar: 'لايف مفتوح للجميع على إنستغرام. اسألوا كل ما تريدون!', fr: 'Live ouvert à tous sur Instagram. Posez toutes vos questions !', en: 'Open live on Instagram for everyone. Ask me anything!' })
+    ];
+  });
   return changed;
 };
