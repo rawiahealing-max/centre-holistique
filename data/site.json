@@ -50,6 +50,14 @@
     "tiktok": "",
     "youtube": ""
   },
+  "medit_categories": [
+    { "id": "matin", "ar": "الصباح", "fr": "Matin", "en": "Morning" },
+    { "id": "sommeil", "ar": "النوم", "fr": "Sommeil", "en": "Sleep" },
+    { "id": "anxiete", "ar": "القلق والضغط", "fr": "Anxiété & stress", "en": "Anxiety & stress" },
+    { "id": "chakras", "ar": "الشاكرات", "fr": "Chakras", "en": "Chakras" },
+    { "id": "lune", "ar": "القمر", "fr": "Lune", "en": "Moon" },
+    { "id": "guerison", "ar": "الشفاء الداخلي", "fr": "Guérison intérieure", "en": "Inner healing" }
+  ],
   "categories": [
     { "id": "energie", "ar": "جلسات طاقية", "fr": "Soins énergétiques", "en": "Energy healing" },
     { "id": "lecture", "ar": "قراءات", "fr": "Lectures", "en": "Readings" },
