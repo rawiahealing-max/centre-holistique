@@ -4,7 +4,7 @@
   const T = {
     ar: {
       topbar: '🌐 جلسات أونلاين في كل العالم · ردّ خلال 24 ساعة',
-      nav_seances: 'الجلسات', nav_tarot: 'تاروت وأوراكل', nav_formations: 'الدورات', nav_cercle: 'الاشتراك الشهري', nav_events: 'أحداث الشهر', nav_about: 'من أنا', nav_faq: 'أسئلة',
+      nav_seances: 'الجلسات', nav_tarot: 'تاروت وأوراكل', nav_formations: 'الدورات', nav_cercle: 'الاشتراك الشهري', nav_events: 'أحداث الشهر', nav_about: 'من أنا', nav_faq: 'أسئلة', nav_medit: 'التأملات', account: 'حسابي', bn_medit: 'تأملات', bn_account: 'حسابي',
       hero_chip: 'طاقة · وعي · شفاء', cta_discovery: '📅 احجز استشارة', cta_discover: 'اكتشف الجلسات',
       trust_online: '🌐 أونلاين في كل العالم', trust_private: '🔒 سرية تامة', trust_certified: '🎓 معالجة ومكوّنة معتمدة', trust_langs: '💬 عربي · Français · English',
       stat_years: 'سنوات خبرة', stat_clients: 'شخص رافقتهم', stat_trained: 'متكوّن', stat_countries: 'بلد',
@@ -44,7 +44,7 @@
     },
     fr: {
       topbar: '🌐 Séances en ligne dans le monde entier · réponse sous 24 h',
-      nav_seances: 'Séances', nav_tarot: 'Tarot & Oracle', nav_formations: 'Formations', nav_cercle: 'Abonnement', nav_events: 'Événements', nav_about: 'À propos', nav_faq: 'FAQ',
+      nav_seances: 'Séances', nav_tarot: 'Tarot & Oracle', nav_formations: 'Formations', nav_cercle: 'Abonnement', nav_events: 'Événements', nav_about: 'À propos', nav_faq: 'FAQ', nav_medit: 'Méditations', account: 'Mon espace', bn_medit: 'Méditations', bn_account: 'Mon espace',
       hero_chip: 'Énergie · Conscience · Guérison', cta_discovery: '📅 Réserver une consultation', cta_discover: 'Découvrir les séances',
       trust_online: '🌐 En ligne partout dans le monde', trust_private: '🔒 Confidentialité totale', trust_certified: '🎓 Thérapeute & formatrice certifiée', trust_langs: '💬 عربي · Français · English',
       stat_years: "ans d'expérience", stat_clients: 'personnes accompagnées', stat_trained: 'élèves formés', stat_countries: 'pays',
@@ -84,7 +84,7 @@
     },
     en: {
       topbar: '🌐 Online sessions worldwide · reply within 24 h',
-      nav_seances: 'Sessions', nav_tarot: 'Tarot & Oracle', nav_formations: 'Trainings', nav_cercle: 'Membership', nav_events: 'Events', nav_about: 'About', nav_faq: 'FAQ',
+      nav_seances: 'Sessions', nav_tarot: 'Tarot & Oracle', nav_formations: 'Trainings', nav_cercle: 'Membership', nav_events: 'Events', nav_about: 'About', nav_faq: 'FAQ', nav_medit: 'Meditations', account: 'My space', bn_medit: 'Meditate', bn_account: 'Account',
       hero_chip: 'Energy · Awareness · Healing', cta_discovery: '📅 Book a consultation', cta_discover: 'Explore sessions',
       trust_online: '🌐 Online worldwide', trust_private: '🔒 Fully confidential', trust_certified: '🎓 Certified therapist & trainer', trust_langs: '💬 عربي · Français · English',
       stat_years: 'years of experience', stat_clients: 'people supported', stat_trained: 'students trained', stat_countries: 'countries',
@@ -212,9 +212,38 @@
   const chatScroll = () => $('#chat').classList.toggle('compact', scrollY > 300);
   addEventListener('scroll', chatScroll, { passive: true }); chatScroll();
 
-  fetch('data/site.json?v=' + Date.now()).then(r => r.json()).then(d => { DATA = d; renderAll(); }).catch(() => {
-    document.body.insertAdjacentHTML('afterbegin', '<p style="background:#fde;padding:8px;text-align:center">Content could not be loaded (data/site.json).</p>');
-  });
+  (window.loadSiteContent ? window.loadSiteContent() : fetch('data/site.json?v=' + Date.now()).then(r => r.json()))
+    .then(d => { DATA = d; renderAll(); }).catch(() => {
+      document.body.insertAdjacentHTML('afterbegin', '<p style="background:#fde;padding:8px;text-align:center">Content could not be loaded.</p>');
+    });
+
+  // ---- logged-in user (Supabase) ----
+  let USER = null, PROFILE = null;
+  async function initUser() {
+    if (!window.sb) return;
+    const { data } = await window.sb.auth.getSession();
+    USER = data.session?.user || null;
+    if (USER) {
+      const r = await window.sb.from('profiles').select('full_name,phone,email').eq('id', USER.id).maybeSingle();
+      PROFILE = r.data || null;
+      $$('.js-account').forEach(a => a.classList.add('logged'));
+      // prefill forms
+      $$('form input[name=nom]').forEach(i => { if (!i.value && PROFILE?.full_name) i.value = PROFILE.full_name; });
+      $$('form input[name=tel]').forEach(i => { if (!i.value && PROFILE?.phone) i.value = PROFILE.phone; });
+      $$('form input[name=email]').forEach(i => { if (!i.value && USER.email) i.value = USER.email; });
+    }
+  }
+  initUser();
+  // save every request in the database so it appears in the dashboard (WhatsApp still opens)
+  async function saveOrder(o) {
+    if (!window.sb) return;
+    try {
+      await window.sb.from('orders').insert({
+        user_id: USER?.id || null, name: o.name || '', phone: o.phone || '', email: o.email || USER?.email || '',
+        items: o.items || [], total: o.total || '', note: o.note || '', lang, timezone: TZ
+      });
+    } catch (e) { /* never block the client */ }
+  }
 
   // ================= renderers =================
   function media(x, tag, extra = '') {
@@ -239,11 +268,19 @@
     const fb = $('#follow-btns');
     if (fb) fb.innerHTML = socials.map(([k, u]) => `<a class="btn btn-soft" href="${esc(u)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18">${SOCIAL_SVG[k]}</svg> ${k.charAt(0).toUpperCase() + k.slice(1)}</a>`).join('');
     const ini = $('#initiale'); if (ini) ini.textContent = (s.praticienne || 'R').charAt(0);
+    if (s.portrait && safeImg(s.portrait)) {
+      const ph = $('.portrait');
+      if (ph && !ph.querySelector('img')) ph.insertAdjacentHTML('afterbegin', '<img alt="">');
+      const im = ph && ph.querySelector('img'); if (im && im.getAttribute('src') !== s.portrait) im.src = s.portrait;
+    }
     const cl = $('#certifs-list'); if (cl) cl.innerHTML = L(s.certifs).split('\n').filter(Boolean).map(c => `<li>${esc(c)}</li>`).join('');
 
     renderSoins(); renderFormations(); renderPacks(); renderAbos(); renderEvents(); renderTesti(); renderFaq();
     renderChoix(); renderModes(); renderTarot(); renderCart(); injectJsonLd();
+    (window.CH_HOOKS || []).forEach(f => { try { f(); } catch (e) { console.error(e); } });
   }
+  // shared helpers for the other page scripts (account, meditations)
+  window.CH = { t, L, esc, svg, money, fmtMoney, fmtDate, getLang: () => lang, getData: () => DATA, tz: TZ, LOCALE, toast: m => toast(m), addToCart: (a, b, c) => addToCart(a, b, c) };
 
   function renderSoins() {
     const row = $('#soins-row'); if (!row) return;
@@ -431,6 +468,9 @@
     if (v('naissance')) lines.push(`${t('w_birth')}: ${v('naissance')}`);
     if (v('question')) lines.push(`${t('w_question')}: ${v('question')}`);
     lines.push(`${t('lbl_tz')}: ${TZ}`, `${t('w_lang')}: ${lang.toUpperCase()}`);
+    saveOrder({ name: v('nom'), phone: v('tel'), email: v('email'), total: money(sel.prix),
+      note: [v('question') && `${t('w_question')}: ${v('question')}`, v('naissance') && `${t('w_birth')}: ${v('naissance')}`].filter(Boolean).join('\n'),
+      items: [{ type: 'lectures', id: sel.id, format: fmt.id, title: L(sel.titre), price: money(sel.prix), option: L(fmt) }] });
     sendWA(lines);
   });
   $('#tarot-add')?.addEventListener('click', () => {
@@ -491,7 +531,10 @@
     const out = [t('m_order'), ...lines.map(({ c, it, p, fmt }) => `• ${L(it.titre)} (${t('t_' + c.type)}${fmt ? ' – ' + fmt : ''}) – ${p ? fmtMoney(p.v, p.c) : ''}`),
       `${t('w_total')}: ${totals(lines)}`, `${t('lbl_name')}: ${nom}`, `${t('lbl_phone')}: ${tel}`, `${t('lbl_tz')}: ${TZ}`, `${t('w_lang')}: ${lang.toUpperCase()}`];
     if (f.message.value.trim()) out.push(`${t('f_note')}: ${f.message.value.trim()}`);
+    saveOrder({ name: nom, phone: tel, note: f.message.value.trim(), total: totals(lines),
+      items: lines.map(({ c, it, p, fmt }) => ({ type: c.type, id: c.id, format: c.format, title: L(it.titre), price: p ? fmtMoney(p.v, p.c) : '', option: fmt })) });
     sendWA(out);
+    cart = []; store.set('ch_cart2', cart); renderCart();
   });
 
   // global clicks: favourites, add, join, event, discovery
@@ -548,6 +591,10 @@
       }
       lines.push(`${t('w_mode')}: ${v('mode')}`, `${t('w_lang')}: ${lang.toUpperCase()}`);
       if (v('message')) lines.push(`${t('w_msg')}: ${v('message')}`);
+      const [ty, id] = v('choix').split(':'), it = findItem(ty, id);
+      saveOrder({ name: v('nom'), phone: v('tel'), total: it ? money(it.prix) : '',
+        note: lines.slice(4).join('\n'),
+        items: [{ type: ty, id, title: it ? L(it.titre) : '', price: it ? money(it.prix) : '', option: v('mode') }] });
       sendWA(lines);
     });
   }
@@ -561,6 +608,9 @@
     if (v('to')) lines.push(`${t('w_to')}: ${v('to')}`);
     if (v('msg')) lines.push(`${t('w_msg')}: ${v('msg')}`);
     lines.push(`${t('lbl_tz')}: ${TZ}`);
+    const [ty, id] = (v('choix') || ':').split(':'), it = findItem(ty, id);
+    saveOrder({ name: v('from'), note: `🎁 ${t('w_to')}: ${v('to')}\n${v('msg')}`, total: it ? money(it.prix) : '',
+      items: [{ type: ty, id, title: it ? '🎁 ' + L(it.titre) : '🎁', price: it ? money(it.prix) : '', option: 'gift' }] });
     sendWA(lines);
   });
 
