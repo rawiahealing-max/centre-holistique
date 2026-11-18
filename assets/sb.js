@@ -13,7 +13,9 @@ window.sb = window.sbReady ? window.supabase.createClient(window.SB_CONFIG.url, 
 window.loadSiteContent = async function () {
   if (window.sb) {
     try {
-      const { data, error } = await window.sb.from('site_content').select('data').eq('id', 1).maybeSingle();
+      // never let a slow connection block the page: give the database 5 s, then use the built-in content
+      const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 5000));
+      const { data, error } = await Promise.race([window.sb.from('site_content').select('data').eq('id', 1).maybeSingle(), timeout]);
       if (!error && data && data.data) { window.applyContentPatches(data.data); return data.data; }
     } catch (e) { /* fall back */ }
   }
