@@ -47,7 +47,7 @@
       pay_payoneer_t: 'بطاقة بنكية Visa / Mastercard', pay_payoneer_d: 'ادفع بأمان ببطاقتك عبر Payoneer:', pay_payoneer_btn: '💳 ادفع بالبطاقة', pay_payoneer_mail: 'أرسل لي طلب دفع Payoneer على بريدك — أو استعمل هذا البريد:',
       pay_wu_t: 'Western Union / MoneyGram / Ria', pay_wu_d: 'أرسل المبلغ باسم:', pay_city: 'المدينة', pay_country: 'البلد: تونس',
       pay_after: '📸 بعد الدفع، أرسل صورة الوصل على واتساب وسأؤكد حجزك في أقرب وقت.', pay_proof_btn: '📸 أرسل الوصل على واتساب', pay_total: 'المبلغ',
-      pay_none: 'تواصل معي على واتساب لأرسل لك طريقة الدفع المناسبة لبلدك.', copy: 'نسخ', copied: '✓ تم النسخ', close: 'إغلاق', pay_open: '💳 طرق الدفع', pay_order_sent: '✓ تم إرسال طلبك! اختر طريقة الدفع:'
+      pay_none: 'تواصل معي على واتساب لأرسل لك طريقة الدفع المناسبة لبلدك.', copy: 'نسخ', copied: '✓ تم النسخ', close: 'إغلاق', wa_contact: 'تواصل معي على واتساب', wa_pay_msg: 'مرحباً! عندي سؤال على الدفع', pay_open: '💳 طرق الدفع', pay_order_sent: '✓ تم إرسال طلبك! اختر طريقة الدفع:'
     },
     fr: {
       topbar: '🌐 Séances en ligne dans le monde entier · réponse sous 24 h',
@@ -94,7 +94,7 @@
       pay_payoneer_t: 'Carte bancaire Visa / Mastercard', pay_payoneer_d: 'Payez en toute sécurité par carte via Payoneer :', pay_payoneer_btn: '💳 Payer par carte', pay_payoneer_mail: 'Je vous envoie une demande de paiement Payoneer par e-mail — ou utilisez cette adresse :',
       pay_wu_t: 'Western Union / MoneyGram / Ria', pay_wu_d: 'Envoyez le montant au nom de :', pay_city: 'Ville', pay_country: 'Pays : Tunisie',
       pay_after: '📸 Après le paiement, envoyez la photo du reçu sur WhatsApp et je confirme votre réservation rapidement.', pay_proof_btn: '📸 Envoyer le reçu sur WhatsApp', pay_total: 'Montant',
-      pay_none: 'Contactez-moi sur WhatsApp pour recevoir le moyen de paiement adapté à votre pays.', copy: 'Copier', copied: '✓ Copié', close: 'Fermer', pay_open: '💳 Moyens de paiement', pay_order_sent: '✓ Demande envoyée ! Choisissez votre moyen de paiement :'
+      pay_none: 'Contactez-moi sur WhatsApp pour recevoir le moyen de paiement adapté à votre pays.', copy: 'Copier', copied: '✓ Copié', close: 'Fermer', wa_contact: 'Me contacter sur WhatsApp', wa_pay_msg: "Bonjour ! J'ai une question sur le paiement", pay_open: '💳 Moyens de paiement', pay_order_sent: '✓ Demande envoyée ! Choisissez votre moyen de paiement :'
     },
     en: {
       topbar: '🌐 Online sessions worldwide · reply within 24 h',
@@ -141,7 +141,7 @@
       pay_payoneer_t: 'Card payment Visa / Mastercard', pay_payoneer_d: 'Pay securely by card via Payoneer:', pay_payoneer_btn: '💳 Pay by card', pay_payoneer_mail: "I'll email you a Payoneer payment request — or use this address:",
       pay_wu_t: 'Western Union / MoneyGram / Ria', pay_wu_d: 'Send the amount to:', pay_city: 'City', pay_country: 'Country: Tunisia',
       pay_after: "📸 After paying, send a photo of the receipt on WhatsApp and I'll confirm your booking quickly.", pay_proof_btn: '📸 Send receipt on WhatsApp', pay_total: 'Amount',
-      pay_none: "Message me on WhatsApp and I'll send you the right payment method for your country.", copy: 'Copy', copied: '✓ Copied', close: 'Close', pay_open: '💳 Payment methods', pay_order_sent: '✓ Request sent! Choose how to pay:'
+      pay_none: "Message me on WhatsApp and I'll send you the right payment method for your country.", copy: 'Copy', copied: '✓ Copied', close: 'Close', wa_contact: 'Contact me on WhatsApp', wa_pay_msg: 'Hello! I have a question about payment', pay_open: '💳 Payment methods', pay_order_sent: '✓ Request sent! Choose how to pay:'
     }
   };
 
@@ -657,7 +657,8 @@
           ${p.details ? `<div class="pay-details"><pre dir="ltr">${esc(p.details)}</pre><button type="button" class="btn btn-soft add" data-copy="${esc(p.details)}">${esc(t('copy'))}</button></div>` : ''}
           ${p.lien ? `<a class="btn btn-primary" href="${esc(p.lien)}" target="_blank" rel="noopener">${esc(t('pay_payoneer_btn'))}</a>` : ''}</div></details>`).join('')}</div>
       <p class="pay-after">${esc(t('pay_after'))}</p>
-      <a class="btn btn-primary btn-block" href="${esc($('#chat').href)}?text=${encodeURIComponent('📸 ' + t('pay_proof_btn').replace(/^\S+\s/, '') + (total ? ' — ' + total : ''))}" target="_blank" rel="noopener">${esc(t('pay_proof_btn'))}</a>`;
+      <a class="btn btn-primary btn-block" href="${esc($('#chat').href)}?text=${encodeURIComponent('📸 ' + t('pay_proof_btn').replace(/^\S+\s/, '') + (total ? ' — ' + total : ''))}" target="_blank" rel="noopener">${esc(t('pay_proof_btn'))}</a>
+      <a class="btn btn-wa btn-block" href="${esc($('#chat').href)}?text=${encodeURIComponent(t('wa_pay_msg') + (total ? ' (' + total + ')' : ''))}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg> ${esc(t('wa_contact'))}</a>`;
   }
   function showPay(total) {
     let d = $('#paydlg');
