@@ -1,64 +1,285 @@
 {
   "settings": {
     "nom_centre": "Centre Holistique",
-    "slogan": "رحلتك نحو التوازن بين الجسد والقلب والروح",
-    "intro": "جلسات علاجية طاقية، قراءات، استشارات نفسية ودورات تكوينية معتمدة — في المركز أو عن بعد.",
+    "slogan": {
+      "ar": "رحلتك نحو التوازن بين الجسد والقلب والروح",
+      "fr": "Retrouvez l'harmonie du corps, du cœur et de l'âme",
+      "en": "Restore harmony between body, heart and soul"
+    },
+    "intro": {
+      "ar": "جلسات علاج طاقي، قراءات، مرافقة نفسية ودورات تكوينية معتمدة — في المركز بتونس أو أونلاين من أي مكان في العالم.",
+      "fr": "Soins énergétiques, lectures, accompagnement psychologique et formations certifiantes — au centre à Tunis ou en ligne, partout dans le monde.",
+      "en": "Energy healing, readings, psychological support and certified trainings — at our centre in Tunis or online, anywhere in the world."
+    },
     "praticienne": "Rawia",
-    "titre_praticienne": "معالجة شمولية ومكوّنة",
-    "bio": "شغفي هو الإنسان في كليّته. أرافق منذ سنوات الأشخاص الباحثين عن التوازن والشفاء الداخلي والمعنى. تكوّنت في العلاج الطاقي، الريكي، قراءة السجلات الأكاشية، التاروت، الأبراج العائلية والمرافقة النفسية، وأقدّم لك مساحة آمنة، سرية وخالية من الأحكام.",
-    "bio2": "رسالتي: أن أساعدك على التحرر مما يعيقك، وأن تعود للاتصال بقوتك الداخلية، وأن أنقل لك هذه الأدوات من خلال دورات تكوينية واضحة ومعتمدة.",
+    "titre_praticienne": {
+      "ar": "معالجة شمولية ومكوّنة معتمدة",
+      "fr": "Thérapeute holistique & formatrice certifiée",
+      "en": "Holistic therapist & certified trainer"
+    },
+    "bio": {
+      "ar": "شغفي هو الإنسان في كليّته. أرافق منذ سنوات الأشخاص الباحثين عن التوازن والشفاء الداخلي والمعنى. تكوّنت في العلاج الطاقي، الريكي، قراءة السجلات الأكاشية، التاروت، الأبراج العائلية والمرافقة النفسية، وأقدّم لك مساحة آمنة، سرية وخالية من الأحكام.",
+      "fr": "Passionnée par l'être humain dans sa globalité, j'accompagne depuis plusieurs années les personnes en quête d'équilibre, de guérison intérieure et de sens. Formée aux soins énergétiques, au Reiki, aux Annales Akashiques, au Tarot, aux Constellations Familiales et à l'accompagnement psychologique, je vous offre un espace sûr, confidentiel et sans jugement.",
+      "en": "Passionate about the human being as a whole, I have spent years supporting people seeking balance, inner healing and meaning. Trained in energy healing, Reiki, Akashic Records, Tarot, Family Constellations and psychological support, I offer you a safe, confidential and non-judgmental space."
+    },
+    "bio2": {
+      "ar": "رسالتي: أن أساعدك على التحرر مما يعيقك، وأن تعود للاتصال بقوتك الداخلية، وأن أنقل لك هذه الأدوات من خلال دورات تكوينية واضحة ومعتمدة.",
+      "fr": "Ma mission : vous aider à libérer ce qui vous bloque, à vous reconnecter à votre puissance intérieure et à vous transmettre ces outils à travers des formations claires et certifiantes.",
+      "en": "My mission: to help you release what holds you back, reconnect with your inner power, and pass these tools on to you through clear, certified trainings."
+    },
+    "certifs": {
+      "ar": "معالجة ريكي أوسوي (Usui) – مستوى ماستر\nقارئة السجلات الأكاشية\nميسّرة الأبراج العائلية\nتكوين في المرافقة النفسية",
+      "fr": "Praticienne Reiki Usui – niveau Maître\nLectrice des Annales Akashiques\nFacilitatrice en Constellations Familiales\nFormation en accompagnement psychologique",
+      "en": "Usui Reiki practitioner – Master level\nAkashic Records reader\nFamily Constellations facilitator\nTraining in psychological support"
+    },
     "annees_experience": "8+",
     "clients": "1200+",
     "formes": "300+",
+    "pays": "15+",
     "telephone": "+216 26 660 344",
     "whatsapp": "21626660344",
     "email": "rawiahealing@gmail.com",
-    "adresse": "تونس",
-    "horaires": "من الإثنين إلى السبت: 9:00 – 19:00",
+    "adresse": { "ar": "تونس", "fr": "Tunis, Tunisie", "en": "Tunis, Tunisia" },
+    "horaires": {
+      "ar": "من الإثنين إلى السبت: 9:00 – 19:00 (توقيت تونس)",
+      "fr": "Lundi – Samedi : 9h00 – 19h00 (heure de Tunis)",
+      "en": "Monday – Saturday: 9:00 – 19:00 (Tunis time)"
+    },
     "instagram": "https://instagram.com/",
     "facebook": "https://facebook.com/",
-    "devise": "د.ت"
+    "tiktok": "",
+    "youtube": ""
   },
-  "categories": ["جلسات طاقية", "قراءات", "مرافقة نفسية"],
+  "categories": [
+    { "id": "energie", "ar": "جلسات طاقية", "fr": "Soins énergétiques", "en": "Energy healing" },
+    { "id": "lecture", "ar": "قراءات", "fr": "Lectures", "en": "Readings" },
+    { "id": "psy", "ar": "مرافقة نفسية", "fr": "Accompagnement", "en": "Support & therapy" }
+  ],
   "soins": [
-    { "id": "soin-energetique", "titre": "Soin Énergétique", "sous_titre": "العلاج الطاقي", "categorie": "جلسات طاقية", "icone": "energy", "theme": "violet", "image": "", "duree": "60 دقيقة", "prix": "120", "note": "", "avis": "",
-      "description": "إعادة توازن مراكز الطاقة (الشاكرات) والهالة لتحرير التوتر والتعب والانسدادات العاطفية." },
-    { "id": "annales-akashiques", "titre": "Annales Akashiques", "sous_titre": "قراءة السجلات الأكاشية", "categorie": "قراءات", "icone": "book", "theme": "indigo", "image": "", "duree": "75 دقيقة", "prix": "150", "note": "", "avis": "",
-      "description": "الوصول إلى ذاكرة روحك لفهم الأنماط المتكررة ورسالة حياتك وتلقي إرشادات ثمينة." },
-    { "id": "tarot", "titre": "Tarot Reading", "sous_titre": "قراءة التاروت", "categorie": "قراءات", "icone": "cards", "theme": "rose", "image": "", "duree": "45 دقيقة", "prix": "90", "note": "", "avis": "",
-      "description": "قراءة حدسية ولطيفة لتوضيح وضعية، قرار، أو مرحلة انتقالية في حياتك." },
-    { "id": "constellation-familiale", "titre": "Constellation Familiale", "sous_titre": "الأبراج العائلية", "categorie": "مرافقة نفسية", "icone": "tree", "theme": "green", "image": "", "duree": "90 دقيقة", "prix": "180", "note": "", "avis": "",
-      "description": "كشف الولاءات الخفية والذاكرة العابرة للأجيال لتهدئة العلاقات العائلية والمضي بحرية." },
-    { "id": "consultation-psychologique", "titre": "Consultation Psychologique", "sous_titre": "استشارة نفسية", "categorie": "مرافقة نفسية", "icone": "mind", "theme": "blue", "image": "", "duree": "60 دقيقة", "prix": "100", "note": "", "avis": "",
-      "description": "مرافقة تصغي لمشاعرك: القلق، الضغط، الثقة بالنفس، الفقد، العلاقات… لتستعيد الوضوح والسكينة." },
-    { "id": "reiki", "titre": "Soin Reiki", "sous_titre": "جلسة ريكي", "categorie": "جلسات طاقية", "icone": "hands", "theme": "gold", "image": "", "duree": "60 دقيقة", "prix": "110", "note": "", "avis": "",
-      "description": "تقنية يابانية لنقل الطاقة الكونية بوضع اليدين، لاسترخاء عميق وشفاء ذاتي طبيعي." },
-    { "id": "meditation", "titre": "Méditation guidée", "sous_titre": "تأمل وتنفس موجّه", "categorie": "جلسات طاقية", "icone": "lotus", "theme": "violet", "image": "", "duree": "45 دقيقة", "prix": "70", "note": "", "avis": "",
-      "description": "جلسة فردية للتأمل والتنفس الواعي لتهدئة الذهن، إدارة الضغط وتثبيت طاقتك." },
-    { "id": "coaching", "titre": "Coaching holistique", "sous_titre": "كوتشينغ الحياة", "categorie": "مرافقة نفسية", "icone": "star", "theme": "rose", "image": "", "duree": "60 دقيقة", "prix": "120", "note": "", "avis": "",
-      "description": "تحديد أهدافك، التخلص من المعتقدات المقيّدة وبناء خطة عمل متناغمة مع قيمك العميقة." }
+    { "id": "soin-energetique", "categorie": "energie", "icone": "energy", "theme": "violet", "image": "", "en_ligne": true,
+      "titre": { "ar": "العلاج الطاقي", "fr": "Soin énergétique", "en": "Energy Healing" },
+      "duree": { "ar": "60 دقيقة", "fr": "60 min", "en": "60 min" },
+      "prix": { "tnd": "120", "eur": "45", "usd": "50" },
+      "description": {
+        "ar": "إعادة توازن مراكز الطاقة (الشاكرات) والهالة لتحرير التوتر والتعب والانسدادات العاطفية.",
+        "fr": "Rééquilibrage de vos chakras et de votre aura pour libérer les tensions, la fatigue et les blocages émotionnels.",
+        "en": "Rebalancing your chakras and aura to release tension, fatigue and emotional blockages."
+      } },
+    { "id": "annales-akashiques", "categorie": "lecture", "icone": "book", "theme": "indigo", "image": "", "en_ligne": true,
+      "titre": { "ar": "قراءة السجلات الأكاشية", "fr": "Lecture des Annales Akashiques", "en": "Akashic Records Reading" },
+      "duree": { "ar": "75 دقيقة", "fr": "75 min", "en": "75 min" },
+      "prix": { "tnd": "150", "eur": "60", "usd": "65" },
+      "description": {
+        "ar": "الوصول إلى ذاكرة روحك لفهم الأنماط المتكررة ورسالة حياتك وتلقي إرشادات ثمينة.",
+        "fr": "Accédez à la mémoire de votre âme pour comprendre vos schémas répétitifs, votre mission de vie et recevoir des guidances.",
+        "en": "Access your soul's memory to understand repeating patterns, your life purpose and receive precious guidance."
+      } },
+    { "id": "tarot", "categorie": "lecture", "icone": "cards", "theme": "rose", "image": "", "en_ligne": true, "lien": "tarot.html",
+      "titre": { "ar": "قراءة التاروت", "fr": "Tirage de Tarot", "en": "Tarot Reading" },
+      "duree": { "ar": "45 دقيقة", "fr": "45 min", "en": "45 min" },
+      "prix": { "tnd": "90", "eur": "35", "usd": "40" },
+      "description": {
+        "ar": "قراءة حدسية ولطيفة لتوضيح وضعية، قرار، أو مرحلة انتقالية في حياتك.",
+        "fr": "Une lecture intuitive et bienveillante pour éclairer une situation, une décision ou une transition de vie.",
+        "en": "An intuitive, caring reading to shed light on a situation, a decision or a life transition."
+      } },
+    { "id": "constellation-familiale", "categorie": "psy", "icone": "tree", "theme": "green", "image": "", "en_ligne": true,
+      "titre": { "ar": "الأبراج العائلية", "fr": "Constellation familiale", "en": "Family Constellation" },
+      "duree": { "ar": "90 دقيقة", "fr": "90 min", "en": "90 min" },
+      "prix": { "tnd": "180", "eur": "70", "usd": "75" },
+      "description": {
+        "ar": "كشف الولاءات الخفية والذاكرة العابرة للأجيال لتهدئة العلاقات العائلية والمضي بحرية.",
+        "fr": "Mettre en lumière les loyautés invisibles et les mémoires transgénérationnelles pour apaiser les liens familiaux.",
+        "en": "Reveal hidden loyalties and transgenerational memories to heal family bonds and move forward freely."
+      } },
+    { "id": "consultation-psychologique", "categorie": "psy", "icone": "mind", "theme": "blue", "image": "", "en_ligne": true,
+      "titre": { "ar": "استشارة نفسية", "fr": "Consultation psychologique", "en": "Psychological Consultation" },
+      "duree": { "ar": "60 دقيقة", "fr": "60 min", "en": "60 min" },
+      "prix": { "tnd": "100", "eur": "40", "usd": "45" },
+      "description": {
+        "ar": "مرافقة تصغي لمشاعرك: القلق، الضغط، الثقة بالنفس، الفقد، العلاقات… لتستعيد الوضوح والسكينة.",
+        "fr": "Un accompagnement à l'écoute de vos émotions : anxiété, stress, confiance en soi, deuil, relations…",
+        "en": "Support that listens to your emotions: anxiety, stress, self-confidence, grief, relationships…"
+      } },
+    { "id": "reiki", "categorie": "energie", "icone": "hands", "theme": "gold", "image": "", "en_ligne": true,
+      "titre": { "ar": "جلسة ريكي", "fr": "Soin Reiki", "en": "Reiki Session" },
+      "duree": { "ar": "60 دقيقة", "fr": "60 min", "en": "60 min" },
+      "prix": { "tnd": "110", "eur": "45", "usd": "50" },
+      "description": {
+        "ar": "تقنية يابانية لنقل الطاقة الكونية بوضع اليدين، لاسترخاء عميق وشفاء ذاتي طبيعي. متوفرة أيضاً عن بعد.",
+        "fr": "Technique japonaise de transmission d'énergie universelle pour une détente profonde et une auto-guérison. Aussi à distance.",
+        "en": "Japanese technique channelling universal energy for deep relaxation and natural self-healing. Also available remotely."
+      } },
+    { "id": "meditation", "categorie": "energie", "icone": "lotus", "theme": "violet", "image": "", "en_ligne": true,
+      "titre": { "ar": "تأمل وتنفس موجّه", "fr": "Méditation & respiration guidée", "en": "Guided Meditation & Breathwork" },
+      "duree": { "ar": "45 دقيقة", "fr": "45 min", "en": "45 min" },
+      "prix": { "tnd": "70", "eur": "30", "usd": "30" },
+      "description": {
+        "ar": "جلسة فردية للتأمل والتنفس الواعي لتهدئة الذهن، إدارة الضغط وتثبيت طاقتك.",
+        "fr": "Séance individuelle de méditation et de respiration consciente pour apaiser le mental et gérer le stress.",
+        "en": "A one-to-one meditation and conscious breathing session to calm the mind and manage stress."
+      } },
+    { "id": "coaching", "categorie": "psy", "icone": "star", "theme": "rose", "image": "", "en_ligne": true,
+      "titre": { "ar": "كوتشينغ الحياة", "fr": "Coaching de vie holistique", "en": "Holistic Life Coaching" },
+      "duree": { "ar": "60 دقيقة", "fr": "60 min", "en": "60 min" },
+      "prix": { "tnd": "120", "eur": "50", "usd": "55" },
+      "description": {
+        "ar": "تحديد أهدافك، التخلص من المعتقدات المقيّدة وبناء خطة عمل متناغمة مع قيمك.",
+        "fr": "Clarifier vos objectifs, lever vos croyances limitantes et bâtir un plan aligné avec vos valeurs.",
+        "en": "Clarify your goals, release limiting beliefs and build an action plan aligned with your values."
+      } }
+  ],
+  "lectures": [
+    { "id": "question-unique", "jeu": "tarot", "icone": "cards", "theme": "rose", "image": "", "cartes": "3", "actif": true, "populaire": false,
+      "titre": { "ar": "سؤال واحد", "fr": "Question unique", "en": "One Question" },
+      "description": { "ar": "جواب واضح ومركّز على سؤال واحد يشغلك الآن.", "fr": "Une réponse claire et ciblée à la question qui vous préoccupe.", "en": "A clear, focused answer to the one question on your mind." },
+      "prix": { "tnd": "40", "eur": "15", "usd": "17" } },
+    { "id": "tirage-amour", "jeu": "tarot", "icone": "heart", "theme": "rose", "image": "", "cartes": "7", "actif": true, "populaire": true,
+      "titre": { "ar": "قراءة الحب والعلاقات", "fr": "Tirage Amour & Relations", "en": "Love & Relationships Reading" },
+      "description": { "ar": "العلاقة الحالية، الطرف الآخر، العوائق والطاقة القادمة في حياتك العاطفية.", "fr": "Votre relation actuelle, l'autre personne, les obstacles et l'énergie à venir en amour.", "en": "Your current relationship, the other person, obstacles and the energy coming in love." },
+      "prix": { "tnd": "80", "eur": "30", "usd": "33" } },
+    { "id": "tirage-carriere", "jeu": "tarot", "icone": "star", "theme": "gold", "image": "", "cartes": "7", "actif": true, "populaire": false,
+      "titre": { "ar": "قراءة العمل والمال", "fr": "Tirage Travail & Argent", "en": "Career & Money Reading" },
+      "description": { "ar": "مشروعك، عملك، فرصك المالية والقرارات المهنية القادمة.", "fr": "Votre projet, votre travail, vos opportunités financières et décisions à venir.", "en": "Your project, your work, financial opportunities and upcoming career decisions." },
+      "prix": { "tnd": "80", "eur": "30", "usd": "33" } },
+    { "id": "croix-celtique", "jeu": "tarot", "icone": "crystal", "theme": "indigo", "image": "", "cartes": "10", "actif": true, "populaire": true,
+      "titre": { "ar": "الصليب السلتي – قراءة شاملة", "fr": "Croix celtique – Tirage complet", "en": "Celtic Cross – Full Reading" },
+      "description": { "ar": "أعمق قراءة: الماضي، الحاضر، المخاوف، التأثيرات والنتيجة المحتملة لوضعيتك.", "fr": "Le tirage le plus complet : passé, présent, peurs, influences et issue probable.", "en": "The most complete spread: past, present, fears, influences and likely outcome." },
+      "prix": { "tnd": "120", "eur": "45", "usd": "50" } },
+    { "id": "tirage-annee", "jeu": "tarot", "icone": "moon", "theme": "violet", "image": "", "cartes": "12", "actif": true, "populaire": false,
+      "titre": { "ar": "قراءة السنة (12 شهر)", "fr": "Tirage de l'année (12 mois)", "en": "Year Ahead Reading (12 months)" },
+      "description": { "ar": "ورقة لكل شهر: الطاقات، الفرص والتحديات للسنة القادمة.", "fr": "Une carte par mois : énergies, opportunités et défis de l'année à venir.", "en": "One card per month: energies, opportunities and challenges for the year ahead." },
+      "prix": { "tnd": "150", "eur": "55", "usd": "60" } },
+    { "id": "oracle-anges", "jeu": "oracle", "icone": "star", "theme": "blue", "image": "", "cartes": "5", "actif": true, "populaire": true,
+      "titre": { "ar": "أوراكل الملائكة", "fr": "Oracle des Anges", "en": "Angel Oracle" },
+      "description": { "ar": "رسائل لطيفة ومطمئنة من مرشديك لتوجيهك في هذه المرحلة.", "fr": "Des messages doux et rassurants de vos guides pour vous orienter.", "en": "Gentle, reassuring messages from your guides to light your path." },
+      "prix": { "tnd": "60", "eur": "25", "usd": "27" } },
+    { "id": "oracle-chakras", "jeu": "oracle", "icone": "energy", "theme": "green", "image": "", "cartes": "7", "actif": true, "populaire": false,
+      "titre": { "ar": "أوراكل الشاكرات", "fr": "Oracle des Chakras", "en": "Chakra Oracle" },
+      "description": { "ar": "ورقة لكل شاكرا لمعرفة أين تنسدّ طاقتك وكيف تعيد توازنها.", "fr": "Une carte par chakra pour voir où votre énergie bloque et comment la rééquilibrer.", "en": "One card per chakra to see where your energy is blocked and how to rebalance it." },
+      "prix": { "tnd": "70", "eur": "28", "usd": "30" } },
+    { "id": "oracle-ame", "jeu": "oracle", "icone": "lotus", "theme": "violet", "image": "", "cartes": "5", "actif": true, "populaire": false,
+      "titre": { "ar": "أوراكل الروح والرسالة", "fr": "Oracle de l'Âme", "en": "Soul Oracle" },
+      "description": { "ar": "قراءة روحانية لفهم الدروس التي تعيشها ورسالة روحك.", "fr": "Un tirage spirituel pour comprendre vos leçons de vie et la mission de votre âme.", "en": "A spiritual reading to understand your life lessons and your soul's mission." },
+      "prix": { "tnd": "70", "eur": "28", "usd": "30" } },
+    { "id": "tarot-oracle-combo", "jeu": "combo", "icone": "crystal", "theme": "gold", "image": "", "cartes": "10 + 3", "actif": true, "populaire": false,
+      "titre": { "ar": "تاروت + أوراكل", "fr": "Tarot + Oracle", "en": "Tarot + Oracle" },
+      "description": { "ar": "قراءة تاروت كاملة تكمّلها رسالة أوراكل للتوجيه والنصيحة.", "fr": "Un tirage de Tarot complet, complété par un message Oracle de guidance.", "en": "A full Tarot reading completed by an Oracle guidance message." },
+      "prix": { "tnd": "140", "eur": "55", "usd": "60" } }
+  ],
+  "formats": [
+    { "id": "video", "ar": "فيديو مباشر", "fr": "En direct (visio)", "en": "Live video" },
+    { "id": "ecrit", "ar": "قراءة مكتوبة (PDF)", "fr": "Lecture écrite (PDF)", "en": "Written reading (PDF)" },
+    { "id": "vocal", "ar": "رسالة صوتية", "fr": "Message vocal", "en": "Voice message" },
+    { "id": "cabinet", "ar": "في المركز", "fr": "Au centre", "en": "At the centre" }
+  ],
+  "abonnements": [
+    { "id": "cercle-lumiere", "theme": "violet", "populaire": false, "actif": true,
+      "titre": { "ar": "دائرة النور", "fr": "Cercle Lumière", "en": "Light Circle" },
+      "accroche": { "ar": "للبداية في رحلتك الروحية", "fr": "Pour commencer votre chemin", "en": "To begin your journey" },
+      "prix": { "tnd": "49", "eur": "19", "usd": "21" },
+      "prix_annuel": { "tnd": "490", "eur": "190", "usd": "210" },
+      "avantages": {
+        "ar": "تأمل جماعي مباشر كل شهر (القمر الجديد)\nطاقة الشهر: قراءة تاروت جماعية مسجّلة\nالانضمام للمجموعة الخاصة على واتساب\nتخفيض 10% على كل الجلسات",
+        "fr": "Méditation collective en direct chaque mois (Nouvelle Lune)\nÉnergie du mois : tirage de Tarot collectif enregistré\nAccès au groupe privé WhatsApp\n-10 % sur toutes les séances",
+        "en": "Monthly live group meditation (New Moon)\nEnergy of the month: recorded collective Tarot reading\nAccess to the private WhatsApp group\n10% off every session"
+      } },
+    { "id": "cercle-ame", "theme": "indigo", "populaire": true, "actif": true,
+      "titre": { "ar": "دائرة الروح", "fr": "Cercle Âme", "en": "Soul Circle" },
+      "accroche": { "ar": "الأكثر اختياراً — مرافقة كاملة", "fr": "Le plus choisi — accompagnement complet", "en": "Most popular — full support" },
+      "prix": { "tnd": "129", "eur": "49", "usd": "55" },
+      "prix_annuel": { "tnd": "1290", "eur": "490", "usd": "550" },
+      "avantages": {
+        "ar": "كل مزايا «دائرة النور»\nجلسة فردية 30 دقيقة كل شهر (قراءة أو علاج طاقي)\nطقوس البدر وريكي جماعي عن بعد\nلايف أسئلة وأجوبة شهري\nمكتبة كل التسجيلات والتأملات\nتخفيض 20% على الجلسات والدورات",
+        "fr": "Tous les avantages du Cercle Lumière\n1 séance individuelle de 30 min par mois (lecture ou soin)\nRituel de Pleine Lune et Reiki collectif à distance\nLive Questions/Réponses mensuel\nBibliothèque de tous les replays et méditations\n-20 % sur les séances et formations",
+        "en": "Everything in Light Circle\n1 private 30-min session each month (reading or healing)\nFull Moon ritual and remote group Reiki\nMonthly live Q&A\nLibrary of all replays and meditations\n20% off sessions and trainings"
+      } }
+  ],
+  "evenements": [
+    { "id": "ev-nouvelle-lune", "date": "2026-12-09", "heure": "20:00", "icone": "moon", "theme": "indigo", "membres": true, "actif": true,
+      "titre": { "ar": "تأمل القمر الجديد", "fr": "Méditation de Nouvelle Lune", "en": "New Moon Meditation" },
+      "description": { "ar": "نضع نوايا الشهر معاً في تأمل موجّه مباشر.", "fr": "Posons ensemble nos intentions du mois en méditation guidée.", "en": "Set your intentions for the month together in a live guided meditation." } },
+    { "id": "ev-reiki", "date": "2026-12-16", "heure": "20:00", "icone": "hands", "theme": "gold", "membres": true, "actif": true,
+      "titre": { "ar": "ريكي جماعي عن بعد", "fr": "Reiki collectif à distance", "en": "Remote Group Reiki" },
+      "description": { "ar": "جلسة ريكي جماعية تصلك أينما كنت.", "fr": "Un soin Reiki collectif, où que vous soyez.", "en": "A group Reiki session that reaches you wherever you are." } },
+    { "id": "ev-pleine-lune", "date": "2026-12-24", "heure": "20:30", "icone": "crystal", "theme": "violet", "membres": true, "actif": true,
+      "titre": { "ar": "طقوس البدر والتحرر", "fr": "Rituel de Pleine Lune", "en": "Full Moon Release Ritual" },
+      "description": { "ar": "نتخلّص مما لم يعد يخدمنا في طقس جماعي لطيف.", "fr": "Libérons ce qui ne nous sert plus lors d'un rituel collectif.", "en": "Release what no longer serves you in a gentle group ritual." } },
+    { "id": "ev-live-qr", "date": "2026-12-28", "heure": "19:00", "icone": "mind", "theme": "blue", "membres": false, "actif": true,
+      "titre": { "ar": "لايف مجاني: أسئلة وأجوبة", "fr": "Live gratuit : Questions / Réponses", "en": "Free Live: Q&A" },
+      "description": { "ar": "لايف مفتوح للجميع على إنستغرام. اسألوا كل ما تريدون!", "fr": "Live ouvert à tous sur Instagram. Posez toutes vos questions !", "en": "Open live on Instagram for everyone. Ask me anything!" } }
   ],
   "formations": [
-    { "id": "reiki-niveau-1", "titre": "Formation Reiki Usui – المستوى 1", "categorie": "Reiki", "icone": "hands", "theme": "gold", "image": "", "date": "2026-12-12", "duree": "يومان", "mode": "حضوري", "places": "12", "prix": "450", "ancien_prix": "", "nouveau": true, "actif": true,
-      "description": "مدخل إلى الريكي: التاريخ والمبادئ، العلاج الذاتي وأولى الجلسات على الآخرين. شهادة في نهاية التكوين." },
-    { "id": "tarot-debutant", "titre": "Tarot intuitif – مستوى مبتدئ", "categorie": "Tarot", "icone": "cards", "theme": "rose", "image": "", "date": "2027-01-10", "duree": "3 حصص", "mode": "أونلاين", "places": "15", "prix": "300", "ancien_prix": "", "nouveau": true, "actif": true,
-      "description": "تعلّم رمزية الأركانا الكبرى الـ22، أهم طرق السحب، وطوّر حدسك لقراءات دقيقة." },
-    { "id": "soins-energetiques", "titre": "ممارس في العلاج الطاقي", "categorie": "Énergétique", "icone": "energy", "theme": "violet", "image": "", "date": "2027-02-07", "duree": "4 أيام", "mode": "حضوري", "places": "10", "prix": "900", "ancien_prix": "", "nouveau": false, "actif": true,
-      "description": "الشاكرات، الهالة، التنظيف والحماية الطاقية، بروتوكولات علاج كاملة. تكوين معتمد مع إشراف." }
+    { "id": "reiki-niveau-1", "icone": "hands", "theme": "gold", "image": "", "date": "2026-12-12", "places": "12", "nouveau": true, "actif": true,
+      "titre": { "ar": "تكوين ريكي أوسوي – المستوى 1", "fr": "Formation Reiki Usui – Niveau 1", "en": "Usui Reiki Training – Level 1" },
+      "categorie": { "ar": "ريكي", "fr": "Reiki", "en": "Reiki" },
+      "duree": { "ar": "يومان", "fr": "2 jours", "en": "2 days" },
+      "mode": { "ar": "حضوري + أونلاين", "fr": "Présentiel + en ligne", "en": "In person + online" },
+      "prix": { "tnd": "450", "eur": "180", "usd": "195" },
+      "ancien_prix": { "tnd": "", "eur": "", "usd": "" },
+      "description": {
+        "ar": "مدخل إلى الريكي: التاريخ والمبادئ، العلاج الذاتي وأولى الجلسات على الآخرين. شهادة في نهاية التكوين.",
+        "fr": "Initiation au Reiki : histoire et principes, auto-traitement et premiers soins. Certificat remis en fin de formation.",
+        "en": "Introduction to Reiki: history and principles, self-treatment and first sessions on others. Certificate included."
+      } },
+    { "id": "tarot-debutant", "icone": "cards", "theme": "rose", "image": "", "date": "2027-01-10", "places": "15", "nouveau": true, "actif": true,
+      "titre": { "ar": "التاروت الحدسي – مستوى مبتدئ", "fr": "Tarot intuitif – Débutant", "en": "Intuitive Tarot – Beginner" },
+      "categorie": { "ar": "تاروت", "fr": "Tarot", "en": "Tarot" },
+      "duree": { "ar": "3 حصص", "fr": "3 séances", "en": "3 sessions" },
+      "mode": { "ar": "أونلاين", "fr": "En ligne", "en": "Online" },
+      "prix": { "tnd": "300", "eur": "120", "usd": "130" },
+      "ancien_prix": { "tnd": "", "eur": "", "usd": "" },
+      "description": {
+        "ar": "تعلّم رمزية الأركانا الكبرى الـ22، أهم طرق السحب، وطوّر حدسك لقراءات دقيقة.",
+        "fr": "Apprenez la symbolique des 22 arcanes majeurs, les tirages essentiels et développez votre intuition.",
+        "en": "Learn the symbolism of the 22 Major Arcana, essential spreads, and develop your intuition."
+      } },
+    { "id": "soins-energetiques", "icone": "energy", "theme": "violet", "image": "", "date": "2027-02-07", "places": "10", "nouveau": false, "actif": true,
+      "titre": { "ar": "ممارس في العلاج الطاقي", "fr": "Praticien en soins énergétiques", "en": "Energy Healing Practitioner" },
+      "categorie": { "ar": "علاج طاقي", "fr": "Énergétique", "en": "Energy" },
+      "duree": { "ar": "4 أيام", "fr": "4 jours", "en": "4 days" },
+      "mode": { "ar": "حضوري", "fr": "Présentiel", "en": "In person" },
+      "prix": { "tnd": "900", "eur": "350", "usd": "380" },
+      "ancien_prix": { "tnd": "", "eur": "", "usd": "" },
+      "description": {
+        "ar": "الشاكرات، الهالة، التنظيف والحماية الطاقية، بروتوكولات علاج كاملة. تكوين معتمد مع إشراف.",
+        "fr": "Chakras, aura, nettoyage et protection énergétique, protocoles complets. Formation certifiante avec supervision.",
+        "en": "Chakras, aura, energy cleansing and protection, full healing protocols. Certified training with supervision."
+      } }
   ],
   "packs": [
-    { "id": "pack-renaissance", "titre": "باقة التحرر الطاقي", "contenu": "3 جلسات علاج طاقي + جلسة ريكي", "nb": "4", "prix": "430", "ancien_prix": "530", "theme": "violet", "actif": true },
-    { "id": "pack-ame", "titre": "باقة رسالة الروح", "contenu": "قراءة السجلات الأكاشية + قراءة تاروت + كوتشينغ", "nb": "3", "prix": "310", "ancien_prix": "360", "theme": "indigo", "actif": true },
-    { "id": "pack-famille", "titre": "باقة الشفاء العائلي", "contenu": "جلسة أبراج عائلية + استشارتان نفسيتان", "nb": "3", "prix": "330", "ancien_prix": "380", "theme": "green", "actif": true }
+    { "id": "pack-liberation", "theme": "violet", "nb": "4", "actif": true,
+      "titre": { "ar": "باقة التحرر الطاقي", "fr": "Pack Libération énergétique", "en": "Energy Release Bundle" },
+      "contenu": { "ar": "3 جلسات علاج طاقي + جلسة ريكي", "fr": "3 soins énergétiques + 1 soin Reiki", "en": "3 energy healings + 1 Reiki session" },
+      "prix": { "tnd": "430", "eur": "160", "usd": "175" },
+      "ancien_prix": { "tnd": "530", "eur": "180", "usd": "200" } },
+    { "id": "pack-ame", "theme": "indigo", "nb": "3", "actif": true,
+      "titre": { "ar": "باقة رسالة الروح", "fr": "Pack Mission d'âme", "en": "Soul Purpose Bundle" },
+      "contenu": { "ar": "السجلات الأكاشية + تاروت + كوتشينغ", "fr": "Annales Akashiques + Tarot + Coaching", "en": "Akashic Records + Tarot + Coaching" },
+      "prix": { "tnd": "310", "eur": "125", "usd": "135" },
+      "ancien_prix": { "tnd": "360", "eur": "145", "usd": "160" } },
+    { "id": "pack-famille", "theme": "green", "nb": "3", "actif": true,
+      "titre": { "ar": "باقة الشفاء العائلي", "fr": "Pack Guérison familiale", "en": "Family Healing Bundle" },
+      "contenu": { "ar": "أبراج عائلية + استشارتان نفسيتان", "fr": "1 Constellation familiale + 2 consultations", "en": "1 Family Constellation + 2 consultations" },
+      "prix": { "tnd": "330", "eur": "130", "usd": "140" },
+      "ancien_prix": { "tnd": "380", "eur": "150", "usd": "165" } }
   ],
   "temoignages": [
-    { "nom": "مثال – غيّريه", "texte": "اكتبي هنا رأي حريفة حقيقية من لوحة التحكم.", "service": "الأبراج العائلية" },
-    { "nom": "مثال – غيّريه", "texte": "اكتبي هنا رأي حريف حقيقي من لوحة التحكم.", "service": "جلسة ريكي" }
+    { "nom": "—", "pays": "", "service": { "ar": "مثال", "fr": "Exemple", "en": "Example" },
+      "texte": { "ar": "اكتبي هنا رأي حريفة حقيقية من لوحة التحكم.", "fr": "Ajoutez ici un vrai témoignage depuis le tableau de bord.", "en": "Add a real testimonial here from the dashboard." } }
   ],
   "faq": [
-    { "q": "كيف تكون الجلسة الأولى؟", "r": "نبدأ بحوار لفهم طلبك، ثم أقترح عليك العلاج الأنسب. كل شيء يتم باحترام إيقاعك." },
-    { "q": "هل الجلسات متوفرة عن بعد؟", "r": "نعم. القراءات (السجلات الأكاشية، التاروت)، الاستشارات النفسية والكوتشينغ متوفرة عبر الفيديو، ويمكن أيضاً إجراء العلاج الطاقي عن بعد." },
-    { "q": "هل تعوّض الجلسات العلاج الطبي؟", "r": "لا. العلاجات الشمولية مكمّلة ولا تعوّض بأي حال استشارة أو علاجاً طبياً." },
-    { "q": "كيف أحجز وأدفع؟", "r": "أضف الجلسات أو الدورات إلى السلة ثم أرسل طلبك: يصلني مباشرة على واتساب، وأؤكد لك الموعد وطريقة الدفع." }
+    { "q": { "ar": "هل الجلسات متوفرة أونلاين من خارج تونس؟", "fr": "Les séances sont-elles possibles en ligne depuis l'étranger ?", "en": "Can I book an online session from abroad?" },
+      "r": { "ar": "نعم. كل الجلسات تقريباً متوفرة عبر الفيديو (Zoom، Google Meet أو واتساب). عند الحجز يتم احتساب فارق التوقيت تلقائياً.", "fr": "Oui. Presque toutes les séances sont disponibles en visio (Zoom, Google Meet ou WhatsApp). Le décalage horaire est calculé automatiquement lors de la réservation.", "en": "Yes. Almost every session is available by video (Zoom, Google Meet or WhatsApp). Time differences are calculated automatically when you book." } },
+    { "q": { "ar": "هل العلاج الطاقي عن بعد فعّال؟", "fr": "Un soin énergétique à distance est-il efficace ?", "en": "Does remote energy healing work?" },
+      "r": { "ar": "الطاقة لا تعرف المسافات. يجلس الحريف في مكان هادئ وأقوم بالعلاج عن بعد، ثم نتحدث عن الإحساس والنتائج.", "fr": "L'énergie ne connaît pas la distance. Vous vous installez au calme, je réalise le soin à distance, puis nous échangeons sur vos ressentis.", "en": "Energy knows no distance. You relax in a quiet place while I perform the session remotely, then we talk about what you felt." } },
+    { "q": { "ar": "كيف تكون الجلسة الأولى؟", "fr": "Comment se passe une première séance ?", "en": "What happens in a first session?" },
+      "r": { "ar": "نبدأ بحوار لفهم طلبك، ثم أقترح عليك العلاج الأنسب. يمكنك أيضاً حجز مكالمة تعارف مجانية مدتها 15 دقيقة.", "fr": "Nous commençons par un échange pour comprendre votre demande, puis je propose le soin le plus adapté. Vous pouvez aussi réserver un appel découverte gratuit de 15 min.", "en": "We start with a conversation to understand your needs, then I suggest the most suitable session. You can also book a free 15-minute discovery call." } },
+    { "q": { "ar": "هل تعوّض الجلسات العلاج الطبي؟", "fr": "Les soins remplacent-ils un traitement médical ?", "en": "Do sessions replace medical treatment?" },
+      "r": { "ar": "لا. العلاجات الشمولية مكمّلة ولا تعوّض بأي حال استشارة أو علاجاً طبياً.", "fr": "Non. Les soins holistiques sont complémentaires et ne remplacent pas un avis ou un traitement médical.", "en": "No. Holistic sessions are complementary and never replace medical advice or treatment." } },
+    { "q": { "ar": "كيف أحجز وأدفع؟", "fr": "Comment réserver et payer ?", "en": "How do I book and pay?" },
+      "r": { "ar": "أضف الجلسات إلى السلة أو املأ استمارة الحجز: يصلني طلبك على واتساب، فأؤكد لك الموعد وطريقة الدفع المناسبة لبلدك.", "fr": "Ajoutez vos séances au panier ou remplissez le formulaire : votre demande m'arrive sur WhatsApp, je confirme le rendez-vous et le moyen de paiement adapté à votre pays.", "en": "Add sessions to your cart or fill in the booking form: your request reaches me on WhatsApp, and I confirm the appointment and the payment method for your country." } },
+    { "q": { "ar": "هل يمكن إهداء جلسة لشخص آخر؟", "fr": "Puis-je offrir une séance ?", "en": "Can I gift a session?" },
+      "r": { "ar": "نعم! بطاقات الهدايا متوفرة لكل الجلسات والباقات، وتصل للشخص برسالة جميلة باسمه.", "fr": "Oui ! Des cartes cadeaux sont disponibles pour toutes les séances et tous les packs, envoyées avec un joli message personnalisé.", "en": "Yes! Gift cards are available for every session and bundle, sent with a beautiful personalised message." } }
   ]
 }
