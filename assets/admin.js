@@ -405,6 +405,10 @@
       fields: [['titre', 'اسم الباقة', 'i'], ['contenu', 'محتوى الباقة', 'i'], ['nb', 'عدد الجلسات', 'number'], ['prix', 'سعر الباقة', 'p'], ['ancien_prix', 'السعر بدون باقة', 'p'], ['theme', 'اللون', 'select', THEMES], ['actif', 'ظاهرة في الموقع', 'checkbox', null, true]] },
     temoignages: { label: x => x.nom, sub: x => L(x.service), fields: [['nom', 'الاسم'], ['pays', 'البلد'], ['service', 'الجلسة / الدورة', 'i'], ['texte', 'الرأي', 'it']] },
     faq: { label: x => L(x.q), sub: x => L(x.r).slice(0, 90) + '…', fields: [['q', 'السؤال', 'i'], ['r', 'الجواب', 'it']] },
+    paiements: { hint: 'عمّر التفاصيل (رقم، RIB، الاسم…) وفعّل «ظاهرة في الموقع». تنجم تزيد أي طريقة أخرى بـ «+ إضافة».', label: x => (x.icone || '') + ' ' + L(x.titre), sub: x => ({ tn: '🇹🇳 تونس', intl: '🌍 الخارج', both: '🇹🇳 + 🌍 الزوز' }[x.zone] || '') + (x.details ? ' · ' + x.details.split('\n')[0] : ' · ⚠️ التفاصيل فارغة'),
+      fields: [['titre', 'اسم الطريقة', 'i'], ['zone', 'تظهر لـ', 'select', ['tn', 'intl', 'both']], ['icone', 'أيقونة (emoji)'],
+        ['details', 'التفاصيل اللي ينسخها الحريف (رقم الهاتف، RIB، IBAN، الاسم الكامل والمدينة…)', 'textarea'],
+        ['instructions', 'شرح قصير للحريف', 'i'], ['lien', 'رابط دفع — اختياري (مثلاً رابط Payoneer)'], ['actif', 'ظاهرة في الموقع', 'checkbox', null, true]] },
     categories: { label: x => L(x), sub: x => x.fr, fields: [['ar', 'بالعربية'], ['fr', 'بالفرنسية'], ['en', 'بالإنجليزية']] },
     medit_categories: { label: x => L(x), sub: x => x.fr, fields: [['ar', 'بالعربية'], ['fr', 'بالفرنسية'], ['en', 'بالإنجليزية']] }
   };
@@ -412,8 +416,19 @@
     ['bio', 'التعريف بك (فقرة 1)', 'it'], ['bio2', 'التعريف بك (فقرة 2)', 'it'], ['certifs', 'الشهادات (سطر لكل شهادة)', 'it'], ['annees_experience', 'سنوات الخبرة'], ['clients', 'عدد الأشخاص المرافَقين'], ['formes', 'عدد المتكوّنين'], ['pays', 'عدد البلدان'],
     ['telephone', 'الهاتف (يظهر في الموقع)'], ['whatsapp', 'رقم واتساب (أرقام فقط مع 216)'], ['email', 'البريد الإلكتروني'], ['adresse', 'العنوان', 'i'], ['horaires', 'أوقات العمل', 'i'],
     ['instagram', 'رابط إنستغرام'], ['facebook', 'رابط فيسبوك'], ['tiktok', 'رابط تيك توك'], ['youtube', 'رابط يوتيوب']];
+  // default payment methods (inactive until Rawia fills them in)
+  const PAY_TEMPLATES = [
+    { id: 'd17', zone: 'tn', icone: '📮', titre: { ar: 'D17 (البريد التونسي)', fr: 'D17 (La Poste)', en: 'D17 (Tunisian Post)' }, details: '', instructions: { ar: 'أرسل المبلغ من تطبيق D17 إلى هذا الرقم', fr: "Envoyez le montant depuis l'appli D17 à ce numéro", en: 'Send the amount from the D17 app to this number' }, lien: '', actif: false },
+    { id: 'flouci', zone: 'tn', icone: '📱', titre: { ar: 'Flouci', fr: 'Flouci', en: 'Flouci' }, details: '', instructions: { ar: 'أرسل المبلغ من تطبيق Flouci إلى هذا الرقم', fr: "Envoyez le montant depuis l'appli Flouci à ce numéro", en: 'Send the amount from the Flouci app to this number' }, lien: '', actif: false },
+    { id: 'poste', zone: 'tn', icone: '🏤', titre: { ar: 'البريد التونسي (حوالة / CCP)', fr: 'La Poste (mandat / CCP)', en: 'Tunisian Post (money order / CCP)' }, details: '', instructions: { ar: 'حوالة بريدية أو تحويل إلى هذا الحساب البريدي', fr: 'Mandat postal ou virement sur ce compte postal', en: 'Postal money order or transfer to this postal account' }, lien: '', actif: false },
+    { id: 'attijari', zone: 'both', icone: '🏦', titre: { ar: 'تحويل بنكي — Attijari Bank', fr: 'Virement bancaire — Attijari Bank', en: 'Bank transfer — Attijari Bank' }, details: '', instructions: { ar: 'حوّل المبلغ إلى هذا الحساب (من تونس أو من الخارج)', fr: "Virez le montant sur ce compte (depuis la Tunisie ou l'étranger)", en: 'Transfer the amount to this account (from Tunisia or abroad)' }, lien: '', actif: false },
+    { id: 'western', zone: 'intl', icone: '🌍', titre: { ar: 'Western Union', fr: 'Western Union', en: 'Western Union' }, details: '', instructions: { ar: 'أرسل المبلغ بهذا الاسم — البلد: تونس', fr: 'Envoyez le montant à ce nom — Pays : Tunisie', en: 'Send the amount to this name — Country: Tunisia' }, lien: '', actif: false },
+    { id: 'moneygram', zone: 'intl', icone: '🌍', titre: { ar: 'MoneyGram / Ria', fr: 'MoneyGram / Ria', en: 'MoneyGram / Ria' }, details: '', instructions: { ar: 'أرسل المبلغ بهذا الاسم — البلد: تونس', fr: 'Envoyez le montant à ce nom — Pays : Tunisie', en: 'Send the amount to this name — Country: Tunisia' }, lien: '', actif: false },
+    { id: 'payoneer', zone: 'intl', icone: '💳', titre: { ar: 'بطاقة Visa / Mastercard (Payoneer)', fr: 'Carte Visa / Mastercard (Payoneer)', en: 'Visa / Mastercard (Payoneer)' }, details: '', instructions: { ar: 'سأرسل لك رابط دفع آمن بالبطاقة على بريدك', fr: 'Je vous envoie un lien de paiement sécurisé par carte', en: "I'll send you a secure card payment link" }, lien: '', actif: false }
+  ];
 
   function field([k, label, type, opts, def], val) {
+    if (type === 'sep') return `<h3 class="full" style="margin-top:14px;border-top:1px solid var(--line);padding-top:14px">${label}</h3>`;
     if (type === 'i' || type === 'it') {
       const v = val && typeof val === 'object' ? val : { ar: val || '', fr: '', en: '' };
       const inp = (lg, name, dir) => type === 'it' ? `<label><small>${name}</small><textarea name="${k}.${lg}" dir="${dir}" rows="4">${esc(v[lg])}</textarea></label>` : `<label><small>${name}</small><input name="${k}.${lg}" dir="${dir}" value="${esc(v[lg])}"></label>`;
@@ -426,7 +441,8 @@
     }
     if (type === 'img') return uplField(k, label, val, 'image/*', 'public', 'images', 'url');
     if (type === 'cat') return `<label>${label}<select name="${k}">${(content.categories || []).map(c => `<option value="${esc(c.id)}" ${c.id === val ? 'selected' : ''}>${esc(L(c))}</option>`).join('')}</select></label>`;
-    if (type === 'select') { const o = opts.includes(val) || !val ? opts : [val, ...opts]; return `<label>${label}<select name="${k}">${o.map(x => `<option ${x === val ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select></label>`; }
+    if (type === 'textarea') return `<label class="full">${label}<textarea name="${k}" rows="4" dir="auto">${esc(val ?? '')}</textarea></label>`;
+    if (type === 'select') { const NAMES = { tn: '🇹🇳 تونس برك', intl: '🌍 الخارج برك', both: '🇹🇳 + 🌍 الزوز' }; const o = opts.includes(val) || !val ? opts : [val, ...opts]; return `<label>${label}<select name="${k}">${o.map(x => `<option value="${esc(x)}" ${x === val ? 'selected' : ''}>${esc(NAMES[x] || x)}</option>`).join('')}</select></label>`; }
     if (type === 'checkbox') { const on = val === '' || val === undefined ? def : val !== false; return `<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="${k}" ${on ? 'checked' : ''}> ${label}</label>`; }
     return `<label>${label}<input name="${k}" type="${type || 'text'}" value="${esc(val ?? '')}"></label>`;
   }
@@ -438,7 +454,9 @@
   }
 
   function vContentList(V, key) {
-    const S = SCHEMAS[key]; content[key] = content[key] || [];
+    const S = SCHEMAS[key];
+    if (key === 'paiements' && !content.paiements) { content.paiements = JSON.parse(JSON.stringify(PAY_TEMPLATES)); setDirty(true); }
+    content[key] = content[key] || [];
     const arr = content[key];
     const vis = x => ('actif' in x) ? (x.actif === false ? '<span class="pill off">مخفي</span>' : '<span class="pill paid">ظاهر</span>') : '';
     V.innerHTML = `<div class="panel"><div class="row between"><p class="muted">${esc(S.hint || 'بدّل، زيد، ولا رتّب. ما تنساش تضغط «انشر على الموقع» في الآخر.')}</p><button class="btn gold" id="add">+ إضافة</button></div>
