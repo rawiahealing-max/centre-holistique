@@ -624,7 +624,7 @@
   // ================= SEO: structured data =================
   function injectJsonLd() {
     if ($('#jsonld')) return;
-    const s = DATA.settings, base = 'https://rawiahealing-max.github.io/centre-holistique/';
+    const s = DATA.settings, base = 'https://www.centreholistique.net/';
     const offers = (DATA.soins || []).concat(DATA.lectures || []).map(x => ({
       '@type': 'Offer', price: (x.prix && x.prix.tnd) || '', priceCurrency: 'TND',
       itemOffered: { '@type': 'Service', name: (x.titre && (x.titre.fr || x.titre.en)) || '' }
