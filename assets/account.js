@@ -1,0 +1,277 @@
+(function () {
+  'use strict';
+  const A = {
+    ar: {
+      auth_title: 'فضائي', auth_sub: 'ادخل لحسابك لتجد دوراتك، تأملاتك، اشتراكك والشات مع المجتمع.',
+      perk1: '🎓 دوراتك وفيديوهاتها في مكان واحد', perk2: '🧘 تأملات خاصة بالأعضاء', perk3: '💬 شات مباشر مع المعالِجة والمجتمع', perk4: '🧾 متابعة طلباتك وحجوزاتك',
+      login: 'تسجيل الدخول', signup: 'إنشاء حساب', email: 'البريد الإلكتروني', password: 'كلمة السر', login_btn: 'دخول', forgot: 'نسيت كلمة السر؟',
+      full_name: 'الاسم واللقب', phone: 'الهاتف / واتساب', country: 'البلد', password_new: 'كلمة السر (8 أحرف على الأقل)', signup_btn: 'إنشاء حسابي',
+      forgot_text: 'اكتب بريدك وسنرسل لك رابطاً لتغيير كلمة السر.', send_link: 'أرسل الرابط', back_login: '← رجوع لتسجيل الدخول', reset_text: 'اختر كلمة سر جديدة.', save: 'حفظ',
+      hello: 'مرحباً', admin_link: '🎛️ لوحة التحكم', tab_courses: '🎓 دوراتي', tab_member: '✨ اشتراكي', tab_chat: '💬 الشات', tab_orders: '🧾 طلباتي', tab_profile: '👤 ملفي',
+      back: '← رجوع', send: 'إرسال', password_change: 'كلمة سر جديدة (اتركها فارغة إن لم ترد تغييرها)', logout: 'خروج',
+      not_ready: 'نظام الحسابات قيد التفعيل. عد قريباً 🌿',
+      err_fields: 'الرجاء ملء كل الخانات.', err_short: 'كلمة السر قصيرة (8 أحرف على الأقل).',
+      signup_ok: '✓ تم إنشاء حسابك! افتح بريدك واضغط على رابط التأكيد، ثم سجّل الدخول.', forgot_ok: '✓ إذا كان البريد مسجلاً، ستصلك رسالة خلال دقائق.', reset_ok: '✓ تم تغيير كلمة السر.', saved: '✓ تم الحفظ.',
+      bad_login: 'البريد أو كلمة السر غير صحيحة، أو لم تؤكد بريدك بعد.',
+      no_courses: 'لا توجد دورات في حسابك بعد.', see_courses: 'اكتشف الدورات', open: 'افتح', lessons_n: 'دروس', no_lessons: 'المحتوى سيُضاف قريباً.', download: '⬇️ تحميل', open_link: 'فتح الرابط ↗',
+      member_yes: 'أنت عضو في', until: 'حتى', no_expiry: 'بدون تاريخ انتهاء', member_no: 'لست مشتركاً بعد في الدائرة الشهرية.', member_cta: 'اكتشف الاشتراك ✨',
+      member_perks: 'مزاياك:', go_medit: '🧘 التأملات الخاصة', go_chat: '💬 شات الدائرة', go_events: '📅 أحداث الشهر',
+      room_cercle: '✨ شات الدائرة', room_dm: '💌 رسائل خاصة مع المعالِجة', chat_locked: 'شات الدائرة متاح للأعضاء فقط.', chat_empty: 'لا توجد رسائل بعد. ابدأ المحادثة 🌿', you: 'أنت', admin_badge: 'المعالِجة',
+      no_orders: 'لا توجد طلبات بعد.', st_pending: '⏳ في الانتظار', st_paid: '✓ مؤكد', st_cancelled: '✕ ملغى', order: 'طلب',
+      member_line_yes: '✨ عضو في الدائرة', member_line_no: 'حساب حريف'
+    },
+    fr: {
+      auth_title: 'Mon espace', auth_sub: 'Connectez-vous pour retrouver vos formations, méditations, abonnement et le chat de la communauté.',
+      perk1: '🎓 Vos formations et vidéos au même endroit', perk2: '🧘 Méditations réservées aux membres', perk3: '💬 Chat en direct avec la thérapeute et la communauté', perk4: '🧾 Suivi de vos commandes et réservations',
+      login: 'Connexion', signup: 'Créer un compte', email: 'E-mail', password: 'Mot de passe', login_btn: 'Se connecter', forgot: 'Mot de passe oublié ?',
+      full_name: 'Nom complet', phone: 'Téléphone / WhatsApp', country: 'Pays', password_new: 'Mot de passe (8 caractères min.)', signup_btn: 'Créer mon compte',
+      forgot_text: 'Indiquez votre e-mail, nous vous enverrons un lien pour changer votre mot de passe.', send_link: 'Envoyer le lien', back_login: '← Retour à la connexion', reset_text: 'Choisissez un nouveau mot de passe.', save: 'Enregistrer',
+      hello: 'Bonjour', admin_link: '🎛️ Tableau de bord', tab_courses: '🎓 Mes formations', tab_member: '✨ Mon abonnement', tab_chat: '💬 Chat', tab_orders: '🧾 Mes commandes', tab_profile: '👤 Mon profil',
+      back: '← Retour', send: 'Envoyer', password_change: 'Nouveau mot de passe (laisser vide pour ne pas changer)', logout: 'Déconnexion',
+      not_ready: "L'espace membre est en cours d'activation. Revenez bientôt 🌿",
+      err_fields: 'Merci de remplir tous les champs.', err_short: 'Mot de passe trop court (8 caractères min.).',
+      signup_ok: '✓ Compte créé ! Ouvrez votre e-mail et cliquez sur le lien de confirmation, puis connectez-vous.', forgot_ok: '✓ Si cet e-mail existe, vous recevrez un message dans quelques minutes.', reset_ok: '✓ Mot de passe modifié.', saved: '✓ Enregistré.',
+      bad_login: "E-mail ou mot de passe incorrect, ou e-mail pas encore confirmé.",
+      no_courses: "Aucune formation dans votre compte pour l'instant.", see_courses: 'Découvrir les formations', open: 'Ouvrir', lessons_n: 'leçons', no_lessons: 'Le contenu arrive bientôt.', download: '⬇️ Télécharger', open_link: 'Ouvrir le lien ↗',
+      member_yes: 'Vous êtes membre du', until: "jusqu'au", no_expiry: 'sans date de fin', member_no: "Vous n'êtes pas encore membre du Cercle.", member_cta: "Découvrir l'abonnement ✨",
+      member_perks: 'Vos avantages :', go_medit: '🧘 Méditations membres', go_chat: '💬 Chat du Cercle', go_events: '📅 Événements du mois',
+      room_cercle: '✨ Chat du Cercle', room_dm: '💌 Messages privés avec la thérapeute', chat_locked: 'Le chat du Cercle est réservé aux membres.', chat_empty: 'Aucun message pour le moment. Lancez la conversation 🌿', you: 'Vous', admin_badge: 'Thérapeute',
+      no_orders: 'Aucune commande pour le moment.', st_pending: '⏳ En attente', st_paid: '✓ Confirmée', st_cancelled: '✕ Annulée', order: 'Commande',
+      member_line_yes: '✨ Membre du Cercle', member_line_no: 'Compte client'
+    },
+    en: {
+      auth_title: 'My space', auth_sub: 'Sign in to find your trainings, meditations, membership and the community chat.',
+      perk1: '🎓 Your trainings and videos in one place', perk2: '🧘 Members-only meditations', perk3: '💬 Live chat with the therapist and community', perk4: '🧾 Track your orders and bookings',
+      login: 'Sign in', signup: 'Create account', email: 'Email', password: 'Password', login_btn: 'Sign in', forgot: 'Forgot password?',
+      full_name: 'Full name', phone: 'Phone / WhatsApp', country: 'Country', password_new: 'Password (min. 8 characters)', signup_btn: 'Create my account',
+      forgot_text: "Enter your email and we'll send you a link to reset your password.", send_link: 'Send link', back_login: '← Back to sign in', reset_text: 'Choose a new password.', save: 'Save',
+      hello: 'Hello', admin_link: '🎛️ Dashboard', tab_courses: '🎓 My trainings', tab_member: '✨ Membership', tab_chat: '💬 Chat', tab_orders: '🧾 My orders', tab_profile: '👤 Profile',
+      back: '← Back', send: 'Send', password_change: 'New password (leave empty to keep current)', logout: 'Sign out',
+      not_ready: 'The member area is being activated. Come back soon 🌿',
+      err_fields: 'Please fill in all fields.', err_short: 'Password too short (min. 8 characters).',
+      signup_ok: '✓ Account created! Open your email and click the confirmation link, then sign in.', forgot_ok: "✓ If this email exists, you'll receive a message within minutes.", reset_ok: '✓ Password changed.', saved: '✓ Saved.',
+      bad_login: 'Wrong email or password, or email not confirmed yet.',
+      no_courses: 'No trainings in your account yet.', see_courses: 'Explore trainings', open: 'Open', lessons_n: 'lessons', no_lessons: 'Content coming soon.', download: '⬇️ Download', open_link: 'Open link ↗',
+      member_yes: 'You are a member of', until: 'until', no_expiry: 'no end date', member_no: "You're not a Circle member yet.", member_cta: 'Discover membership ✨',
+      member_perks: 'Your benefits:', go_medit: '🧘 Members meditations', go_chat: '💬 Circle chat', go_events: "📅 This month's events",
+      room_cercle: '✨ Circle chat', room_dm: '💌 Private messages with the therapist', chat_locked: 'The Circle chat is for members only.', chat_empty: 'No messages yet. Start the conversation 🌿', you: 'You', admin_badge: 'Therapist',
+      no_orders: 'No orders yet.', st_pending: '⏳ Pending', st_paid: '✓ Confirmed', st_cancelled: '✕ Cancelled', order: 'Order',
+      member_line_yes: '✨ Circle member', member_line_no: 'Client account'
+    }
+  };
+  const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+  const lg = () => (window.CH ? window.CH.getLang() : 'ar');
+  const a = k => (A[lg()] && A[lg()][k]) || A.ar[k] || k;
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const L = v => window.CH ? window.CH.L(v) : (v && v.ar) || v || '';
+  const sb = window.sb;
+  let user = null, profile = null, enrolls = [], isMember = false, isAdmin = false, room = null, channel = null;
+
+  function applyText() { $$('[data-a]').forEach(el => el.textContent = a(el.dataset.a)); }
+  function msg(el, text, ok) { const m = $(el); m.textContent = text; m.className = 'auth-msg ' + (ok ? 'ok' : 'err'); m.hidden = false; }
+  (window.CH_HOOKS = window.CH_HOOKS || []).push(() => { applyText(); if (user) renderAll(); });
+  applyText();
+
+  if (!sb) { $('#acc-loading').textContent = a('not_ready'); return; }
+
+  // ---------- AUTH ----------
+  function setMode(m) {
+    ['login', 'signup', 'forgot', 'reset'].forEach(x => $('#f-' + x).hidden = x !== m);
+    $$('.auth-tabs button').forEach(b => b.classList.toggle('active', b.dataset.mode === m));
+    $('.auth-tabs').hidden = m === 'reset'; $('#auth-msg').hidden = true;
+  }
+  document.addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) setMode(b.dataset.mode); });
+  if (new URLSearchParams(location.search).get('mode') === 'signup') setMode('signup');
+
+  $('#f-login').addEventListener('submit', async e => {
+    e.preventDefault(); const f = e.target;
+    if (!f.email.value || !f.password.value) return msg('#auth-msg', a('err_fields'));
+    const { error } = await sb.auth.signInWithPassword({ email: f.email.value.trim(), password: f.password.value });
+    if (error) return msg('#auth-msg', a('bad_login'));
+  });
+  $('#f-signup').addEventListener('submit', async e => {
+    e.preventDefault(); const f = e.target;
+    if (!f.full_name.value.trim() || !f.email.value.trim() || !f.password.value) return msg('#auth-msg', a('err_fields'));
+    if (f.password.value.length < 8) return msg('#auth-msg', a('err_short'));
+    const { data, error } = await sb.auth.signUp({ email: f.email.value.trim(), password: f.password.value, options: {
+      data: { full_name: f.full_name.value.trim(), phone: f.phone.value.trim(), country: f.country.value.trim() },
+      emailRedirectTo: location.origin + location.pathname } });
+    if (error) return msg('#auth-msg', error.message);
+    if (!data.session) { msg('#auth-msg', a('signup_ok'), true); f.reset(); }
+  });
+  $('#f-forgot').addEventListener('submit', async e => {
+    e.preventDefault(); const em = e.target.email.value.trim(); if (!em) return msg('#auth-msg', a('err_fields'));
+    await sb.auth.resetPasswordForEmail(em, { redirectTo: location.origin + location.pathname });
+    msg('#auth-msg', a('forgot_ok'), true);
+  });
+  $('#f-reset').addEventListener('submit', async e => {
+    e.preventDefault(); const p = e.target.password.value; if (p.length < 8) return msg('#auth-msg', a('err_short'));
+    const { error } = await sb.auth.updateUser({ password: p });
+    if (error) return msg('#auth-msg', error.message);
+    msg('#auth-msg', a('reset_ok'), true); setTimeout(() => location.replace(location.pathname), 1200);
+  });
+
+  sb.auth.onAuthStateChange((ev, session) => {
+    if (ev === 'PASSWORD_RECOVERY') { show('auth'); setMode('reset'); return; }
+    const u = session?.user || null;
+    if ((u && u.id) !== (user && user.id)) { user = u; boot(); }
+  });
+  (async () => { const { data } = await sb.auth.getSession(); user = data.session?.user || null; boot(); })();
+
+  function show(which) { $('#acc-loading').hidden = true; $('#auth').hidden = which !== 'auth'; $('#space').hidden = which !== 'space'; }
+
+  async function boot() {
+    if (!user) { if (!$('#f-reset').hidden) return; show('auth'); return; }
+    const [p, en] = await Promise.all([
+      sb.from('profiles').select('*').eq('id', user.id).maybeSingle(),
+      sb.from('enrollments').select('*').eq('user_id', user.id).order('created_at', { ascending: false })
+    ]);
+    profile = p.data || { full_name: '', email: user.email };
+    enrolls = (en.data || []).filter(x => x.status === 'active' && (!x.expires_at || new Date(x.expires_at) > new Date()));
+    isAdmin = profile.role === 'admin';
+    isMember = isAdmin || enrolls.some(x => x.item_type === 'abonnements');
+    show('space'); renderAll();
+  }
+
+  // ---------- SPACE ----------
+  let tab = new URLSearchParams(location.search).get('tab') || 'courses';
+  $('#space-tabs').addEventListener('click', e => { const b = e.target.closest('[data-tab]'); if (b) { tab = b.dataset.tab; renderTabs(); } });
+  function renderTabs() {
+    $$('#space-tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    $$('.space-panel').forEach(p => p.hidden = p.dataset.panel !== tab);
+    if (tab === 'chat') openChat(room || (isMember ? 'cercle' : 'dm:' + user.id));
+    if (tab === 'orders') loadOrders();
+  }
+  function renderAll() {
+    const name = profile.full_name || user.email.split('@')[0];
+    $('#hello-name').textContent = name.split(' ')[0];
+    $('#avatar').textContent = name.charAt(0).toUpperCase();
+    $('#member-line').textContent = isMember ? a('member_line_yes') : a('member_line_no');
+    $('#admin-link').hidden = !isAdmin;
+    renderCourses(); renderMember(); renderProfile(); renderRooms(); renderTabs();
+  }
+
+  // courses
+  function data() { return window.CH ? window.CH.getData() || {} : {}; }
+  function renderCourses() {
+    const list = enrolls.filter(x => x.item_type === 'formations');
+    const D = data();
+    $('#courses-list').innerHTML = list.length ? list.map(x => {
+      const f = (D.formations || []).find(y => y.id === x.item_id) || {};
+      return `<button class="my-card" data-course="${esc(x.item_id)}">
+        <span class="my-art t-${esc(f.theme || 'violet')}">${window.CH ? window.CH.svg(f.icone || 'book') : ''}</span>
+        <span class="my-body"><b>${esc(L(f.titre) || x.title || x.item_id)}</b><small>${esc(L(f.duree) || '')}</small><span class="btn btn-soft add">${esc(a('open'))}</span></span></button>`;
+    }).join('') : `<div class="empty-box"><p>${esc(a('no_courses'))}</p><a class="btn btn-primary" href="index.html#formations">${esc(a('see_courses'))}</a></div>`;
+  }
+  $('#courses-list').addEventListener('click', e => { const b = e.target.closest('[data-course]'); if (b) openCourse(b.dataset.course); });
+  $('#course-back').addEventListener('click', () => { $('#course-view').hidden = true; $('#courses-list').hidden = false; $('#player').innerHTML = ''; });
+  let lessons = [];
+  async function openCourse(cid) {
+    const f = (data().formations || []).find(y => y.id === cid) || {};
+    $('#course-title').textContent = L(f.titre) || cid;
+    $('#courses-list').hidden = true; $('#course-view').hidden = false;
+    const { data: ls } = await sb.from('lessons').select('*').eq('course_id', cid).order('position').order('id');
+    lessons = ls || [];
+    $('#lessons').innerHTML = lessons.length ? lessons.map((l, i) => `<li><button data-lesson="${i}"><span class="l-ico">${{ video: '🎬', audio: '🎧', pdf: '📄', image: '🖼️', text: '📝', link: '🔗' }[l.kind] || '•'}</span>${esc(L(l.title))}</button></li>`).join('')
+      : `<li class="muted-s">${esc(a('no_lessons'))}</li>`;
+    if (lessons.length) playLesson(0); else $('#player').innerHTML = '';
+  }
+  $('#lessons').addEventListener('click', e => { const b = e.target.closest('[data-lesson]'); if (b) playLesson(+b.dataset.lesson); });
+  async function playLesson(i) {
+    const l = lessons[i]; if (!l) return;
+    $$('#lessons button').forEach((b, j) => b.classList.toggle('on', j === i));
+    const src = l.storage_path ? await window.fileUrl(l.storage_path) : (l.url || '');
+    const emb = window.embedUrl(l.url || '');
+    let h = `<h3>${esc(L(l.title))}</h3>`;
+    if (l.kind === 'video') h += emb ? `<div class="ratio"><iframe src="${esc(emb)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>` : `<video src="${esc(src)}" controls playsinline controlslist="nodownload"></video>`;
+    else if (l.kind === 'audio') h += `<audio src="${esc(src)}" controls controlslist="nodownload"></audio>`;
+    else if (l.kind === 'pdf') h += `<iframe class="pdf" src="${esc(src)}"></iframe><a class="btn btn-soft" href="${esc(src)}" target="_blank" rel="noopener">${esc(a('download'))}</a>`;
+    else if (l.kind === 'image') h += `<img src="${esc(src)}" alt="">`;
+    else if (l.kind === 'link') h += `<a class="btn btn-primary" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(a('open_link'))}</a>`;
+    if (L(l.body)) h += `<div class="lesson-text">${esc(L(l.body)).replace(/\n/g, '<br>')}</div>`;
+    $('#player').innerHTML = h;
+  }
+
+  // membership
+  function renderMember() {
+    const m = enrolls.find(x => x.item_type === 'abonnements');
+    const D = data();
+    if (m || isAdmin) {
+      const ab = m ? (D.abonnements || []).find(y => y.id === m.item_id) : null;
+      const until = m && m.expires_at ? `${a('until')} ${new Date(m.expires_at).toLocaleDateString(window.CH.LOCALE[lg()])}` : a('no_expiry');
+      $('#member-box').innerHTML = `<div class="member-card">
+        <span class="eyebrow light">✨</span><h2>${esc(a('member_yes'))} «${esc(ab ? L(ab.titre) : 'Cercle')}»</h2><p>${esc(until)}</p>
+        ${ab ? `<p class="mp">${esc(a('member_perks'))}</p><ul>${L(ab.avantages).split('\n').filter(Boolean).map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+        <div class="form-actions"><a class="btn btn-gold" href="meditations.html">${esc(a('go_medit'))}</a><button class="btn btn-white" data-goto="chat">${esc(a('go_chat'))}</button><a class="btn btn-outline-light" href="index.html#evenements">${esc(a('go_events'))}</a></div></div>`;
+    } else {
+      $('#member-box').innerHTML = `<div class="empty-box"><p>${esc(a('member_no'))}</p><a class="btn btn-primary" href="index.html#cercle">${esc(a('member_cta'))}</a></div>`;
+    }
+  }
+  document.addEventListener('click', e => { const b = e.target.closest('[data-goto]'); if (b) { tab = b.dataset.goto; renderTabs(); } });
+
+  // chat
+  function renderRooms() {
+    $('#chat-rooms').innerHTML = `<button data-room="cercle" ${isMember ? '' : 'class="locked"'}>${esc(a('room_cercle'))}${isMember ? '' : ' 🔒'}</button>
+      <button data-room="dm:${esc(user.id)}">${esc(a('room_dm'))}</button>`;
+  }
+  $('#chat-rooms').addEventListener('click', e => { const b = e.target.closest('[data-room]'); if (b) openChat(b.dataset.room); });
+  async function openChat(r) {
+    room = r;
+    $$('#chat-rooms button').forEach(b => b.classList.toggle('active', b.dataset.room === r));
+    const box = $('#chat-msgs');
+    if (r === 'cercle' && !isMember) { box.innerHTML = `<div class="empty-box"><p>${esc(a('chat_locked'))}</p><a class="btn btn-primary" href="index.html#cercle">${esc(a('member_cta'))}</a></div>`; $('#chat-form').hidden = true; return; }
+    $('#chat-form').hidden = false;
+    const { data: ms } = await sb.from('messages').select('*').eq('room', r).order('created_at', { ascending: true }).limit(200);
+    box.innerHTML = (ms || []).length ? '' : `<p class="chat-empty">${esc(a('chat_empty'))}</p>`;
+    (ms || []).forEach(addMsg);
+    if (channel) sb.removeChannel(channel);
+    channel = sb.channel('room-' + r).on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages', filter: `room=eq.${r}` }, p => {
+      if (!box.querySelector(`[data-mid="${p.new.id}"]`)) { box.querySelector('.chat-empty')?.remove(); addMsg(p.new); }
+    }).subscribe();
+  }
+  function addMsg(m) {
+    const box = $('#chat-msgs'), mine = m.user_id === user.id;
+    const time = new Date(m.created_at).toLocaleString(window.CH.LOCALE[lg()], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    box.insertAdjacentHTML('beforeend', `<div class="msg ${mine ? 'mine' : ''} ${m.is_admin ? 'adm' : ''}" data-mid="${m.id}">
+      <span class="who">${esc(mine ? a('you') : (m.author_name || ''))}${m.is_admin ? ` · ${esc(a('admin_badge'))}` : ''}</span>
+      <p>${esc(m.body).replace(/\n/g, '<br>')}</p><time>${esc(time)}</time></div>`);
+    box.scrollTop = box.scrollHeight;
+  }
+  $('#chat-form').addEventListener('submit', async e => {
+    e.preventDefault(); const i = e.target.body, body = i.value.trim(); if (!body || !room) return;
+    i.value = '';
+    const { data: m, error } = await sb.from('messages').insert({ room, user_id: user.id, author_name: (profile.full_name || user.email.split('@')[0]), is_admin: isAdmin, body }).select().single();
+    if (error) { i.value = body; window.CH.toast(error.message); return; }
+    if (m && !$('#chat-msgs').querySelector(`[data-mid="${m.id}"]`)) { $('#chat-msgs .chat-empty')?.remove(); addMsg(m); }
+  });
+
+  // orders
+  async function loadOrders() {
+    const { data: os } = await sb.from('orders').select('*').eq('user_id', user.id).order('created_at', { ascending: false });
+    $('#orders-list').innerHTML = (os || []).length ? os.map(o => `<div class="order-card">
+      <div class="row-b"><b>${esc(a('order'))} #${o.id}</b><span class="st st-${esc(o.status)}">${esc(a('st_' + o.status))}</span></div>
+      <small>${esc(new Date(o.created_at).toLocaleString(window.CH.LOCALE[lg()]))}</small>
+      <ul>${(o.items || []).map(it => `<li>${esc(it.title)}${it.option ? ' · ' + esc(it.option) : ''} <b>${esc(it.price || '')}</b></li>`).join('')}</ul>
+      ${o.total ? `<div class="row-b"><span></span><b>${esc(o.total)}</b></div>` : ''}</div>`).join('')
+      : `<div class="empty-box"><p>${esc(a('no_orders'))}</p></div>`;
+  }
+
+  // profile
+  function renderProfile() {
+    const f = $('#f-profile');
+    f.full_name.value = profile.full_name || ''; f.phone.value = profile.phone || ''; f.country.value = profile.country || ''; f.email.value = user.email || '';
+  }
+  $('#f-profile').addEventListener('submit', async e => {
+    e.preventDefault(); const f = e.target;
+    const { error } = await sb.from('profiles').update({ full_name: f.full_name.value.trim(), phone: f.phone.value.trim(), country: f.country.value.trim() }).eq('id', user.id);
+    if (error) return msg('#profile-msg', error.message);
+    if (f.password.value) {
+      if (f.password.value.length < 8) return msg('#profile-msg', a('err_short'));
+      const r = await sb.auth.updateUser({ password: f.password.value }); if (r.error) return msg('#profile-msg', r.error.message);
+      f.password.value = '';
+    }
+    profile.full_name = f.full_name.value.trim(); renderAll(); tab = 'profile'; renderTabs();
+    msg('#profile-msg', a('saved'), true);
+  });
+  $('#logout').addEventListener('click', async () => { await sb.auth.signOut(); location.replace('index.html'); });
+})();
