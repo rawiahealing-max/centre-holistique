@@ -642,16 +642,21 @@
 
   // ================= PAYMENT METHODS =================
   let payZone = TZ === 'Africa/Tunis' ? 'tn' : 'intl';
-  function payMethods(zone) { return (DATA?.paiements || []).filter(p => p.actif !== false && (p.details || p.lien) && (p.zone === zone || p.zone === 'both')); }
+  // used until payment methods are published from the dashboard
+  const PAY_DEFAULT = [
+    { id: 'd17', zone: 'tn', icone: '📮', titre: { ar: 'D17 (البريد التونسي)', fr: 'D17 (La Poste)', en: 'D17 (Tunisian Post)' }, details: '28 550 802',
+      instructions: { ar: 'أرسل المبلغ من تطبيق D17 إلى هذا الرقم', fr: "Envoyez le montant depuis l'appli D17 à ce numéro", en: 'Send the amount from the D17 app to this number' } },
+    { id: 'attijari', zone: 'tn', icone: '🏦', titre: { ar: 'تحويل بنكي — Attijari Bank', fr: 'Virement bancaire — Attijari Bank', en: 'Bank transfer — Attijari Bank' }, details: 'RIB : 04 149 2310087195269 23\nRawia Ghorbel',
+      instructions: { ar: 'حوّل المبلغ إلى هذا الحساب', fr: 'Virez le montant sur ce compte', en: 'Transfer the amount to this account' } }
+  ];
+  const payAll = () => (DATA?.paiements || PAY_DEFAULT).filter(p => p.actif !== false && (p.details || p.lien));
+  function payMethods(zone) { return payAll().filter(p => p.zone === zone || p.zone === 'both'); }
   function payHTML(total, sent) {
-    const all = (DATA?.paiements || []).filter(p => p.actif !== false && (p.details || p.lien));
-    if (!all.length) return `<p class="pay-none">${esc(t('pay_none'))}</p><a class="btn btn-primary" href="${esc($('#chat').href)}" target="_blank" rel="noopener">WhatsApp</a>`;
-    const hasTn = payMethods('tn').length, hasIntl = payMethods('intl').length;
-    if (!hasTn) payZone = 'intl'; if (!hasIntl) payZone = 'tn';
     const list = payMethods(payZone);
     return `${sent ? `<p class="pay-sent">${esc(t('pay_order_sent'))}</p>` : ''}
       ${total ? `<div class="pay-total"><span>${esc(t('pay_total'))}</span><b>${esc(total)}</b></div>` : ''}
-      ${hasTn && hasIntl ? `<div class="pay-tabs"><button data-pz="tn" class="${payZone === 'tn' ? 'active' : ''}">${esc(t('pay_tn'))}</button><button data-pz="intl" class="${payZone === 'intl' ? 'active' : ''}">${esc(t('pay_intl'))}</button></div>` : ''}
+      <div class="pay-tabs"><button data-pz="tn" class="${payZone === 'tn' ? 'active' : ''}">${esc(t('pay_tn'))}</button><button data-pz="intl" class="${payZone === 'intl' ? 'active' : ''}">${esc(t('pay_intl'))}</button></div>
+      ${list.length ? '' : `<p class="pay-none">${esc(t('pay_none'))}</p>`}
       <div class="pay-list">${list.map(p => `<details class="pay-item" ${list.length === 1 ? 'open' : ''}><summary><span class="pay-ico">${esc(p.icone || '💳')}</span><b>${esc(L(p.titre))}</b></summary>
         <div class="pay-body">${L(p.instructions) ? `<p>${esc(L(p.instructions))}</p>` : ''}
           ${p.details ? `<div class="pay-details"><pre dir="ltr">${esc(p.details)}</pre><button type="button" class="btn btn-soft add" data-copy="${esc(p.details)}">${esc(t('copy'))}</button></div>` : ''}
@@ -674,7 +679,7 @@
   }
   function renderPayInline() {
     const el = $('#pay-inline'); if (!el) return;
-    $('#paiement').hidden = !(DATA?.paiements || []).some(p => p.actif !== false && (p.details || p.lien));
+    $('#paiement').hidden = false;
     el.innerHTML = payHTML('', false);
   }
   document.addEventListener('click', async e => {
