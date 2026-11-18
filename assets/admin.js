@@ -48,7 +48,11 @@
 
   async function loadContent() {
     const { data } = await sb.from('site_content').select('data').eq('id', 1).maybeSingle();
-    if (data && data.data) { content = data.data; return; }
+    if (data && data.data) {
+      content = data.data;
+      if (window.applyContentPatches && window.applyContentPatches(content)) { setDirty(true); toast('✨ فما إضافات جديدة (ThetaHealing…) — اضغط «انشر على الموقع» باش تتحفظ'); }
+      return;
+    }
     // first time: import the content from the static file
     const r = await fetch('data/site.json?v=' + Date.now()); content = await r.json();
     const { error } = await sb.from('site_content').upsert({ id: 1, data: content, updated_at: new Date().toISOString() });
