@@ -30,6 +30,12 @@
   // ---------------- 3D HERO ----------------
   const hero = document.querySelector('[data-page="home"] .hero');
   if (!hero || reduce) return;
+  // light parallax on the SVG sacred geometry (no WebGL)
+  const sacred = hero.querySelector('.sacred');
+  if (sacred && fine) {
+    hero.addEventListener('pointermove', e => { const b = hero.getBoundingClientRect(); sacred.style.setProperty('--rx', (((e.clientX - b.left) / b.width - 0.5) * 24).toFixed(1) + 'deg'); sacred.style.setProperty('--ry', ((0.5 - (e.clientY - b.top) / b.height) * 18).toFixed(1) + 'deg'); }, { passive: true });
+    hero.addEventListener('pointerleave', () => { sacred.style.setProperty('--rx', '0deg'); sacred.style.setProperty('--ry', '0deg'); });
+  }
   return; // WebGL hero disabled: rendering glitches on some PCs (replaced by the lightweight SVG version in style.css)
   const weak = (navigator.deviceMemory && navigator.deviceMemory < 2) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 3);
   if (weak) return;
