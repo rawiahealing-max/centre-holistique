@@ -3,7 +3,8 @@
   const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const L = v => v && typeof v === 'object' ? (v.ar || v.fr || v.en || '') : (v || '');
-  const P = v => v && typeof v === 'object' ? [v.tnd && v.tnd + ' DT', v.eur && v.eur + ' €', v.usd && '$' + v.usd].filter(Boolean).join(' / ') : (v ? v + ' DT' : '');
+  // ⁦ … ⁩ = left-to-right isolate, so prices don't get scrambled inside Arabic text
+  const P = v => { const s = v && typeof v === 'object' ? [v.tnd && v.tnd + ' DT', v.eur && v.eur + ' €', v.usd && '$' + v.usd].filter(Boolean).join(' / ') : (v ? v + ' DT' : ''); return s ? '⁦' + s + '⁩' : ''; };
   const fmtD = d => d ? new Date(d).toLocaleString('ar-TN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
   const slug = s => { const x = (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); return (x || 'item') + '-' + Date.now().toString(36); };
   const sb = window.sb;
