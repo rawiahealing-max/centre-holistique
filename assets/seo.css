@@ -28,3 +28,4 @@
 .wa-fab{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.6rem;box-shadow:0 10px 30px -8px rgba(37,211,102,.7);z-index:60}
 .seo-page .footer a{color:#f0d79a}
 @media (max-width:720px){.seo-nav a:not(.btn){display:none}.about-hero{flex-direction:column;text-align:center}.about-hero .form-actions{justify-content:center}}
+.lv-table{display:grid;gap:.6rem;margin:0 0 1.5rem}.lv-row{display:flex;align-items:center;gap:1rem;justify-content:space-between;border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;background:#fff}.lv-row b{flex:1;color:var(--primary-d)}.lv-row span{color:#8a5a12;font-weight:700;white-space:nowrap}@media (max-width:720px){.lv-row{flex-wrap:wrap}}
