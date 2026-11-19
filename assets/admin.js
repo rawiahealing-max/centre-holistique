@@ -418,9 +418,14 @@
     lectures: { label: x => L(x.titre), sub: x => [x.jeu, x.cartes && x.cartes + ' أوراق', P(x.prix)].filter(Boolean).join(' · '),
       fields: [['titre', 'اسم القراءة', 'i'], ['jeu', 'النوع', 'select', ['tarot', 'oracle', 'combo']], ['cartes', 'عدد الأوراق'], ['prix', 'السعر', 'p'], ['icone', 'الأيقونة', 'select', ICONS], ['theme', 'اللون', 'select', THEMES], IMG,
         ['description', 'الوصف', 'it'], ['populaire', 'شارة «الأكثر اختياراً»', 'checkbox', null, false], ['actif', 'ظاهرة في الموقع', 'checkbox', null, true]] },
-    formations: { label: x => L(x.titre), sub: x => [x.date, L(x.mode), P(x.prix)].filter(Boolean).join(' · '),
+    formations: { hint: 'الدورات المخفية ما تظهرش للزوّار. باش تنشر دورة: «تعديل» ← فعّل «ظاهرة في الموقع» ← «انشر على الموقع». صفحة البرنامج تتعمل وحدها في أقل من ساعة.',
+      label: x => L(x.titre), sub: x => [x.date, L(x.mode), Array.isArray(x.niveaux) && x.niveaux.length ? x.niveaux.length + ' مستويات' : P(x.prix)].filter(Boolean).join(' · '),
       fields: [['titre', 'العنوان', 'i'], ['categorie', 'الصنف', 'i'], ['date', 'التاريخ', 'date'], ['duree', 'المدة', 'i'], ['mode', 'الطريقة', 'i'], ['places', 'عدد الأماكن', 'number'], ['prix', 'السعر', 'p'], ['ancien_prix', 'السعر القديم (تخفيض) — اختياري', 'p'],
-        ['icone', 'الأيقونة', 'select', ICONS], ['theme', 'اللون', 'select', THEMES], IMG, ['description', 'الوصف', 'it'], ['nouveau', 'شارة «جديد»', 'checkbox', null, false], ['actif', 'ظاهرة في الموقع', 'checkbox', null, true]] },
+        ['icone', 'الأيقونة', 'select', ICONS], ['theme', 'اللون', 'select', THEMES], IMG, ['description', 'الوصف', 'it'],
+        ['niveaux', 'المستويات — اختياري (الحريف يختار المستوى). سطر لكل مستوى: الاسم بالعربية / Nom FR / Name EN | دينار | يورو | دولار', 'lv'],
+        ['programme', 'البرنامج الكامل (يظهر في صفحة الدورة)', 'lt'],
+        ['lien', 'رابط صفحة البرنامج — اختياري (مثلاً formations/reiki-usui.html)'],
+        ['nouveau', 'شارة «جديد»', 'checkbox', null, false], ['actif', 'ظاهرة في الموقع', 'checkbox', null, true]] },
     abonnements: { hint: 'المزايا: اكتب كل ميزة في سطر.', label: x => L(x.titre), sub: x => P(x.prix) + ' / شهر',
       fields: [['titre', 'اسم الاشتراك', 'i'], ['accroche', 'جملة قصيرة', 'i'], ['prix', 'السعر الشهري', 'p'], ['prix_annuel', 'السعر السنوي', 'p'], ['avantages', 'المزايا (سطر لكل ميزة)', 'it'],
         ['theme', 'اللون', 'select', THEMES], ['populaire', 'شارة «الأكثر اختياراً»', 'checkbox', null, false], ['actif', 'ظاهر في الموقع', 'checkbox', null, true]] },
@@ -477,6 +482,10 @@
       const inp = (c, name) => `<label><small>${name}</small><input type="number" step="any" name="${k}.${c}" dir="ltr" value="${esc(v[c])}"></label>`;
       return `<div class="multi"><span>${label}</span><div class="row3">${inp('tnd', 'دينار DT')}${inp('eur', 'يورو €')}${inp('usd', 'دولار $')}</div></div>`;
     }
+    if (type === 'lv') {
+      const lines = (Array.isArray(val) ? val : []).map(x => [[x.nom?.ar, x.nom?.fr, x.nom?.en].filter(Boolean).join(' / ') || (typeof x.nom === 'string' ? x.nom : ''), x.prix?.tnd || '', x.prix?.eur || '', x.prix?.usd || ''].join(' | ')).join('\n');
+      return `<label class="full">${label}<textarea name="${k}" rows="4" dir="auto" placeholder="المستوى 1 / Niveau 1 / Level 1 | 350 | 120 | 130">${esc(lines)}</textarea></label>`;
+    }
     if (type === 'img') return uplField(k, label, val, 'image/*', 'public', 'images', 'url');
     if (type === 'cat') return `<label>${label}<select name="${k}">${(content.categories || []).map(c => `<option value="${esc(c.id)}" ${c.id === val ? 'selected' : ''}>${esc(L(c))}</option>`).join('')}</select></label>`;
     if (type === 'textarea') return `<label class="full">${label}<textarea name="${k}" rows="4" dir="auto">${esc(val ?? '')}</textarea></label>`;
@@ -488,6 +497,10 @@
     if (type === 'i' || type === 'it' || type === 'lt') return { ar: f.elements[k + '.ar'].value.trim(), fr: f.elements[k + '.fr'].value.trim(), en: f.elements[k + '.en'].value.trim() };
     if (type === 'p') return { tnd: f.elements[k + '.tnd'].value.trim(), eur: f.elements[k + '.eur'].value.trim(), usd: f.elements[k + '.usd'].value.trim() };
     if (type === 'checkbox') return f.elements[k].checked;
+    if (type === 'lv') return f.elements[k].value.split('\n').map(l => l.split('|').map(s => s.trim())).filter(p => p[0]).map(([n, tnd, eur, usd]) => {
+      const [ar, fr, en] = n.split(' / ').map(s => s.trim());
+      return { nom: { ar: ar || '', fr: fr || ar || '', en: en || fr || ar || '' }, prix: { tnd: tnd || '', eur: eur || '', usd: usd || '' } };
+    });
     return f.elements[k].value.trim();
   }
 
