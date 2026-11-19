@@ -1,0 +1,30 @@
+/* static SEO landing pages */
+.seo-page{--font:'Jost',system-ui,sans-serif}
+.seo-nav{display:flex;align-items:center;gap:1.2rem;font-weight:500}
+.seo-nav a:not(.btn){color:var(--muted)}.seo-nav a:not(.btn):hover{color:var(--primary)}
+.btn-sm{padding:.5rem 1rem;font-size:.88rem}
+.seo-hero{background:radial-gradient(120% 90% at 80% 0%,#6b3f98 0%,#3b2550 55%,#24152f 100%);color:#fff;padding:clamp(2.2rem,6vw,4rem) 0}
+.seo-hero h1{color:#fff;font-size:clamp(2rem,5vw,3rem);margin:.4rem 0 .8rem}
+.seo-lead{font-size:1.12rem;color:rgba(255,255,255,.88);line-height:1.8;max-width:680px}
+.seo-price{display:inline-block;margin:1rem 0 1.4rem;background:rgba(240,215,154,.15);color:#f0d79a;border:1px solid rgba(240,215,154,.4);border-radius:999px;padding:.4rem 1rem;font-weight:600}
+.seo-ico{font-size:2.6rem}
+.crumbs{font-size:.85rem;color:rgba(255,255,255,.65);margin-bottom:1rem}.crumbs a{color:rgba(255,255,255,.85)}
+.seo-body h2{margin:2rem 0 .7rem;color:var(--primary-d)}
+.seo-body p{color:#3f3846;line-height:1.9}
+.seo-by{display:flex;gap:1rem;align-items:center;background:var(--primary-ll);border-radius:16px;padding:1rem 1.2rem;margin:2rem 0}
+.seo-by img{border-radius:14px;flex:none}
+.seo-ar{background:#fbf6ec;border-radius:16px;padding:1rem 1.4rem;margin-top:2rem;font-family:Tajawal,sans-serif}
+.seo-ar h2{margin-top:.4rem}
+.seo-note{font-size:.85rem;color:var(--muted);margin-top:1.4rem}
+.seo-cta{margin-top:2.2rem;border-radius:20px;padding:1.4rem;background:linear-gradient(130deg,#f1eaf8,#fbf6ec);text-align:center}
+.seo-cta h2{margin-top:0}.seo-cta .form-actions{justify-content:center}
+.seo-related{display:grid;gap:.6rem}
+.seo-related a{border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;color:var(--primary-d);font-weight:600;background:#fff}
+.seo-related a:hover{background:var(--primary-ll)}
+.seo-list{padding-inline-start:1.2rem;display:grid;gap:.4rem;line-height:1.8}
+.seo-list a{color:var(--primary-d);font-weight:600}
+.about-hero{display:flex;gap:2rem;align-items:center}
+.about-photo{width:200px;height:200px;border-radius:50%;object-fit:cover;border:4px solid rgba(240,215,154,.6);flex:none}
+.wa-fab{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.6rem;box-shadow:0 10px 30px -8px rgba(37,211,102,.7);z-index:60}
+.seo-page .footer a{color:#f0d79a}
+@media (max-width:720px){.seo-nav a:not(.btn){display:none}.about-hero{flex-direction:column;text-align:center}.about-hero .form-actions{justify-content:center}}
