@@ -7,9 +7,9 @@
       "en": "Restore harmony between body, heart and soul"
     },
     "intro": {
-      "ar": "جلسات علاج طاقي، قراءات، مرافقة نفسية ودورات تكوينية معتمدة — في المركز بتونس أو أونلاين من أي مكان في العالم.",
-      "fr": "Soins énergétiques, lectures, accompagnement psychologique et formations certifiantes — au centre à Tunis ou en ligne, partout dans le monde.",
-      "en": "Energy healing, readings, psychological support and certified trainings — at our centre in Tunis or online, anywhere in the world."
+      "ar": "جلسات علاج طاقي، قراءات، مرافقة نفسية ودورات تكوينية معتمدة — في المركز بصفاقس أو أونلاين من أي مكان في العالم.",
+      "fr": "Soins énergétiques, lectures, accompagnement psychologique et formations certifiantes — au centre à Sfax ou en ligne, partout dans le monde.",
+      "en": "Energy healing, readings, psychological support and certified trainings — at our centre in Sfax or online, anywhere in the world."
     },
     "praticienne": "Rawia",
     "titre_praticienne": {
@@ -39,11 +39,11 @@
     "telephone": "+216 26 660 344",
     "whatsapp": "21626660344",
     "email": "rawiahealing@gmail.com",
-    "adresse": { "ar": "تونس", "fr": "Tunis, Tunisie", "en": "Tunis, Tunisia" },
+    "adresse": { "ar": "صفاقس، تونس", "fr": "Sfax, Tunisie", "en": "Sfax, Tunisia" },
     "horaires": {
       "ar": "من الإثنين إلى السبت: 9:00 – 19:00 (توقيت تونس)",
-      "fr": "Lundi – Samedi : 9h00 – 19h00 (heure de Tunis)",
-      "en": "Monday – Saturday: 9:00 – 19:00 (Tunis time)"
+      "fr": "Lundi – Samedi : 9h00 – 19h00 (heure tunisienne)",
+      "en": "Monday – Saturday: 9:00 – 19:00 (Tunisia time)"
     },
     "instagram": "https://instagram.com/",
     "facebook": "https://facebook.com/",
