@@ -11,7 +11,7 @@
       who_title: 'هل تعيش واحدة من هذه الحالات؟', who_sub: 'لست وحدك، ويوجد طريق.', who_1: 'ضغط، قلق أو تعب لا ينتهي', who_2: 'نفس المشاكل تتكرر في حياتك', who_3: 'علاقات صعبة أو جروح عاطفية', who_4: 'توتر وثقل في العائلة', who_5: 'ضياع وتبحث عن رسالة حياتك', who_6: 'طاقة منخفضة وانسدادات', who_cta: 'احجز استشارة توجيه (30 دقيقة)',
       seances_title: 'اكتشف الجلسات', all_cats: 'كل الجلسات',
       promo_tarot_title: 'تاروت وأوراكل', promo_tarot_text: 'قراءة الحب، العمل، السنة القادمة، أوراكل الملائكة… اختر نوع القراءة والطريقة التي تناسبك.', promo_tarot_btn: 'اختر قراءتك ←',
-      formations_title: 'الدورات التكوينية', formations_sub: 'شهادة معتمدة · حضوري أو أونلاين',
+      formations_title: 'الدورات التكوينية', level: 'المستوى', program: 'البرنامج الكامل ←', formations_sub: 'شهادة معتمدة · حضوري أو أونلاين',
       cercle_eyebrow: 'العضوية الشهرية', cercle_title: 'انضم إلى الدائرة', cercle_sub: 'أنشطة كل شهر، مجتمع داعم ومرافقة مستمرة — أينما كنت في العالم.',
       bill_monthly: 'شهري', bill_yearly: 'سنوي (شهرين مجاناً)', per_month: '/ شهر', per_year: '/ سنة', join: 'انضم الآن', popular: 'الأكثر اختياراً', cancel_any: 'إلغاء في أي وقت',
       events_title: 'أحداث الشهر', events_sub: 'مباشر · أونلاين', members_only: 'للأعضاء', free_all: 'مجاني للجميع', reserve_place: 'احجز مكانك', tunis_time: 'توقيت تونس', your_time: 'بتوقيتك',
@@ -58,7 +58,7 @@
       who_title: 'Vous reconnaissez-vous ?', who_sub: "Vous n'êtes pas seul(e), il existe un chemin.", who_1: 'Stress, anxiété ou fatigue persistante', who_2: 'Les mêmes problèmes se répètent', who_3: 'Relations difficiles, blessures affectives', who_4: 'Tensions et poids familiaux', who_5: 'Perdu(e), en quête de sens', who_6: 'Énergie basse et blocages', who_cta: "Réserver une consultation d'orientation (30 min)",
       seances_title: 'Découvrez les séances', all_cats: 'Toutes les séances',
       promo_tarot_title: 'Tarot & Oracle', promo_tarot_text: "Amour, travail, année à venir, Oracle des Anges… choisissez votre tirage et le format qui vous convient.", promo_tarot_btn: 'Choisir mon tirage →',
-      formations_title: 'Formations', formations_sub: 'Certifiantes · en présentiel ou en ligne',
+      formations_title: 'Formations', level: 'Niveau', program: 'Programme complet →', formations_sub: 'Certifiantes · en présentiel ou en ligne',
       cercle_eyebrow: 'Abonnement mensuel', cercle_title: 'Rejoignez le Cercle', cercle_sub: "Des activités chaque mois, une communauté bienveillante et un accompagnement continu — où que vous soyez.",
       bill_monthly: 'Mensuel', bill_yearly: 'Annuel (2 mois offerts)', per_month: '/ mois', per_year: '/ an', join: 'Je rejoins', popular: 'Le plus choisi', cancel_any: 'Résiliable à tout moment',
       events_title: 'Événements du mois', events_sub: 'En direct · en ligne', members_only: 'Membres', free_all: 'Gratuit pour tous', reserve_place: 'Réserver ma place', tunis_time: 'heure tunisienne', your_time: 'chez vous',
@@ -105,7 +105,7 @@
       who_title: 'Does this sound like you?', who_sub: "You're not alone, and there is a way forward.", who_1: 'Stress, anxiety or constant fatigue', who_2: 'The same problems keep repeating', who_3: 'Difficult relationships or emotional wounds', who_4: 'Family tension and heaviness', who_5: 'Feeling lost, searching for purpose', who_6: 'Low energy and blockages', who_cta: 'Book a guidance consultation (30 min)',
       seances_title: 'Explore sessions', all_cats: 'All sessions',
       promo_tarot_title: 'Tarot & Oracle', promo_tarot_text: 'Love, career, the year ahead, Angel Oracle… choose your reading and the format that suits you.', promo_tarot_btn: 'Choose my reading →',
-      formations_title: 'Trainings', formations_sub: 'Certified · in person or online',
+      formations_title: 'Trainings', level: 'Level', program: 'Full programme →', formations_sub: 'Certified · in person or online',
       cercle_eyebrow: 'Monthly membership', cercle_title: 'Join the Circle', cercle_sub: 'Monthly activities, a caring community and ongoing support — wherever you are in the world.',
       bill_monthly: 'Monthly', bill_yearly: 'Yearly (2 months free)', per_month: '/ month', per_year: '/ year', join: 'Join now', popular: 'Most popular', cancel_any: 'Cancel anytime',
       events_title: "This month's events", events_sub: 'Live · online', members_only: 'Members', free_all: 'Free for everyone', reserve_place: 'Save my spot', tunis_time: 'Tunisia time', your_time: 'your time',
@@ -334,17 +334,32 @@
     const row = $('#formations-row'); if (!row) return;
     const fs = (DATA.formations || []).filter(f => f.actif !== false).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
     $('#formations').hidden = !fs.length;
-    row.innerHTML = fs.map(f => `
+    row.innerHTML = fs.map(f => {
+      const lv = levels(f);
+      return `
       <article class="pcard">
         ${media(f, L(f.categorie), f.nouveau ? `<span class="new">${esc(t('new'))}</span>` : '')}
         <div class="pbody">
           <div class="ptitle">${esc(L(f.titre))}</div>
           <div class="pmeta">${f.date ? `<span>📅 ${esc(fmtDate(f.date))}</span>` : ''}${L(f.duree) ? `<span>⏱ ${esc(L(f.duree))}</span>` : ''}${L(f.mode) ? `<span>📍 ${esc(L(f.mode))}</span>` : ''}${f.places ? `<span>👥 ${esc(f.places)} ${esc(t('places'))}</span>` : ''}</div>
           <p class="pdesc">${esc(L(f.description))}</p>
-          <div class="pfoot"><span class="price">${money(f.prix)}${money(f.ancien_prix) ? `<span class="old">${money(f.ancien_prix)}</span>` : ''}</span>
-            <button class="btn btn-soft add" data-add="formations" data-id="${esc(f.id)}">${esc(t('add'))}</button></div>
-        </div></article>`).join('');
+          ${f.lien ? `<a class="more-link" href="${esc(f.lien)}">${esc(t('program'))}</a>` : ''}
+          ${lv.length ? `<label class="lv-pick"><span>${esc(t('level'))}</span><select data-lv="${esc(f.id)}">${lv.map((x, i) => `<option value="${i}">${esc(L(x.nom))} — ${money(x.prix)}</option>`).join('')}</select></label>` : ''}
+          <div class="pfoot"><span class="price" data-lvprice="${esc(f.id)}">${money(lv.length ? lv[0].prix : f.prix)}${!lv.length && money(f.ancien_prix) ? `<span class="old">${money(f.ancien_prix)}</span>` : ''}</span>
+            <button class="btn btn-soft add" data-add="formations" data-id="${esc(f.id)}" data-format="${lv.length ? '0' : ''}">${esc(t('add'))}</button></div>
+        </div></article>`;
+    }).join('');
   }
+  // course levels (e.g. Reiki 1, 2, 3): the visitor picks one in the card
+  function levels(it) { return it && Array.isArray(it.niveaux) ? it.niveaux.filter(x => x && (L(x.nom) || x.nom)) : []; }
+  function lvPrice(it, i) { const lv = levels(it); return lv.length && i !== '' && i != null && lv[+i] ? lv[+i].prix : it && it.prix; }
+  function lvName(it, i) { const lv = levels(it); return lv.length && i !== '' && i != null && lv[+i] ? L(lv[+i].nom) : ''; }
+  document.addEventListener('change', e => {
+    const s = e.target.closest('select[data-lv]'); if (!s) return;
+    const it = findItem('formations', s.dataset.lv), card = s.closest('.pcard');
+    card.querySelector('[data-add]').dataset.format = s.value;
+    card.querySelector('[data-lvprice]').innerHTML = money(lvPrice(it, s.value));
+  });
 
   function renderPacks() {
     const el = $('#packs-list'); if (!el) return;
@@ -434,7 +449,9 @@
     $$('.js-choix').forEach(sel => {
       const prev = sel.value;
       sel.innerHTML = `<option value="">${esc(t('choose'))}</option>` + catalog().map(([type, g, list]) => list.length ?
-        `<optgroup label="${esc(t(g))}">${list.map(x => `<option value="${type}:${esc(x.id)}">${esc(L(x.titre))} — ${money(x.prix)}</option>`).join('')}</optgroup>` : '').join('');
+        `<optgroup label="${esc(t(g))}">${list.map(x => levels(x).length
+          ? levels(x).map((l, i) => `<option value="${type}:${esc(x.id)}:${i}">${esc(L(x.titre))} · ${esc(L(l.nom))} — ${money(l.prix)}</option>`).join('')
+          : `<option value="${type}:${esc(x.id)}">${esc(L(x.titre))} — ${money(x.prix)}</option>`).join('')}</optgroup>` : '').join('');
       sel.value = prev;
     });
   }
@@ -518,8 +535,8 @@
   function cartLines() {
     return cart.map(c => {
       const it = findItem(c.type, c.id); if (!it) return null;
-      const p = priceOf(c.type === 'abonnements' && c.format === 'y' ? it.prix_annuel : it.prix);
-      const fmt = c.format && c.type === 'lectures' ? L((DATA.formats || []).find(f => f.id === c.format)) : (c.type === 'abonnements' ? t(c.format === 'y' ? 'bill_yearly' : 'bill_monthly') : '');
+      const p = priceOf(c.type === 'abonnements' && c.format === 'y' ? it.prix_annuel : (c.type === 'formations' ? lvPrice(it, c.format) : it.prix));
+      const fmt = c.format && c.type === 'lectures' ? L((DATA.formats || []).find(f => f.id === c.format)) : (c.type === 'abonnements' ? t(c.format === 'y' ? 'bill_yearly' : 'bill_monthly') : (c.type === 'formations' ? lvName(it, c.format) : ''));
       return { c, it, p, fmt };
     }).filter(Boolean);
   }
@@ -573,7 +590,7 @@
     const fav = e.target.closest('[data-fav]');
     if (fav) { e.preventDefault(); const id = fav.dataset.fav; favs.has(id) ? favs.delete(id) : favs.add(id); fav.classList.toggle('on'); store.set('ch_favs', [...favs]); return; }
     const add = e.target.closest('[data-add]');
-    if (add) { addToCart(add.dataset.add, add.dataset.id); return; }
+    if (add) { addToCart(add.dataset.add, add.dataset.id, add.dataset.format || ''); return; }
     const join = e.target.closest('[data-join]');
     if (join) { addToCart('abonnements', join.dataset.join, billing); openCart(); return; }
     const ev = e.target.closest('[data-event]');
@@ -622,12 +639,12 @@
       }
       lines.push(`${t('w_mode')}: ${v('mode')}`, `${t('w_lang')}: ${lang.toUpperCase()}`);
       if (v('message')) lines.push(`${t('w_msg')}: ${v('message')}`);
-      const [ty, id] = v('choix').split(':'), it = findItem(ty, id);
-      saveOrder({ name: v('nom'), phone: v('tel'), total: it ? money(it.prix) : '',
+      const [ty, id, lvi] = v('choix').split(':'), it = findItem(ty, id), pr = it ? money(ty === 'formations' ? lvPrice(it, lvi) : it.prix) : '';
+      saveOrder({ name: v('nom'), phone: v('tel'), total: pr,
         note: lines.slice(4).join('\n'),
-        items: [{ type: ty, id, title: it ? L(it.titre) : '', price: it ? money(it.prix) : '', option: v('mode') }] });
+        items: [{ type: ty, id, format: lvi || '', title: it ? L(it.titre) + (lvi ? ' · ' + lvName(it, lvi) : '') : '', price: pr, option: v('mode') }] });
       sendWA(lines);
-      showPay(it ? money(it.prix) : '');
+      showPay(pr);
     });
   }
   const gf = $('#gift-form');
@@ -640,9 +657,9 @@
     if (v('to')) lines.push(`${t('w_to')}: ${v('to')}`);
     if (v('msg')) lines.push(`${t('w_msg')}: ${v('msg')}`);
     lines.push(`${t('lbl_tz')}: ${TZ}`);
-    const [ty, id] = (v('choix') || ':').split(':'), it = findItem(ty, id);
-    saveOrder({ name: v('from'), note: `🎁 ${t('w_to')}: ${v('to')}\n${v('msg')}`, total: it ? money(it.prix) : '',
-      items: [{ type: ty, id, title: it ? '🎁 ' + L(it.titre) : '🎁', price: it ? money(it.prix) : '', option: 'gift' }] });
+    const [ty, id, lvi] = (v('choix') || ':').split(':'), it = findItem(ty, id), pr = it ? money(ty === 'formations' ? lvPrice(it, lvi) : it.prix) : '';
+    saveOrder({ name: v('from'), note: `🎁 ${t('w_to')}: ${v('to')}\n${v('msg')}`, total: pr,
+      items: [{ type: ty, id, format: lvi || '', title: it ? '🎁 ' + L(it.titre) + (lvi ? ' · ' + lvName(it, lvi) : '') : '🎁', price: pr, option: 'gift' }] });
     sendWA(lines);
     showPay(it ? money(it.prix) : '');
   });
