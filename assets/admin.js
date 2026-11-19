@@ -435,6 +435,11 @@
       fields: [['titre', 'اسم الطريقة', 'i'], ['zone', 'تظهر لـ', 'select', ['tn', 'intl', 'both']], ['icone', 'أيقونة (emoji)'],
         ['details', 'التفاصيل اللي ينسخها الحريف (رقم الهاتف، RIB، IBAN، الاسم الكامل والمدينة…)', 'textarea'],
         ['instructions', 'شرح قصير للحريف', 'i'], ['lien', 'رابط دفع — اختياري (مثلاً رابط Payoneer)'], ['actif', 'ظاهرة في الموقع', 'checkbox', null, true]] },
+    blog: { hint: 'اكتب المقال بلغة وحدة ولا أكثر (العربية / الفرنسية / الإنجليزية). كل لغة تعمّرها تظهر للزوّار اللي يقراو بيها. بعد «انشر على الموقع»، المقال يظهر فوراً، وجوجل يلقاه في أقل من ساعة.',
+      label: x => L(x.titre), sub: x => [x.date, L(x.categorie), x.slug && 'blog/' + x.slug + '.html'].filter(Boolean).join(' · '),
+      fields: [['titre', 'عنوان المقال', 'i'], ['date', 'تاريخ النشر', 'date'], ['categorie', 'الصنف (مثلاً: طاقة، تاروت، تأمل)', 'i'], ['image', 'صورة الغلاف — اختياري', 'img'],
+        ['resume', 'ملخّص قصير (يظهر في جوجل وفي البطاقة) — اختياري', 'i'], ['contenu', 'نص المقال', 'lt'],
+        ['slug', 'رابط المقال بالحروف اللاتينية (مثلاً bienfaits-reiki) — يتعمّر وحدو كان تخليه فارغ'], ['actif', 'منشور في الموقع', 'checkbox', null, true]] },
     categories: { label: x => L(x), sub: x => x.fr, fields: [['ar', 'بالعربية'], ['fr', 'بالفرنسية'], ['en', 'بالإنجليزية']] },
     medit_categories: { label: x => L(x), sub: x => x.fr, fields: [['ar', 'بالعربية'], ['fr', 'بالفرنسية'], ['en', 'بالإنجليزية']] }
   };
@@ -461,6 +466,12 @@
       const inp = (lg, name, dir) => type === 'it' ? `<label><small>${name}</small><textarea name="${k}.${lg}" dir="${dir}" rows="4">${esc(v[lg])}</textarea></label>` : `<label><small>${name}</small><input name="${k}.${lg}" dir="${dir}" value="${esc(v[lg])}"></label>`;
       return `<div class="multi"><span>${label}</span><div class="row3">${inp('ar', 'العربية', 'rtl')}${inp('fr', 'Français', 'ltr')}${inp('en', 'English', 'ltr')}</div></div>`;
     }
+    if (type === 'lt') {
+      const v = val && typeof val === 'object' ? val : { ar: val || '', fr: '', en: '' };
+      const help = 'سطر فارغ = فقرة جديدة · <b>## عنوان</b> = عنوان فرعي · <b>- </b> في أول السطر = قائمة · <b>**كلمة**</b> = خط عريض · <b>[نص](رابط)</b> = رابط · رابط صورة ولا YouTube وحدو في سطر = يظهر صورة / فيديو';
+      return `<div class="multi full"><span>${label}</span><p class="hint">${help}</p>${[['ar', 'العربية', 'rtl'], ['fr', 'Français', 'ltr'], ['en', 'English', 'ltr']].map(([lg, n, dir]) =>
+        `<details ${v[lg] || lg === 'ar' ? 'open' : ''}><summary>${n}${v[lg] ? ' ✓' : ''}</summary><textarea name="${k}.${lg}" dir="${dir}" rows="16" style="width:100%">${esc(v[lg])}</textarea></details>`).join('')}</div>`;
+    }
     if (type === 'p') {
       const v = val && typeof val === 'object' ? val : { tnd: val || '', eur: '', usd: '' };
       const inp = (c, name) => `<label><small>${name}</small><input type="number" step="any" name="${k}.${c}" dir="ltr" value="${esc(v[c])}"></label>`;
@@ -474,7 +485,7 @@
     return `<label>${label}<input name="${k}" type="${type || 'text'}" value="${esc(val ?? '')}"></label>`;
   }
   function readField(f, [k, , type]) {
-    if (type === 'i' || type === 'it') return { ar: f.elements[k + '.ar'].value.trim(), fr: f.elements[k + '.fr'].value.trim(), en: f.elements[k + '.en'].value.trim() };
+    if (type === 'i' || type === 'it' || type === 'lt') return { ar: f.elements[k + '.ar'].value.trim(), fr: f.elements[k + '.fr'].value.trim(), en: f.elements[k + '.en'].value.trim() };
     if (type === 'p') return { tnd: f.elements[k + '.tnd'].value.trim(), eur: f.elements[k + '.eur'].value.trim(), usd: f.elements[k + '.usd'].value.trim() };
     if (type === 'checkbox') return f.elements[k].checked;
     return f.elements[k].value.trim();
@@ -505,6 +516,14 @@
     d.onclose = () => {
       if (d.returnValue !== 'ok') return;
       const out = { ...item }; S.fields.forEach(fd => out[fd[0]] = readField(f, fd));
+      if (key === 'blog') {
+        if (!out.date) out.date = new Date().toISOString().slice(0, 10);
+        const clean = s => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70).replace(/-$/, '');
+        let sl = clean(out.slug) || clean(out.titre.fr) || clean(out.titre.en) || 'article-' + out.date;
+        const taken = s => content.blog.some((p, j) => j !== i && p.slug === s);
+        let n = 2; const base = sl; while (taken(sl)) sl = base + '-' + n++;
+        out.slug = sl; out.id = out.id || sl;
+      }
       if (!out.id && !['temoignages', 'faq'].includes(key)) out.id = slug((out.titre && (out.titre.fr || out.titre.en)) || out.fr || out.en || 'item');
       i >= 0 ? (content[key][i] = out) : content[key].push(out);
       setDirty(true); vContentList(V, key);
