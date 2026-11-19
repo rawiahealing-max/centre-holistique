@@ -735,7 +735,7 @@
     const ld = {
       '@context': 'https://schema.org', '@type': 'HealthAndBeautyBusiness', name: s.nom_centre, url: base,
       telephone: s.telephone, email: s.email, image: base + 'assets/icon-512.png',
-      address: { '@type': 'PostalAddress', addressLocality: 'Sfax', addressRegion: 'Sfax', addressCountry: 'TN' }, geo: { '@type': 'GeoCoordinates', latitude: 34.7435365, longitude: 10.7644474 }, hasMap: 'https://www.google.com/maps?q=34.7435365,10.7644474',
+      address: { '@type': 'PostalAddress', streetAddress: 'Immeuble El Kawthar, 3e étage, Rue de l’Armée', postalCode: '3047', addressLocality: 'Sfax', addressRegion: 'Sfax', addressCountry: 'TN' }, geo: { '@type': 'GeoCoordinates', latitude: 34.7435365, longitude: 10.7644474 }, hasMap: 'https://www.google.com/maps?q=34.7435365,10.7644474',
       areaServed: 'Worldwide', availableLanguage: ['ar', 'fr', 'en'],
       founder: { '@type': 'Person', name: s.praticienne, jobTitle: L(s.titre_praticienne) },
       hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Services', itemListElement: offers },
