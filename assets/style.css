@@ -587,3 +587,6 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
   .msg{max-width:88%}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.more-link{font-size:.85rem;font-weight:600;color:var(--primary);margin:.2rem 0}
+.more-link:hover{text-decoration:underline}
