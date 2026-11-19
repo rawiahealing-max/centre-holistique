@@ -190,6 +190,167 @@ window.applyContentPatches = function (D) {
     const s = D.settings = D.settings || {};
     s.instagram = 'https://www.instagram.com/rawiahealing/';
   });
+  once('blog-starter-2026-11', () => {
+    D.blog = D.blog || [];
+    const add = p => { if (!D.blog.some(x => x.slug === p.slug)) D.blog.push({ actif: true, icone: 'lotus', theme: 'violet', image: '', ...p, id: p.slug }); };
+    add({
+      slug: 'meditation-5-minutes-par-jour', date: '2026-11-19', icone: 'moon', theme: 'indigo',
+      categorie: { ar: 'تأمل', fr: 'Méditation', en: 'Meditation' },
+      titre: { ar: 'تأمل 5 دقائق في اليوم لتهدئة الذهن', fr: 'Méditation : 5 minutes par jour pour apaiser le mental', en: '' },
+      resume: { ar: 'تمرين تأمل بسيط يمكنك ممارسته في أي مكان وفي 5 دقائق فقط، لتستعيد هدوء ذهنك وتعود إلى ذاتك.', fr: 'Un exercice de méditation simple, à faire n’importe où en 5 minutes, pour calmer le mental et revenir à soi.', en: '' },
+      contenu: {
+        ar: `نعيش في ضجيج دائم: إشعارات، أفكار، مسؤوليات… والذهن لا يرتاح أبداً. والخبر الجميل أنك لا تحتاج إلى ساعات لتستعيد هدوءك. **خمس دقائق في اليوم** تكفي لتبدأ في الإحساس بالفرق.
+
+## لماذا التأمل اليومي؟
+التأمل ليس «إفراغ الذهن» من كل فكرة، بل هو ببساطة أن تُعيد انتباهك إلى اللحظة الحاضرة، بلطف، كلما شرد. ومع الوقت، يساعد هذا التمرين البسيط على:
+- تخفيف التوتر والضغط اليومي
+- نوم أهدأ وأعمق
+- صفاء الذهن وهدوء القرارات
+- علاقة ألطف مع مشاعرك
+
+## التمرين: 5 دقائق فقط
+- **الدقيقة 1:** اجلس في وضعية مريحة، ظهرك مستقيم وكتفاك مرتخيان. أغمض عينيك أو اخفض نظرك.
+- **الدقيقة 2:** تنفّس من أنفك: شهيق على 4 عدّات، وزفير على 6 عدّات. الزفير الطويل يقول لجسدك: «أنت في أمان».
+- **الدقيقة 3:** ضع انتباهك على إحساس النَّفَس: الهواء البارد وهو يدخل، والدافئ وهو يخرج.
+- **الدقيقة 4:** إذا جاءت فكرة، قل لنفسك بلطف «فكرة» وعُد إلى النَّفَس، دون أن تلوم نفسك.
+- **الدقيقة 5:** ضع يدك على قلبك، وردّد في داخلك جملة لطيفة: «أنا هنا، وأنا بخير في هذه اللحظة».
+
+> السرّ ليس في طول التأمل، بل في الاستمرارية. خمس دقائق كل يوم أفضل من ساعة مرة في الشهر.
+
+## نصائح للمواظبة
+اختر الوقت نفسه كل يوم (في الصباح قبل الهاتف، أو قبل النوم). اربطه بعادة لديك أصلاً، مثل قهوة الصباح. وإذا نسيت يوماً، فلا بأس: عُد في الغد بكل لطف.
+
+ولتذهب أبعد، تجد [تأملات موجّهة صوتية](meditations.html) على الموقع، ونلتقي كل شهر في **تأمل القمر الجديد مباشرةً** مع أعضاء [الدائرة الشهرية](index.html#cercle) ✨`,
+        fr: `Nous vivons dans un bruit permanent : notifications, pensées, responsabilités… et le mental ne se repose jamais. La bonne nouvelle, c’est qu’il ne faut pas des heures pour retrouver le calme. **Cinq minutes par jour** suffisent pour commencer à sentir la différence.
+
+## Pourquoi méditer chaque jour ?
+Méditer, ce n’est pas « faire le vide ». C’est simplement ramener son attention dans l’instant présent, avec douceur, chaque fois qu’elle s’échappe. Avec le temps, cette pratique toute simple aide à :
+- diminuer le stress du quotidien
+- retrouver un sommeil plus paisible
+- avoir l’esprit plus clair pour décider
+- accueillir ses émotions avec plus de bienveillance
+
+## L’exercice : 5 minutes chrono
+- **Minute 1 :** asseyez-vous confortablement, dos droit, épaules relâchées. Fermez les yeux ou baissez le regard.
+- **Minute 2 :** respirez par le nez : inspirez sur 4 temps, expirez sur 6 temps. L’expiration longue dit à votre corps : « tu es en sécurité ».
+- **Minute 3 :** posez votre attention sur la sensation du souffle : l’air frais qui entre, l’air tiède qui sort.
+- **Minute 4 :** si une pensée arrive, notez simplement « pensée » et revenez au souffle, sans vous juger.
+- **Minute 5 :** posez une main sur le cœur et dites intérieurement une phrase douce : « Je suis là, et je vais bien en cet instant. »
+
+> Le secret n’est pas la durée, mais la régularité. Cinq minutes chaque jour valent mieux qu’une heure une fois par mois.
+
+## Pour tenir dans la durée
+Choisissez le même moment chaque jour (le matin avant le téléphone, ou le soir avant de dormir). Associez-le à une habitude existante, comme le café du matin. Et si vous oubliez un jour, ce n’est pas grave : reprenez le lendemain, avec douceur.
+
+Pour aller plus loin, retrouvez des [méditations guidées audio](meditations.html) sur le site, et chaque mois une **méditation de Nouvelle Lune en direct** avec les membres du [Cercle mensuel](index.html#cercle) ✨`,
+        en: ''
+      }
+    });
+    add({
+      slug: 'bienfaits-du-reiki-premiere-seance', date: '2026-11-17', icone: 'hands', theme: 'violet',
+      categorie: { ar: 'طاقة', fr: 'Énergie', en: 'Energy' },
+      titre: { ar: 'الريكي: ما هو وماذا تتوقع في جلستك الأولى؟', fr: 'Le Reiki : qu’est-ce que c’est et à quoi s’attendre lors d’une première séance ?', en: '' },
+      resume: { ar: 'كل ما تحتاج معرفته عن الريكي قبل جلستك الأولى: أصله، كيف تجري الجلسة، وما الذي قد تشعر به.', fr: 'Tout ce qu’il faut savoir avant votre première séance de Reiki : ses origines, le déroulement et ce que vous pouvez ressentir.', en: '' },
+      contenu: {
+        ar: `الريكي من أشهر الطرق الطاقية في العالم، ومع ذلك ما زال كثيرون يتساءلون: «ما هو بالضبط؟ وماذا يحدث خلال الجلسة؟». في هذا المقال نجيبك ببساطة.
+
+## ما هو الريكي؟
+الريكي (Reiki Usui) طريقة يابانية ظهرت في بداية القرن العشرين. تتكوّن الكلمة من جزأين: **«ري»** أي الكوني، و**«كي»** أي طاقة الحياة. تنقل الممارِسة هذه الطاقة بوضع اليدين بخفّة على الجسم أو فوقه، لمساعدة الجسد والذهن على الاسترخاء العميق واستعادة التوازن.
+
+## كيف تجري الجلسة؟
+- **حديث قصير:** نتحدث عمّا تمرّ به وعن نيّتك من الجلسة.
+- **الاسترخاء:** تستلقي على طاولة مريحة، بملابسك، في جوّ هادئ.
+- **الريكي:** أضع يديّ بخفّة على مناطق مختلفة (الرأس، الصدر، البطن، الساقين) لمدة 45 دقيقة تقريباً.
+- **العودة بلطف:** وقت قصير للاستيعاب، ثم نتشارك ما شعرت به.
+
+## ماذا قد تشعر؟
+لكل شخص تجربته الخاصة. يشعر كثيرون بـ **دفء** تحت اليدين، أو وخز خفيف، أو ثقل مريح في الجسد، أو يدخلون في حالة قريبة من النوم. وقد يبكي البعض أو يضحك، وهذا طبيعي: إنها مشاعر تتحرّر. ويقول كثيرون إنهم ناموا بعد الجلسة نوماً أعمق من المعتاد.
+
+> الريكي لا يعوّض الطبيب ولا العلاج. إنه مرافقة طاقية لطيفة تكمّل أي متابعة طبية.
+
+## الريكي عن بُعد
+الطاقة لا تعرف المسافات. تجري الجلسة عن بُعد بالطريقة نفسها: تجلس مرتاحاً في بيتك، نبدأ في الوقت نفسه، ثم نتحدث هاتفياً أو عبر الرسائل. وهكذا أرافق أشخاصاً في تونس وخارجها.
+
+هل ترغب في التجربة؟ تجد كل التفاصيل في صفحة [جلسة ريكي في صفاقس وعن بُعد](reiki-sfax.html)، أو [احجز جلستك](index.html#reservation) مباشرة 🙌`,
+        fr: `Le Reiki fait partie des méthodes énergétiques les plus connues au monde, et pourtant beaucoup se demandent encore : « Qu’est-ce que c’est exactement ? Que se passe-t-il pendant une séance ? ». Voici des réponses simples.
+
+## Qu’est-ce que le Reiki ?
+Le Reiki Usui est une méthode japonaise née au début du XXᵉ siècle. Le mot réunit **« Rei »**, l’universel, et **« Ki »**, l’énergie de vie. La praticienne transmet cette énergie par une légère imposition des mains, sur ou au-dessus du corps, pour accompagner une détente profonde et le retour à l’équilibre.
+
+## Comment se déroule une séance ?
+- **Un court échange :** nous parlons de ce que vous traversez et de votre intention.
+- **L’installation :** vous vous allongez habillé(e), confortablement, dans un espace calme.
+- **Le soin :** je pose délicatement les mains sur différentes zones (tête, poitrine, ventre, jambes) pendant environ 45 minutes.
+- **Le retour en douceur :** un temps d’intégration, puis nous partageons vos ressentis.
+
+## Que peut-on ressentir ?
+Chaque expérience est unique. Beaucoup ressentent une **chaleur** sous les mains, des picotements, une lourdeur agréable ou un état proche du sommeil. Certaines personnes pleurent ou rient : c’est normal, des émotions se libèrent. Et beaucoup disent avoir mieux dormi les nuits suivantes.
+
+> Le Reiki ne remplace ni un médecin ni un traitement. C’est un accompagnement énergétique doux, complémentaire à tout suivi médical.
+
+## Le Reiki à distance
+L’énergie ne connaît pas la distance. La séance à distance se déroule de la même façon : vous vous installez au calme chez vous, nous commençons à la même heure, puis nous échangeons par appel ou message. C’est ainsi que j’accompagne des personnes en Tunisie comme à l’étranger.
+
+Envie d’essayer ? Toutes les informations sont sur la page [Reiki à Sfax et à distance](reiki-sfax.html), ou [réservez votre séance](index.html#reservation) directement 🙌`,
+        en: ''
+      }
+    });
+    add({
+      slug: 'croyances-limitantes-thetahealing', date: '2026-11-14', icone: 'crystal', theme: 'rose',
+      categorie: { ar: 'تشافي داخلي', fr: 'Guérison intérieure', en: 'Inner healing' },
+      titre: { ar: 'المعتقدات المقيّدة: كيف تكتشفها وكيف تساعدك الثيتا هيلينغ على التحرّر منها', fr: 'Croyances limitantes : les reconnaître et s’en libérer avec le ThetaHealing®', en: '' },
+      resume: { ar: '«لا أستحق»، «يجب أن أتعب لأحصل على ما أريد»… جمل نردّدها دون وعي. تعلّم كيف تكتشفها وكيف تساعد الثيتا هيلينغ على تحويلها.', fr: '« Je ne mérite pas », « il faut souffrir pour réussir »… Apprenez à repérer ces croyances et découvrez comment le ThetaHealing® aide à les transformer.', en: '' },
+      contenu: {
+        ar: `أحياناً نعيد السيناريو نفسه مراراً: النوع نفسه من العلاقات، المشاكل نفسها مع المال، الخوف نفسه قبل كل خطوة جديدة. وفي كثير من الأحيان، ليس السبب «سوء الحظ»، بل **معتقد مقيّد** مختبئ في اللاوعي.
+
+## ما هو المعتقد المقيّد؟
+هو فكرة قبلناها كحقيقة، غالباً في الطفولة، وأصبحت توجّه اختياراتنا دون أن نشعر. مثلاً:
+- «لا أستحق الحب ولا النجاح»
+- «يجب أن أتعب كثيراً لأحصل على أي شيء»
+- «إذا أظهرت مشاعري، سيرفضونني»
+- «المال يُبعدني عن الروحانية»
+
+## كيف تكتشفها؟
+استمع إلى ما تقوله عن نفسك، خاصة تحت الضغط. لاحظ أين تتكرّر المشكلة نفسها في حياتك. واسأل نفسك: **«ما الذي يجب أن يكون صحيحاً في ذهني حتى يحدث لي هذا؟»** غالباً ما يكون الجواب الأول هو المفتاح.
+
+## دور الثيتا هيلينغ
+الثيتا هيلينغ (ThetaHealing®) تقنية تأمل تعتمد على **موجات ثيتا** الدماغية، وهي حالة استرخاء عميق قريبة من النوم. خلال الجلسة:
+- نتحدث عن الموضوع الذي ترغب في تغييره؛
+- عبر الأسئلة المتتالية (digging) نصل إلى المعتقد الجذري، الذي قد يكون مختلفاً تماماً عمّا نتصوّر؛
+- نعمل على تحويله وترسيخ إحساس جديد: «أنا أستحق»، «أنا في أمان»…
+
+> التغيير الحقيقي يحدث عندما نغيّر الجذر، لا عندما نقصّ الأوراق.
+
+الثيتا هيلينغ مرافقة في التطوّر الشخصي والروحي، تكمّل أي متابعة طبية أو نفسية ولا تعوّضها.
+
+الجلسات في المركز بصفاقس أو أونلاين، بالعربية والفرنسية والإنجليزية. اكتشف [جلسة الثيتا هيلينغ](thetahealing-sfax.html) أو اسألني مباشرة على واتساب 💎`,
+        fr: `Il arrive que l’on rejoue sans cesse le même scénario : le même type de relations, les mêmes difficultés avec l’argent, la même peur avant chaque nouveau pas. Souvent, ce n’est pas de la « malchance », mais une **croyance limitante** cachée dans l’inconscient.
+
+## Qu’est-ce qu’une croyance limitante ?
+C’est une idée que nous avons acceptée comme une vérité, souvent dans l’enfance, et qui guide nos choix sans que nous en ayons conscience. Par exemple :
+- « Je ne mérite pas l’amour ni la réussite »
+- « Il faut souffrir pour obtenir quelque chose »
+- « Si je montre mes émotions, je serai rejeté(e) »
+- « L’argent éloigne de la spiritualité »
+
+## Comment les repérer ?
+Écoutez ce que vous vous dites, surtout sous pression. Observez où le même problème se répète dans votre vie. Et posez-vous la question : **« Qu’est-ce qui devrait être vrai dans ma tête pour que cela m’arrive ? »** La première réponse qui vient est souvent la clé.
+
+## Le rôle du ThetaHealing®
+Le ThetaHealing® est une technique de méditation qui utilise les **ondes cérébrales thêta**, un état de relaxation profonde proche de l’endormissement. En séance :
+- nous parlons du thème que vous souhaitez transformer ;
+- par un travail de questionnement (« digging »), nous trouvons la croyance racine, parfois très différente de ce que l’on imaginait ;
+- nous travaillons à la transformer et à ancrer un nouveau ressenti : « je mérite », « je suis en sécurité »…
+
+> Le vrai changement se produit quand on transforme la racine, pas quand on coupe les feuilles.
+
+Le ThetaHealing® est un accompagnement de développement personnel et spirituel, complémentaire à tout suivi médical ou psychologique, qu’il ne remplace pas.
+
+Séances au centre à Sfax ou en ligne, en arabe, en français et en anglais. Découvrez la [séance de ThetaHealing®](thetahealing-sfax.html) ou posez-moi vos questions sur WhatsApp 💎`,
+        en: ''
+      }
+    });
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
