@@ -182,6 +182,14 @@ window.applyContentPatches = function (D) {
       en: 'El Kawthar Building, 3rd floor, Rue de l’Armée, 3047 Sfax, Tunisia'
     };
   });
+  once('social-facebook-2026-11', () => {
+    const s = D.settings = D.settings || {};
+    s.facebook = 'https://www.facebook.com/centreholistique';
+  });
+  once('social-instagram-2026-11', () => {
+    const s = D.settings = D.settings || {};
+    s.instagram = 'https://www.instagram.com/rawiahealing/';
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
