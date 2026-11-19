@@ -436,7 +436,7 @@
         ['details', 'التفاصيل اللي ينسخها الحريف (رقم الهاتف، RIB، IBAN، الاسم الكامل والمدينة…)', 'textarea'],
         ['instructions', 'شرح قصير للحريف', 'i'], ['lien', 'رابط دفع — اختياري (مثلاً رابط Payoneer)'], ['actif', 'ظاهرة في الموقع', 'checkbox', null, true]] },
     blog: { hint: 'اكتب المقال بلغة وحدة ولا أكثر (العربية / الفرنسية / الإنجليزية). كل لغة تعمّرها تظهر للزوّار اللي يقراو بيها. بعد «انشر على الموقع»، المقال يظهر فوراً، وجوجل يلقاه في أقل من ساعة.',
-      label: x => L(x.titre), sub: x => [x.date, L(x.categorie), x.slug && 'blog/' + x.slug + '.html'].filter(Boolean).join(' · '),
+      label: x => L(x.titre), sub: x => [x.date > new Date().toISOString().slice(0, 10) ? '⏳ مبرمج، يتنشر وحدو نهار ' + x.date : x.date, L(x.categorie), x.slug && 'blog/' + x.slug + '.html'].filter(Boolean).join(' · '),
       fields: [['titre', 'عنوان المقال', 'i'], ['date', 'تاريخ النشر', 'date'], ['categorie', 'الصنف (مثلاً: طاقة، تاروت، تأمل)', 'i'], ['image', 'صورة الغلاف — اختياري', 'img'],
         ['resume', 'ملخّص قصير (يظهر في جوجل وفي البطاقة) — اختياري', 'i'], ['contenu', 'نص المقال', 'lt'],
         ['slug', 'رابط المقال بالحروف اللاتينية (مثلاً bienfaits-reiki) — يتعمّر وحدو كان تخليه فارغ'], ['actif', 'منشور في الموقع', 'checkbox', null, true]] },
