@@ -27,7 +27,7 @@
       send_wa: 'إرسال عبر واتساب', send_order: 'إرسال الطلب عبر واتساب', add_cart: 'أضف للسلة', add: 'أضف للسلة', choose_reading: 'اختر نوع القراءة ←',
       faq_title: 'أسئلة شائعة', follow_title: 'تابعني يومياً', follow_text: 'نصائح، طاقة اليوم، قراءات مجانية ولايفات على شبكات التواصل.',
       install: '📲 ثبّت التطبيق', install_ios: 'على iPhone: اضغط زر المشاركة ⬆️ ثم «إضافة إلى الشاشة الرئيسية».',
-      footer_contact: 'تواصل', footer_links: 'روابط', footer_admin: 'لوحة التحكم', rights: 'جميع الحقوق محفوظة.', legal: 'الشروط والخصوصية', directions: '📍 كيفاش نوصل للمركز', nl_eyebrow: 'ابقَ على تواصل 💌', nl_title: 'احصل على جديدنا وكل العروض', nl_text: 'دورات جديدة، أحداث الشهر، عروض خاصة بالمشتركين فقط وطاقة كل شهر… تصلك مباشرة في بريدك.', nl_name: 'اسمك', nl_email: 'بريدك الإلكتروني', nl_btn: 'اشترك ✨', nl_ok: '✓ شكراً! أنت الآن من عائلة Centre Holistique 💜 ستصلك كل الأخبار والعروض.', nl_go: '🌿 اكتشف الجلسات', nl_err: 'الرجاء كتابة بريد إلكتروني صحيح.', nl_privacy: 'لا رسائل مزعجة. يمكنك إلغاء الاشتراك في أي وقت.', accept_terms: 'بإرسال الطلب، أنت توافق على', disclaimer: 'العلاجات الشمولية مكمّلة ولا تعوّض الاستشارة الطبية.',
+      footer_contact: 'تواصل', footer_links: 'روابط', footer_admin: 'لوحة التحكم', rights: 'جميع الحقوق محفوظة.', legal: 'الشروط والخصوصية', more: 'اقرأ أكثر ←', about_page: 'تعرّف على Rawia Ghorbel ←', directions: '📍 كيفاش نوصل للمركز', nl_eyebrow: 'ابقَ على تواصل 💌', nl_title: 'احصل على جديدنا وكل العروض', nl_text: 'دورات جديدة، أحداث الشهر، عروض خاصة بالمشتركين فقط وطاقة كل شهر… تصلك مباشرة في بريدك.', nl_name: 'اسمك', nl_email: 'بريدك الإلكتروني', nl_btn: 'اشترك ✨', nl_ok: '✓ شكراً! أنت الآن من عائلة Centre Holistique 💜 ستصلك كل الأخبار والعروض.', nl_go: '🌿 اكتشف الجلسات', nl_err: 'الرجاء كتابة بريد إلكتروني صحيح.', nl_privacy: 'لا رسائل مزعجة. يمكنك إلغاء الاشتراك في أي وقت.', accept_terms: 'بإرسال الطلب، أنت توافق على', disclaimer: 'العلاجات الشمولية مكمّلة ولا تعوّض الاستشارة الطبية.',
       cart_title: 'سلّتك', cart_empty: 'سلّتك فارغة 🌿', total: 'المجموع', chat: 'كيف يمكنني مساعدتك؟',
       bn_home: 'الرئيسية', bn_tarot: 'تاروت', bn_events: 'أحداث الشهر', bn_cart: 'السلة',
       online: 'أونلاين', new: 'جديد', places: 'أماكن', cards: 'أوراق', selected: '✓ تم الاختيار',
@@ -74,7 +74,7 @@
       send_wa: 'Envoyer via WhatsApp', send_order: 'Envoyer la commande via WhatsApp', add_cart: 'Ajouter au panier', add: 'Ajouter', choose_reading: 'Choisir le tirage →',
       faq_title: 'Questions fréquentes', follow_title: 'Suivez-moi au quotidien', follow_text: "Conseils, énergie du jour, tirages gratuits et lives sur les réseaux sociaux.",
       install: "📲 Installer l'application", install_ios: "Sur iPhone : touchez Partager ⬆️ puis « Sur l'écran d'accueil ».",
-      footer_contact: 'Contact', footer_links: 'Liens', footer_admin: 'Espace admin', rights: 'Tous droits réservés.', legal: 'Mentions légales & CGV', directions: '📍 Itinéraire vers le centre', nl_eyebrow: 'Restons en contact 💌', nl_title: 'Recevez nos nouveautés et toutes nos offres', nl_text: 'Nouvelles formations, événements du mois, offres réservées aux abonnés et énergie du mois… directement dans votre boîte mail.', nl_name: 'Votre prénom', nl_email: 'Votre e-mail', nl_btn: 'Je m’inscris ✨', nl_ok: '✓ Merci ! Vous faites maintenant partie de la famille Centre Holistique 💜 Vous recevrez toutes nos nouveautés et offres.', nl_go: '🌿 Découvrir les séances', nl_err: 'Merci d’indiquer un e-mail valide.', nl_privacy: 'Pas de spam. Désinscription possible à tout moment.', accept_terms: 'En envoyant, vous acceptez les', disclaimer: 'Les soins holistiques sont complémentaires et ne remplacent pas un avis médical.',
+      footer_contact: 'Contact', footer_links: 'Liens', footer_admin: 'Espace admin', rights: 'Tous droits réservés.', legal: 'Mentions légales & CGV', more: 'En savoir plus →', about_page: 'Découvrir Rawia Ghorbel →', directions: '📍 Itinéraire vers le centre', nl_eyebrow: 'Restons en contact 💌', nl_title: 'Recevez nos nouveautés et toutes nos offres', nl_text: 'Nouvelles formations, événements du mois, offres réservées aux abonnés et énergie du mois… directement dans votre boîte mail.', nl_name: 'Votre prénom', nl_email: 'Votre e-mail', nl_btn: 'Je m’inscris ✨', nl_ok: '✓ Merci ! Vous faites maintenant partie de la famille Centre Holistique 💜 Vous recevrez toutes nos nouveautés et offres.', nl_go: '🌿 Découvrir les séances', nl_err: 'Merci d’indiquer un e-mail valide.', nl_privacy: 'Pas de spam. Désinscription possible à tout moment.', accept_terms: 'En envoyant, vous acceptez les', disclaimer: 'Les soins holistiques sont complémentaires et ne remplacent pas un avis médical.',
       cart_title: 'Votre panier', cart_empty: 'Votre panier est vide 🌿', total: 'Total', chat: 'Comment puis-je vous aider ?',
       bn_home: 'Accueil', bn_tarot: 'Tarot', bn_events: 'Événements', bn_cart: 'Panier',
       online: 'En ligne', new: 'Nouveau', places: 'places', cards: 'cartes', selected: '✓ Sélectionné',
@@ -121,7 +121,7 @@
       send_wa: 'Send via WhatsApp', send_order: 'Send order via WhatsApp', add_cart: 'Add to cart', add: 'Add to cart', choose_reading: 'Choose reading →',
       faq_title: 'FAQ', follow_title: 'Follow me daily', follow_text: 'Tips, daily energy, free readings and lives on social media.',
       install: '📲 Install the app', install_ios: 'On iPhone: tap Share ⬆️ then "Add to Home Screen".',
-      footer_contact: 'Contact', footer_links: 'Links', footer_admin: 'Admin', rights: 'All rights reserved.', legal: 'Legal & terms', directions: '📍 Directions to the centre', nl_eyebrow: 'Stay in touch 💌', nl_title: 'Get our news and all our offers', nl_text: 'New trainings, monthly events, subscriber-only offers and the energy of the month… straight to your inbox.', nl_name: 'Your first name', nl_email: 'Your email', nl_btn: 'Subscribe ✨', nl_ok: '✓ Thank you! You are now part of the Centre Holistique family 💜 You will receive all our news and offers.', nl_go: '🌿 Explore sessions', nl_err: 'Please enter a valid email.', nl_privacy: 'No spam. Unsubscribe anytime.', accept_terms: 'By sending, you accept the', disclaimer: 'Holistic sessions are complementary and do not replace medical advice.',
+      footer_contact: 'Contact', footer_links: 'Links', footer_admin: 'Admin', rights: 'All rights reserved.', legal: 'Legal & terms', more: 'Learn more →', about_page: 'Meet Rawia Ghorbel →', directions: '📍 Directions to the centre', nl_eyebrow: 'Stay in touch 💌', nl_title: 'Get our news and all our offers', nl_text: 'New trainings, monthly events, subscriber-only offers and the energy of the month… straight to your inbox.', nl_name: 'Your first name', nl_email: 'Your email', nl_btn: 'Subscribe ✨', nl_ok: '✓ Thank you! You are now part of the Centre Holistique family 💜 You will receive all our news and offers.', nl_go: '🌿 Explore sessions', nl_err: 'Please enter a valid email.', nl_privacy: 'No spam. Unsubscribe anytime.', accept_terms: 'By sending, you accept the', disclaimer: 'Holistic sessions are complementary and do not replace medical advice.',
       cart_title: 'Your cart', cart_empty: 'Your cart is empty 🌿', total: 'Total', chat: 'How can I help you?',
       bn_home: 'Home', bn_tarot: 'Tarot', bn_events: 'Events', bn_cart: 'Cart',
       online: 'Online', new: 'New', places: 'spots', cards: 'cards', selected: '✓ Selected',
@@ -301,10 +301,14 @@
     renderSoins(); renderFormations(); renderPacks(); renderAbos(); renderEvents(); renderTesti(); renderFaq();
     renderChoix(); renderModes(); renderTarot(); renderCart(); injectJsonLd();
     (window.CH_HOOKS || []).forEach(f => { try { f(); } catch (e) { console.error(e); } });
+    // deep link from service pages: index.html?book=soins:reiki#reservation
+    const bk = new URLSearchParams(location.search).get('book'), sel = $('#booking-form select[name=choix]');
+    if (bk && sel && !renderAll.booked) { renderAll.booked = true; sel.value = bk; setTimeout(() => $('#reservation').scrollIntoView({ behavior: 'smooth' }), 300); }
   }
   // shared helpers for the other page scripts (account, meditations)
   window.CH = { t, L, esc, svg, money, fmtMoney, fmtDate, getLang: () => lang, getData: () => DATA, tz: TZ, LOCALE, toast: m => toast(m), addToCart: (a, b, c) => addToCart(a, b, c) };
 
+  const SEO_PAGES = { 'reiki': 'reiki-sfax.html', 'thetahealing': 'thetahealing-sfax.html', 'access-bars': 'access-bars-sfax.html', 'soin-energetique': 'soin-energetique-sfax.html', 'annales-akashiques': 'annales-akashiques.html', 'constellation-familiale': 'constellations-familiales-sfax.html', 'tarot': 'tarot-en-ligne.html' };
   function renderSoins() {
     const row = $('#soins-row'); if (!row) return;
     const sel = $('#cat-filter'), prev = sel.value;
@@ -318,6 +322,7 @@
           <div class="ptitle">${esc(L(x.titre))}</div>
           ${x.note ? `<div class="rating"><b>${esc(x.note)}</b><span class="stars">★★★★★</span>${x.avis ? `<span>(${esc(x.avis)})</span>` : ''}</div>` : ''}
           <p class="pdesc">${esc(L(x.description))}</p>
+          ${SEO_PAGES[x.id] ? `<a class="more-link" href="${SEO_PAGES[x.id]}">${esc(t('more'))}</a>` : ''}
           <div class="pmeta">${L(x.duree) ? `<span>⏱ ${esc(L(x.duree))}</span>` : ''}</div>
           <div class="pfoot"><span class="price">${money(x.prix)}</span>
             ${x.lien ? `<a class="btn btn-soft add" href="${esc(x.lien)}">${esc(t('choose_reading'))}</a>` : `<button class="btn btn-soft add" data-add="soins" data-id="${esc(x.id)}">${esc(t('add'))}</button>`}</div>
