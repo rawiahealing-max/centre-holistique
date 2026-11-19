@@ -566,6 +566,17 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
       }
     });
   });
+  // courses + Prana session (data in assets/courses-data.js; only runs on pages that loaded it)
+  const CC = (typeof window !== 'undefined' && window.CH_COURSES) || null;
+  if (CC) once('courses-2026-11', () => {
+    D.formations = D.formations || [];
+    CC.COURSES.forEach(c => { if (!D.formations.some(f => f.id === c.id)) D.formations.push(JSON.parse(JSON.stringify(c))); });
+    D.soins = D.soins || [];
+    if (!D.soins.some(s => s.id === CC.PRANA_SESSION.id)) {
+      const i = D.soins.findIndex(s => s.id === 'soin-energetique');
+      D.soins.splice(i >= 0 ? i + 1 : D.soins.length, 0, JSON.parse(JSON.stringify(CC.PRANA_SESSION)));
+    }
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
