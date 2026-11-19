@@ -12,7 +12,7 @@ const esc = B.esc;
 // Load Supabase config + content patches from the site's own sb.js
 const sbSrc = fs.readFileSync(path.join(ROOT, 'assets/sb.js'), 'utf8');
 const sandbox = { window: {}, setTimeout, Promise, console };
-vm.createContext(sandbox); vm.runInContext(sbSrc, sandbox);
+vm.createContext(sandbox); vm.runInContext(fs.readFileSync(path.join(ROOT, 'assets/courses-data.js'), 'utf8'), sandbox); vm.runInContext(sbSrc, sandbox);
 const CFG = sandbox.window.SB_CONFIG, applyPatches = sandbox.window.applyContentPatches;
 
 async function loadContent() {
