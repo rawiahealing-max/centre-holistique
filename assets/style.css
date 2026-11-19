@@ -614,3 +614,4 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .post-langs button{font:inherit;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;border-radius:999px;padding:.3rem .9rem;cursor:pointer}
 .post-langs button.on{background:#fff;color:var(--primary-d)}
 .post .post-title{font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.25;margin:.3rem 0 1.2rem;color:var(--primary-d)}
+.lv-pick{display:grid;gap:.3rem;margin:.6rem 0 .2rem;font-size:.85rem;color:var(--muted)}.lv-pick select{font:inherit;font-size:.92rem;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.45rem .6rem;background:var(--primary-ll)}
