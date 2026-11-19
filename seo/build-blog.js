@@ -72,6 +72,7 @@ function page(p, all) {
   <base href="../">
   <title>${esc(title)} | Rawia Ghorbel – Centre Holistique</title>
   <meta name="description" content="${esc(desc)}">
+  <meta name="robots" content="max-image-preview:large">
   <meta name="theme-color" content="#3b2550">
   <link rel="canonical" href="${url}">
   <meta property="og:type" content="article">
