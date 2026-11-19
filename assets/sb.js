@@ -166,6 +166,14 @@ window.applyContentPatches = function (D) {
       });
     }
   });
+  once('sfax-2026-11', () => {
+    const s = D.settings = D.settings || {};
+    s.adresse = { ar: 'صفاقس، تونس', fr: 'Sfax, Tunisie', en: 'Sfax, Tunisia' };
+    s.maps = 'https://www.google.com/maps?q=34.7435365,10.7644474';
+    const fix = v => typeof v === 'string' ? v.replace(/بتونس/g, 'بصفاقس').replace(/à Tunis\b/g, 'à Sfax').replace(/in Tunis\b/g, 'in Sfax').replace(/heure de Tunis/g, 'heure tunisienne').replace(/Tunis time/g, 'Tunisia time') : v;
+    ['intro', 'horaires', 'bio', 'bio2'].forEach(k => { if (s[k] && typeof s[k] === 'object') ['ar', 'fr', 'en'].forEach(l => { s[k][l] = fix(s[k][l]); }); });
+    (D.faq || []).forEach(f => ['ar', 'fr', 'en'].forEach(l => { if (f.r) f.r[l] = fix(f.r[l]); }));
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
