@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['seo/build-blog.js', 'assets/blog-render.js', 'assets/sb.js']
+    paths: ['seo/build-blog.js', 'seo/build-courses.js', 'assets/blog-render.js', 'assets/sb.js', 'assets/courses-data.js']
 permissions:
   contents: write
 concurrency:
@@ -22,11 +22,12 @@ jobs:
         with:
           node-version: 22
       - run: node seo/build-blog.js
+      - run: node seo/build-courses.js
       - name: Commit changes
         run: |
-          git add -A blog sitemap.xml
+          git add -A blog formations sitemap.xml
           if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
           git config user.name "blog-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Blog: update article pages"
+          git commit -m "Update blog and course pages"
           git push
