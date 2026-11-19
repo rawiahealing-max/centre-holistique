@@ -148,6 +148,7 @@ function layout({ file, title, desc, body, ld }) {
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}">
+  <meta name="robots" content="max-image-preview:large">
   <meta name="theme-color" content="#3b2550">
   <link rel="canonical" href="${BASE}${file}">
   <meta property="og:type" content="website">
