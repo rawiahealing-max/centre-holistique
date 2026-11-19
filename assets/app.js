@@ -4,7 +4,7 @@
   const T = {
     ar: {
       topbar: '🌐 جلسات أونلاين في كل العالم · ردّ خلال 24 ساعة',
-      nav_seances: 'الجلسات', nav_tarot: 'تاروت وأوراكل', nav_formations: 'الدورات', nav_cercle: 'الاشتراك الشهري', nav_events: 'أحداث الشهر', nav_about: 'من أنا', nav_faq: 'أسئلة', nav_medit: 'التأملات', account: 'حسابي', bn_medit: 'تأملات', bn_account: 'حسابي',
+      nav_seances: 'الجلسات', nav_tarot: 'تاروت وأوراكل', nav_formations: 'الدورات', nav_cercle: 'الاشتراك الشهري', nav_events: 'أحداث الشهر', nav_about: 'من أنا', nav_faq: 'أسئلة', nav_medit: 'التأملات', nav_blog: 'المدونة', account: 'حسابي', bn_medit: 'تأملات', bn_account: 'حسابي',
       hero_chip: 'طاقة · وعي · شفاء', cta_discovery: '📅 احجز استشارة', cta_discover: 'اكتشف الجلسات',
       trust_online: '🌐 أونلاين في كل العالم', trust_private: '🔒 سرية تامة', trust_certified: '🎓 معالجة ومكوّنة معتمدة', trust_langs: '💬 عربي · Français · English',
       stat_years: 'سنوات خبرة', stat_clients: 'شخص رافقتهم', stat_trained: 'متكوّن', stat_countries: 'بلد',
@@ -51,7 +51,7 @@
     },
     fr: {
       topbar: '🌐 Séances en ligne dans le monde entier · réponse sous 24 h',
-      nav_seances: 'Séances', nav_tarot: 'Tarot & Oracle', nav_formations: 'Formations', nav_cercle: 'Abonnement', nav_events: 'Événements', nav_about: 'À propos', nav_faq: 'FAQ', nav_medit: 'Méditations', account: 'Mon espace', bn_medit: 'Méditations', bn_account: 'Mon espace',
+      nav_seances: 'Séances', nav_tarot: 'Tarot & Oracle', nav_formations: 'Formations', nav_cercle: 'Abonnement', nav_events: 'Événements', nav_about: 'À propos', nav_faq: 'FAQ', nav_medit: 'Méditations', nav_blog: 'Blog', account: 'Mon espace', bn_medit: 'Méditations', bn_account: 'Mon espace',
       hero_chip: 'Énergie · Conscience · Guérison', cta_discovery: '📅 Réserver une consultation', cta_discover: 'Découvrir les séances',
       trust_online: '🌐 En ligne partout dans le monde', trust_private: '🔒 Confidentialité totale', trust_certified: '🎓 Thérapeute & formatrice certifiée', trust_langs: '💬 عربي · Français · English',
       stat_years: "ans d'expérience", stat_clients: 'personnes accompagnées', stat_trained: 'élèves formés', stat_countries: 'pays',
@@ -98,7 +98,7 @@
     },
     en: {
       topbar: '🌐 Online sessions worldwide · reply within 24 h',
-      nav_seances: 'Sessions', nav_tarot: 'Tarot & Oracle', nav_formations: 'Trainings', nav_cercle: 'Membership', nav_events: 'Events', nav_about: 'About', nav_faq: 'FAQ', nav_medit: 'Meditations', account: 'My space', bn_medit: 'Meditate', bn_account: 'Account',
+      nav_seances: 'Sessions', nav_tarot: 'Tarot & Oracle', nav_formations: 'Trainings', nav_cercle: 'Membership', nav_events: 'Events', nav_about: 'About', nav_faq: 'FAQ', nav_medit: 'Meditations', nav_blog: 'Blog', account: 'My space', bn_medit: 'Meditate', bn_account: 'Account',
       hero_chip: 'Energy · Awareness · Healing', cta_discovery: '📅 Book a consultation', cta_discover: 'Explore sessions',
       trust_online: '🌐 Online worldwide', trust_private: '🔒 Fully confidential', trust_certified: '🎓 Certified therapist & trainer', trust_langs: '💬 عربي · Français · English',
       stat_years: 'years of experience', stat_clients: 'people supported', stat_trained: 'students trained', stat_countries: 'countries',
