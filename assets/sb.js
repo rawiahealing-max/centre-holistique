@@ -174,6 +174,14 @@ window.applyContentPatches = function (D) {
     ['intro', 'horaires', 'bio', 'bio2'].forEach(k => { if (s[k] && typeof s[k] === 'object') ['ar', 'fr', 'en'].forEach(l => { s[k][l] = fix(s[k][l]); }); });
     (D.faq || []).forEach(f => ['ar', 'fr', 'en'].forEach(l => { if (f.r) f.r[l] = fix(f.r[l]); }));
   });
+  once('address-full-2026-11', () => {
+    const s = D.settings = D.settings || {};
+    s.adresse = {
+      ar: 'عمارة الكوثر، الطابق الثالث، نهج الجيش، صفاقس 3047، تونس',
+      fr: 'Immeuble El Kawthar, 3ᵉ étage, Rue de l’Armée, 3047 Sfax, Tunisie',
+      en: 'El Kawthar Building, 3rd floor, Rue de l’Armée, 3047 Sfax, Tunisia'
+    };
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
