@@ -1,0 +1,32 @@
+# Builds a Google-friendly page for every blog article written in the dashboard.
+# Runs every hour, and can be started by hand from the "Actions" tab.
+name: Build blog pages
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['seo/build-blog.js', 'assets/blog-render.js', 'assets/sb.js']
+permissions:
+  contents: write
+concurrency:
+  group: blog-build
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node seo/build-blog.js
+      - name: Commit changes
+        run: |
+          git add -A blog sitemap.xml
+          if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
+          git config user.name "blog-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Blog: update article pages"
+          git push
