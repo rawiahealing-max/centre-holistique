@@ -243,11 +243,11 @@ const about = `
   <ul class="seo-list"><li>Praticienne Reiki Usui</li><li>Praticienne ThetaHealing®</li><li>Praticienne Access Bars® – Access Consciousness®</li><li>Lectrice des Annales Akashiques</li><li>Facilitatrice en Constellations familiales</li><li>Formation en accompagnement psychologique</li></ul>
   <h2>Ma vision</h2>
   <p>Vous n’êtes pas venu(e) au monde pour vivre à moitié, mais pour rayonner. Mon rôle est de vous offrir un espace sûr, chaleureux et sans jugement, où respirer, guérir et vous souvenir de qui vous êtes vraiment.</p>
-  <div class="seo-ar" lang="ar" dir="rtl"><h2>راوية الغربال – مرشدة ومعلّمة روحية</h2><p>مؤسسة «Centre Holistique» في صفاقس. أرافقك لتكتشف النور الذي يسكن داخلك، وتتحرّر مما يُثقل قلبك، وتتشافى بلطف: ريكي، ثيتا هيلينغ، أكسس بارز، علاج طاقي، السجلات الأكاشية، تاروت وأوراكل، الأبراج العائلية واستشارات. في المركز بصفاقس أو أونلاين من أي مكان في العالم.</p></div>
+  <div class="seo-ar" lang="ar" dir="rtl"><h2>راوية غربال – مرشدة ومعلّمة روحية</h2><p>مؤسسة «Centre Holistique» في صفاقس. أرافقك لتكتشف النور الذي يسكن داخلك، وتتحرّر مما يُثقل قلبك، وتتشافى بلطف: ريكي، ثيتا هيلينغ، أكسس بارز، علاج طاقي، السجلات الأكاشية، تاروت وأوراكل، الأبراج العائلية واستشارات. في المركز بصفاقس أو أونلاين من أي مكان في العالم.</p></div>
   <div class="seo-cta"><h2>Me contacter</h2><p>${esc(ADDRESS)} · <a href="tel:+21626660344">+216 26 660 344</a> · <a href="mailto:contact@centreholistique.net">contact@centreholistique.net</a></p><div class="form-actions"><a class="btn btn-primary" href="index.html#reservation">Réserver une séance</a><a class="btn btn-soft" href="${MAPS}" target="_blank" rel="noopener">📍 Itinéraire</a></div></div>
 </div></section>`;
 const aboutLd = { '@context': 'https://schema.org', '@graph': [business,
-  { '@type': 'Person', '@id': BASE + 'rawia-ghorbel.html#person', name: 'Rawia Ghorbel', alternateName: ['Raouia Gharbal', 'راوية الغربال'], jobTitle: 'Guide et enseignante spirituelle, thérapeute holistique',
+  { '@type': 'Person', '@id': BASE + 'rawia-ghorbel.html#person', name: 'Rawia Ghorbel', alternateName: ['Raouia Gharbal', 'راوية غربال'], jobTitle: 'Guide et enseignante spirituelle, thérapeute holistique',
     worksFor: { '@id': BASE + '#business' }, url: BASE + 'rawia-ghorbel.html', image: 'https://mhhzppszrqzjktqlgqag.supabase.co/storage/v1/object/public/public/images/mwmkvanl-whatsapp-image-2026-11-18-at-21-29-12.jpeg', address: business.address,
     knowsAbout: ['Reiki', 'ThetaHealing', 'Access Bars', 'Tarot', 'Annales Akashiques', 'Constellations familiales', 'Soins énergétiques', 'Méditation'],
     sameAs: (process.env.SAMEAS || '').split(',').filter(Boolean) }] };
