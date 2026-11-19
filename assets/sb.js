@@ -351,6 +351,221 @@ Séances au centre à Sfax ou en ligne, en arabe, en français et en anglais. D�
       }
     });
   });
+  // second batch: one article per week — each appears automatically on its date
+  once('blog-batch2-2026-11', () => {
+    D.blog = D.blog || [];
+    const add = p => { if (!D.blog.some(x => x.slug === p.slug)) D.blog.push({ actif: true, image: '', ...p, id: p.slug }); };
+    add({
+      slug: 'access-bars-seance-bienfaits', date: '2026-11-26', icone: 'lotus', theme: 'gold',
+      categorie: { ar: 'طاقة', fr: 'Énergie', en: 'Energy' },
+      titre: { ar: 'أكسس بارز: 32 نقطة لتهدئة الذهن واستعادة الخفّة', fr: 'Access Bars® : 32 points pour apaiser le mental et retrouver la légèreté', en: '' },
+      resume: { ar: 'ما هي جلسة أكسس بارز، كيف تجري، ولمن تناسب؟ دليل بسيط قبل جلستك الأولى.', fr: 'Qu’est-ce qu’une séance d’Access Bars®, comment se déroule-t-elle et pour qui ? Un guide simple avant votre première séance.', en: '' },
+      contenu: {
+        ar: `هل تشعر أحياناً أن رأسك مزدحم بالأفكار ولا يتوقف أبداً؟ أن عقلك يعيد السيناريوهات نفسها حتى في الليل؟ جلسة **أكسس بارز (Access Bars®)** قد تكون المساحة التي تحتاجها لتتنفّس.
+
+## ما هي «البارز»؟
+البارز هي **32 نقطة** على الرأس، ترتبط كل واحدة منها بمجال من مجالات الحياة: المال، الجسد، التواصل، الفرح، الحزن، التحكّم، الإبداع… مع السنين، تتراكم في هذه النقاط أفكار ومشاعر ومعتقدات. ولمس هذه النقاط بخفّة يساعد على تحرير هذا التراكم.
+
+## كيف تجري الجلسة؟
+- تستلقي بملابسك على طاولة مريحة.
+- أضع أصابعي بلطف على النقاط، دون ضغط ولا تدليك.
+- تدوم الجلسة بين 60 و90 دقيقة.
+- كثيرون يدخلون في استرخاء عميق، وبعضهم ينام تماماً.
+
+> بعد الجلسة، يصف كثيرون إحساساً بـ«المساحة» في الرأس، كأن أحداً فتح النوافذ في غرفة مغلقة.
+
+## لمن تناسب؟
+- لمن لديه **أفكار كثيرة** ويصعب عليه الهدوء
+- لمن يعاني من صعوبة في النوم أو ضغط مستمر
+- لمن يريد مزيداً من السهولة والفرح في حياته
+- لمن يمرّ بمرحلة تغيير ويحتاج إلى وضوح
+
+أكسس بارز ممارسة للرفاه والاسترخاء، وهي مكمّلة لأي متابعة طبية ولا تعوّضها.
+
+## نصائح لجلستك الأولى
+البس ملابس مريحة، تعال قبل الموعد ببضع دقائق، واشرب ماءً بعد الجلسة. لا تحتاج إلى أي تحضير آخر: فقط أن تسمح لنفسك بالراحة.
+
+الجلسات في المركز بصفاقس. كل التفاصيل في صفحة [أكسس بارز في صفاقس](access-bars-sfax.html) ✨`,
+        fr: `Avez-vous parfois l’impression que votre tête est pleine de pensées qui ne s’arrêtent jamais ? Que votre mental rejoue les mêmes scénarios, même la nuit ? Une séance d’**Access Bars®** peut être l’espace dont vous avez besoin pour respirer.
+
+## Que sont les « Bars » ?
+Les Bars sont **32 points** situés sur la tête, chacun associé à un domaine de la vie : l’argent, le corps, la communication, la joie, la tristesse, le contrôle, la créativité… Au fil des années, pensées, émotions et croyances s’y accumulent. Un toucher léger sur ces points aide à libérer cette charge.
+
+## Comment se déroule une séance ?
+- Vous êtes allongé(e), habillé(e), confortablement.
+- Je pose délicatement les doigts sur les points, sans pression ni massage.
+- La séance dure entre 60 et 90 minutes.
+- Beaucoup entrent dans une détente profonde, certains s’endorment complètement.
+
+> Après la séance, beaucoup décrivent une sensation « d’espace » dans la tête, comme si l’on avait ouvert les fenêtres d’une pièce fermée.
+
+## Pour qui ?
+- Pour celles et ceux qui ont **trop de pensées** et du mal à se poser
+- En cas de difficultés de sommeil ou de pression constante
+- Pour plus de facilité et de joie au quotidien
+- Pendant une période de changement, pour retrouver de la clarté
+
+L’Access Bars® est une pratique de bien-être et de détente, complémentaire à tout suivi médical, qu’elle ne remplace pas.
+
+## Conseils pour votre première séance
+Portez des vêtements confortables, arrivez quelques minutes en avance et buvez de l’eau après la séance. Aucune autre préparation n’est nécessaire : il suffit de vous autoriser à vous reposer.
+
+Séances au centre à Sfax. Toutes les informations sur la page [Access Bars® à Sfax](access-bars-sfax.html) ✨`,
+        en: ''
+      }
+    });
+    add({
+      slug: 'annales-akashiques-preparer-ses-questions', date: '2026-12-03', icone: 'book', theme: 'indigo',
+      categorie: { ar: 'إرشاد روحي', fr: 'Guidance', en: 'Guidance' },
+      titre: { ar: 'السجلات الأكاشية: كيف تحضّر أسئلتك لقراءة عميقة', fr: 'Annales Akashiques : comment préparer ses questions pour une lecture profonde', en: '' },
+      resume: { ar: 'جودة القراءة الأكاشية تبدأ بجودة السؤال. إليك كيف تصوغ أسئلة مفتوحة تفتح لك أبواب الفهم.', fr: 'La qualité d’une lecture akashique commence par la qualité des questions. Voici comment formuler des questions ouvertes qui éclairent vraiment.', en: '' },
+      contenu: {
+        ar: `السجلات الأكاشية تُوصف غالباً بأنها **ذاكرة الروح**: مساحة يُقال إن فيها قصة كل روح، بدروسها وعلاقاتها ومواهبها. والقراءة ليست عرافة، بل حوار لطيف يساعدك على فهم نفسك واختياراتك. وسرّ القراءة الجيدة؟ **السؤال الجيد.**
+
+## الأسئلة المفتوحة أولاً
+الأسئلة التي جوابها «نعم» أو «لا» تُغلق الباب. أما الأسئلة المفتوحة فتفتح مساحة للفهم. قارن:
+- بدل «هل سأتزوج هذا العام؟» ← **«ما الذي أحتاج أن أفهمه عن علاقاتي العاطفية؟»**
+- بدل «هل أترك عملي؟» ← **«ما الذي يساعدني على اتخاذ قرار واضح بشأن عملي؟»**
+- بدل «لماذا يحدث لي هذا دائماً؟» ← **«ما الدرس الذي يحمله هذا النمط المتكرر في حياتي؟»**
+
+## أسئلة مقترحة
+- ما هي مواهبي الروحية وكيف أعيشها أكثر؟
+- ما الذي يمنعني من التقدّم نحو …؟
+- كيف أتعامل مع علاقتي بـ … بمزيد من السلام؟
+- ما الخطوة التالية في طريقي الآن؟
+
+> السجلات تتحدث عنك وعن علاقتك بالآخرين، لا عن أسرار الآخرين.
+
+## كيف تستعد للقراءة؟
+اكتب **3 إلى 5 أسئلة** قبل الموعد، ورتّبها حسب الأهمية. اختر مكاناً هادئاً إن كانت القراءة أونلاين. وجهّز دفتراً لتدوين ما يلمسك، لأن بعض الرسائل تتّضح بعد أيام.
+
+القراءة تدوم حوالي 75 دقيقة، أونلاين أو في المركز بصفاقس. اكتشف [قراءة السجلات الأكاشية](annales-akashiques.html) 📖`,
+        fr: `Les Annales Akashiques sont souvent décrites comme la **mémoire de l’âme** : un espace où serait inscrite l’histoire de chaque âme, avec ses leçons, ses liens et ses talents. Une lecture n’est pas de la voyance, mais un dialogue bienveillant qui aide à mieux se comprendre. Le secret d’une belle lecture ? **De bonnes questions.**
+
+## Privilégier les questions ouvertes
+Les questions fermées (oui/non) referment la porte ; les questions ouvertes créent un espace de compréhension. Comparez :
+- Au lieu de « Vais-je me marier cette année ? » → **« Que dois-je comprendre de ma vie amoureuse ? »**
+- Au lieu de « Dois-je quitter mon travail ? » → **« Qu’est-ce qui m’aide à prendre une décision claire pour mon travail ? »**
+- Au lieu de « Pourquoi cela m’arrive-t-il toujours ? » → **« Quelle leçon porte ce schéma qui se répète dans ma vie ? »**
+
+## Exemples de questions
+- Quels sont mes talents d’âme et comment les vivre davantage ?
+- Qu’est-ce qui me freine pour avancer vers… ?
+- Comment vivre ma relation avec… avec plus de paix ?
+- Quelle est la prochaine étape sur mon chemin ?
+
+> Les Annales parlent de vous et de votre relation aux autres, pas des secrets des autres.
+
+## Comment se préparer ?
+Notez **3 à 5 questions** avant le rendez-vous et classez-les par importance. Installez-vous dans un endroit calme si la lecture a lieu en ligne. Gardez un carnet à portée de main : certains messages prennent tout leur sens quelques jours plus tard.
+
+La lecture dure environ 75 minutes, en ligne ou au centre à Sfax. Découvrez la [lecture des Annales Akashiques](annales-akashiques.html) 📖`,
+        en: ''
+      }
+    });
+    add({
+      slug: 'tarot-comment-poser-la-bonne-question', date: '2026-12-10', icone: 'cards', theme: 'rose',
+      categorie: { ar: 'تاروت', fr: 'Tarot', en: 'Tarot' },
+      titre: { ar: 'التاروت: كيف تطرح السؤال الصحيح لقراءة واضحة', fr: 'Tarot : comment poser la bonne question pour un tirage clair', en: '' },
+      resume: { ar: 'التاروت مرآة وليس قدراً. تعلّم كيف تصوغ سؤالك لتحصل على قراءة واضحة ومفيدة.', fr: 'Le Tarot est un miroir, pas une fatalité. Apprenez à formuler votre question pour obtenir une lecture claire et utile.', en: '' },
+      contenu: {
+        ar: `كثيرون يأتون إلى قراءة التاروت بسؤال مثل «ماذا سيحدث لي؟». لكن التاروت ليس آلة للتنبؤ بقدر ما هو **مرآة**: يكشف الطاقات الموجودة الآن، والموارد التي تملكها، والاتجاهات الممكنة. ولذلك، طريقة صياغة السؤال تغيّر كل شيء.
+
+## ثلاث قواعد بسيطة
+- **ركّز على نفسك:** «كيف أحسّن علاقتي مع …؟» أفضل من «ماذا يفكّر فيّ فلان؟».
+- **سؤال واحد في كل مرة:** السؤال المزدوج يعطي إجابة مشوّشة.
+- **اجعله مفتوحاً وعملياً:** «ما الذي يساعدني على …؟»، «ما الذي أحتاج إلى معرفته عن …؟».
+
+## أمثلة قبل وبعد
+- «هل سيعود؟» ← **«ما الذي أحتاج أن أفهمه عن هذه العلاقة لأمضي بسلام؟»**
+- «هل سأنجح؟» ← **«ما الذي يدعم نجاحي في هذا المشروع، وما الذي يعيقه؟»**
+- «ماذا ينتظرني هذه السنة؟» ← قراءة **السنة القادمة (12 شهراً)** مناسبة تماماً لهذا!
+
+> الأوراق لا تقرّر عنك. هي تضيء الطريق، وأنت من يختار خطواتك.
+
+## اختر القراءة المناسبة لسؤالك
+- **سؤال واحد:** لقرار سريع أو توضيح موقف.
+- **الحب والعلاقات:** لفهم ديناميكية العلاقة.
+- **العمل والمال:** للمشاريع والتوجّه المهني.
+- **الصليب السلتي:** قراءة شاملة لموقف معقّد.
+- **أوراكل الملائكة:** لرسالة لطيفة ومطمئنة.
+
+يمكنك اختيار قراءتك مباشرة من [صفحة التاروت](tarot.html)، أونلاين (فيديو، قراءة مكتوبة PDF أو رسالة صوتية) أو في المركز بصفاقس 🔮`,
+        fr: `Beaucoup arrivent à un tirage avec une question comme « Que va-t-il m’arriver ? ». Mais le Tarot n’est pas une machine à prédire : c’est avant tout un **miroir**. Il révèle les énergies présentes, vos ressources et les tendances possibles. La façon de formuler la question change donc tout.
+
+## Trois règles simples
+- **Centrez la question sur vous :** « Comment améliorer ma relation avec… ? » plutôt que « Que pense untel de moi ? ».
+- **Une seule question à la fois :** une question double donne une réponse confuse.
+- **Ouverte et concrète :** « Qu’est-ce qui m’aide à… ? », « Que dois-je savoir sur… ? ».
+
+## Avant / après
+- « Va-t-il revenir ? » → **« Que dois-je comprendre de cette relation pour avancer en paix ? »**
+- « Vais-je réussir ? » → **« Qu’est-ce qui soutient la réussite de ce projet, et qu’est-ce qui la freine ? »**
+- « Que me réserve cette année ? » → le tirage **Année à venir (12 mois)** est fait pour ça !
+
+> Les cartes ne décident pas à votre place. Elles éclairent le chemin ; c’est vous qui choisissez vos pas.
+
+## Choisir le bon tirage
+- **Question unique :** pour une décision rapide ou clarifier une situation.
+- **Amour & relations :** pour comprendre la dynamique d’une relation.
+- **Travail & argent :** projets et orientation professionnelle.
+- **Croix celtique :** lecture complète d’une situation complexe.
+- **Oracle des Anges :** pour un message doux et rassurant.
+
+Choisissez votre tirage directement sur la [page Tarot](tarot.html), en ligne (visio, lecture écrite en PDF ou message vocal) ou au centre à Sfax 🔮`,
+        en: ''
+      }
+    });
+    add({
+      slug: 'les-7-chakras-expliques-simplement', date: '2026-12-17', icone: 'energy', theme: 'green',
+      categorie: { ar: 'طاقة', fr: 'Énergie', en: 'Energy' },
+      titre: { ar: 'الشاكرات السبع: دليل بسيط لفهم مراكز طاقتك', fr: 'Les 7 chakras expliqués simplement', en: '' },
+      resume: { ar: 'من شاكرا الجذر إلى شاكرا التاج: ماذا يمثّل كل مركز طاقي، وكيف تلاحظ أنه يحتاج إلى توازن؟', fr: 'De la racine à la couronne : ce que représente chaque centre énergétique et comment savoir s’il a besoin d’être rééquilibré.', en: '' },
+      contenu: {
+        ar: `في التقاليد الهندية القديمة، **الشاكرات** («العجلات» بالسنسكريتية) هي مراكز طاقة تمتد على طول العمود الفقري، من القاعدة إلى قمّة الرأس. يرتبط كل مركز بجانب من حياتنا الجسدية والعاطفية والروحية.
+
+## الشاكرات السبع
+- **1. شاكرا الجذر (الأحمر)** — في قاعدة العمود الفقري: الأمان، الاستقرار، الانتماء.
+- **2. الشاكرا العجزية (البرتقالي)** — أسفل البطن: المشاعر، الإبداع، المتعة.
+- **3. شاكرا الضفيرة الشمسية (الأصفر)** — فوق السرّة: الثقة بالنفس، الإرادة، القوة الشخصية.
+- **4. شاكرا القلب (الأخضر)** — وسط الصدر: الحب، التسامح، الرحمة.
+- **5. شاكرا الحلق (الأزرق)** — الحلق: التعبير، قول الحقيقة، التواصل.
+- **6. شاكرا العين الثالثة (النيلي)** — بين الحاجبين: الحدس، الوضوح، البصيرة.
+- **7. شاكرا التاج (البنفسجي)** — قمة الرأس: الاتصال الروحي والمعنى.
+
+## علامات تحتاج إلى انتباه
+عندما يكون مركز ما غير متوازن، قد نلاحظ ذلك في حياتنا اليومية: قلق دائم وعدم أمان (الجذر)، صعوبة في قول «لا» (الضفيرة الشمسية)، صعوبة في التعبير عن المشاعر (الحلق)، أو انغلاق القلب بعد جرح عاطفي (القلب).
+
+> الشاكرات قراءة رمزية للطاقة، ولا تُستعمل لتشخيص أي مرض. أي عرض جسدي يستحق استشارة طبية.
+
+## تمرين صغير لموازنة الشاكرات
+اجلس بهدوء، وتخيّل مع كل نفس ضوءاً بلون الشاكرا يتوهّج في مكانها، من الأحمر في الأسفل حتى البنفسجي في الأعلى. خذ ثلاثة أنفاس عميقة لكل مركز. هذا التمرين البسيط يساعد على الاسترخاء والوعي بالجسد.
+
+للمرافقة الأعمق، تساعد [جلسة العلاج الطاقي](soin-energetique-sfax.html) على تنظيف وموازنة الشاكرات والهالة، في المركز بصفاقس أو عن بُعد 🌈`,
+        fr: `Dans les traditions indiennes anciennes, les **chakras** (« roues » en sanskrit) sont des centres d’énergie situés le long de la colonne vertébrale, de la base jusqu’au sommet du crâne. Chacun est relié à un aspect de notre vie physique, émotionnelle et spirituelle.
+
+## Les 7 chakras
+- **1. Chakra racine (rouge)** — base de la colonne : sécurité, ancrage, appartenance.
+- **2. Chakra sacré (orange)** — bas-ventre : émotions, créativité, plaisir.
+- **3. Plexus solaire (jaune)** — au-dessus du nombril : confiance en soi, volonté, pouvoir personnel.
+- **4. Chakra du cœur (vert)** — centre de la poitrine : amour, pardon, compassion.
+- **5. Chakra de la gorge (bleu)** — gorge : expression, vérité, communication.
+- **6. Troisième œil (indigo)** — entre les sourcils : intuition, clarté, discernement.
+- **7. Chakra couronne (violet)** — sommet du crâne : connexion spirituelle et sens.
+
+## Les signes qui demandent de l’attention
+Quand un centre est déséquilibré, on peut le remarquer au quotidien : insécurité et anxiété permanentes (racine), difficulté à dire « non » (plexus solaire), mal à exprimer ses émotions (gorge), cœur fermé après une blessure affective (cœur).
+
+> Les chakras sont une lecture symbolique de l’énergie ; ils ne servent pas à diagnostiquer une maladie. Tout symptôme physique mérite un avis médical.
+
+## Un petit exercice d’équilibrage
+Asseyez-vous au calme et, à chaque respiration, imaginez une lumière de la couleur du chakra qui s’illumine à son emplacement, du rouge en bas jusqu’au violet en haut. Prenez trois respirations profondes par centre. Cet exercice simple favorise la détente et la conscience du corps.
+
+Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sfax.html) aide à nettoyer et rééquilibrer les chakras et l’aura, au centre à Sfax ou à distance 🌈`,
+        en: ''
+      }
+    });
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
