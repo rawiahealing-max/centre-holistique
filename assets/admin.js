@@ -86,6 +86,7 @@
     if (v === 'orders') return vOrders(V);
     if (v === 'clients') return vClients(V);
     if (v === 'chat') return vChat(V);
+    if (v === 'lives') return vLives(V);
     if (v === 'newsletter') return vNewsletter(V);
     if (v === 'lessons') return vLessons(V);
     if (v === 'medits') return vMedits(V);
@@ -129,7 +130,8 @@
         ${o.user_id ? '<span class="pill">👤 عندو حساب</span>' : ''}<br>
         <small>${esc(fmtD(o.created_at))}${o.phone ? ` · <a href="https://wa.me/${esc(o.phone.replace(/\D/g, ''))}" target="_blank" dir="ltr">${esc(o.phone)}</a>` : ''}${o.email ? ` · <span dir="ltr">${esc(o.email)}</span>` : ''}${o.timezone ? ` · 🌍 ${esc(o.timezone)}` : ''}</small>
         <ul class="order-items">${(o.items || []).map(i => `<li>• ${esc(i.title)}${i.option ? ' (' + esc(i.option) + ')' : ''} — <b>${esc(i.price || '')}</b></li>`).join('')}</ul>
-        ${o.total ? `<b>المجموع: ${esc(o.total)}</b>` : ''}${o.note ? `<p class="small muted" style="white-space:pre-line">${esc(o.note)}</p>` : ''}</div>
+        ${o.total ? `<b>المجموع: ${esc(o.total)}</b>` : ''}${o.note ? `<p class="small muted" style="white-space:pre-line">${esc(o.note)}</p>` : ''}
+        ${sessBlock(o)}</div>
         <div class="row">${o.status !== 'paid' ? `<button class="btn ok sm" data-pay="${o.id}">✓ خلّص — أعطيه الوصول</button>` : ''}
           ${o.status === 'pending' ? `<button class="btn line sm" data-cancel="${o.id}">✕ إلغاء</button>` : ''}
           <button class="btn danger sm" data-del="${o.id}">🗑</button></div></div>`).join('') : '<p class="muted">ما فمّا حتى طلب.</p>'}`;
@@ -137,6 +139,76 @@
     V.querySelectorAll('[data-cancel]').forEach(b => b.onclick = async () => { await sb.from('orders').update({ status: 'cancelled' }).eq('id', b.dataset.cancel); refreshCounts(); vOrders(V); });
     V.querySelectorAll('[data-del]').forEach(b => b.onclick = async () => { if (!confirm('تفسخ الطلب نهائياً؟')) return; await sb.from('orders').delete().eq('id', b.dataset.del); refreshCounts(); vOrders(V); });
     V.querySelectorAll('[data-pay]').forEach(b => b.onclick = () => confirmPay(os.find(o => String(o.id) === b.dataset.pay), V));
+    V.querySelectorAll('[data-ssave]').forEach(b => b.onclick = async () => {
+      const id = b.dataset.ssave, box = b.closest('.sess');
+      const d = box.querySelector('[name=sd]').value, t = box.querySelector('[name=st]').value, url = box.querySelector('[name=su]').value.trim();
+      if (url && !/^https?:\/\//.test(url)) return toast('الرابط لازم يبدا بـ https://');
+      const { error } = await sb.from('orders').update({ meeting_url: url || null, session_at: d ? toTunisISO(d, t || '10:00') : null }).eq('id', id);
+      if (error) return toast(/column|schema/i.test(error.message) ? '⚠️ لازم تشغّلي ملف video.sql في Supabase مرة وحدة الأول.' : 'خطأ: ' + error.message);
+      toast('✓ تحفظت الجلسة — الحريف يلقاها في «حسابي»'); vOrders(V);
+    });
+  }
+
+  // ---------- online sessions (Google Meet / YouTube) ----------
+  // Tunisia is UTC+1 all year (no daylight saving)
+  const toTunisISO = (d, t) => `${d}T${t}:00+01:00`;
+  const tunisParts = iso => { if (!iso) return { d: '', t: '' }; const x = new Date(new Date(iso).getTime() + 3600e3).toISOString(); return { d: x.slice(0, 10), t: x.slice(11, 16) }; };
+  function waSessionLink(o) {
+    const p = tunisParts(o.session_at), ph = (o.phone || '').replace(/\D/g, '');
+    const txt = `السلام عليكم ${o.name || ''} 🌿\nموعد جلستك أونلاين${p.d ? `: ${p.d} على الساعة ${p.t} (توقيت تونس)` : ''}.\nرابط الجلسة: ${o.meeting_url}\n${o.user_id ? 'تنجم تدخل زادة من «حسابي» في الموقع: https://www.centreholistique.net/account.html?tab=orders\n' : ''}راوية غربال – Centre Holistique`;
+    return `https://wa.me/${ph}?text=${encodeURIComponent(txt)}`;
+  }
+  function sessBlock(o) {
+    const p = tunisParts(o.session_at);
+    return `<details class="sess" ${o.meeting_url ? 'open' : ''}><summary>🎥 جلسة أونلاين ${o.meeting_url ? `<span class="pill paid">${esc(p.d)} ${esc(p.t)}</span>` : '<span class="muted small">(كاميرا أو صوت)</span>'}</summary>
+      <div class="sess-grid"><label>التاريخ<input type="date" name="sd" value="${esc(p.d)}"></label><label>الساعة (توقيت تونس)<input type="time" name="st" value="${esc(p.t)}"></label>
+      <label class="full">رابط الجلسة (Google Meet، Zoom، WhatsApp…)<input name="su" dir="ltr" placeholder="https://meet.google.com/abc-defg-hij" value="${esc(o.meeting_url || '')}"></label></div>
+      <div class="row"><a class="btn line sm" href="https://meet.google.com/new" target="_blank" rel="noopener">➕ اعمل رابط Meet جديد</a><button class="btn gold sm" data-ssave="${o.id}">💾 حفظ</button>
+      ${o.meeting_url && o.phone ? `<a class="btn ok sm" href="${esc(waSessionLink(o))}" target="_blank" rel="noopener">📲 ابعثلو الرابط على واتساب</a>` : ''}${o.meeting_url ? `<a class="btn line sm" href="${esc(o.meeting_url)}" target="_blank" rel="noopener">▶ ادخل للجلسة</a>` : ''}</div>
+      <p class="hint">اضغط «اعمل رابط Meet جديد» ← انسخ الرابط من Meet ← حطّو هنا وحفظ. الحريف يلقى زر «ادخل للجلسة» في «حسابي».</p></details>`;
+  }
+
+  // ================= LIVES =================
+  async function vLives(V) {
+    const { data: ls, error } = await sb.from('lives').select('*').order('starts_at', { ascending: false }).limit(100);
+    if (error) { V.innerHTML = `<div class="panel"><div class="status err">⚠️ لازم تشغّلي ملف <b>video.sql</b> في Supabase مرة وحدة باش يخدم قسم اللايفات.<br><small dir="ltr">${esc(error.message)}</small></div></div>`; return; }
+    const now = Date.now();
+    V.innerHTML = `<div class="panel"><div class="row between"><h3>🔴 اللايفات والجلسات الجماعية</h3><button class="btn gold" id="addlive">+ لايف جديد</button></div>
+      <p class="hint" style="margin-top:6px">حط رابط <b>Google Meet</b> (الناس يحكيو ويبانو، حتى 100 شخص) ولا رابط <b>يوتيوب لايف</b> (يتعرض داخل الموقع، بلا حد). «للأعضاء فقط» = الرابط ما يبانش كان للمشتركين في الدائرة.</p>
+      <div id="llives">${(ls || []).length ? ls.map(l => { const p = tunisParts(l.starts_at), past = new Date(l.starts_at).getTime() + (l.duration_min + 60) * 6e4 < now;
+        return `<div class="item"><div class="grow"><b>${/youtu/.test(l.url || '') ? '📺' : '🎥'} ${esc(L(l.title))}</b> ${l.members_only ? '<span class="pill">✨ للأعضاء</span>' : '<span class="pill paid">مفتوح للجميع</span>'}${l.active ? '' : '<span class="pill off">مخفي</span>'}${past ? '<span class="pill off">فات</span>' : ''}
+        <br><small>${esc(p.d)} · ${esc(p.t)} (توقيت تونس) · ${l.duration_min} دقيقة</small><br><small dir="ltr">${esc(l.url || '⚠️ ما فماش رابط')}</small></div>
+        <div class="row">${l.url ? `<a class="btn line sm" href="${esc(l.url)}" target="_blank" rel="noopener">▶ افتح</a>` : ''}<button class="btn line sm" data-edit-live="${l.id}">تعديل</button><button class="btn danger sm" data-del-live="${l.id}">🗑</button></div></div>`; }).join('') : '<p class="muted">ما فمّا حتى لايف. اضغط «+ لايف جديد».</p>'}</div></div>`;
+    $('#addlive').onclick = () => liveDialog(null, V);
+    V.querySelectorAll('[data-edit-live]').forEach(b => b.onclick = () => liveDialog(ls.find(l => String(l.id) === b.dataset.editLive), V));
+    V.querySelectorAll('[data-del-live]').forEach(b => b.onclick = async () => { if (!confirm('تفسخ اللايف؟')) return; await sb.from('lives').delete().eq('id', b.dataset.delLive); vLives(V); });
+  }
+  function liveDialog(l, V) {
+    l = l || { title: {}, description: {}, duration_min: 60, members_only: true, active: true };
+    const p = tunisParts(l.starts_at), f = $('#dlg-form');
+    f.innerHTML = `<h2>${l.id ? 'تعديل' : 'لايف جديد'}</h2><div class="g2">
+      ${field(['title', 'العنوان (مثلاً: تأمل القمر الجديد)', 'i'], l.title)}
+      <label>التاريخ<input type="date" name="ld" required value="${esc(p.d)}"></label>
+      <label>الساعة (توقيت تونس)<input type="time" name="lt" required value="${esc(p.t || '20:00')}"></label>
+      <label>المدة بالدقائق<input type="number" name="dur" min="10" step="5" value="${esc(l.duration_min || 60)}"></label>
+      <label class="full">الرابط: Google Meet ولا يوتيوب لايف<div class="upl"><input name="url" dir="ltr" placeholder="https://meet.google.com/… ولا https://youtube.com/live/…" value="${esc(l.url || '')}"><a class="btn line sm" href="https://meet.google.com/new" target="_blank" rel="noopener">➕ Meet</a></div>
+        <span class="hint">تنجم تحط الرابط من توّا ولا قبل اللايف بشوية.</span></label>
+      <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="members_only" ${l.members_only ? 'checked' : ''}> ✨ للأعضاء فقط</label>
+      <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="active" ${l.active !== false ? 'checked' : ''}> ظاهر في الموقع</label>
+      ${field(['description', 'وصف قصير (اختياري)', 'it'], l.description)}</div>
+      <div class="row" style="justify-content:flex-end"><button class="btn line" value="cancel" formnovalidate>إلغاء</button><button class="btn gold" value="ok">حفظ</button></div>`;
+    const d = $('#dlg'); d.returnValue = ''; d.showModal();
+    d.onclose = async () => {
+      if (d.returnValue !== 'ok') return;
+      if (!f.ld.value) return toast('اختار التاريخ.');
+      const url = f.url.value.trim();
+      if (url && !/^https?:\/\//.test(url)) return toast('الرابط لازم يبدا بـ https://');
+      const row = { title: readField(f, ['title', '', 'i']), description: readField(f, ['description', '', 'it']), starts_at: toTunisISO(f.ld.value, f.lt.value || '20:00'),
+        duration_min: Math.max(10, +f.dur.value || 60), url: url || null, members_only: f.members_only.checked, active: f.active.checked };
+      const r = l.id ? await sb.from('lives').update(row).eq('id', l.id) : await sb.from('lives').insert(row);
+      if (r.error) return toast('خطأ: ' + r.error.message);
+      toast('✓ تحفظ'); vLives(V);
+    };
   }
   async function loadClients() { const { data } = await sb.from('profiles').select('*').order('created_at', { ascending: false }); clients = data || []; return clients; }
   async function confirmPay(o, V) {
