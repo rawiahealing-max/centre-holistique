@@ -577,6 +577,15 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
       D.soins.splice(i >= 0 ? i + 1 : D.soins.length, 0, JSON.parse(JSON.stringify(CC.PRANA_SESSION)));
     }
   });
+  // more accessible membership prices (only if Rawia has not changed them herself)
+  once('membership-price-2026-11', () => {
+    const set = (id, oldTnd, prix, an) => {
+      const a = (D.abonnements || []).find(x => x.id === id);
+      if (a && (!a.prix || String(a.prix.tnd) === oldTnd)) { a.prix = prix; a.prix_annuel = an; }
+    };
+    set('cercle-lumiere', '49', { tnd: '25', eur: '9', usd: '10' }, { tnd: '250', eur: '90', usd: '100' });
+    set('cercle-ame', '129', { tnd: '69', eur: '25', usd: '27' }, { tnd: '690', eur: '250', usd: '270' });
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
