@@ -607,7 +607,7 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
       duree: { ar: '90 دقيقة', fr: '90 min', en: '90 min' },
       prix: { tnd: '160', eur: '60', usd: '65' },
       description: {
-        ar: 'مساحة آمنة وبلا حكم للزوجين: نفهمو أسباب الخلاف، نتعلّمو نتواصلو من القلب، ونعاودو نبنيو الثقة والقرب. في المركز أو أونلاين.',
+        ar: 'مساحة آمنة وخالية من الأحكام للزوجين: نفهم معاً أسباب الخلاف، ونتعلّم التواصل من القلب، ونعيد بناء الثقة والقرب. في المركز أو عن بُعد.',
         fr: 'Un espace sûr et sans jugement pour le couple : comprendre les tensions, apprendre à communiquer avec le cœur et retrouver confiance et complicité. Au centre ou en ligne.',
         en: 'A safe, judgment-free space for couples: understand the tensions, learn to communicate from the heart and rebuild trust and closeness. At the centre or online.'
       }
@@ -619,6 +619,11 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
   once('couple-therapy-title-2026-11', () => {
     const x = (D.soins || []).find(s => s.id === 'therapie-couple');
     if (x && x.titre && x.titre.fr === 'Thérapie de couple') x.titre = { ar: 'Couple Therapy – العلاج الزوجي', fr: 'Couple Therapy – Thérapie de couple', en: 'Couple Therapy' };
+  });
+  // site Arabic must be Modern Standard Arabic: fix the couple-therapy text if it was saved in dialect
+  once('couple-therapy-msa-2026-11', () => {
+    const x = (D.soins || []).find(s => s.id === 'therapie-couple');
+    if (x && x.description && /نفهمو|نتعلّمو|نبنيو/.test(x.description.ar || '')) x.description.ar = 'مساحة آمنة وخالية من الأحكام للزوجين: نفهم معاً أسباب الخلاف، ونتعلّم التواصل من القلب، ونعيد بناء الثقة والقرب. في المركز أو عن بُعد.';
   });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
