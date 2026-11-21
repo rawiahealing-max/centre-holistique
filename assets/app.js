@@ -325,6 +325,17 @@
     const sel = $('#cat-filter'), prev = sel.value;
     sel.innerHTML = `<option value="">${esc(t('all_cats'))}</option>` + (DATA.categories || []).map(c => `<option value="${esc(c.id)}">${esc(L(c))}</option>`).join('');
     sel.value = prev;
+    // tracks as tabs (the select stays as the source of truth, hidden)
+    let tabs = $('#cat-tabs');
+    if (!tabs) {
+      sel.closest('.select-wrap').hidden = true;
+      tabs = document.createElement('div'); tabs.id = 'cat-tabs'; tabs.className = 'cat-tabs'; tabs.setAttribute('role', 'tablist');
+      row.closest('.rail-wrap').before(tabs);
+      tabs.addEventListener('click', e => { const b = e.target.closest('button[data-cat]'); if (!b) return; sel.value = b.dataset.cat; renderSoins(); row.scrollTo({ left: 0 }); });
+    }
+    const cats = (DATA.categories || []).filter(c => (DATA.soins || []).some(x => x.categorie === c.id));
+    tabs.innerHTML = [['', t('all_cats')]].concat(cats.map(c => [c.id, L(c)]))
+      .map(([id, name]) => `<button type="button" role="tab" data-cat="${esc(id)}" aria-selected="${sel.value === id}" class="${sel.value === id ? 'on' : ''}">${esc(name)}</button>`).join('');
     const list = (DATA.soins || []).filter(x => !sel.value || x.categorie === sel.value);
     row.innerHTML = list.map(x => `
       <article class="pcard">
