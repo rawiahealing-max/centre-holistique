@@ -633,3 +633,26 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .live-tip{margin:.7rem 0 0;font-size:.85rem}
 .live-player{margin:0 0 1.2rem;background:#fff;border:1px solid var(--line);border-radius:18px;padding:.8rem}
 .live-player .row-b{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;gap:.6rem}
+
+/* ===== Online consultation ===== */
+.hero-consult{background:linear-gradient(125deg,#1f3a4d,#3b2550 50%,#7b4fa8)}
+.consult{background:#fff;border:1px solid var(--line);border-radius:22px;padding:clamp(1rem,3vw,1.8rem)}
+.c-step{font-size:1.15rem;margin:1.4rem 0 .7rem;color:var(--primary-d)}
+.c-step:first-child{margin-top:0}
+.c-modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem}
+.c-mode,.c-dur{font:inherit;text-align:start;border:2px solid var(--line);background:#fff;border-radius:16px;padding:.9rem 1rem;cursor:pointer;display:flex;flex-direction:column;gap:.25rem;color:var(--ink)}
+.c-mode b{font-size:1.08rem}.c-mode span{font-size:.88rem;color:var(--muted);line-height:1.6}.c-mode i{font-style:normal;font-weight:700;color:var(--primary)}
+.c-mode.sel,.c-dur.sel{border-color:var(--primary);background:var(--primary-ll);box-shadow:0 0 0 3px rgba(123,79,168,.12)}
+.c-durs{display:flex;gap:.7rem;flex-wrap:wrap}
+.c-dur{flex:1;min-width:130px;align-items:center;text-align:center}.c-dur span{color:var(--primary);font-weight:700}
+.consult .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.consult .form-grid .full{grid-column:1/-1}
+.consult label{display:flex;flex-direction:column;gap:.3rem;font-weight:500;font-size:.92rem}
+.consult input,.consult select,.consult textarea{font:inherit;border:1px solid var(--line);border-radius:12px;padding:.65rem .8rem;background:#fff;width:100%}
+.c-tzline{margin:0;font-size:.85rem;color:var(--muted)}
+.c-acc{background:#fbf6ec;border-radius:12px;padding:.7rem 1rem;font-size:.9rem;margin:1rem 0 0}
+.c-acc a{color:var(--primary);font-weight:700}
+.c-totalrow{display:flex;justify-content:space-between;align-items:center;margin:1rem 0;font-size:1.1rem}
+.c-how{margin-top:1.6rem}.c-how ol{line-height:2;padding-inline-start:1.3rem}
+@media (max-width:560px){.consult .form-grid{grid-template-columns:1fr}}
+.live-wa{font-size:.82rem;color:#1e8e4e;text-decoration:underline;margin-top:.2rem}
