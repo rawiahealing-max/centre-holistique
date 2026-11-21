@@ -114,7 +114,7 @@ const PAGES = [
     faq: [['Ma famille doit-elle être présente ?', 'Non, la constellation se fait avec vous seul(e).'],
       ['Faut-il connaître toute l’histoire familiale ?', 'Non, ce que vous savez suffit ; le travail fait souvent apparaître ce qui est important.'],
       ['Combien de temps pour ressentir les effets ?', 'Les effets s’installent souvent dans les semaines qui suivent ; laissez le travail s’intégrer.']],
-    ar: { t: 'الأبراج العائلية في صفاقس، تونس وأونلاين', p: 'كشف الولاءات الخفية والذاكرة العابرة للأجيال لتهدئة العلاقات العائلية والمضي بحرية. في المركز بتونس (صفاقس) أو أونلاين. 180 د.ت · 90 دقيقة.' },
+    ar: { t: 'الوقوف العائلي في صفاقس، تونس وأونلاين', p: 'كشف الولاءات الخفية والذاكرة العابرة للأجيال لتهدئة العلاقات العائلية والمضي بحرية. في المركز بتونس (صفاقس) أو أونلاين. 180 د.ت · 90 دقيقة.' },
     book: 'soins:constellation-familiale', related: ['thetahealing-sfax.html', 'annales-akashiques.html', 'reiki-sfax.html']
   },
   {
@@ -244,7 +244,7 @@ const about = `
   <ul class="seo-list"><li>Praticienne Reiki Usui</li><li>Praticienne ThetaHealing®</li><li>Praticienne Access Bars® – Access Consciousness®</li><li>Lectrice des Annales Akashiques</li><li>Facilitatrice en Constellations familiales</li><li>Formation en accompagnement psychologique</li></ul>
   <h2>Ma vision</h2>
   <p>Vous n’êtes pas venu(e) au monde pour vivre à moitié, mais pour rayonner. Mon rôle est de vous offrir un espace sûr, chaleureux et sans jugement, où respirer, guérir et vous souvenir de qui vous êtes vraiment.</p>
-  <div class="seo-ar" lang="ar" dir="rtl"><h2>راوية غربال – مرشدة ومعلّمة روحية</h2><p>مؤسسة «Centre Holistique» في صفاقس، تونس. أرافقك لتكتشف النور الذي يسكن داخلك، وتتحرّر مما يُثقل قلبك، وتتشافى بلطف: ريكي، ثيتا هيلينغ، أكسس بارز، علاج طاقي، السجلات الأكاشية، تاروت وأوراكل، الأبراج العائلية واستشارات. في المركز بتونس (صفاقس) أو أونلاين من أي مكان في العالم.</p></div>
+  <div class="seo-ar" lang="ar" dir="rtl"><h2>راوية غربال – مرشدة ومعلّمة روحية</h2><p>مؤسسة «Centre Holistique» في صفاقس، تونس. أرافقك لتكتشف النور الذي يسكن داخلك، وتتحرّر مما يُثقل قلبك، وتتشافى بلطف: ريكي، ثيتا هيلينغ، أكسس بارز، علاج طاقي، السجلات الأكاشية، تاروت وأوراكل، الوقوف العائلي واستشارات. في المركز بتونس (صفاقس) أو أونلاين من أي مكان في العالم.</p></div>
   <div class="seo-cta"><h2>Me contacter</h2><p>${esc(ADDRESS)} · <a href="tel:+21626660344">+216 26 660 344</a> · <a href="mailto:contact@centreholistique.net">contact@centreholistique.net</a></p><div class="form-actions"><a class="btn btn-primary" href="index.html#reservation">Réserver une séance</a><a class="btn btn-soft" href="${MAPS}" target="_blank" rel="noopener">📍 Itinéraire</a></div></div>
 </div></section>`;
 const aboutLd = { '@context': 'https://schema.org', '@graph': [business,
