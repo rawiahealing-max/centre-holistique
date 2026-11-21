@@ -3,7 +3,7 @@
   'use strict';
   const M = {
     fr: {
-      chip: '🏢 Entreprises & organisations', h1: 'Des équipes plus sereines, plus soudées, plus performantes',
+      chip: '🏢 Entreprises & organisations', h1: 'Le bien-être de vos équipes, la clé de votre réussite',
       intro: 'Formations et ateliers sur mesure en gestion du stress, intelligence émotionnelle, communication et leadership — dans vos locaux, en ligne ou au centre à Sfax, en arabe, français ou anglais.',
       cta: 'Demander une proposition', cta2: 'Télécharger la brochure (PDF)',
       why_t: 'Pourquoi investir dans le bien-être de vos équipes ?',
@@ -22,7 +22,7 @@
       wa_head: '🏢 Demande entreprise', w_company: 'Entreprise', w_role: 'Fonction', w_email: 'E-mail', w_phone: 'Téléphone', w_size: 'Participants', w_prog: 'Programme', w_format: 'Format', w_period: 'Période', w_msg: 'Besoins'
     },
     ar: {
-      chip: '🏢 للشركات والمؤسسات', h1: 'فرق أهدأ، أكثر تماسكاً وأكثر أداءً',
+      chip: '🏢 للشركات والمؤسسات', h1: 'رفاه فريقك… مفتاح نجاح مؤسستك',
       intro: 'تكوينات وورشات حسب الطلب في إدارة الضغط، الذكاء العاطفي، التواصل والقيادة: في مقرّكم أو عن بُعد أو في المركز بصفاقس، بالعربية والفرنسية والإنجليزية.',
       cta: 'اطلب عرضاً', cta2: 'حمّل الكتيّب (PDF)',
       why_t: 'لماذا تستثمر في رفاه فريقك؟',
@@ -41,7 +41,7 @@
       wa_head: '🏢 طلب شركة', w_company: 'الشركة', w_role: 'الوظيفة', w_email: 'الإيميل', w_phone: 'الهاتف', w_size: 'المشاركون', w_prog: 'البرنامج', w_format: 'الصيغة', w_period: 'الفترة', w_msg: 'الاحتياجات'
     },
     en: {
-      chip: '🏢 Companies & organisations', h1: 'Calmer, closer, higher-performing teams',
+      chip: '🏢 Companies & organisations', h1: 'Your team’s wellbeing, the key to your success',
       intro: 'Tailor-made training and workshops in stress management, emotional intelligence, communication and leadership — at your premises, online or at our centre in Sfax, in Arabic, French or English.',
       cta: 'Request a proposal', cta2: 'Download the brochure (PDF)',
       why_t: 'Why invest in your team’s wellbeing?',
