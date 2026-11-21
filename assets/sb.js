@@ -130,7 +130,7 @@ window.applyContentPatches = function (D) {
       en: 'I am a spiritual guide, teacher and holistic healer. My mission is to walk beside you as you rediscover the light that has always lived within you… the light that wounds, fears and the noise of life may have covered. Together, we release what weighs on your heart, heal the memories that still hurt, and reconnect you with your inner wisdom and your true power.'
     };
     s.bio2 = {
-      ar: 'من خلال الريكي، الثيتا هيلينغ (ThetaHealing®)، العلاج الطاقي، قراءة السجلات الأكاشية، التاروت والأبراج العائلية، أفتح لك مساحة آمنة ودافئة وخالية من الأحكام… مساحة تتنفّس فيها، تتشافى، وتتذكّر من أنت حقاً. لأنك لم تأتِ إلى هذه الحياة لتعيش نصفها… بل لتُشرق ✨',
+      ar: 'من خلال الريكي، الثيتا هيلينغ (ThetaHealing®)، العلاج الطاقي، قراءة السجلات الأكاشية، التاروت والوقوف العائلي، أفتح لك مساحة آمنة ودافئة وخالية من الأحكام… مساحة تتنفّس فيها، تتشافى، وتتذكّر من أنت حقاً. لأنك لم تأتِ إلى هذه الحياة لتعيش نصفها… بل لتُشرق ✨',
       fr: 'À travers le Reiki, le ThetaHealing®, les soins énergétiques, les Annales Akashiques, le Tarot et les Constellations familiales, je vous offre un espace sûr, chaleureux et sans jugement… un lieu pour respirer, guérir et vous souvenir de qui vous êtes vraiment. Parce que vous n’êtes pas venu(e) au monde pour vivre à moitié… mais pour rayonner ✨',
       en: 'Through Reiki, ThetaHealing®, energy healing, Akashic Records, Tarot and Family Constellations, I offer you a safe, warm and non-judgmental space… a place to breathe, to heal, and to remember who you truly are. Because you did not come into this life to live it halfway… but to shine ✨'
     };
@@ -738,6 +738,50 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
       'tarot', 'annales-akashiques'];
     const rank = s => { const i = order.indexOf(s.id); return i < 0 ? 999 : i; };
     D.soins.sort((a, b) => rank(a) - rank(b));
+  });
+  once('quantum-hypnosis-2026-11', () => {
+    D.soins = D.soins || [];
+    if (D.soins.some(s => s.id === 'hypnose-quantique')) return;
+    const x = { id: 'hypnose-quantique', categorie: 'psy', icone: 'crystal', theme: 'indigo', image: '', en_ligne: true,
+      prix: { tnd: '250', eur: '90', usd: '100' }, duree: { ar: '2–3 ساعات', fr: '2–3 h', en: '2–3 h' },
+      titre: { ar: 'جلسة التنويم الكمّي', fr: 'Séance d’hypnose quantique', en: 'Quantum hypnosis session' },
+      description: { ar: 'رحلة عميقة في حالة استرخاء تام للتواصل مع ذاتك العليا، واستكشاف جذور ما تعيشه اليوم وذكريات روحك، وتلقّي إجابات وإرشادات لمسارك. جلسة مطوّلة في المركز أو أونلاين.', fr: 'Un voyage profond, dans une détente totale, pour vous relier à votre Soi supérieur, explorer les racines de ce que vous vivez et les mémoires de votre âme, et recevoir réponses et guidance pour votre chemin. Séance longue, au centre ou en ligne.', en: 'A deep journey in full relaxation to connect with your higher self, explore the roots of what you live today and your soul memories, and receive answers and guidance for your path. Long session, at the centre or online.' } };
+    const i = D.soins.findIndex(s => s.id === 'hypnose');
+    D.soins.splice(i < 0 ? 1 : i + 1, 0, x);
+  });
+  // v2 (Rawia's brief): tab names, one integrated energy card, acupuncture & moxa, 2 intensive programmes, Arabic term «الوقوف العائلي»
+  once('sessions-tracks-v2-2026-11', () => {
+    const names = {
+      psy: { ar: 'استشارات نفسية ووقوف عائلي', fr: 'Psychologie & approche systémique', en: 'Psychological & systemic' },
+      energie: { ar: 'علاجات طاقية وصوتية', fr: 'Soins énergétiques & sonores', en: 'Energy & sound' },
+      corps: { ar: 'علاجات جسدية وسبا – صفاقس', fr: 'Corps & spa – Sfax', en: 'Body & spa – Sfax' },
+      lecture: { ar: 'قراءات وبرامج مكثفة', fr: 'Lectures & programmes', en: 'Readings & programmes' }
+    };
+    D.categories = ['psy', 'energie', 'corps', 'lecture'].map(id => Object.assign({ id }, names[id]));
+    D.soins = D.soins || [];
+    const get = id => D.soins.find(s => s.id === id);
+    const set = (id, o) => { const s = get(id); if (s) Object.assign(s, o); };
+    set('soin-energetique', { titre: { ar: 'العلاج الطاقي المتكامل (ريكي / برانا / شاكرات)', fr: 'Soin énergétique intégral (Reiki / Prana / chakras)', en: 'Integrated energy healing (Reiki / Prana / chakras)' },
+      description: { ar: 'جلسة واحدة تجمع الريكي والبرانا وتوازن الشاكرات: تنظيف الهالة وإعادة شحن مراكز الطاقة، مع اختيار التقنية الأنسب لحالتك، لتحرير التوتر والتعب والانسدادات. في المركز أو عن بُعد.', fr: 'Une seule séance qui réunit Reiki, Prana et équilibrage des chakras : nettoyage de l’aura et recharge des centres d’énergie, avec la technique la plus adaptée à votre état, pour libérer tensions, fatigue et blocages. Au centre ou à distance.', en: 'One session combining Reiki, Prana and chakra balancing: aura cleansing and recharging the energy centres with the technique best suited to you, to release tension, fatigue and blockages. At the centre or remotely.' } });
+    set('reiki', { actif: false }); set('prana-healing', { actif: false });
+    set('constellation-familiale', { titre: { ar: 'جلسة الوقوف العائلي (فردية)', fr: 'Constellation familiale (individuelle)', en: 'Family constellation (individual)' },
+      description: { ar: 'جلسة فردية من جلسات الوقوف العائلي لكشف الولاءات الخفية والذاكرة العابرة للأجيال، وتحرير الأنماط الموروثة، والمضيّ بحرية. في المركز أو أونلاين.', fr: 'Une constellation familiale individuelle pour révéler les loyautés invisibles et les mémoires transgénérationnelles, libérer les schémas hérités et avancer librement. Au centre ou en ligne.', en: 'An individual family constellation to reveal hidden loyalties and transgenerational memories, release inherited patterns and move forward freely. At the centre or online.' } });
+    set('hypnose', { titre: { ar: 'جلسة التنويم الإيحائي وتحرير الصدمات', fr: 'Hypnothérapie & libération des traumas', en: 'Hypnotherapy & trauma release' } });
+    set('son-cristaux', { titre: { ar: 'جلسة العلاج بالصوت والأحجار الكريمة', fr: 'Soin par le son & lithothérapie', en: 'Sound healing & lithotherapy' } });
+    (D.packs || []).forEach(p => { if (p.contenu && p.contenu.ar) p.contenu.ar = p.contenu.ar.replace(/أبراج عائلية|الوقوف العائلي/g, 'وقوف عائلي'); });
+    const add = (x, after) => { if (get(x.id)) return; const i = D.soins.findIndex(s => s.id === after); D.soins.splice(i < 0 ? D.soins.length : i + 1, 0, Object.assign({ image: '' }, x)); };
+    add({ id: 'acupuncture-moxa', categorie: 'corps', icone: 'energy', theme: 'rose', en_ligne: false,
+      prix: { tnd: '100', eur: '40', usd: '45' }, duree: { ar: '60 دقيقة', fr: '60 min', en: '60 min' },
+      titre: { ar: 'الوخز بالإبر والموكسا', fr: 'Acupuncture & moxa', en: 'Acupuncture & moxa' },
+      description: { ar: 'موازنة مسارات الطاقة في الجسم بالإبر الدقيقة وحرارة الموكسا، للمساعدة على تخفيف التوتر والآلام واستعادة الحيوية. في المركز بصفاقس فقط. مكمّلة للمتابعة الطبية ولا تعوّضها.', fr: 'Rééquilibrer les méridiens du corps avec de fines aiguilles et la chaleur du moxa, pour aider à soulager tensions et douleurs et retrouver de la vitalité. Uniquement au centre à Sfax. Complémentaire au suivi médical, sans le remplacer.', en: 'Rebalancing the body’s meridians with fine needles and the warmth of moxa, to help ease tension and pain and restore vitality. At the Sfax centre only. Complements medical care, never replaces it.' } }, 'head-spa');
+    add({ id: 'programme-basmat-annour', categorie: 'lecture', icone: 'star', theme: 'gold', en_ligne: true, prix: {},
+      duree: { ar: 'باقة متعددة الجلسات', fr: 'Parcours de plusieurs séances', en: 'Multi-session programme' },
+      titre: { ar: 'برنامج «بصمة النور»', fr: 'Programme « Empreinte de Lumière »', en: '“Imprint of Light” programme' },
+      description: { ar: 'مرافقة تحويلية متكاملة على عدة جلسات تجمع العمل النفسي والطاقي والروحي، لتتصل بنورك الداخلي وتحرّر ما يثقلك وتعيش برسالتك. نحدّد معاً عدد الجلسات بعد جلسة التشخيص.', fr: 'Un accompagnement transformateur sur plusieurs séances, qui réunit le travail psychologique, énergétique et spirituel, pour vous relier à votre lumière intérieure, libérer ce qui vous pèse et vivre votre mission. Le nombre de séances est défini ensemble après le bilan.', en: 'A transformational multi-session journey combining psychological, energetic and spiritual work, to reconnect with your inner light, release what weighs on you and live your purpose. We set the number of sessions together after the assessment.' } }, 'annales-akashiques');
+    add({ id: 'programme-reset-vie', categorie: 'lecture', icone: 'lotus', theme: 'violet', en_ligne: true, prix: {},
+      duree: { ar: 'باقة متعددة الجلسات', fr: 'Parcours de plusieurs séances', en: 'Multi-session programme' },
+      titre: { ar: 'برنامج «إعادة ضبط الحياة»', fr: 'Programme « Reset de vie »', en: '“Life Reset” programme' },
+      description: { ar: 'برنامج مرافقة مكثّف لمن يعيش مرحلة انتقال أو إرهاق: نعيد ترتيب الأولويات، ونحرّر المعتقدات المقيّدة، ونستعيد التوازن الطاقي، مع خطة عملية ومتابعة بين الجلسات.', fr: 'Un programme d’accompagnement intensif pour les périodes de transition ou d’épuisement : remettre de l’ordre dans les priorités, libérer les croyances limitantes et retrouver l’équilibre énergétique, avec un plan concret et un suivi entre les séances.', en: 'An intensive programme for times of transition or exhaustion: reset priorities, release limiting beliefs and restore energetic balance, with a practical plan and follow-up between sessions.' } }, 'programme-basmat-annour');
   });
   once('remove-example-testimonial', () => {    D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
