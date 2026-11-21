@@ -18,7 +18,7 @@
       "en": "Holistic therapist & certified trainer"
     },
     "bio": {
-      "ar": "شغفي هو الإنسان في كليّته. أرافق منذ سنوات الأشخاص الباحثين عن التوازن والشفاء الداخلي والمعنى. تكوّنت في العلاج الطاقي، الريكي، قراءة السجلات الأكاشية، التاروت، الأبراج العائلية والمرافقة النفسية، وأقدّم لك مساحة آمنة، سرية وخالية من الأحكام.",
+      "ar": "شغفي هو الإنسان في كليّته. أرافق منذ سنوات الأشخاص الباحثين عن التوازن والشفاء الداخلي والمعنى. تكوّنت في العلاج الطاقي، الريكي، قراءة السجلات الأكاشية، التاروت، الوقوف العائلي والمرافقة النفسية، وأقدّم لك مساحة آمنة، سرية وخالية من الأحكام.",
       "fr": "Passionnée par l'être humain dans sa globalité, j'accompagne depuis plusieurs années les personnes en quête d'équilibre, de guérison intérieure et de sens. Formée aux soins énergétiques, au Reiki, aux Annales Akashiques, au Tarot, aux Constellations Familiales et à l'accompagnement psychologique, je vous offre un espace sûr, confidentiel et sans jugement.",
       "en": "Passionate about the human being as a whole, I have spent years supporting people seeking balance, inner healing and meaning. Trained in energy healing, Reiki, Akashic Records, Tarot, Family Constellations and psychological support, I offer you a safe, confidential and non-judgmental space."
     },
@@ -28,7 +28,7 @@
       "en": "My mission: to help you release what holds you back, reconnect with your inner power, and pass these tools on to you through clear, certified trainings."
     },
     "certifs": {
-      "ar": "معالجة ريكي أوسوي (Usui) – مستوى ماستر\nقارئة السجلات الأكاشية\nميسّرة الأبراج العائلية\nتكوين في المرافقة النفسية",
+      "ar": "معالجة ريكي أوسوي (Usui) – مستوى ماستر\nقارئة السجلات الأكاشية\nميسّرة الوقوف العائلي\nتكوين في المرافقة النفسية",
       "fr": "Praticienne Reiki Usui – niveau Maître\nLectrice des Annales Akashiques\nFacilitatrice en Constellations Familiales\nFormation en accompagnement psychologique",
       "en": "Usui Reiki practitioner – Master level\nAkashic Records reader\nFamily Constellations facilitator\nTraining in psychological support"
     },
@@ -101,7 +101,7 @@
         "en": "An intuitive, caring reading to shed light on a situation, a decision or a life transition."
       } },
     { "id": "constellation-familiale", "categorie": "psy", "icone": "tree", "theme": "green", "image": "", "en_ligne": true,
-      "titre": { "ar": "الأبراج العائلية", "fr": "Constellation familiale", "en": "Family Constellation" },
+      "titre": { "ar": "الوقوف العائلي", "fr": "Constellation familiale", "en": "Family Constellation" },
       "duree": { "ar": "90 دقيقة", "fr": "90 min", "en": "90 min" },
       "prix": { "tnd": "180", "eur": "70", "usd": "75" },
       "description": {
@@ -277,7 +277,7 @@
       "ancien_prix": { "tnd": "360", "eur": "145", "usd": "160" } },
     { "id": "pack-famille", "theme": "green", "nb": "3", "actif": true,
       "titre": { "ar": "باقة الشفاء العائلي", "fr": "Pack Guérison familiale", "en": "Family Healing Bundle" },
-      "contenu": { "ar": "أبراج عائلية + استشارتان نفسيتان", "fr": "1 Constellation familiale + 2 consultations", "en": "1 Family Constellation + 2 consultations" },
+      "contenu": { "ar": "وقوف عائلي + استشارتان نفسيتان", "fr": "1 Constellation familiale + 2 consultations", "en": "1 Family Constellation + 2 consultations" },
       "prix": { "tnd": "330", "eur": "130", "usd": "140" },
       "ancien_prix": { "tnd": "380", "eur": "150", "usd": "165" } }
   ],
