@@ -180,6 +180,7 @@ function layout({ file, title, desc, body, ld }) {
   <div><h4>Séances</h4><p>${PAGES.map(p => `<a href="${p.file}">${esc(p.h1)}</a>`).join('<br>')}</p></div>
 </div><div class="container footer-bottom"><p>© ${new Date().getFullYear()} Centre Holistique · <a href="legal.html">Mentions légales & CGV</a></p><p class="disclaimer">Les soins holistiques sont complémentaires et ne remplacent pas un avis médical.</p></div></footer>
 <a class="wa-fab" href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+<script src="assets/consent.js"></script>
 </body>
 </html>
 `;
