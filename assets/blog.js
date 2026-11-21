@@ -21,7 +21,7 @@
     return `<article class="medit post-card" lang="${l}" dir="${l === 'ar' ? 'rtl' : 'ltr'}">
       <a class="medit-cover t-${esc(p.theme || 'violet')}" href="${href(p)}" tabindex="-1" aria-hidden="true">${p.image ? `<img src="${esc(p.image)}" alt="" loading="lazy">` : `<span class="art">${window.CH ? window.CH.svg(p.icone || 'lotus') : ''}</span>`}
         ${B.val(p.categorie, l) ? `<span class="tag">${esc(B.val(p.categorie, l))}</span>` : ''}</a>
-      <div class="pbody"><span class="lec-type">${esc(fmt(p.date, l))} · ${B.minutes(p, l)} ${esc((M[l] || M.ar).min)}</span>
+      <div class="pbody"><span class="lec-type">${esc(fmt(p.date, l))} · ${esc(B.readLabel(B.minutes(p, l), l))}</span>
         <a class="ptitle" href="${href(p)}">${esc(B.val(p.titre, l))}</a><p class="pdesc">${esc(B.excerpt(p, l))}</p>
         <div class="pfoot"><a class="more-link" href="${href(p)}">${esc((M[l] || M.ar).read)}</a></div></div></article>`;
   }
@@ -44,7 +44,7 @@
     box.innerHTML = `<article class="post" lang="${l}" dir="${l === 'ar' ? 'rtl' : 'ltr'}">
       <a class="post-back" href="blog.html">${esc(m('back'))}</a>
       ${p.image ? `<img class="post-cover" src="${esc(p.image)}" alt="">` : ''}
-      <p class="post-meta">${esc(B.val(p.categorie, l))}${B.val(p.categorie, l) ? ' · ' : ''}${esc(fmt(p.date, l))} · ${B.minutes(p, l)} ${esc((M[l] || M.ar).min)}</p>
+      <p class="post-meta">${esc(B.val(p.categorie, l))}${B.val(p.categorie, l) ? ' · ' : ''}${esc(fmt(p.date, l))} · ${esc(B.readLabel(B.minutes(p, l), l))}</p>
       <h1>${esc(B.val(p.titre, l))}</h1>
       <div class="post-body">${B.md(B.val(p.contenu, l))}</div>
       <p class="post-author">${esc((M[l] || M.ar).by)} <a href="rawia-ghorbel.html"><b>Rawia Ghorbel</b></a></p>
