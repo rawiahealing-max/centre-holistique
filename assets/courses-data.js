@@ -4,7 +4,7 @@
   const lv = (ar, fr, en, tnd, eur, usd) => ({ nom: { ar, fr, en }, prix: { tnd: String(tnd), eur: String(eur), usd: String(usd) } });
   const ml = (ar, fr, en) => ({ ar, fr: fr || ar, en: en || fr || ar });
   const C = (o) => Object.assign({ date: '', places: '', nouveau: true, actif: false, icone: 'star', theme: 'violet', categorie: ml('دورة', 'Formation', 'Training') }, o, { image: 'assets/courses/' + o.id + '.jpg', lien: 'formations/' + o.id + '.html' });
-  const MODE = ml('في المركز بصفاقس أو أونلاين', 'Au centre à Sfax ou en ligne', 'At the centre in Sfax or online');
+  const MODE = ml('في المركز بتونس (صفاقس) أو أونلاين', 'Au centre à Sfax (Tunisie) ou en ligne', 'At the centre in Sfax, Tunisia or online');
 
   const COURSES = [
     C({
