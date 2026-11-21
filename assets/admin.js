@@ -315,10 +315,15 @@
     const { data: recent } = await sb.from('messages').select('room,body,created_at,author_name').order('created_at', { ascending: false }).limit(500);
     const rooms = {}; (recent || []).forEach(m => { if (!rooms[m.room]) rooms[m.room] = m; });
     if (!rooms.cercle) rooms.cercle = null;
+    // one group per published course (participants only), listed even before the first message
+    const courses = ((content && content.formations) || []).filter(f => f.actif !== false);
+    courses.forEach(f => { if (!(('course:' + f.id) in rooms)) rooms['course:' + f.id] = null; });
     if (chatRoom.startsWith('dm:') && !(chatRoom in rooms)) rooms[chatRoom] = null;
     const fl = await sb.from('chat_flags').select('*');
     const flags = {}; (fl.data || []).forEach(f => { flags[f.room] = f; });
-    const name = r => r === 'cercle' ? '✨ شات الدائرة (الأعضاء)' : '💌 ' + esc((clients.find(c => 'dm:' + c.id === r) || {}).full_name || 'حريف');
+    const name = r => r === 'cercle' ? '✨ شات الدائرة (الأعضاء)'
+      : r.startsWith('course:') ? '👥 مجموعة: ' + esc(L(((content && content.formations) || []).find(f => 'course:' + f.id === r)?.titre) || r.slice(7))
+      : '💌 ' + esc((clients.find(c => 'dm:' + c.id === r) || {}).full_name || 'عميل');
     const isDm = chatRoom.startsWith('dm:'), urgent = !!(flags[chatRoom] && flags[chatRoom].urgent);
     // discreet list: no message text in the list, only the time of the last message
     V.innerHTML = `<div class="chatwrap"><div class="rooms" id="rooms">${Object.keys(rooms).sort((x, y) => (flags[y]?.urgent ? 1 : 0) - (flags[x]?.urgent ? 1 : 0)).map(r => `<button data-room="${esc(r)}" class="${r === chatRoom ? 'active' : ''} ${flags[r]?.urgent ? 'urgent' : ''}"><b>${flags[r]?.urgent ? '🚩 ' : ''}${name(r)}</b><small>${rooms[r] ? 'آخر رسالة: ' + esc(fmtD(rooms[r].created_at)) : '—'}</small></button>`).join('')}</div>
