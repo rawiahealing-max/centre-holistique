@@ -16,7 +16,7 @@
       no_courses: 'لا توجد دورات في حسابك بعد.', see_courses: 'اكتشف الدورات', open: 'افتح', lessons_n: 'دروس', no_lessons: 'المحتوى سيُضاف قريباً.', download: '⬇️ تحميل', open_link: 'فتح الرابط ↗',
       member_yes: 'أنت عضو في', until: 'حتى', no_expiry: 'بدون تاريخ انتهاء', member_no: 'لست مشتركاً بعد في الدائرة الشهرية.', member_cta: 'اكتشف الاشتراك ✨',
       member_perks: 'مزاياك:', go_medit: '🧘 التأملات الخاصة', go_chat: '💬 محادثة الدائرة', go_events: '📅 أحداث الشهر',
-      room_cercle: '✨ محادثة الدائرة', room_dm: '💌 رسائل خاصة مع المعالِجة', chat_locked: 'محادثة الدائرة متاحة للأعضاء فقط.', chat_empty: 'لا توجد رسائل بعد. ابدأ المحادثة 🌿', you: 'أنت', admin_badge: 'المعالِجة',
+      open_group: '💬 مجموعة المشاركين', group_empty: 'مرحباً بك في مجموعة المشاركين 🌿 هنا نتبادل الأسئلة والتجارب باحترام وسرّية. ما يُكتب هنا يبقى بيننا.', room_cercle: '✨ محادثة الدائرة', room_dm: '💌 رسائل خاصة مع المعالِجة', chat_locked: 'محادثة الدائرة متاحة للأعضاء فقط.', chat_empty: 'لا توجد رسائل بعد. ابدأ المحادثة 🌿', you: 'أنت', admin_badge: 'المعالِجة',
       no_orders: 'لا توجد طلبات بعد.', st_pending: '⏳ في الانتظار', st_paid: '✓ مؤكد', st_cancelled: '✕ ملغى', order: 'طلب',
       member_line_yes: '✨ عضو في الدائرة', member_line_no: 'حساب عميل'
     },
@@ -35,7 +35,7 @@
       no_courses: "Aucune formation dans votre compte pour l'instant.", see_courses: 'Découvrir les formations', open: 'Ouvrir', lessons_n: 'leçons', no_lessons: 'Le contenu arrive bientôt.', download: '⬇️ Télécharger', open_link: 'Ouvrir le lien ↗',
       member_yes: 'Vous êtes membre du', until: "jusqu'au", no_expiry: 'sans date de fin', member_no: "Vous n'êtes pas encore membre du Cercle.", member_cta: "Découvrir l'abonnement ✨",
       member_perks: 'Vos avantages :', go_medit: '🧘 Méditations membres', go_chat: '💬 Chat du Cercle', go_events: '📅 Événements du mois',
-      room_cercle: '✨ Chat du Cercle', room_dm: '💌 Messages privés avec la thérapeute', chat_locked: 'Le chat du Cercle est réservé aux membres.', chat_empty: 'Aucun message pour le moment. Lancez la conversation 🌿', you: 'Vous', admin_badge: 'Thérapeute',
+      open_group: '💬 Groupe des participants', group_empty: 'Bienvenue dans le groupe des participants 🌿 Ici, on partage questions et expériences avec respect et confidentialité. Ce qui s’écrit ici reste entre nous.', room_cercle: '✨ Chat du Cercle', room_dm: '💌 Messages privés avec la thérapeute', chat_locked: 'Le chat du Cercle est réservé aux membres.', chat_empty: 'Aucun message pour le moment. Lancez la conversation 🌿', you: 'Vous', admin_badge: 'Thérapeute',
       no_orders: 'Aucune commande pour le moment.', st_pending: '⏳ En attente', st_paid: '✓ Confirmée', st_cancelled: '✕ Annulée', order: 'Commande',
       member_line_yes: '✨ Membre du Cercle', member_line_no: 'Compte client'
     },
@@ -54,7 +54,7 @@
       no_courses: 'No trainings in your account yet.', see_courses: 'Explore trainings', open: 'Open', lessons_n: 'lessons', no_lessons: 'Content coming soon.', download: '⬇️ Download', open_link: 'Open link ↗',
       member_yes: 'You are a member of', until: 'until', no_expiry: 'no end date', member_no: "You're not a Circle member yet.", member_cta: 'Discover membership ✨',
       member_perks: 'Your benefits:', go_medit: '🧘 Members meditations', go_chat: '💬 Circle chat', go_events: "📅 This month's events",
-      room_cercle: '✨ Circle chat', room_dm: '💌 Private messages with the therapist', chat_locked: 'The Circle chat is for members only.', chat_empty: 'No messages yet. Start the conversation 🌿', you: 'You', admin_badge: 'Therapist',
+      open_group: '💬 Participants’ group', group_empty: 'Welcome to the participants’ group 🌿 Share questions and experiences here with respect and confidentiality. What is written here stays between us.', room_cercle: '✨ Circle chat', room_dm: '💌 Private messages with the therapist', chat_locked: 'The Circle chat is for members only.', chat_empty: 'No messages yet. Start the conversation 🌿', you: 'You', admin_badge: 'Therapist',
       no_orders: 'No orders yet.', st_pending: '⏳ Pending', st_paid: '✓ Confirmed', st_cancelled: '✕ Cancelled', order: 'Order',
       member_line_yes: '✨ Circle member', member_line_no: 'Client account'
     }
@@ -154,7 +154,7 @@
   function renderTabs() {
     $$('#space-tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
     $$('.space-panel').forEach(p => p.hidden = p.dataset.panel !== tab);
-    if (tab === 'chat') openChat(room || (isMember ? 'cercle' : 'dm:' + user.id));
+    if (tab === 'chat') openChat(room || (courseRooms()[0] || {}).r || (isMember ? 'cercle' : 'dm:' + user.id));
     if (tab === 'orders') loadOrders();
   }
   function renderAll() {
@@ -240,6 +240,8 @@
   async function openCourse(cid) {
     const f = (data().formations || []).find(y => y.id === cid) || {};
     $('#course-title').textContent = L(f.titre) || cid;
+    // course space: dates + the participants' group chat
+    $('#course-tools').innerHTML = `${L(f.duree) ? `<span class="ct-when">📅 ${esc(L(f.duree))}</span>` : ''}<button class="btn btn-primary btn-sm" data-group="${esc(cid)}">${esc(a('open_group'))}</button>`;
     $('#courses-list').hidden = true; $('#course-view').hidden = false;
     const { data: ls } = await sb.from('lessons').select('*').eq('course_id', cid).order('position').order('id');
     lessons = ls || [];
@@ -281,10 +283,24 @@
   document.addEventListener('click', e => { const b = e.target.closest('[data-goto]'); if (b) { tab = b.dataset.goto; renderTabs(); } });
 
   // chat
+  // one group per enrolled course ("course:<id>"): only its participants and Rawia can read it
+  function courseRooms() {
+    const D = data();
+    return enrolls.filter(x => x.item_type === 'formations').map(x => {
+      const f = (D.formations || []).find(y => y.id === x.item_id) || {};
+      return { r: 'course:' + x.item_id, name: '👥 ' + (L(f.titre) || x.title || x.item_id) };
+    });
+  }
   function renderRooms() {
-    $('#chat-rooms').innerHTML = `<button data-room="cercle" ${isMember ? '' : 'class="locked"'}>${esc(a('room_cercle'))}${isMember ? '' : ' 🔒'}</button>
+    $('#chat-rooms').innerHTML = courseRooms().map(c => `<button data-room="${esc(c.r)}">${esc(c.name)}</button>`).join('') +
+      `<button data-room="cercle" ${isMember ? '' : 'class="locked"'}>${esc(a('room_cercle'))}${isMember ? '' : ' 🔒'}</button>
       <button data-room="dm:${esc(user.id)}">${esc(a('room_dm'))}</button>`;
   }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-group]'); if (!b) return;
+    room = 'course:' + b.dataset.group; tab = 'chat'; renderTabs();
+    $('#space-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
   $('#chat-rooms').addEventListener('click', e => { const b = e.target.closest('[data-room]'); if (b) openChat(b.dataset.room); });
   async function openChat(r) {
     room = r;
@@ -293,7 +309,7 @@
     if (r === 'cercle' && !isMember) { box.innerHTML = `<div class="empty-box"><p>${esc(a('chat_locked'))}</p><a class="btn btn-primary" href="index.html#cercle">${esc(a('member_cta'))}</a></div>`; $('#chat-form').hidden = true; return; }
     $('#chat-form').hidden = false;
     const { data: ms } = await sb.from('messages').select('*').eq('room', r).order('created_at', { ascending: true }).limit(200);
-    box.innerHTML = (ms || []).length ? '' : `<p class="chat-empty">${esc(a('chat_empty'))}</p>`;
+    box.innerHTML = (ms || []).length ? '' : `<p class="chat-empty">${esc(a(r.startsWith('course:') ? 'group_empty' : 'chat_empty'))}</p>`;
     (ms || []).forEach(addMsg);
     renderSafe(r, !(ms || []).length);
     if (channel) sb.removeChannel(channel);
