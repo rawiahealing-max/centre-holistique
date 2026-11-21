@@ -703,4 +703,4 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 @media (max-width:720px){.b2b-hero{padding:2rem 1.3rem}.b2b-why-grid,.b2b-steps,.b2b-progs,.b2b-fmts{grid-template-columns:1fr}.b2b-about{flex-direction:column;text-align:center}}
 /* 8 menu links: switch to the burger menu below 1280px so nothing overlaps */@media (max-width:1360px){.menu{display:none}.burger{display:grid}.menu.open{display:flex;position:absolute;top:68px;right:0;left:0;flex-direction:column;background:#fff;padding:1rem 16px 1.4rem;gap:.9rem;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}.menu.open a.m-sub{display:block}}
 
-@media (min-width:1361px) and (max-width:1560px){.menu{gap:1rem;font-size:.93rem}}
+@media (min-width:1361px){.nav-inner .menu{gap:1.05rem;font-size:.93rem}}
