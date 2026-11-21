@@ -670,3 +670,4 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .chatbox.calm .msg.adm:not(.mine){background:#fff;border-color:#e3d9ee}
 .chat-typing{font-size:.8rem;color:var(--muted);padding:.2rem 1rem .4rem;font-style:italic;background:#f7faf8}
 /* account page: the help pill must never cover the sign-up / login buttons */[data-page="account"] .chat .chat-pill{display:none}
+/* wide screens: 7 main links in the top menu, the logo never gets covered; Events / About / FAQ remain in the burger menu */@media (min-width:1101px){.menu a.m-sub{display:none}}.nav-inner .brand{flex-shrink:0}.nav-inner .menu{min-width:0}
