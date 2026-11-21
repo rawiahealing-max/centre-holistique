@@ -153,9 +153,9 @@
 
   // ---------- online sessions & lives ----------
   const VT = {
-    ar: { title: '🎥 جلساتك واللايفات', private: '🎥 جلستك الخاصة', live: '🔴 لايف', join: '▶ ادخل الآن', soon: 'الزر يتفتح قبل الموعد بـ 15 دقيقة', your_time: 'بتوقيتك', no_link: 'الرابط يوصلك قريباً', members: '✨ للأعضاء فقط', join_circle: 'انضم إلى الدائرة', close: '✕ إغلاق', now: '🔴 الآن', min: 'دقيقة', tip: 'الكاميرا أو الصوت فقط، كيف ما تحب. استعمل سمّاعات ومكان هادئ 🌿' },
-    fr: { title: '🎥 Vos séances et lives', private: '🎥 Votre séance privée', live: '🔴 Live', join: '▶ Rejoindre', soon: 'Le bouton s’active 15 min avant', your_time: 'votre heure', no_link: 'Le lien arrive bientôt', members: '✨ Réservé aux membres', join_circle: 'Rejoindre le Cercle', close: '✕ Fermer', now: '🔴 En cours', min: 'min', tip: 'Caméra ou audio seul, comme vous préférez. Prenez des écouteurs et un endroit calme 🌿' },
-    en: { title: '🎥 Your sessions & lives', private: '🎥 Your private session', live: '🔴 Live', join: '▶ Join now', soon: 'The button opens 15 min before', your_time: 'your time', no_link: 'The link is coming soon', members: '✨ Members only', join_circle: 'Join the Circle', close: '✕ Close', now: '🔴 Now', min: 'min', tip: 'Camera or audio only, as you like. Use headphones and a quiet place 🌿' }
+    ar: { title: '🎥 جلساتك واللايفات', private: '🎥 جلستك الخاصة', live: '🔴 لايف', join: '▶ ادخل الآن', soon: 'الزر يتفتح قبل الموعد بـ 15 دقيقة', your_time: 'بتوقيتك', no_link: 'الرابط يوصلك قريباً', members: '✨ للأعضاء فقط', join_circle: 'انضم إلى الدائرة', close: '✕ إغلاق', now: '🔴 الآن', min: 'دقيقة', tip: 'الكاميرا أو الصوت فقط، كيف ما تحب. استعمل سمّاعات ومكان هادئ 🌿', open_chat: '💬 افتح الشات', wa_help: 'مشكلة في الاتصال؟ كلّمنا على واتساب', m_audio: '📞 مكالمة صوتية', m_video: '🎥 مكالمة فيديو', m_chat: '💬 شات' },
+    fr: { title: '🎥 Vos séances et lives', private: '🎥 Votre séance privée', live: '🔴 Live', join: '▶ Rejoindre', soon: 'Le bouton s’active 15 min avant', your_time: 'votre heure', no_link: 'Le lien arrive bientôt', members: '✨ Réservé aux membres', join_circle: 'Rejoindre le Cercle', close: '✕ Fermer', now: '🔴 En cours', min: 'min', tip: 'Caméra ou audio seul, comme vous préférez. Prenez des écouteurs et un endroit calme 🌿', open_chat: '💬 Ouvrir le chat', wa_help: 'Un souci de connexion ? Écrivez-nous sur WhatsApp', m_audio: '📞 Appel vocal', m_video: '🎥 Appel vidéo', m_chat: '💬 Chat' },
+    en: { title: '🎥 Your sessions & lives', private: '🎥 Your private session', live: '🔴 Live', join: '▶ Join now', soon: 'The button opens 15 min before', your_time: 'your time', no_link: 'The link is coming soon', members: '✨ Members only', join_circle: 'Join the Circle', close: '✕ Close', now: '🔴 Now', min: 'min', tip: 'Camera or audio only, as you like. Use headphones and a quiet place 🌿', open_chat: '💬 Open chat', wa_help: 'Connection problem? Message us on WhatsApp', m_audio: '📞 Voice call', m_video: '🎥 Video call', m_chat: '💬 Chat' }
   };
   const vt = k => (VT[lg()] || VT.ar)[k];
   let sessions = [], sessTimer = null;
@@ -166,7 +166,7 @@
     ]);
     const now = Date.now();
     const mine = (o.error ? [] : o.data || []).filter(x => x.status !== 'cancelled' && (!x.session_at || new Date(x.session_at).getTime() + 3 * 3600e3 > now))
-      .map(x => ({ kind: 'private', title: (x.items || []).map(i => i.title).filter(Boolean).join(' + '), at: x.session_at, dur: 90, url: x.meeting_url }));
+      .map(x => ({ kind: 'private', mode: x.meeting_url === 'chat' ? 'chat' : ((x.items || []).map(i => i.format).find(f => ['audio', 'video', 'chat'].includes(f)) || ''), title: (x.items || []).map(i => i.title).filter(Boolean).join(' + '), at: x.session_at, dur: 90, url: x.meeting_url }));
     const lives = (l.error ? [] : l.data || []).map(x => ({ kind: 'live', title: L(x.title), desc: L(x.description), at: x.starts_at, dur: x.duration_min || 60, url: x.url, locked: x.locked }));
     sessions = [...mine, ...lives].sort((a1, b1) => String(a1.at || '').localeCompare(String(b1.at || '')));
     renderSessions();
@@ -183,17 +183,19 @@
       let btn;
       if (s.locked) btn = `<a class="btn btn-soft" href="index.html#cercle">${esc(vt('members'))} · ${esc(vt('join_circle'))}</a>`;
       else if (!s.url) btn = `<span class="muted-s">${esc(vt('no_link'))}</span>`;
-      else if (open) btn = `<button class="btn btn-primary live-join" data-join="${i}">${esc(vt('join'))}</button>`;
+      else if (open) btn = `<button class="btn btn-primary live-join" data-sjoin="${i}">${esc(vt(s.url === 'chat' ? 'open_chat' : 'join'))}</button>`;
       else btn = `<button class="btn btn-soft" disabled>${esc(vt('soon'))}</button>`;
-      return `<div class="live-card ${live ? 'is-live' : ''}"><span class="live-tag">${esc(live ? vt('now') : vt(s.kind))}</span>
+      return `<div class="live-card ${live ? 'is-live' : ''}"><span class="live-tag">${esc(live ? vt('now') : (s.mode ? vt('m_' + s.mode) : vt(s.kind)))}</span>
         <b>${esc(s.title || vt(s.kind))}</b>${when ? `<small>🕒 ${esc(when)}${s.kind === 'live' ? ` · ${s.dur} ${esc(vt('min'))}` : ''}</small>` : ''}${s.desc ? `<p>${esc(s.desc)}</p>` : ''}
-        <div class="live-act">${btn}</div></div>`;
+        <div class="live-act">${btn}</div>${s.kind === 'private' ? `<a class="live-wa" href="https://wa.me/${esc(String((data().settings || {}).whatsapp || '21626660344').replace(/\D/g, ''))}" target="_blank" rel="noopener">${esc(vt('wa_help'))}</a>` : ''}</div>`;
     }).join('')}</div><p class="muted-s live-tip">${esc(vt('tip'))}</p>`;
   }
+  function openDmChat() { room = 'dm:' + user.id; tab = 'chat'; renderTabs(); $('#space-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   document.addEventListener('click', e => {
-    const b = e.target.closest('[data-join]');
+    const b = e.target.closest('[data-sjoin]');
     if (b) {
-      const s = sessions[+b.dataset.join]; if (!s || !s.url) return;
+      const s = sessions[+b.dataset.sjoin]; if (!s || !s.url) return;
+      if (s.url === 'chat') { openDmChat(); return; }
       const emb = /youtu/.test(s.url) && window.embedUrl(s.url);
       if (emb) {
         const p = $('#live-player'); p.hidden = false;
@@ -201,6 +203,7 @@
         p.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else window.open(s.url, '_blank', 'noopener');
     }
+    if (e.target.closest('[data-dmchat]')) { openDmChat(); return; }
     if (e.target.closest('[data-live-close]')) { const p = $('#live-player'); p.innerHTML = ''; p.hidden = true; }
   });
 
@@ -306,7 +309,7 @@
       <small>${esc(new Date(o.created_at).toLocaleString(window.CH.LOCALE[lg()]))}</small>
       <ul>${(o.items || []).map(it => `<li>${esc(it.title)}${it.option ? ' · ' + esc(it.option) : ''} <b>${esc(it.price || '')}</b></li>`).join('')}</ul>
       ${o.total ? `<div class="row-b"><span></span><b>${esc(o.total)}</b></div>` : ''}
-      ${o.meeting_url ? `<div class="row-b"><small>${o.session_at ? '🕒 ' + esc(new Date(o.session_at).toLocaleString(window.CH.LOCALE[lg()], { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })) : ''}</small><a class="btn btn-primary" href="${esc(o.meeting_url)}" target="_blank" rel="noopener">${esc(vt('join'))}</a></div>` : ''}</div>`).join('')
+      ${o.meeting_url ? `<div class="row-b"><small>${o.session_at ? '🕒 ' + esc(new Date(o.session_at).toLocaleString(window.CH.LOCALE[lg()], { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })) : ''}</small>${o.meeting_url === 'chat' ? `<button class="btn btn-primary" data-dmchat>${esc(vt('open_chat'))}</button>` : `<a class="btn btn-primary" href="${esc(o.meeting_url)}" target="_blank" rel="noopener">${esc(vt('join'))}</a>`}</div>` : ''}</div>`).join('')
       : `<div class="empty-box"><p>${esc(a('no_orders'))}</p></div>`;
   }
 
