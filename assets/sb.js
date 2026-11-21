@@ -681,8 +681,14 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
       { id: 's3', ar: 'الأمسية 3 – تنظيف الطاقة وفتح باب الوفرة', fr: 'Soirée 3 – Nettoyer son énergie et ouvrir l’abondance', en: 'Evening 3 – Clearing your energy and opening to abundance' },
       { id: 's4', ar: 'الأمسية 4 – التجلّي الواعي لعام 2027', fr: 'Soirée 4 – La manifestation consciente de 2027', en: 'Evening 4 – Conscious manifestation for 2027' },
       { id: 's5', ar: 'الأمسية 5 – طقس نوايا العام الجديد', fr: 'Soirée 5 – Le rituel d’intentions du Nouvel An', en: 'Evening 5 – The New Year intention ritual' },
-      { id: 'bonus', ar: '🎁 الهدايا والملفات', fr: '🎁 Bonus et documents', en: '🎁 Bonuses and files' }
+      { id: 'bonus', ar: '✨ خزانة الكنوز: كرّاساتك وهداياك', fr: '✨ Le coffre aux trésors : vos cahiers et cadeaux', en: '✨ Treasure chest: your workbooks and gifts' }
     ];
+  });
+  // a warmer name for the masterclass resources section
+  once('masterclass-2027-treasure', () => {
+    const c = (D.formations || []).find(f => f.id === 'bawabat-2027'); if (!c || !Array.isArray(c.sections)) return;
+    const b = c.sections.find(s => s.id === 'bonus');
+    if (b) Object.assign(b, { ar: '✨ خزانة الكنوز: كرّاساتك وهداياك', fr: '✨ Le coffre aux trésors : vos cahiers et cadeaux', en: '✨ Treasure chest: your workbooks and gifts' });
   });
   once('remove-example-testimonial', () => {    D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
