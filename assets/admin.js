@@ -316,9 +316,32 @@
     const rooms = {}; (recent || []).forEach(m => { if (!rooms[m.room]) rooms[m.room] = m; });
     if (!rooms.cercle) rooms.cercle = null;
     if (chatRoom.startsWith('dm:') && !(chatRoom in rooms)) rooms[chatRoom] = null;
+    const fl = await sb.from('chat_flags').select('*');
+    const flags = {}; (fl.data || []).forEach(f => { flags[f.room] = f; });
     const name = r => r === 'cercle' ? '✨ شات الدائرة (الأعضاء)' : '💌 ' + esc((clients.find(c => 'dm:' + c.id === r) || {}).full_name || 'حريف');
-    V.innerHTML = `<div class="chatwrap"><div class="rooms" id="rooms">${Object.keys(rooms).map(r => `<button data-room="${esc(r)}" class="${r === chatRoom ? 'active' : ''}"><b>${name(r)}</b><small>${rooms[r] ? esc(rooms[r].author_name + ': ' + rooms[r].body) : '—'}</small></button>`).join('')}</div>
-      <div class="chatbox"><div class="msgs" id="msgs"></div><form class="chatform" id="cform"><input name="body" placeholder="اكتب ميساج…" autocomplete="off"><button class="btn">إرسال</button></form></div></div>`;
+    const isDm = chatRoom.startsWith('dm:'), urgent = !!(flags[chatRoom] && flags[chatRoom].urgent);
+    // discreet list: no message text in the list, only the time of the last message
+    V.innerHTML = `<div class="chatwrap"><div class="rooms" id="rooms">${Object.keys(rooms).sort((x, y) => (flags[y]?.urgent ? 1 : 0) - (flags[x]?.urgent ? 1 : 0)).map(r => `<button data-room="${esc(r)}" class="${r === chatRoom ? 'active' : ''} ${flags[r]?.urgent ? 'urgent' : ''}"><b>${flags[r]?.urgent ? '🚩 ' : ''}${name(r)}</b><small>${rooms[r] ? 'آخر رسالة: ' + esc(fmtD(rooms[r].created_at)) : '—'}</small></button>`).join('')}</div>
+      <div class="chatbox ${isDm ? 'calm' : ''}">${isDm ? `<div class="chat-tools"><span>🔒 محادثة خاصة: لا يراها إلا الحريف وإنتِ</span>
+        <button class="btn sm ${urgent ? 'danger' : 'line'}" id="flagurg">${urgent ? '🚩 عاجلة — نحّي العلامة' : '🚩 علّمها عاجلة'}</button>
+        <button class="btn danger sm" id="delconv">🗑 فسخ المحادثة كاملة</button></div>
+        ${urgent ? '<div class="status err" style="margin:6px 10px">🚩 محادثة عاجلة. كان الحريف في خطر، شجّعو يتّصل حالاً بالإسعاف 190 ولا الشرطة 197 (ولا رقم الطوارئ في بلادو).</div>' : ''}` : ''}
+        <div class="msgs" id="msgs"></div><div class="typing" id="atyping" hidden>الحريف يكتب…</div>
+        <form class="chatform" id="cform"><input name="body" placeholder="اكتب ميساج…" autocomplete="off"><button class="btn">إرسال</button></form></div></div>`;
+    if (isDm) {
+      $('#flagurg').onclick = async () => {
+        const { error } = await sb.from('chat_flags').upsert({ room: chatRoom, urgent: !urgent, updated_at: new Date().toISOString() });
+        if (error) return toast(/relation|schema|exist/i.test(error.message) ? '⚠️ لازم تشغّلي ملف video.sql في Supabase الأول.' : 'خطأ: ' + error.message);
+        vChat(V);
+      };
+      $('#delconv').onclick = async () => {
+        if (!confirm('تفسخ المحادثة هاذي كاملة نهائياً؟ ما تنجمش ترجعها.')) return;
+        const { error } = await sb.from('messages').delete().eq('room', chatRoom);
+        if (error) return toast('خطأ: ' + error.message);
+        await sb.from('chat_flags').delete().eq('room', chatRoom);
+        toast('✓ تفسخت المحادثة'); vChat(V);
+      };
+    }
     $('#rooms').onclick = e => { const b = e.target.closest('[data-room]'); if (b) { chatRoom = b.dataset.room; vChat(V); } };
     const { data: ms } = await sb.from('messages').select('*').eq('room', chatRoom).order('created_at').limit(300);
     const box = $('#msgs');
@@ -329,7 +352,11 @@
     (ms || []).forEach(add);
     if (!(ms || []).length) box.innerHTML = '<p class="muted" style="margin:auto">ما فمّا حتى ميساج.</p>';
     box.onclick = async e => { const b = e.target.closest('[data-delmsg]'); if (b && confirm('تفسخ الميساج؟')) { await sb.from('messages').delete().eq('id', b.dataset.delmsg); b.closest('.msg').remove(); } };
-    chatChannel = sb.channel('admin-' + chatRoom).on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages', filter: `room=eq.${chatRoom}` }, p => { if (!box.querySelector(`[data-mid="${p.new.id}"]`)) { box.querySelector('p.muted')?.remove(); add(p.new); } }).subscribe();
+    let tTimer = null, lastT = 0;
+    const tEl = $('#atyping');
+    chatChannel = sb.channel('room-' + chatRoom).on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages', filter: `room=eq.${chatRoom}` }, p => { if (!box.querySelector(`[data-mid="${p.new.id}"]`)) { box.querySelector('p.muted')?.remove(); add(p.new); tEl.hidden = true; } })
+      .on('broadcast', { event: 'typing' }, p => { if (!isDm || !p.payload || p.payload.u === me.id) return; tEl.hidden = false; clearTimeout(tTimer); tTimer = setTimeout(() => { tEl.hidden = true; }, 4000); }).subscribe();
+    $('#cform').body.addEventListener('input', () => { if (!isDm || Date.now() - lastT < 2500) return; lastT = Date.now(); chatChannel.send({ type: 'broadcast', event: 'typing', payload: { u: me.id } }); });
     $('#cform').onsubmit = async e => {
       e.preventDefault(); const i = e.target.body, body = i.value.trim(); if (!body) return; i.value = '';
       const { data: m, error } = await sb.from('messages').insert({ room: chatRoom, user_id: me.id, author_name: me.full_name || 'Rawia', is_admin: true, body }).select().single();
