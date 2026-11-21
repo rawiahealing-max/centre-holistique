@@ -22,8 +22,8 @@
       ],
       get_t: 'ماذا تحصل عليه', get: ['5 أمسيات مباشرة عن بُعد (Google Meet)', 'تسجيلات كل الأمسيات متاحة لك بشكل دائم في «حسابي»', 'دفتر العمل «2027» بصيغة PDF', 'تأمل مسجّل «استقبال 2027»', 'بطاقة نوايا قابلة للطباعة', 'تحدّي الوفرة لمدة 21 يوماً في يناير مع مجموعة المتابعة'],
       offers_t: 'اختر صيغتك', most: 'الأكثر طلباً', book: 'احجز الآن',
-      o1: ['كل محتوى الماستركلاس', 'التسجيلات والدفتر والتأمل', 'تحدّي الوفرة 21 يوماً'],
-      o2: ['كل ما في الماستركلاس الكامل', 'جلسة خاصة 45 دقيقة مع راوية (سجلات أكاشية أو ثيتا هيلينغ) لنواياك', 'قراءة تاروت مكتوبة لعام 2027 (12 شهراً)', 'متابعة شخصية عبر واتساب خلال يناير'],
+      o1: ['5 أمسيات مباشرة عن بُعد', 'التسجيلات متاحة لك بشكل دائم', 'دفتر العمل PDF والتأمل المسجّل وبطاقة النوايا', 'تحدّي الوفرة لمدة 21 يوماً مع مجموعة المتابعة'],
+      o2: ['كل ما في الماستركلاس الكامل', 'جلسة خاصة 45 دقيقة مع راوية (السجلات الأكاشية أو الثيتا هيلينغ) لنواياك', 'قراءة تاروت مكتوبة لعام 2027 (12 شهراً)', 'جلسة قراءة خريطتك الفلكية لعام 2027 كاملاً'],
       times_t: 'المواعيد بتوقيتك', times_s: 'تُعرض المواعيد تلقائياً حسب البلد الذي تتصفّح منه.', tunis: 'بتوقيت تونس',
       about_t: 'من تقدّم الماستركلاس؟', about: 'راوية غربال معالجة شمولية ومرشدة روحية، ترافق الأفراد والمجموعات منذ أكثر من 8 سنوات بالريكي والثيتا هيلينغ وأكسس بارز والسجلات الأكاشية. أسلوبها يجمع بين العمق والبساطة، في مساحة آمنة وخالية من الأحكام.',
       faq_t: 'أسئلة متكرّرة', faq: [['هل أحتاج إلى معرفة مسبقة؟', 'لا. الماستركلاس مفتوح للجميع، ويُشرح كل شيء خطوة بخطوة.'], ['ماذا لو فاتتني أمسية؟', 'ستجد التسجيل في «حسابي» خلال 24 ساعة، ويبقى متاحاً لك بشكل دائم.'], ['بأي لغة يُقدَّم؟', 'بالعربية، مع توضيحات بالفرنسية عند الحاجة. ويمكن طرح الأسئلة بالعربية أو الفرنسية أو الإنجليزية.'], ['كيف أدفع؟', 'بالبطاقة البنكية أو بالتحويل أو عبر الطرق المعروضة بعد الحجز، وتتلقّى تأكيداً عبر واتساب.']],
@@ -46,8 +46,8 @@
       ],
       get_t: 'Ce que vous recevez', get: ['5 soirées en direct en ligne (Google Meet)', 'Les replays de toutes les soirées, accessibles à vie dans « Mon espace »', 'Le cahier d’exercices « 2027 » en PDF', 'La méditation enregistrée « Accueillir 2027 »', 'Une carte d’intentions à imprimer', 'Le défi Abondance de 21 jours en janvier avec le groupe de suivi'],
       offers_t: 'Choisissez votre formule', most: 'Le plus choisi', book: 'Réserver',
-      o1: ['Toute la masterclass', 'Replays, cahier et méditation', 'Défi Abondance de 21 jours'],
-      o2: ['Tout le contenu de la masterclass complète', 'Une séance privée de 45 min avec Rawia (Annales Akashiques ou ThetaHealing®) pour vos intentions', 'Un tirage de Tarot écrit pour 2027 (12 mois)', 'Un suivi personnel par WhatsApp en janvier'],
+      o1: ['5 soirées en direct en ligne', 'Replays accessibles à vie', 'Cahier PDF, méditation enregistrée et carte d’intentions', 'Défi Abondance de 21 jours avec le groupe de suivi'],
+      o2: ['Tout le contenu de la masterclass complète', 'Une séance privée de 45 min avec Rawia (Annales Akashiques ou ThetaHealing®) pour vos intentions', 'Un tirage de Tarot écrit pour 2027 (12 mois)', 'Une séance de lecture de votre carte astrologique pour toute l’année 2027'],
       times_t: 'Les horaires chez vous', times_s: 'Les horaires s’affichent automatiquement selon le pays depuis lequel vous consultez la page.', tunis: 'heure de Tunisie',
       about_t: 'Qui anime la masterclass ?', about: 'Rawia Ghorbel est thérapeute holistique et guide spirituelle. Depuis plus de 8 ans, elle accompagne personnes et groupes avec le Reiki, le ThetaHealing®, les Access Bars® et les Annales Akashiques, avec profondeur et simplicité, dans un espace sûr et sans jugement.',
       faq_t: 'Questions fréquentes', faq: [['Faut-il des connaissances préalables ?', 'Non. La masterclass est ouverte à tous et tout est expliqué pas à pas.'], ['Et si je manque une soirée ?', 'Le replay est disponible dans « Mon espace » sous 24 h, et reste accessible à vie.'], ['En quelle langue ?', 'En arabe, avec des explications en français si besoin. Vous pouvez poser vos questions en arabe, en français ou en anglais.'], ['Comment payer ?', 'Par carte bancaire, virement ou les moyens proposés après la réservation, avec une confirmation par WhatsApp.']],
@@ -70,8 +70,8 @@
       ],
       get_t: 'What you receive', get: ['5 live online evenings (Google Meet)', 'Lifetime access to the replays of every evening in “My space”', 'The “2027” PDF workbook', 'The recorded meditation “Welcoming 2027”', 'A printable intention card', 'A 21-day Abundance challenge in January with the support group'],
       offers_t: 'Choose your option', most: 'Most popular', book: 'Book now',
-      o1: ['The whole masterclass', 'Replays, workbook and meditation', '21-day Abundance challenge'],
-      o2: ['Everything in the full masterclass', 'A private 45-min session with Rawia (Akashic Records or ThetaHealing®) for your intentions', 'A written Tarot reading for 2027 (12 months)', 'Personal WhatsApp follow-up in January'],
+      o1: ['5 live online evenings', 'Lifetime access to the replays', 'PDF workbook, recorded meditation and intention card', '21-day Abundance challenge with the support group'],
+      o2: ['Everything in the full masterclass', 'A private 45-min session with Rawia (Akashic Records or ThetaHealing®) for your intentions', 'A written Tarot reading for 2027 (12 months)', 'An astrology chart reading session for the whole of 2027'],
       times_t: 'Times where you live', times_s: 'Times are shown automatically for the country you are browsing from.', tunis: 'Tunisia time',
       about_t: 'Who leads the masterclass?', about: 'Rawia Ghorbel is a holistic therapist and spiritual guide. For over 8 years she has supported individuals and groups with Reiki, ThetaHealing®, Access Bars® and the Akashic Records, with depth and simplicity, in a safe, judgment-free space.',
       faq_t: 'FAQ', faq: [['Do I need any prior knowledge?', 'No. The masterclass is open to everyone and everything is explained step by step.'], ['What if I miss an evening?', 'The replay is in “My space” within 24 hours and stays available for life.'], ['What language is it in?', 'Arabic, with French explanations when needed. You can ask questions in Arabic, French or English.'], ['How do I pay?', 'By card, bank transfer or the options shown after booking, with a WhatsApp confirmation.']],
@@ -91,10 +91,11 @@
     $('#k-pains').innerHTML = m('pains').map(p => `<li>${esc(p)}</li>`).join('');
     $('#k-days').innerHTML = m('days').map(([n, t, d], i) => `<article class="mc-day${i === 4 ? ' bonus' : ''}"><span class="mc-n">${esc(n)}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></article>`).join('');
     $('#k-get').innerHTML = m('get').map(g => `<li>${esc(g)}</li>`).join('');
+    // two offers = the course levels (prices set in the dashboard: 🎓 courses)
     const c = course(), lv = (c && c.niveaux) || [], money = window.CH ? window.CH.money : (p => p && p.eur + ' €');
     const L = window.CH ? window.CH.L : (v => v && v.ar);
-    $('#k-offers').innerHTML = [0, 1].map(i => `<article class="mc-offer${i === 1 ? ' vip' : ''}">${i === 1 ? `<span class="mc-badge">⭐ VIP</span>` : `<span class="mc-badge soft">${esc(m('most'))}</span>`}
-        <h3>${esc(lv[i] ? L(lv[i].nom) : '')}</h3><div class="mc-price">${lv[i] ? money(lv[i].prix) : ''}</div>
+    $('#k-offers').innerHTML = [0, 1].filter(i => lv[i]).map(i => `<article class="mc-offer${i === 1 ? ' vip' : ''}">${i === 1 ? `<span class="mc-badge">⭐ VIP</span>` : `<span class="mc-badge soft">${esc(m('most'))}</span>`}
+        <h3>${esc(L(lv[i].nom))}</h3><div class="mc-price">${money(lv[i].prix)}</div>
         <ul>${m(i ? 'o2' : 'o1').map(x => `<li>${esc(x)}</li>`).join('')}</ul>
         <button class="btn ${i ? 'btn-gold' : 'btn-primary'} btn-block" data-mc="${i}">${esc(m('book'))}</button></article>`).join('');
     const tz = (window.CH && window.CH.tz) || Intl.DateTimeFormat().resolvedOptions().timeZone;
