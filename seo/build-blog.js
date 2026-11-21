@@ -43,7 +43,7 @@ function page(p, all) {
   const sections = langs.sort((a, b) => (a === main ? -1 : b === main ? 1 : 0)).map(l => {
     const t = UI[l];
     return `<article class="post" id="lang-${l}" lang="${l}" dir="${l === 'ar' ? 'rtl' : 'ltr'}" data-lang="${l}">
-  <p class="post-meta">${esc(B.val(p.categorie, l))}${B.val(p.categorie, l) ? ' · ' : ''}<time datetime="${esc(p.date)}">${esc(fmt(p.date, l))}</time> · ${B.minutes(p, l)} ${t.min}</p>
+  <p class="post-meta">${esc(B.val(p.categorie, l))}${B.val(p.categorie, l) ? ' · ' : ''}<time datetime="${esc(p.date)}">${esc(fmt(p.date, l))}</time> · ${esc(B.readLabel(B.minutes(p, l), l))}</p>
   <h${l === main ? 1 : 2} class="post-title">${esc(B.val(p.titre, l))}</h${l === main ? 1 : 2}>
   <div class="post-body">${B.md(B.val(p.contenu, l))}</div>
   <div class="seo-by"><img src="assets/icon-192.png" alt="" width="56" height="56"><p>${t.by} <a href="rawia-ghorbel.html"><b>Rawia Ghorbel</b></a> — ${esc(t.bio)}</p></div>
