@@ -142,11 +142,13 @@
     V.querySelectorAll('[data-ssave]').forEach(b => b.onclick = async () => {
       const id = b.dataset.ssave, box = b.closest('.sess');
       const d = box.querySelector('[name=sd]').value, t = box.querySelector('[name=st]').value, url = box.querySelector('[name=su]').value.trim();
-      if (url && !/^https?:\/\//.test(url)) return toast('الرابط لازم يبدا بـ https://');
+      if (url && url !== 'chat' && !/^https?:\/\//.test(url)) return toast('الرابط لازم يبدا بـ https://');
       const { error } = await sb.from('orders').update({ meeting_url: url || null, session_at: d ? toTunisISO(d, t || '10:00') : null }).eq('id', id);
       if (error) return toast(/column|schema/i.test(error.message) ? '⚠️ لازم تشغّلي ملف video.sql في Supabase مرة وحدة الأول.' : 'خطأ: ' + error.message);
       toast('✓ تحفظت الجلسة — الحريف يلقاها في «حسابي»'); vOrders(V);
     });
+    V.querySelectorAll('[data-schat]').forEach(b => b.onclick = () => { const i = b.closest('.sess').querySelector('[name=su]'); i.value = 'chat'; toast('اضغط «💾 حفظ»'); });
+    V.querySelectorAll('[data-sdm]').forEach(b => b.onclick = () => { chatRoom = 'dm:' + b.dataset.sdm; go('chat'); });
   }
 
   // ---------- online sessions (Google Meet / YouTube) ----------
@@ -155,17 +157,18 @@
   const tunisParts = iso => { if (!iso) return { d: '', t: '' }; const x = new Date(new Date(iso).getTime() + 3600e3).toISOString(); return { d: x.slice(0, 10), t: x.slice(11, 16) }; };
   function waSessionLink(o) {
     const p = tunisParts(o.session_at), ph = (o.phone || '').replace(/\D/g, '');
-    const txt = `السلام عليكم ${o.name || ''} 🌿\nموعد جلستك أونلاين${p.d ? `: ${p.d} على الساعة ${p.t} (توقيت تونس)` : ''}.\nرابط الجلسة: ${o.meeting_url}\n${o.user_id ? 'تنجم تدخل زادة من «حسابي» في الموقع: https://www.centreholistique.net/account.html?tab=orders\n' : ''}راوية غربال – Centre Holistique`;
+    const txt = `السلام عليكم ${o.name || ''} 🌿\nموعد جلستك أونلاين${p.d ? `: ${p.d} على الساعة ${p.t} (توقيت تونس)` : ''}.\n${o.meeting_url === 'chat' ? 'الاستشارة تكون بالشات داخل الموقع: ادخل لـ «حسابي» ← 💬 الشات.' : 'رابط الجلسة: ' + o.meeting_url}\n${o.user_id ? 'تنجم تدخل زادة من «حسابي» في الموقع: https://www.centreholistique.net/account.html?tab=orders\n' : ''}راوية غربال – Centre Holistique`;
     return `https://wa.me/${ph}?text=${encodeURIComponent(txt)}`;
   }
   function sessBlock(o) {
-    const p = tunisParts(o.session_at);
-    return `<details class="sess" ${o.meeting_url ? 'open' : ''}><summary>🎥 جلسة أونلاين ${o.meeting_url ? `<span class="pill paid">${esc(p.d)} ${esc(p.t)}</span>` : '<span class="muted small">(كاميرا أو صوت)</span>'}</summary>
+    const p = tunisParts(o.session_at), mode = (o.items || []).map(i => i.format).find(f => ['audio', 'video', 'chat'].includes(f));
+    const modeTxt = { audio: '📞 مكالمة صوتية', video: '🎥 فيديو', chat: '💬 شات' }[mode] || '';
+    return `<details class="sess" ${o.meeting_url || mode ? 'open' : ''}><summary>🎥 جلسة أونلاين ${modeTxt ? `<span class="pill">${modeTxt}</span>` : ''} ${o.meeting_url ? `<span class="pill paid">${esc(p.d)} ${esc(p.t)}</span>` : '<span class="muted small">(صوت، فيديو أو شات)</span>'}</summary>
       <div class="sess-grid"><label>التاريخ<input type="date" name="sd" value="${esc(p.d)}"></label><label>الساعة (توقيت تونس)<input type="time" name="st" value="${esc(p.t)}"></label>
       <label class="full">رابط الجلسة (Google Meet، Zoom، WhatsApp…)<input name="su" dir="ltr" placeholder="https://meet.google.com/abc-defg-hij" value="${esc(o.meeting_url || '')}"></label></div>
-      <div class="row"><a class="btn line sm" href="https://meet.google.com/new" target="_blank" rel="noopener">➕ اعمل رابط Meet جديد</a><button class="btn gold sm" data-ssave="${o.id}">💾 حفظ</button>
-      ${o.meeting_url && o.phone ? `<a class="btn ok sm" href="${esc(waSessionLink(o))}" target="_blank" rel="noopener">📲 ابعثلو الرابط على واتساب</a>` : ''}${o.meeting_url ? `<a class="btn line sm" href="${esc(o.meeting_url)}" target="_blank" rel="noopener">▶ ادخل للجلسة</a>` : ''}</div>
-      <p class="hint">اضغط «اعمل رابط Meet جديد» ← انسخ الرابط من Meet ← حطّو هنا وحفظ. الحريف يلقى زر «ادخل للجلسة» في «حسابي».</p></details>`;
+      <div class="row"><a class="btn line sm" href="https://meet.google.com/new" target="_blank" rel="noopener">➕ اعمل رابط Meet جديد</a><button type="button" class="btn line sm" data-schat>💬 شات في الموقع</button><button class="btn gold sm" data-ssave="${o.id}">💾 حفظ</button>
+      ${o.meeting_url && o.phone ? `<a class="btn ok sm" href="${esc(waSessionLink(o))}" target="_blank" rel="noopener">📲 ابعثلو الرابط على واتساب</a>` : ''}${o.meeting_url === 'chat' && o.user_id ? `<button type="button" class="btn line sm" data-sdm="${esc(o.user_id)}">💬 افتح الشات متاعو</button>` : (o.meeting_url && o.meeting_url !== 'chat' ? `<a class="btn line sm" href="${esc(o.meeting_url)}" target="_blank" rel="noopener">▶ ادخل للجلسة</a>` : '')}</div>
+      <p class="hint">📞/🎥 صوت ولا فيديو: «اعمل رابط Meet جديد» ← انسخ الرابط ← حطّو هنا وحفظ (في المكالمة الصوتية الحريف يسكّر الكاميرا). 💬 شات: اضغط «شات في الموقع» وحفظ، والحريف يكتبلك من «حسابي» وإنتِ تجاوبيه من 💬 الشات هنا.</p></details>`;
   }
 
   // ================= LIVES =================
@@ -517,6 +520,9 @@
       fields: [['titre', 'عنوان المقال', 'i'], ['date', 'تاريخ النشر', 'date'], ['categorie', 'الصنف (مثلاً: طاقة، تاروت، تأمل)', 'i'], ['image', 'صورة الغلاف — اختياري', 'img'],
         ['resume', 'ملخّص قصير (يظهر في جوجل وفي البطاقة) — اختياري', 'i'], ['contenu', 'نص المقال', 'lt'],
         ['slug', 'رابط المقال بالحروف اللاتينية (مثلاً bienfaits-reiki) — يتعمّر وحدو كان تخليه فارغ'], ['actif', 'منشور في الموقع', 'checkbox', null, true]] },
+    consult_tarifs: { hint: 'أسعار صفحة «استشارة أونلاين». كل سطر = طريقة + مدة + سعر. زيد مدة جديدة بـ «+ إضافة»، ولا خبّي طريقة بإلغاء «ظاهرة في الموقع».',
+      label: x => ({ audio: '📞 مكالمة صوتية', video: '🎥 مكالمة فيديو', chat: '💬 شات' }[x.mode] || x.mode) + ' · ' + x.duree + ' دقيقة', sub: x => P(x.prix),
+      fields: [['mode', 'الطريقة', 'select', ['audio', 'video', 'chat']], ['duree', 'المدة بالدقائق', 'number'], ['prix', 'السعر', 'p'], ['actif', 'ظاهرة في الموقع', 'checkbox', null, true]] },
     categories: { label: x => L(x), sub: x => x.fr, fields: [['ar', 'بالعربية'], ['fr', 'بالفرنسية'], ['en', 'بالإنجليزية']] },
     medit_categories: { label: x => L(x), sub: x => x.fr, fields: [['ar', 'بالعربية'], ['fr', 'بالفرنسية'], ['en', 'بالإنجليزية']] }
   };
@@ -561,7 +567,7 @@
     if (type === 'img') return uplField(k, label, val, 'image/*', 'public', 'images', 'url');
     if (type === 'cat') return `<label>${label}<select name="${k}">${(content.categories || []).map(c => `<option value="${esc(c.id)}" ${c.id === val ? 'selected' : ''}>${esc(L(c))}</option>`).join('')}</select></label>`;
     if (type === 'textarea') return `<label class="full">${label}<textarea name="${k}" rows="4" dir="auto">${esc(val ?? '')}</textarea></label>`;
-    if (type === 'select') { const NAMES = { tn: '🇹🇳 تونس برك', intl: '🌍 الخارج برك', both: '🇹🇳 + 🌍 الزوز' }; const o = opts.includes(val) || !val ? opts : [val, ...opts]; return `<label>${label}<select name="${k}">${o.map(x => `<option value="${esc(x)}" ${x === val ? 'selected' : ''}>${esc(NAMES[x] || x)}</option>`).join('')}</select></label>`; }
+    if (type === 'select') { const NAMES = { tn: '🇹🇳 تونس برك', intl: '🌍 الخارج برك', both: '🇹🇳 + 🌍 الزوز', audio: '📞 مكالمة صوتية', video: '🎥 مكالمة فيديو', chat: '💬 شات' }; const o = opts.includes(val) || !val ? opts : [val, ...opts]; return `<label>${label}<select name="${k}">${o.map(x => `<option value="${esc(x)}" ${x === val ? 'selected' : ''}>${esc(NAMES[x] || x)}</option>`).join('')}</select></label>`; }
     if (type === 'checkbox') { const on = val === '' || val === undefined ? def : val !== false; return `<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="${k}" ${on ? 'checked' : ''}> ${label}</label>`; }
     return `<label>${label}<input name="${k}" type="${type || 'text'}" value="${esc(val ?? '')}"></label>`;
   }
