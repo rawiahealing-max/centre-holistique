@@ -2,6 +2,11 @@
 // window.chTrack(event, params) sends a Meta event when consent was given (no-op otherwise).
 (function () {
   'use strict';
+  // live "online now" counter in the footer (assets/online.js, no cookies) — loaded from here so every public page gets it
+  try {
+    const me = document.currentScript && document.currentScript.src;
+    if (me && !window.__chOnline) { window.__chOnline = 1; const o = document.createElement('script'); o.src = me.replace(/consent\.js(\?.*)?$/, 'online.js$1'); o.defer = true; document.head.appendChild(o); }
+  } catch (e) { /* */ }
   const PIXEL_ID = '2364786587679358';
   const KEY = 'ch_consent'; // 'yes' | 'no'
   const T = {
