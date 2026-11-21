@@ -2,12 +2,12 @@
   'use strict';
   const A = {
     ar: {
-      auth_title: 'مساحتك الخاصة 🌙', auth_sub: 'ملجأ هادئ ترجع فيه لروحك: دوراتك، تأملاتك ومواعيدك مع راوية… الكل في مكان واحد، وبكل خصوصية.',
-      perk1: '🌿 مساحة آمنة وسرّية، بلا حكم', perk2: '📞 استشارة أونلاين مع راوية: مكالمة، فيديو أو شات خاص', perk3: '🧘 تأملات وطقوس ترافقك كل يوم', perk4: '🎓 دوراتك وفيديوهاتها تستنّاك في أي وقت',
+      auth_title: 'مساحتك الخاصة 🌙', auth_sub: 'ملجأ هادئ تعود فيه إلى ذاتك: دوراتك وتأملاتك ومواعيدك مع راوية… كلّها في مكان واحد، وبخصوصية تامة.',
+      perk1: '🌿 مساحة آمنة وسرّية، بعيداً عن الأحكام', perk2: '📞 استشارة عن بُعد مع راوية: مكالمة صوتية أو فيديو أو محادثة خاصة', perk3: '🧘 تأملات وطقوس ترافقك كل يوم', perk4: '🎓 دوراتك ومقاطعها المصوّرة متاحة لك في أي وقت',
       login: 'تسجيل الدخول', signup: 'إنشاء حساب', email: 'البريد الإلكتروني', password: 'كلمة السر', login_btn: 'دخول', forgot: 'نسيت كلمة السر؟',
       full_name: 'الاسم واللقب', phone: 'الهاتف / واتساب', country: 'البلد', password_new: 'كلمة السر (8 أحرف على الأقل)', signup_btn: 'إنشاء حسابي',
       forgot_text: 'اكتب بريدك وسنرسل لك رابطاً لتغيير كلمة السر.', send_link: 'أرسل الرابط', back_login: '← رجوع لتسجيل الدخول', reset_text: 'اختر كلمة سر جديدة.', save: 'حفظ',
-      hello: 'مرحباً', admin_link: '🎛️ لوحة التحكم', tab_courses: '🎓 دوراتي', tab_member: '✨ اشتراكي', tab_chat: '💬 الشات', tab_orders: '🧾 طلباتي', tab_profile: '👤 ملفي',
+      hello: 'مرحباً', admin_link: '🎛️ لوحة التحكم', tab_courses: '🎓 دوراتي', tab_member: '✨ اشتراكي', tab_chat: '💬 المحادثة', tab_orders: '🧾 طلباتي', tab_profile: '👤 ملفي',
       back: '← رجوع', send: 'إرسال', password_change: 'كلمة سر جديدة (اتركها فارغة إن لم ترد تغييرها)', logout: 'خروج',
       not_ready: 'نظام الحسابات قيد التفعيل. عد قريباً 🌿',
       err_fields: 'الرجاء ملء كل الخانات.', err_short: 'كلمة السر قصيرة (8 أحرف على الأقل).',
@@ -15,10 +15,10 @@
       bad_login: 'البريد أو كلمة السر غير صحيحة، أو لم تؤكد بريدك بعد.',
       no_courses: 'لا توجد دورات في حسابك بعد.', see_courses: 'اكتشف الدورات', open: 'افتح', lessons_n: 'دروس', no_lessons: 'المحتوى سيُضاف قريباً.', download: '⬇️ تحميل', open_link: 'فتح الرابط ↗',
       member_yes: 'أنت عضو في', until: 'حتى', no_expiry: 'بدون تاريخ انتهاء', member_no: 'لست مشتركاً بعد في الدائرة الشهرية.', member_cta: 'اكتشف الاشتراك ✨',
-      member_perks: 'مزاياك:', go_medit: '🧘 التأملات الخاصة', go_chat: '💬 شات الدائرة', go_events: '📅 أحداث الشهر',
-      room_cercle: '✨ شات الدائرة', room_dm: '💌 رسائل خاصة مع المعالِجة', chat_locked: 'شات الدائرة متاح للأعضاء فقط.', chat_empty: 'لا توجد رسائل بعد. ابدأ المحادثة 🌿', you: 'أنت', admin_badge: 'المعالِجة',
+      member_perks: 'مزاياك:', go_medit: '🧘 التأملات الخاصة', go_chat: '💬 محادثة الدائرة', go_events: '📅 أحداث الشهر',
+      room_cercle: '✨ محادثة الدائرة', room_dm: '💌 رسائل خاصة مع المعالِجة', chat_locked: 'محادثة الدائرة متاحة للأعضاء فقط.', chat_empty: 'لا توجد رسائل بعد. ابدأ المحادثة 🌿', you: 'أنت', admin_badge: 'المعالِجة',
       no_orders: 'لا توجد طلبات بعد.', st_pending: '⏳ في الانتظار', st_paid: '✓ مؤكد', st_cancelled: '✕ ملغى', order: 'طلب',
-      member_line_yes: '✨ عضو في الدائرة', member_line_no: 'حساب حريف'
+      member_line_yes: '✨ عضو في الدائرة', member_line_no: 'حساب عميل'
     },
     fr: {
       auth_title: 'Votre espace à vous 🌙', auth_sub: 'Un refuge doux pour revenir à vous : vos formations, vos méditations et vos rendez-vous avec Rawia… tout au même endroit, en toute confidentialité.',
@@ -72,12 +72,12 @@
   function authErr(error) {
     const m = String(error && error.message || ''), l = lg();
     const T = {
-      wait: { ar: 'لحظة من فضلك، استنّى بعض الثواني وعاود جرّب.', fr: 'Merci de patienter quelques secondes avant de réessayer.', en: 'Please wait a few seconds and try again.' },
-      exists: { ar: 'هذا الإيميل عندو حساب من قبل. ادخل بيه، ولا استعمل «نسيت كلمة السر؟».', fr: 'Un compte existe déjà avec cet e-mail. Connectez-vous ou utilisez « Mot de passe oublié ? ».', en: 'An account already exists with this email. Log in or use “Forgot password?”.' },
-      email: { ar: 'الإيميل موش صحيح، ثبّت فيه.', fr: 'L’adresse e-mail n’est pas valide.', en: 'This email address is not valid.' },
-      weak: { ar: 'كلمة السر ضعيفة، اختار وحدة أطول فيها أرقام وحروف.', fr: 'Mot de passe trop faible : choisissez-en un plus long avec chiffres et lettres.', en: 'Password too weak: choose a longer one with numbers and letters.' },
-      same: { ar: 'كلمة السر الجديدة لازم تكون مختلفة على القديمة.', fr: 'Le nouveau mot de passe doit être différent de l’ancien.', en: 'The new password must be different from the old one.' },
-      other: { ar: 'صار مشكل، عاود جرّب بعد شوية.', fr: 'Une erreur est survenue, réessayez dans un instant.', en: 'Something went wrong, please try again shortly.' }
+      wait: { ar: 'يُرجى الانتظار بضع ثوانٍ ثم إعادة المحاولة.', fr: 'Merci de patienter quelques secondes avant de réessayer.', en: 'Please wait a few seconds and try again.' },
+      exists: { ar: 'يوجد حساب مسجّل بهذا البريد الإلكتروني. سجّل الدخول، أو استعمل «نسيت كلمة السر؟».', fr: 'Un compte existe déjà avec cet e-mail. Connectez-vous ou utilisez « Mot de passe oublié ? ».', en: 'An account already exists with this email. Log in or use “Forgot password?”.' },
+      email: { ar: 'البريد الإلكتروني غير صحيح، يُرجى التحقق منه.', fr: 'L’adresse e-mail n’est pas valide.', en: 'This email address is not valid.' },
+      weak: { ar: 'كلمة السر ضعيفة: اختر كلمة أطول تحتوي على أرقام وحروف.', fr: 'Mot de passe trop faible : choisissez-en un plus long avec chiffres et lettres.', en: 'Password too weak: choose a longer one with numbers and letters.' },
+      same: { ar: 'يجب أن تكون كلمة السر الجديدة مختلفة عن القديمة.', fr: 'Le nouveau mot de passe doit être différent de l’ancien.', en: 'The new password must be different from the old one.' },
+      other: { ar: 'حدث خطأ، يُرجى المحاولة بعد قليل.', fr: 'Une erreur est survenue, réessayez dans un instant.', en: 'Something went wrong, please try again shortly.' }
     };
     const k = /security purposes|seconds|rate limit|too many/i.test(m) ? 'wait' : /already (registered|exists)/i.test(m) ? 'exists'
       : /invalid.*email|email.*invalid/i.test(m) ? 'email' : /weak|password should/i.test(m) ? 'weak' : /different from the old/i.test(m) ? 'same' : 'other';
@@ -168,7 +168,7 @@
 
   // ---------- online sessions & lives ----------
   const VT = {
-    ar: { title: '🎥 جلساتك واللايفات', private: '🎥 جلستك الخاصة', live: '🔴 لايف', join: '▶ ادخل الآن', soon: 'الزر يتفتح قبل الموعد بـ 15 دقيقة', your_time: 'بتوقيتك', no_link: 'الرابط يوصلك قريباً', members: '✨ للأعضاء فقط', join_circle: 'انضم إلى الدائرة', close: '✕ إغلاق', now: '🔴 الآن', min: 'دقيقة', tip: 'الكاميرا أو الصوت فقط، كيف ما تحب. استعمل سمّاعات ومكان هادئ 🌿', open_chat: '💬 افتح الشات', wa_help: 'مشكلة في الاتصال؟ كلّمنا على واتساب', m_audio: '📞 مكالمة صوتية', m_video: '🎥 مكالمة فيديو', m_chat: '💬 شات' },
+    ar: { title: '🎥 جلساتك واللايفات', private: '🎥 جلستك الخاصة', live: '🔴 لايف', join: '▶ ادخل الآن', soon: 'يُفعَّل الزر قبل الموعد بـ 15 دقيقة', your_time: 'بتوقيتك', no_link: 'سيصلك الرابط قريباً', members: '✨ للأعضاء فقط', join_circle: 'انضم إلى الدائرة', close: '✕ إغلاق', now: '🔴 الآن', min: 'دقيقة', tip: 'بالكاميرا أو بالصوت فقط، كما تفضّل. استعمل سماعات واختر مكاناً هادئاً 🌿', open_chat: '💬 افتح المحادثة', wa_help: 'مشكلة في الاتصال؟ راسلنا عبر واتساب', m_audio: '📞 مكالمة صوتية', m_video: '🎥 مكالمة فيديو', m_chat: '💬 محادثة' },
     fr: { title: '🎥 Vos séances et lives', private: '🎥 Votre séance privée', live: '🔴 Live', join: '▶ Rejoindre', soon: 'Le bouton s’active 15 min avant', your_time: 'votre heure', no_link: 'Le lien arrive bientôt', members: '✨ Réservé aux membres', join_circle: 'Rejoindre le Cercle', close: '✕ Fermer', now: '🔴 En cours', min: 'min', tip: 'Caméra ou audio seul, comme vous préférez. Prenez des écouteurs et un endroit calme 🌿', open_chat: '💬 Ouvrir le chat', wa_help: 'Un souci de connexion ? Écrivez-nous sur WhatsApp', m_audio: '📞 Appel vocal', m_video: '🎥 Appel vidéo', m_chat: '💬 Chat' },
     en: { title: '🎥 Your sessions & lives', private: '🎥 Your private session', live: '🔴 Live', join: '▶ Join now', soon: 'The button opens 15 min before', your_time: 'your time', no_link: 'The link is coming soon', members: '✨ Members only', join_circle: 'Join the Circle', close: '✕ Close', now: '🔴 Now', min: 'min', tip: 'Camera or audio only, as you like. Use headphones and a quiet place 🌿', open_chat: '💬 Open chat', wa_help: 'Connection problem? Message us on WhatsApp', m_audio: '📞 Voice call', m_video: '🎥 Video call', m_chat: '💬 Chat' }
   };
@@ -304,7 +304,7 @@
 
   // ---------- safe space (private chat with Rawia) ----------
   const SAFE = {
-    ar: { t: '🌿 مساحتك الآمنة', l1: 'هذه المحادثة سرّية: لا يراها أحد غيرك وغير راوية.', l2: 'بلا أحكام: عبّر عمّا تشعر به بكلماتك وعلى راحتك.', l3: 'تجيبك راوية في أوقات الجلسات، وفي موعد جلستك تكون حاضرة معك بالكامل.', l4: 'يمكنك أن تطلب حذف محادثتك في أي وقت.',
+    ar: { t: '🌿 مساحتك الآمنة', l1: 'هذه المحادثة سرّية: لا يراها أحد غيرك وغير راوية.', l2: 'دون أحكام: عبّر عمّا تشعر به بكلماتك وعلى راحتك.', l3: 'تجيبك راوية في أوقات الجلسات، وفي موعد جلستك تكون حاضرة معك بالكامل.', l4: 'يمكنك أن تطلب حذف محادثتك في أي وقت.',
       sos: 'هذه مرافقة للرفاه، وليست خدمة طوارئ. إذا كنت في خطر أو تفكّر في إيذاء نفسك، اتصل فوراً بالإسعاف: في تونس 190 (الإسعاف) أو 197 (الشرطة)، أو برقم الطوارئ في بلدك.',
       del: '🗑 اطلب حذف المحادثة', del_ok: 'أرسلنا طلب الحذف. ستُحذف المحادثة قريباً 🤍', del_confirm: 'هل تريد أن تطلب حذف كل هذه المحادثة؟', del_msg: '🗑 أطلب حذف هذه المحادثة من فضلك.',
       exit: '🚪 خروج سريع', exit_t: 'يغلق الصفحة فوراً ويفتح صفحة عادية', typing: 'راوية تكتب…', typing_client: 'يكتب…', ph: 'اكتب بهدوء وبراحتك…' },
