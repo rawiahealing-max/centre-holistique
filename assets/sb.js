@@ -597,6 +597,24 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
     const old = (D.formations || []).find(f => f.id === 'reiki-niveau-1');
     if (old && (D.formations || []).some(f => f.id === 'reiki-usui')) old.actif = false;
   });
+  // couple therapy session (after the psychological consultation) — price and text editable in the dashboard
+  once('couple-therapy-2026-11', () => {
+    D.soins = D.soins || [];
+    if (D.soins.some(s => s.id === 'therapie-couple')) return;
+    const x = {
+      id: 'therapie-couple', categorie: 'psy', icone: 'heart', theme: 'rose', image: '', en_ligne: true,
+      titre: { ar: 'العلاج الزوجي (Couple Therapy)', fr: 'Thérapie de couple', en: 'Couple therapy' },
+      duree: { ar: '90 دقيقة', fr: '90 min', en: '90 min' },
+      prix: { tnd: '160', eur: '60', usd: '65' },
+      description: {
+        ar: 'مساحة آمنة وبلا حكم للزوجين: نفهمو أسباب الخلاف، نتعلّمو نتواصلو من القلب، ونعاودو نبنيو الثقة والقرب. في المركز أو أونلاين.',
+        fr: 'Un espace sûr et sans jugement pour le couple : comprendre les tensions, apprendre à communiquer avec le cœur et retrouver confiance et complicité. Au centre ou en ligne.',
+        en: 'A safe, judgment-free space for couples: understand the tensions, learn to communicate from the heart and rebuild trust and closeness. At the centre or online.'
+      }
+    };
+    const i = D.soins.findIndex(s => s.id === 'consultation-psychologique');
+    D.soins.splice(i >= 0 ? i + 1 : D.soins.length, 0, x);
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
