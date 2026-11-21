@@ -260,7 +260,14 @@
   }
   initUser();
   // save every request in the database so it appears in the dashboard (WhatsApp still opens)
+  // Meta Pixel (only if the visitor accepted cookies, see assets/consent.js)
+  function pixelValue(total) {
+    const s = String(total || ''), n = parseFloat(s.replace(/[^\d.,]/g, '').replace(',', '.'));
+    const cur = /€/.test(s) ? 'EUR' : /\$/.test(s) ? 'USD' : /د\.ت|DT|TND/i.test(s) ? 'TND' : '';
+    return isNaN(n) || !cur ? {} : { value: n, currency: cur };
+  }
   async function saveOrder(o) {
+    try { window.chTrack && window.chTrack('Lead', Object.assign({ content_name: (o.items || []).map(i => i.title).join(' | ').slice(0, 200) }, pixelValue(o.total))); } catch (e) { /* never block */ }
     if (!window.sb) return;
     try {
       await window.sb.from('orders').insert({
@@ -535,6 +542,7 @@
     const key = `${type}:${id}${format ? ':' + format : ''}`;
     if (!cart.find(c => c.key === key)) { cart.push({ key, type, id, format: format || '' }); store.set('ch_cart2', cart); }
     renderCart(); toast(t('toast_added'));
+    try { window.chTrack && window.chTrack('AddToCart', { content_ids: [id], content_type: 'product', content_name: L(item.titre) }); } catch (e) { /* never block */ }
   }
   function cartLines() {
     return cart.map(c => {
