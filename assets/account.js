@@ -143,8 +143,8 @@
     ]);
     profile = p.data || { full_name: '', email: user.email };
     enrolls = (en.data || []).filter(x => x.status === 'active' && (!x.expires_at || new Date(x.expires_at) > new Date()));
-    // the same course granted twice must appear only once (in «دوراتي» and in the chat groups)
-    { const seenE = new Set(); enrolls = enrolls.filter(x => { const k = x.item_type + ':' + x.item_id; if (seenE.has(k)) return false; seenE.add(k); return true; }); }
+    // the same course granted twice must appear only once (courses list and group chats)
+    const seenE = new Set(); enrolls = enrolls.filter(x => { const k = x.item_type + ':' + x.item_id; if (seenE.has(k)) return false; seenE.add(k); return true; });
     isAdmin = profile.role === 'admin';
     isMember = isAdmin || enrolls.some(x => x.item_type === 'abonnements');
     show('space'); renderAll();
