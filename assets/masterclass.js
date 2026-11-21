@@ -7,7 +7,7 @@
   const SESSIONS = ['2026-12-14T20:00:00+01:00', '2026-12-15T20:00:00+01:00', '2026-12-16T20:00:00+01:00', '2026-12-17T20:00:00+01:00', '2026-12-18T20:00:00+01:00'];
   const M = {
     ar: {
-      chip: '✨ ماستركلاس مباشر عن بُعد · 14–18 ديسمبر 2026', h1: 'ماستركلاس 2027', h1b: 'الوفرة والتجلّي الواعي',
+      rec_chip: '🎬 ماستركلاس مسجّل · ابدأ فوراً من أي مكان', rec_seats: 'الوصول فوري ودائم بعد الدفع', rec_cta: 'ابدأ الآن', rec_count: '🎬 الأمسيات الخمس مسجّلة ومتاحة فوراً بعد الدفع', rec_final_s: 'ابدأ متى شئت: الأمسيات المسجّلة والكرّاسات تنتظرك في «حسابي».', rec_times_t: 'ابدأ متى شئت', rec_times_s: 'بعد الدفع تجد الأمسيات الخمس المسجّلة والكرّاسات و«خزانة الكنوز» في «حسابي» فوراً، وتبقى متاحة لك بشكل دائم.', chip: '✨ ماستركلاس مباشر عن بُعد · 14–18 ديسمبر 2026', h1: 'ماستركلاس 2027', h1b: 'الوفرة والتجلّي الواعي',
       intro: 'خمس أمسيات مباشرة مع راوية غربال لتختم عام 2026 بسلام، وتتحرّر مما أثقلك، وتفتح باب الوفرة، وتضع نواياك لعام 2027 بوعي ووضوح… من أي مكان في العالم.',
       cta: 'احجز مقعدك', cta2: 'اكتشف البرنامج', starts: 'يبدأ الماستركلاس بعد', d: 'يوم', h: 'ساعة', m: 'دقيقة', live_now: 'الماستركلاس جارٍ الآن ✨', seats: 'المقاعد محدودة',
       pain_t: 'هل تشعر بأن…', pains: ['السنة مرّت مثقلة، وتحمل معك تعباً لم تتخلّص منه بعد', 'الأنماط نفسها تتكرّر في علاقاتك أو في مالك', 'لديك أحلام لعام 2027 لكنك لا تعرف من أين تبدأ', 'تريد أن تدخل السنة الجديدة بطاقة نظيفة ونيّة واضحة'],
@@ -31,7 +31,7 @@
       note: 'الماستركلاس مرافقة للتطوير الشخصي والرفاه، ولا يعوّض الاستشارة الطبية أو النفسية أو المالية.'
     },
     fr: {
-      chip: '✨ Masterclass en ligne en direct · 14–18 décembre 2026', h1: 'Masterclass 2027', h1b: 'Abondance & Manifestation consciente',
+      rec_chip: '🎬 Masterclass enregistrée · commencez dès maintenant', rec_seats: 'Accès immédiat et à vie après le paiement', rec_cta: 'Commencer maintenant', rec_count: '🎬 Les 5 soirées sont enregistrées et disponibles dès le paiement', rec_final_s: 'Commencez quand vous voulez : les soirées enregistrées et les cahiers vous attendent dans « Mon espace ».', rec_times_t: 'Commencez quand vous voulez', rec_times_s: 'Après le paiement, vous trouvez immédiatement les 5 soirées enregistrées, les cahiers et le coffre aux trésors dans « Mon espace », accessibles à vie.', chip: '✨ Masterclass en ligne en direct · 14–18 décembre 2026', h1: 'Masterclass 2027', h1b: 'Abondance & Manifestation consciente',
       intro: 'Cinq soirées en direct avec Rawia Ghorbel pour clôturer 2026 en paix, libérer ce qui vous pèse, ouvrir la porte de l’abondance et poser vos intentions pour 2027 avec clarté… où que vous soyez dans le monde.',
       cta: 'Réserver ma place', cta2: 'Voir le programme', starts: 'La masterclass commence dans', d: 'j', h: 'h', m: 'min', live_now: 'La masterclass a commencé ✨', seats: 'Places limitées',
       pain_t: 'Vous sentez que…', pains: ['L’année a été lourde et vous portez encore une fatigue profonde', 'Les mêmes schémas se répètent dans vos relations ou vos finances', 'Vous avez des rêves pour 2027 mais ne savez pas par où commencer', 'Vous voulez entrer dans la nouvelle année avec une énergie claire et une intention forte'],
@@ -55,7 +55,7 @@
       note: 'Cette masterclass est un accompagnement de développement personnel et de bien-être ; elle ne remplace pas un avis médical, psychologique ou financier.'
     },
     en: {
-      chip: '✨ Live online masterclass · December 14–18, 2026', h1: 'Masterclass 2027', h1b: 'Abundance & Conscious Manifestation',
+      rec_chip: '🎬 Recorded masterclass · start right away', rec_seats: 'Instant, lifetime access after payment', rec_cta: 'Start now', rec_count: '🎬 All 5 evenings are recorded and available as soon as you pay', rec_final_s: 'Start whenever you like: the recorded evenings and workbooks are waiting in “My space”.', rec_times_t: 'Start whenever you like', rec_times_s: 'After payment you instantly get the 5 recorded evenings, the workbooks and the treasure chest in “My space”, with lifetime access.', chip: '✨ Live online masterclass · December 14–18, 2026', h1: 'Masterclass 2027', h1b: 'Abundance & Conscious Manifestation',
       intro: 'Five live evenings with Rawia Ghorbel to close 2026 in peace, release what weighs on you, open the door to abundance and set your intentions for 2027 with clarity… wherever you are in the world.',
       cta: 'Book my seat', cta2: 'See the programme', starts: 'The masterclass starts in', d: 'd', h: 'h', m: 'min', live_now: 'The masterclass has started ✨', seats: 'Limited seats',
       pain_t: 'Do you feel that…', pains: ['This year has been heavy and you still carry a deep tiredness', 'The same patterns keep repeating in your relationships or finances', 'You have dreams for 2027 but don’t know where to start', 'You want to enter the new year with clear energy and a strong intention'],
@@ -81,7 +81,10 @@
   };
   const $ = s => document.querySelector(s);
   const lg = () => { const l = window.CH ? window.CH.getLang() : 'ar'; return M[l] ? l : 'fr'; };
-  const m = k => M[lg()][k];
+  // after the live week, texts with a rec_ version (chip, seats, cta…) switch to the recorded offer
+  const LIVE_END = new Date('2026-12-18T21:30:00+01:00');
+  const recorded = () => Date.now() > LIVE_END;
+  const m = k => (recorded() && M[lg()]['rec_' + k] !== undefined) ? M[lg()]['rec_' + k] : M[lg()][k];
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const course = () => window.CH && window.CH.getData() && (window.CH.getData().formations || []).find(f => f.id === COURSE);
   const fmtWhen = (iso, tz) => new Date(iso).toLocaleString(lg() === 'ar' ? 'ar-TN' : lg() === 'fr' ? 'fr-FR' : 'en-GB', { timeZone: tz, weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
@@ -99,7 +102,7 @@
         <ul>${m(i ? 'o2' : 'o1').map(x => `<li>${esc(x)}</li>`).join('')}</ul>
         <button class="btn ${i ? 'btn-gold' : 'btn-primary'} btn-block" data-mc="${i}">${esc(m('book'))}</button></article>`).join('');
     const tz = (window.CH && window.CH.tz) || Intl.DateTimeFormat().resolvedOptions().timeZone;
-    $('#k-times').innerHTML = SESSIONS.map((s, i) => `<li><b>${esc(m('days')[i][0])}</b><span>${esc(fmtWhen(s, tz))}</span>${fmtWhen(s, tz) !== fmtWhen(s, 'Africa/Tunis') ? `<small>${esc(fmtWhen(s, 'Africa/Tunis'))} (${esc(m('tunis'))})</small>` : ''}</li>`).join('');
+    $('#k-times').innerHTML = recorded() ? '' : SESSIONS.map((s, i) => `<li><b>${esc(m('days')[i][0])}</b><span>${esc(fmtWhen(s, tz))}</span>${fmtWhen(s, tz) !== fmtWhen(s, 'Africa/Tunis') ? `<small>${esc(fmtWhen(s, 'Africa/Tunis'))} (${esc(m('tunis'))})</small>` : ''}</li>`).join('');
     $('#k-faq').innerHTML = m('faq').map(([q, r]) => `<details><summary>${esc(q)}</summary><p>${esc(r)}</p></details>`).join('');
     const portrait = window.CH && window.CH.getData() && (window.CH.getData().settings || {}).portrait;
     if (portrait && /^https?:\/\//.test(portrait)) $('#k-portrait').src = portrait;
@@ -107,6 +110,7 @@
   }
   function tick() {
     const el = $('#k-count'); if (!el) return;
+    if (recorded()) { el.innerHTML = `<b>${esc(m('count'))}</b>`; return; }
     const ms = new Date(SESSIONS[0]) - Date.now();
     if (ms <= 0) { el.innerHTML = `<b>${esc(m('live_now'))}</b>`; return; }
     const d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, mi = Math.floor(ms / 6e4) % 60;
