@@ -615,6 +615,11 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
     const i = D.soins.findIndex(s => s.id === 'consultation-psychologique');
     D.soins.splice(i >= 0 ? i + 1 : D.soins.length, 0, x);
   });
+  // Rawia wants the session named "Couple Therapy" in every language (only if the title was not edited since)
+  once('couple-therapy-title-2026-11', () => {
+    const x = (D.soins || []).find(s => s.id === 'therapie-couple');
+    if (x && x.titre && x.titre.fr === 'Thérapie de couple') x.titre = { ar: 'Couple Therapy – العلاج الزوجي', fr: 'Couple Therapy – Thérapie de couple', en: 'Couple Therapy' };
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
