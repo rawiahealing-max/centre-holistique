@@ -663,6 +663,15 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
   });
   // no participant number shown for the masterclass (Rawia's choice)
   once('masterclass-2027-noseats', () => { const c = (D.formations || []).find(f => f.id === 'bawabat-2027'); if (c) c.places = ''; });
+  // masterclass prices (numerology 8 = abundance): full 44 € and VIP 125 €
+  once('masterclass-2027-prices-8', () => {
+    const c = (D.formations || []).find(f => f.id === 'bawabat-2027'); if (!c) return;
+    c.prix = { tnd: '152', eur: '44', usd: '53' };
+    c.niveaux = [
+      { nom: { ar: 'الماستركلاس الكامل', fr: 'La masterclass complète', en: 'Full masterclass' }, prix: { tnd: '152', eur: '44', usd: '53' } },
+      { nom: { ar: 'الماستركلاس + جلسة خاصة VIP', fr: 'Masterclass + séance privée VIP', en: 'Masterclass + private VIP session' }, prix: { tnd: '395', eur: '125', usd: '134' } }
+    ];
+  });
   once('remove-example-testimonial', () => {    D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
   return changed;
