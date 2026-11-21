@@ -170,7 +170,7 @@ window.applyContentPatches = function (D) {
     const s = D.settings = D.settings || {};
     s.adresse = { ar: 'صفاقس، تونس', fr: 'Sfax, Tunisie', en: 'Sfax, Tunisia' };
     s.maps = 'https://www.google.com/maps?q=34.7435365,10.7644474';
-    const fix = v => typeof v === 'string' ? v.replace(/بتونس/g, 'بصفاقس').replace(/à Tunis\b/g, 'à Sfax').replace(/in Tunis\b/g, 'in Sfax').replace(/heure de Tunis/g, 'heure tunisienne').replace(/Tunis time/g, 'Tunisia time') : v;
+    const fix = v => typeof v === 'string' ? v.replace(/بتونس(?! \(صفاقس\))/g, 'بتونس (صفاقس)').replace(/à Tunis\b/g, 'à Sfax').replace(/in Tunis\b/g, 'in Sfax').replace(/heure de Tunis/g, 'heure tunisienne').replace(/Tunis time/g, 'Tunisia time') : v;
     ['intro', 'horaires', 'bio', 'bio2'].forEach(k => { if (s[k] && typeof s[k] === 'object') ['ar', 'fr', 'en'].forEach(l => { s[k][l] = fix(s[k][l]); }); });
     (D.faq || []).forEach(f => ['ar', 'fr', 'en'].forEach(l => { if (f.r) f.r[l] = fix(f.r[l]); }));
   });
@@ -271,7 +271,7 @@ Pour aller plus loin, retrouvez des [méditations guidées audio](meditations.ht
 ## الريكي عن بُعد
 الطاقة لا تعرف المسافات. تجري الجلسة عن بُعد بالطريقة نفسها: تجلس مرتاحاً في بيتك، نبدأ في الوقت نفسه، ثم نتحدث هاتفياً أو عبر الرسائل. وهكذا أرافق أشخاصاً في تونس وخارجها.
 
-هل ترغب في التجربة؟ تجد كل التفاصيل في صفحة [جلسة ريكي في صفاقس وعن بُعد](reiki-sfax.html)، أو [احجز جلستك](index.html#reservation) مباشرة 🙌`,
+هل ترغب في التجربة؟ تجد كل التفاصيل في صفحة [جلسة ريكي في صفاقس، تونس وعن بُعد](reiki-sfax.html)، أو [احجز جلستك](index.html#reservation) مباشرة 🙌`,
         fr: `Le Reiki fait partie des méthodes énergétiques les plus connues au monde, et pourtant beaucoup se demandent encore : « Qu’est-ce que c’est exactement ? Que se passe-t-il pendant une séance ? ». Voici des réponses simples.
 
 ## Qu’est-ce que le Reiki ?
@@ -291,7 +291,7 @@ Chaque expérience est unique. Beaucoup ressentent une **chaleur** sous les main
 ## Le Reiki à distance
 L’énergie ne connaît pas la distance. La séance à distance se déroule de la même façon : vous vous installez au calme chez vous, nous commençons à la même heure, puis nous échangeons par appel ou message. C’est ainsi que j’accompagne des personnes en Tunisie comme à l’étranger.
 
-Envie d’essayer ? Toutes les informations sont sur la page [Reiki à Sfax et à distance](reiki-sfax.html), ou [réservez votre séance](index.html#reservation) directement 🙌`,
+Envie d’essayer ? Toutes les informations sont sur la page [Reiki à Sfax (Tunisie) et à distance](reiki-sfax.html), ou [réservez votre séance](index.html#reservation) directement 🙌`,
         en: ''
       }
     });
@@ -323,7 +323,7 @@ Envie d’essayer ? Toutes les informations sont sur la page [Reiki à Sfax et �
 
 الثيتا هيلينغ مرافقة في التطوّر الشخصي والروحي، تكمّل أي متابعة طبية أو نفسية ولا تعوّضها.
 
-الجلسات في المركز بصفاقس أو أونلاين، بالعربية والفرنسية والإنجليزية. اكتشف [جلسة الثيتا هيلينغ](thetahealing-sfax.html) أو اسألني مباشرة على واتساب 💎`,
+الجلسات في المركز بتونس (صفاقس) أو أونلاين، بالعربية والفرنسية والإنجليزية. اكتشف [جلسة الثيتا هيلينغ](thetahealing-sfax.html) أو اسألني مباشرة على واتساب 💎`,
         fr: `Il arrive que l’on rejoue sans cesse le même scénario : le même type de relations, les mêmes difficultés avec l’argent, la même peur avant chaque nouveau pas. Souvent, ce n’est pas de la « malchance », mais une **croyance limitante** cachée dans l’inconscient.
 
 ## Qu’est-ce qu’une croyance limitante ?
@@ -346,7 +346,7 @@ Le ThetaHealing® est une technique de méditation qui utilise les **ondes cér�
 
 Le ThetaHealing® est un accompagnement de développement personnel et spirituel, complémentaire à tout suivi médical ou psychologique, qu’il ne remplace pas.
 
-Séances au centre à Sfax ou en ligne, en arabe, en français et en anglais. Découvrez la [séance de ThetaHealing®](thetahealing-sfax.html) ou posez-moi vos questions sur WhatsApp 💎`,
+Séances au centre à Sfax (Tunisie) ou en ligne, en arabe, en français et en anglais. Découvrez la [séance de ThetaHealing®](thetahealing-sfax.html) ou posez-moi vos questions sur WhatsApp 💎`,
         en: ''
       }
     });
@@ -385,7 +385,7 @@ Séances au centre à Sfax ou en ligne, en arabe, en français et en anglais. D�
 ## نصائح لجلستك الأولى
 البس ملابس مريحة، تعال قبل الموعد ببضع دقائق، واشرب ماءً بعد الجلسة. لا تحتاج إلى أي تحضير آخر: فقط أن تسمح لنفسك بالراحة.
 
-الجلسات في المركز بصفاقس. كل التفاصيل في صفحة [أكسس بارز في صفاقس](access-bars-sfax.html) ✨`,
+الجلسات في المركز بتونس (صفاقس). كل التفاصيل في صفحة [أكسس بارز في صفاقس، تونس](access-bars-sfax.html) ✨`,
         fr: `Avez-vous parfois l’impression que votre tête est pleine de pensées qui ne s’arrêtent jamais ? Que votre mental rejoue les mêmes scénarios, même la nuit ? Une séance d’**Access Bars®** peut être l’espace dont vous avez besoin pour respirer.
 
 ## Que sont les « Bars » ?
@@ -410,7 +410,7 @@ L’Access Bars® est une pratique de bien-être et de détente, complémentaire
 ## Conseils pour votre première séance
 Portez des vêtements confortables, arrivez quelques minutes en avance et buvez de l’eau après la séance. Aucune autre préparation n’est nécessaire : il suffit de vous autoriser à vous reposer.
 
-Séances au centre à Sfax. Toutes les informations sur la page [Access Bars® à Sfax](access-bars-sfax.html) ✨`,
+Séances au centre à Sfax (Tunisie). Toutes les informations sur la page [Access Bars® à Sfax (Tunisie)](access-bars-sfax.html) ✨`,
         en: ''
       }
     });
@@ -439,7 +439,7 @@ Séances au centre à Sfax. Toutes les informations sur la page [Access Bars® �
 ## كيف تستعد للقراءة؟
 اكتب **3 إلى 5 أسئلة** قبل الموعد، ورتّبها حسب الأهمية. اختر مكاناً هادئاً إن كانت القراءة أونلاين. وجهّز دفتراً لتدوين ما يلمسك، لأن بعض الرسائل تتّضح بعد أيام.
 
-القراءة تدوم حوالي 75 دقيقة، أونلاين أو في المركز بصفاقس. اكتشف [قراءة السجلات الأكاشية](annales-akashiques.html) 📖`,
+القراءة تدوم حوالي 75 دقيقة، أونلاين أو في المركز بتونس (صفاقس). اكتشف [قراءة السجلات الأكاشية](annales-akashiques.html) 📖`,
         fr: `Les Annales Akashiques sont souvent décrites comme la **mémoire de l’âme** : un espace où serait inscrite l’histoire de chaque âme, avec ses leçons, ses liens et ses talents. Une lecture n’est pas de la voyance, mais un dialogue bienveillant qui aide à mieux se comprendre. Le secret d’une belle lecture ? **De bonnes questions.**
 
 ## Privilégier les questions ouvertes
@@ -459,7 +459,7 @@ Les questions fermées (oui/non) referment la porte ; les questions ouvertes cr�
 ## Comment se préparer ?
 Notez **3 à 5 questions** avant le rendez-vous et classez-les par importance. Installez-vous dans un endroit calme si la lecture a lieu en ligne. Gardez un carnet à portée de main : certains messages prennent tout leur sens quelques jours plus tard.
 
-La lecture dure environ 75 minutes, en ligne ou au centre à Sfax. Découvrez la [lecture des Annales Akashiques](annales-akashiques.html) 📖`,
+La lecture dure environ 75 minutes, en ligne ou au centre à Sfax (Tunisie). Découvrez la [lecture des Annales Akashiques](annales-akashiques.html) 📖`,
         en: ''
       }
     });
@@ -490,7 +490,7 @@ La lecture dure environ 75 minutes, en ligne ou au centre à Sfax. Découvrez la
 - **الصليب السلتي:** قراءة شاملة لموقف معقّد.
 - **أوراكل الملائكة:** لرسالة لطيفة ومطمئنة.
 
-يمكنك اختيار قراءتك مباشرة من [صفحة التاروت](tarot.html)، أونلاين (فيديو، قراءة مكتوبة PDF أو رسالة صوتية) أو في المركز بصفاقس 🔮`,
+يمكنك اختيار قراءتك مباشرة من [صفحة التاروت](tarot.html)، أونلاين (فيديو، قراءة مكتوبة PDF أو رسالة صوتية) أو في المركز بتونس (صفاقس) 🔮`,
         fr: `Beaucoup arrivent à un tirage avec une question comme « Que va-t-il m’arriver ? ». Mais le Tarot n’est pas une machine à prédire : c’est avant tout un **miroir**. Il révèle les énergies présentes, vos ressources et les tendances possibles. La façon de formuler la question change donc tout.
 
 ## Trois règles simples
@@ -512,7 +512,7 @@ La lecture dure environ 75 minutes, en ligne ou au centre à Sfax. Découvrez la
 - **Croix celtique :** lecture complète d’une situation complexe.
 - **Oracle des Anges :** pour un message doux et rassurant.
 
-Choisissez votre tirage directement sur la [page Tarot](tarot.html), en ligne (visio, lecture écrite en PDF ou message vocal) ou au centre à Sfax 🔮`,
+Choisissez votre tirage directement sur la [page Tarot](tarot.html), en ligne (visio, lecture écrite en PDF ou message vocal) ou au centre à Sfax (Tunisie) 🔮`,
         en: ''
       }
     });
@@ -541,7 +541,7 @@ Choisissez votre tirage directement sur la [page Tarot](tarot.html), en ligne (v
 ## تمرين صغير لموازنة الشاكرات
 اجلس بهدوء، وتخيّل مع كل نفس ضوءاً بلون الشاكرا يتوهّج في مكانها، من الأحمر في الأسفل حتى البنفسجي في الأعلى. خذ ثلاثة أنفاس عميقة لكل مركز. هذا التمرين البسيط يساعد على الاسترخاء والوعي بالجسد.
 
-للمرافقة الأعمق، تساعد [جلسة العلاج الطاقي](soin-energetique-sfax.html) على تنظيف وموازنة الشاكرات والهالة، في المركز بصفاقس أو عن بُعد 🌈`,
+للمرافقة الأعمق، تساعد [جلسة العلاج الطاقي](soin-energetique-sfax.html) على تنظيف وموازنة الشاكرات والهالة، في المركز بتونس (صفاقس) أو عن بُعد 🌈`,
         fr: `Dans les traditions indiennes anciennes, les **chakras** (« roues » en sanskrit) sont des centres d’énergie situés le long de la colonne vertébrale, de la base jusqu’au sommet du crâne. Chacun est relié à un aspect de notre vie physique, émotionnelle et spirituelle.
 
 ## Les 7 chakras
@@ -561,7 +561,7 @@ Quand un centre est déséquilibré, on peut le remarquer au quotidien : insécu
 ## Un petit exercice d’équilibrage
 Asseyez-vous au calme et, à chaque respiration, imaginez une lumière de la couleur du chakra qui s’illumine à son emplacement, du rouge en bas jusqu’au violet en haut. Prenez trois respirations profondes par centre. Cet exercice simple favorise la détente et la conscience du corps.
 
-Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sfax.html) aide à nettoyer et rééquilibrer les chakras et l’aura, au centre à Sfax ou à distance 🌈`,
+Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sfax.html) aide à nettoyer et rééquilibrer les chakras et l’aura, au centre à Sfax (Tunisie) ou à distance 🌈`,
         en: ''
       }
     });
@@ -625,8 +625,21 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
     const x = (D.soins || []).find(s => s.id === 'therapie-couple');
     if (x && x.description && /نفهمو|نتعلّمو|نبنيو/.test(x.description.ar || '')) x.description.ar = 'مساحة آمنة وخالية من الأحكام للزوجين: نفهم معاً أسباب الخلاف، ونتعلّم التواصل من القلب، ونعيد بناء الثقة والقرب. في المركز أو عن بُعد.';
   });
-  once('remove-example-testimonial', () => {
-    D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
+  // Sfax is not known abroad: always say Tunisia with it (texts saved in the database too)
+  once('tunisie-sfax-2026-11', () => {
+    const RULES = [
+      [/في المركز بصفاقس(?![،,]?\s*\(?تونس)/g, 'في المركز بتونس (صفاقس)'],
+      [/بصفاقس(?![،,]?\s*\(?تونس)/g, 'بتونس (صفاقس)'],
+      [/في صفاقس(?![،,]?\s*تونس)/g, 'في صفاقس، تونس'],
+      [/ à Sfax(?! \(Tunisie\)|, Tunisie)/g, ' à Sfax (Tunisie)'],
+      [/ de Sfax(?! \(Tunisie\)|, Tunisie)/g, ' de Sfax (Tunisie)'],
+      [/ in Sfax(?!, Tunisia)/g, ' in Sfax, Tunisia']
+    ];
+    const fixS = v => RULES.reduce((t, [re, rep]) => t.replace(re, rep), v);
+    const walk = o => { for (const k in o) { if (typeof o[k] === 'string') o[k] = fixS(o[k]); else if (o[k] && typeof o[k] === 'object') walk(o[k]); } };
+    ['soins', 'formations', 'packs', 'lectures', 'evenements', 'abonnements', 'faq', 'blog', 'categories', 'settings'].forEach(k => D[k] && walk(D[k]));
+  });
+  once('remove-example-testimonial', () => {    D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
   return changed;
 };
