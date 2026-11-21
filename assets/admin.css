@@ -120,3 +120,8 @@ tr.click{cursor:pointer}tr.click:hover{background:#faf8fc}
 .sess-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
 .sess-grid .full{grid-column:1/-1}
 .sess .row{flex-wrap:wrap;gap:6px}
+.chat-tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:8px 10px;border-bottom:1px solid var(--line);background:#f4f8f5;font-size:.85rem;color:#2e6b4a}
+.chat-tools span{flex:1;min-width:180px}
+.chatbox.calm .msgs{background:#f7faf8}
+.rooms button.urgent{border-color:#e74c3c;background:#fff3f1}
+.typing{font-size:.8rem;color:var(--muted);font-style:italic;padding:2px 12px}
