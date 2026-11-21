@@ -3,7 +3,7 @@
   const A = {
     ar: {
       auth_title: 'فضائي', auth_sub: 'ادخل لحسابك لتجد دوراتك، تأملاتك، اشتراكك والشات مع المجتمع.',
-      perk1: '🎓 دوراتك وفيديوهاتها في مكان واحد', perk2: '🧘 تأملات خاصة بالأعضاء', perk3: '💬 شات مباشر مع المعالِجة والمجتمع', perk4: '🧾 متابعة طلباتك وحجوزاتك',
+      perk1: '🎓 دوراتك وفيديوهاتها في مكان واحد', perk2: '🧘 تأملات خاصة بالأعضاء', perk3: '💬 شات مباشر مع المعالِجة والمجتمع', perk4: '📞 استشارة أونلاين: مكالمة، فيديو أو شات خاص',
       login: 'تسجيل الدخول', signup: 'إنشاء حساب', email: 'البريد الإلكتروني', password: 'كلمة السر', login_btn: 'دخول', forgot: 'نسيت كلمة السر؟',
       full_name: 'الاسم واللقب', phone: 'الهاتف / واتساب', country: 'البلد', password_new: 'كلمة السر (8 أحرف على الأقل)', signup_btn: 'إنشاء حسابي',
       forgot_text: 'اكتب بريدك وسنرسل لك رابطاً لتغيير كلمة السر.', send_link: 'أرسل الرابط', back_login: '← رجوع لتسجيل الدخول', reset_text: 'اختر كلمة سر جديدة.', save: 'حفظ',
@@ -22,7 +22,7 @@
     },
     fr: {
       auth_title: 'Mon espace', auth_sub: 'Connectez-vous pour retrouver vos formations, méditations, abonnement et le chat de la communauté.',
-      perk1: '🎓 Vos formations et vidéos au même endroit', perk2: '🧘 Méditations réservées aux membres', perk3: '💬 Chat en direct avec la thérapeute et la communauté', perk4: '🧾 Suivi de vos commandes et réservations',
+      perk1: '🎓 Vos formations et vidéos au même endroit', perk2: '🧘 Méditations réservées aux membres', perk3: '💬 Chat en direct avec la thérapeute et la communauté', perk4: '📞 Consultation en ligne : appel, vidéo ou chat privé',
       login: 'Connexion', signup: 'Créer un compte', email: 'E-mail', password: 'Mot de passe', login_btn: 'Se connecter', forgot: 'Mot de passe oublié ?',
       full_name: 'Nom complet', phone: 'Téléphone / WhatsApp', country: 'Pays', password_new: 'Mot de passe (8 caractères min.)', signup_btn: 'Créer mon compte',
       forgot_text: 'Indiquez votre e-mail, nous vous enverrons un lien pour changer votre mot de passe.', send_link: 'Envoyer le lien', back_login: '← Retour à la connexion', reset_text: 'Choisissez un nouveau mot de passe.', save: 'Enregistrer',
@@ -41,7 +41,7 @@
     },
     en: {
       auth_title: 'My space', auth_sub: 'Sign in to find your trainings, meditations, membership and the community chat.',
-      perk1: '🎓 Your trainings and videos in one place', perk2: '🧘 Members-only meditations', perk3: '💬 Live chat with the therapist and community', perk4: '🧾 Track your orders and bookings',
+      perk1: '🎓 Your trainings and videos in one place', perk2: '🧘 Members-only meditations', perk3: '💬 Live chat with the therapist and community', perk4: '📞 Online consultation: call, video or private chat',
       login: 'Sign in', signup: 'Create account', email: 'Email', password: 'Password', login_btn: 'Sign in', forgot: 'Forgot password?',
       full_name: 'Full name', phone: 'Phone / WhatsApp', country: 'Country', password_new: 'Password (min. 8 characters)', signup_btn: 'Create my account',
       forgot_text: "Enter your email and we'll send you a link to reset your password.", send_link: 'Send link', back_login: '← Back to sign in', reset_text: 'Choose a new password.', save: 'Save',
@@ -68,6 +68,21 @@
   let user = null, profile = null, enrolls = [], isMember = false, isAdmin = false, room = null, channel = null;
 
   function applyText() { $$('[data-a]').forEach(el => el.textContent = a(el.dataset.a)); }
+  // sign-up / password errors from Supabase come in English: show them in the visitor's language
+  function authErr(error) {
+    const m = String(error && error.message || ''), l = lg();
+    const T = {
+      wait: { ar: 'لحظة من فضلك، استنّى بعض الثواني وعاود جرّب.', fr: 'Merci de patienter quelques secondes avant de réessayer.', en: 'Please wait a few seconds and try again.' },
+      exists: { ar: 'هذا الإيميل عندو حساب من قبل. ادخل بيه، ولا استعمل «نسيت كلمة السر؟».', fr: 'Un compte existe déjà avec cet e-mail. Connectez-vous ou utilisez « Mot de passe oublié ? ».', en: 'An account already exists with this email. Log in or use “Forgot password?”.' },
+      email: { ar: 'الإيميل موش صحيح، ثبّت فيه.', fr: 'L’adresse e-mail n’est pas valide.', en: 'This email address is not valid.' },
+      weak: { ar: 'كلمة السر ضعيفة، اختار وحدة أطول فيها أرقام وحروف.', fr: 'Mot de passe trop faible : choisissez-en un plus long avec chiffres et lettres.', en: 'Password too weak: choose a longer one with numbers and letters.' },
+      same: { ar: 'كلمة السر الجديدة لازم تكون مختلفة على القديمة.', fr: 'Le nouveau mot de passe doit être différent de l’ancien.', en: 'The new password must be different from the old one.' },
+      other: { ar: 'صار مشكل، عاود جرّب بعد شوية.', fr: 'Une erreur est survenue, réessayez dans un instant.', en: 'Something went wrong, please try again shortly.' }
+    };
+    const k = /security purposes|seconds|rate limit|too many/i.test(m) ? 'wait' : /already (registered|exists)/i.test(m) ? 'exists'
+      : /invalid.*email|email.*invalid/i.test(m) ? 'email' : /weak|password should/i.test(m) ? 'weak' : /different from the old/i.test(m) ? 'same' : 'other';
+    return T[k][l] || T[k].fr;
+  }
   function msg(el, text, ok) { const m = $(el); m.textContent = text; m.className = 'auth-msg ' + (ok ? 'ok' : 'err'); m.hidden = false; }
   (window.CH_HOOKS = window.CH_HOOKS || []).push(() => { applyText(); if (user) renderAll(); });
   applyText();
@@ -94,9 +109,9 @@
     if (!f.full_name.value.trim() || !f.email.value.trim() || !f.password.value) return msg('#auth-msg', a('err_fields'));
     if (f.password.value.length < 8) return msg('#auth-msg', a('err_short'));
     const { data, error } = await sb.auth.signUp({ email: f.email.value.trim(), password: f.password.value, options: {
-      data: { full_name: f.full_name.value.trim(), phone: f.phone.value.trim(), country: f.country.value.trim() },
+      data: { full_name: f.full_name.value.trim() },
       emailRedirectTo: location.origin + location.pathname } });
-    if (error) return msg('#auth-msg', error.message);
+    if (error) return msg('#auth-msg', authErr(error));
     if (!data.session) { msg('#auth-msg', a('signup_ok'), true); f.reset(); }
   });
   $('#f-forgot').addEventListener('submit', async e => {
@@ -107,7 +122,7 @@
   $('#f-reset').addEventListener('submit', async e => {
     e.preventDefault(); const p = e.target.password.value; if (p.length < 8) return msg('#auth-msg', a('err_short'));
     const { error } = await sb.auth.updateUser({ password: p });
-    if (error) return msg('#auth-msg', error.message);
+    if (error) return msg('#auth-msg', authErr(error));
     msg('#auth-msg', a('reset_ok'), true); setTimeout(() => location.replace(location.pathname), 1200);
   });
 
