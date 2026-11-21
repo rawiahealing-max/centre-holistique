@@ -97,6 +97,10 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.centreholistique.net/formations/bawabat-2027.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.centreholistique.net/formations/reiki-usui.html</loc>
     <priority>0.7</priority>
   </url>
@@ -106,10 +110,6 @@
   </url>
   <url>
     <loc>https://www.centreholistique.net/formations/prana-healing.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.centreholistique.net/formations/bawabat-2027.html</loc>
     <priority>0.7</priority>
   </url>
 </urlset>
