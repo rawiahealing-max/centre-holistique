@@ -690,6 +690,55 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
     const b = c.sections.find(s => s.id === 'bonus');
     if (b) Object.assign(b, { ar: '✨ خزانة الكنوز: كرّاساتك وهداياك', fr: '✨ Le coffre aux trésors : vos cahiers et cadeaux', en: '✨ Treasure chest: your workbooks and gifts' });
   });
+  // Sessions organised in Rawia's 4 tracks (Nov 2026) + new sessions (proposed prices, editable in admin)
+  once('sessions-tracks-2026-11', () => {
+    D.categories = [
+      { id: 'psy', ar: 'الاستشارات النفسية وتحرير الجذور', fr: 'Accompagnement & libération des racines', en: 'Guidance & root healing' },
+      { id: 'energie', ar: 'العلاجات الطاقية والموازنة', fr: 'Soins énergétiques & équilibre', en: 'Energy healing & balance' },
+      { id: 'corps', ar: 'العلاجات الجسدية والسبا (صفاقس)', fr: 'Soins du corps & spa (Sfax)', en: 'Body care & spa (Sfax)' },
+      { id: 'lecture', ar: 'القراءات والبرامج المكثّفة', fr: 'Lectures & programmes intensifs', en: 'Readings & intensive programmes' }
+    ];
+    D.soins = D.soins || [];
+    const get = id => D.soins.find(s => s.id === id);
+    const set = (id, o) => { const s = get(id); if (s) Object.assign(s, o); };
+    set('consultation', { categorie: 'psy', titre: { ar: 'جلسة التشخيص والتوجيه الشمولي', fr: 'Séance de bilan & d’orientation holistique', en: 'Holistic assessment & guidance session' },
+      description: { ar: 'نقيّم وضعك واحتياجاتك معاً، وأحدّد لك المسار والجلسات الأنسب، مع أولى النصائح العملية. أونلاين.', fr: 'Nous évaluons ensemble votre situation et vos besoins, et je définis le parcours et les soins les plus adaptés, avec de premiers conseils concrets. En ligne.', en: 'We assess your situation and needs together, and I define the most suitable path and sessions, with first practical advice. Online.' } });
+    set('thetahealing', { categorie: 'psy' });
+    set('constellation-familiale', { categorie: 'psy', titre: { ar: 'جلسة الوقوف العائلي (فردية)', fr: 'Constellation familiale (individuelle)', en: 'Family constellation (individual)' } });
+    set('soin-energetique', { categorie: 'energie', titre: { ar: 'العلاج الطاقي المتكامل (ريكي وبرانا)', fr: 'Soin énergétique intégral (Reiki & Prana)', en: 'Integrated energy healing (Reiki & Prana)' },
+      description: { ar: 'تنظيف الهالة وشحن الشاكرات، مع اختيار التقنية الأنسب لحالتك (الريكي أو البرانا أو كلاهما)، لتحرير التوتر والتعب والانسدادات. في المركز أو عن بُعد.', fr: 'Nettoyage de l’aura et recharge des chakras, avec la technique la plus adaptée à votre état (Reiki, Prana ou les deux), pour libérer tensions, fatigue et blocages. Au centre ou à distance.', en: 'Aura cleansing and chakra recharging with the technique best suited to you (Reiki, Prana or both) to release tension, fatigue and blockages. At the centre or remotely.' } });
+    ['reiki', 'prana-healing', 'access-bars', 'meditation'].forEach(id => set(id, { categorie: 'energie' }));
+    ['tarot', 'annales-akashiques'].forEach(id => set(id, { categorie: 'lecture' }));
+    ['consultation-psychologique', 'therapie-couple', 'coaching'].forEach(id => set(id, { categorie: 'psy' }));
+    const add = x => { if (!get(x.id)) D.soins.push(Object.assign({ image: '' }, x)); };
+    add({ id: 'hypnose', categorie: 'psy', icone: 'mind', theme: 'indigo', en_ligne: true,
+      prix: { tnd: '140', eur: '55', usd: '60' }, duree: { ar: '60–75 دقيقة', fr: '60–75 min', en: '60–75 min' },
+      titre: { ar: 'جلسة التنويم الإيحائي وتحرير الصدمات', fr: 'Séance d’hypnose & libération des traumas', en: 'Hypnosis & trauma release session' },
+      description: { ar: 'جلسة تنويم إيحائي لطيفة للوصول إلى اللاوعي، وتهدئة المخاوف العميقة والقلق، وإعادة برمجة الأنماط التي تعيقك. في المركز أو أونلاين.', fr: 'Une séance d’hypnose douce pour accéder à l’inconscient, apaiser les peurs profondes et l’anxiété, et reprogrammer les schémas qui vous freinent. Au centre ou en ligne.', en: 'A gentle hypnosis session to reach the subconscious, ease deep fears and anxiety, and reprogram the patterns holding you back. At the centre or online.' } });
+    add({ id: 'psychosomatique', categorie: 'psy', icone: 'heart', theme: 'blue', en_ligne: true,
+      prix: { tnd: '120', eur: '45', usd: '50' }, duree: { ar: '60 دقيقة', fr: '60 min', en: '60 min' },
+      titre: { ar: 'الاستشارة النفس-جسدية (Psychosomatique)', fr: 'Consultation psychosomatique', en: 'Psychosomatic consultation' },
+      description: { ar: 'فهم الرسائل النفسية والطاقية التي قد تحملها الأعراض الجسدية، لمرافقتك نحو توازن أعمق بين الجسد والمشاعر. مكمّلة للمتابعة الطبية ولا تعوّضها.', fr: 'Comprendre les messages émotionnels et énergétiques que peuvent porter les symptômes du corps, pour un équilibre plus profond entre corps et émotions. Complémentaire au suivi médical, sans le remplacer.', en: 'Understand the emotional and energetic messages that body symptoms may carry, for a deeper balance between body and emotions. Complements medical care, never replaces it.' } });
+    add({ id: 'son-cristaux', categorie: 'energie', icone: 'crystal', theme: 'violet', en_ligne: false,
+      prix: { tnd: '110', eur: '40', usd: '45' }, duree: { ar: '60 دقيقة', fr: '60 min', en: '60 min' },
+      titre: { ar: 'جلسة العلاج بالصوت والأحجار الكريمة', fr: 'Soin par le son & les cristaux', en: 'Sound & crystal healing session' },
+      description: { ar: 'استرخاء عميق بذبذبات الأطباق التبتية والشوكات الرنّانة وطاقة الكريستال، لتهدئة الجهاز العصبي وإعادة التناغم. في المركز بصفاقس.', fr: 'Détente profonde avec les bols tibétains, les diapasons et l’énergie des cristaux, pour apaiser le système nerveux et retrouver l’harmonie. Au centre, à Sfax.', en: 'Deep relaxation with Tibetan bowls, tuning forks and crystal energy to calm the nervous system and restore harmony. At the centre in Sfax.' } });
+    add({ id: 'head-spa', categorie: 'corps', icone: 'lotus', theme: 'green', en_ligne: false,
+      prix: { tnd: '100', eur: '40', usd: '45' }, duree: { ar: '60–75 دقيقة', fr: '60–75 min', en: '60–75 min' },
+      titre: { ar: 'جلسة الهيد سبا الياباني (Japanese Head Spa)', fr: 'Head Spa japonais', en: 'Japanese Head Spa' },
+      description: { ar: 'طقس ياباني للعناية بالرأس: تدليك فروة الرأس والرقبة وتنظيف عميق، لتحرير التوتر وتنشيط الدورة الدموية وإحساس كامل بالراحة. في المركز بصفاقس.', fr: 'Rituel japonais pour la tête : massage du cuir chevelu et de la nuque et nettoyage en profondeur, pour libérer les tensions, stimuler la circulation et retrouver une détente totale. Au centre, à Sfax.', en: 'A Japanese head ritual: scalp and neck massage with deep cleansing to release tension, boost circulation and feel fully relaxed. At the centre in Sfax.' } });
+    add({ id: 'massage-reflexologie', categorie: 'corps', icone: 'hands', theme: 'gold', en_ligne: false,
+      prix: { tnd: '90', eur: '35', usd: '40' }, duree: { ar: '60 دقيقة', fr: '60 min', en: '60 min' },
+      titre: { ar: 'المساج العلاجي أو التصريف اللمفاوي / الرفلكسولوجي', fr: 'Massage bien-être, drainage lymphatique ou réflexologie', en: 'Therapeutic massage, lymphatic drainage or reflexology' },
+      description: { ar: 'جلسة لفكّ التشنّجات العضلية وتنشيط التصريف اللمفاوي، أو تدليك نقاط الانعكاس في القدمين، لتخفيف الثقل وتنقية الجسم. في المركز بصفاقس.', fr: 'Une séance pour dénouer les tensions musculaires, stimuler le drainage lymphatique ou travailler les zones réflexes des pieds, pour alléger et purifier le corps. Au centre, à Sfax.', en: 'A session to release muscle tension, stimulate lymphatic drainage or work the foot reflex zones, to lighten and purify the body. At the centre in Sfax.' } });
+    // display order: track by track, in the order of the table
+    const order = ['consultation', 'hypnose', 'thetahealing', 'constellation-familiale', 'psychosomatique', 'consultation-psychologique', 'therapie-couple', 'coaching',
+      'soin-energetique', 'reiki', 'prana-healing', 'access-bars', 'son-cristaux', 'meditation',
+      'head-spa', 'massage-reflexologie',
+      'tarot', 'annales-akashiques'];
+    const rank = s => { const i = order.indexOf(s.id); return i < 0 ? 999 : i; };
+    D.soins.sort((a, b) => rank(a) - rank(b));
+  });
   once('remove-example-testimonial', () => {    D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
   return changed;
