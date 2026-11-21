@@ -672,6 +672,18 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
       { nom: { ar: 'الماستركلاس + جلسة خاصة VIP', fr: 'Masterclass + séance privée VIP', en: 'Masterclass + private VIP session' }, prix: { tnd: '395', eur: '125', usd: '134' } }
     ];
   });
+  // masterclass content is organised by evening: each lesson picks one of these sections
+  once('masterclass-2027-sections', () => {
+    const c = (D.formations || []).find(f => f.id === 'bawabat-2027'); if (!c || (c.sections && c.sections.length)) return;
+    c.sections = [
+      { id: 's1', ar: 'الأمسية 1 – الختام بحب: حصاد 2026', fr: 'Soirée 1 – Clôturer avec amour : la récolte de 2026', en: 'Evening 1 – Closing with love: the harvest of 2026' },
+      { id: 's2', ar: 'الأمسية 2 – تحرير الكارما والعقود القديمة', fr: 'Soirée 2 – Libérer le karma et les anciens contrats', en: 'Evening 2 – Releasing karma and old contracts' },
+      { id: 's3', ar: 'الأمسية 3 – تنظيف الطاقة وفتح باب الوفرة', fr: 'Soirée 3 – Nettoyer son énergie et ouvrir l’abondance', en: 'Evening 3 – Clearing your energy and opening to abundance' },
+      { id: 's4', ar: 'الأمسية 4 – التجلّي الواعي لعام 2027', fr: 'Soirée 4 – La manifestation consciente de 2027', en: 'Evening 4 – Conscious manifestation for 2027' },
+      { id: 's5', ar: 'الأمسية 5 – طقس نوايا العام الجديد', fr: 'Soirée 5 – Le rituel d’intentions du Nouvel An', en: 'Evening 5 – The New Year intention ritual' },
+      { id: 'bonus', ar: '🎁 الهدايا والملفات', fr: '🎁 Bonus et documents', en: '🎁 Bonuses and files' }
+    ];
+  });
   once('remove-example-testimonial', () => {    D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
   return changed;
