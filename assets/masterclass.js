@@ -117,6 +117,7 @@
     el.innerHTML = `<span class="mc-cd-l">${esc(m('starts'))}</span><span class="mc-cd"><b>${d}</b> ${esc(m('d'))}</span><span class="mc-cd"><b>${h}</b> ${esc(m('h'))}</span><span class="mc-cd"><b>${mi}</b> ${esc(m('m'))}</span>`;
   }
   setInterval(tick, 30000);
+  try { window.chTrack && window.chTrack('ViewContent', { content_ids: [COURSE], content_name: 'Masterclass 2027' }); } catch (e) { /* */ }
   (window.CH_HOOKS = window.CH_HOOKS || []).push(render);
   if (window.CH && window.CH.getData()) render();
 
