@@ -34,7 +34,7 @@ const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8">
 <div class="step"><span>3</span><b>Animation</b><p>Ateliers interactifs et pratiques.</p></div>
 <div class="step"><span>4</span><b>Évaluation & suivi</b><p>Attestations et rapport RH.</p></div></div>
 <div class="two"><div><h3>Inclus</h3><ul><li>Supports PDF pour chaque participant</li><li>Attestation de participation</li><li>Évaluation à chaud et à froid</li><li>Rapport de synthèse anonyme pour les RH</li><li>Suivi à 30 jours</li></ul></div>
-<div><h3>Formats</h3><ul><li>Dans vos locaux</li><li>En ligne (Zoom, Teams, Meet)</li><li>Au centre à Sfax</li><li>Arabe, français ou anglais</li></ul></div></div>
+<div><h3>Formats</h3><ul><li>Dans vos locaux</li><li>En ligne (Zoom, Teams, Meet)</li><li>Au centre à Sfax (Tunisie)</li><li>Arabe, français ou anglais</li></ul></div></div>
 <div class="about"><img src="${PORTRAIT}" alt=""><p><b>Rawia Ghorbel</b> accompagne particuliers et groupes depuis plus de 8 ans en gestion du stress, développement personnel et bien-être, avec des pratiques simples et concrètes, dans un cadre confidentiel et sans jugement.</p></div>
 <div class="contact"><b>Demandez votre proposition sur mesure</b><br>www.centreholistique.net/entreprises.html · WhatsApp +216 26 660 344<br><span style="font-size:9pt;color:#cbb7e0">Formations de développement personnel et de prévention ; elles ne remplacent pas un suivi médical ou psychologique.</span></div></section>
 </body></html>`;
