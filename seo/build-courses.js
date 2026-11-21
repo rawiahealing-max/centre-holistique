@@ -20,6 +20,8 @@ async function loadContent() {
 }
 const L = v => v && typeof v === 'object' ? (v.ar || v.fr || v.en || '') : (v || '');
 const price = p => p ? [p.tnd && p.tnd + ' DT', p.eur && p.eur + ' €', p.usd && '$' + p.usd].filter(Boolean).join(' · ') : '';
+// course page / sharing: the cover with the Arabic title when it exists (cards use the plain one)
+const heroImg = c => { const a = c.image && c.image.replace(/\.jpg$/, '-ar.jpg'); return a && fs.existsSync(path.join(ROOT, a)) ? a : c.image; };
 const levels = c => Array.isArray(c.niveaux) ? c.niveaux.filter(x => x && L(x.nom)) : [];
 
 function courseBody(c, forPdf) {
@@ -28,7 +30,7 @@ function courseBody(c, forPdf) {
   return `
 <section class="seo-hero"><div class="container narrow">
   ${forPdf ? '' : `<nav class="crumbs"><a href="index.html">الرئيسية</a> › <a href="index.html#formations">الدورات</a> › <span>${esc(L(c.titre))}</span></nav>`}
-  ${c.image ? `<img class="post-cover" src="${esc(c.image)}" alt="${esc(L(c.titre))}">` : ''}
+  ${heroImg(c) ? `<img class="post-cover" src="${esc(heroImg(c))}" alt="${esc(L(c.titre))}">` : ''}
   <h1>${esc(L(c.titre))}</h1>
   <p class="seo-lead">${esc(L(c.description))}</p>
   <p class="seo-price">${esc([L(c.duree), L(c.mode), c.date && '📅 ' + c.date].filter(Boolean).join(' · '))}</p>
@@ -47,7 +49,7 @@ function page(c) {
   const url = `${BASE}formations/${c.id}.html`, title = L(c.titre), desc = L(c.description).slice(0, 155);
   const lv = levels(c);
   const ld = { '@context': 'https://schema.org', '@type': 'Course', name: title, description: L(c.description), inLanguage: 'ar', url,
-    image: c.image ? BASE + c.image : BASE + 'assets/og-image.jpg',
+    image: heroImg(c) ? BASE + heroImg(c) : BASE + 'assets/og-image.jpg',
     provider: { '@type': 'Organization', name: 'Centre Holistique – Rawia Ghorbel', sameAs: BASE },
     offers: (lv.length ? lv.map(x => x.prix) : [c.prix]).filter(p => p && p.tnd).map(p => ({ '@type': 'Offer', price: p.tnd, priceCurrency: 'TND', category: 'Paid', availability: 'https://schema.org/InStock' })),
     hasCourseInstance: { '@type': 'CourseInstance', courseMode: ['Onsite', 'Online'], location: 'Sfax, Tunisie' } };
@@ -62,7 +64,7 @@ function page(c) {
   <meta name="theme-color" content="#3b2550">
   <link rel="canonical" href="${url}">
   <meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
-  <meta property="og:url" content="${url}"><meta property="og:image" content="${esc(c.image ? BASE + c.image : BASE + 'assets/og-image.jpg')}">
+  <meta property="og:url" content="${url}"><meta property="og:image" content="${esc(heroImg(c) ? BASE + heroImg(c) : BASE + 'assets/og-image.jpg')}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
