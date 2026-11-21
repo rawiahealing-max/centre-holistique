@@ -280,6 +280,9 @@
     $('#grant').onclick = async () => {
       const [t, id] = f.it.value.split(':'), x = (content[t] || []).find(y => y.id === id);
       const exp = f.exp.value ? new Date(f.exp.value + 'T23:59:00').toISOString() : null;
+      // no duplicates: if this client already has active access to it, only update the end date
+      const dup = await sb.from('enrollments').select('id').eq('user_id', c.id).eq('item_type', t).eq('item_id', id).eq('status', 'active');
+      if ((dup.data || []).length) { await sb.from('enrollments').update({ expires_at: exp }).eq('id', dup.data[0].id); d.close(); toast('✓ لديه الوصول مسبقاً، تم تحديث التاريخ فقط'); return vClients(V); }
       const { error } = await sb.from('enrollments').insert({ user_id: c.id, item_type: t, item_id: id, title: L(x?.titre), expires_at: exp });
       if (error) return toast('خطأ: ' + error.message);
       d.close(); toast('✓ تعطى الوصول'); vClients(V);
