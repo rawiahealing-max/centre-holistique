@@ -9,7 +9,7 @@
     ar: {
       chip: '✨ ماستركلاس مباشر عن بُعد · 14–18 ديسمبر 2026', h1: 'ماستركلاس 2027', h1b: 'الوفرة والتجلّي الواعي',
       intro: 'خمس أمسيات مباشرة مع راوية غربال لتختم عام 2026 بسلام، وتتحرّر مما أثقلك، وتفتح باب الوفرة، وتضع نواياك لعام 2027 بوعي ووضوح… من أي مكان في العالم.',
-      cta: 'احجز مقعدك', cta2: 'اكتشف البرنامج', starts: 'يبدأ الماستركلاس بعد', d: 'يوم', h: 'ساعة', m: 'دقيقة', live_now: 'الماستركلاس جارٍ الآن ✨', seats: 'المقاعد محدودة: 40 مشاركاً',
+      cta: 'احجز مقعدك', cta2: 'اكتشف البرنامج', starts: 'يبدأ الماستركلاس بعد', d: 'يوم', h: 'ساعة', m: 'دقيقة', live_now: 'الماستركلاس جارٍ الآن ✨', seats: 'المقاعد محدودة',
       pain_t: 'هل تشعر بأن…', pains: ['السنة مرّت مثقلة، وتحمل معك تعباً لم تتخلّص منه بعد', 'الأنماط نفسها تتكرّر في علاقاتك أو في مالك', 'لديك أحلام لعام 2027 لكنك لا تعرف من أين تبدأ', 'تريد أن تدخل السنة الجديدة بطاقة نظيفة ونيّة واضحة'],
       pain_c: 'هذا الماستركلاس صُمّم لك.',
       prog_t: 'برنامج الأمسيات الخمس', prog_s: 'كل أمسية 90 دقيقة مباشرة: شرح واضح، تمارين عملية، تأمل موجّه، ووقت للأسئلة.',
@@ -20,20 +20,20 @@
         ['الأمسية 4', 'التجلّي الواعي لعام 2027', 'طاقة عام 2027 في علم الأعداد، وتمرين القفزة الكمية «كأنّه حدث»، ولوحة الرؤية، وكتابة نواياك الثلاث.'],
         ['الأمسية 5', 'طقس نوايا العام الجديد', 'طقس الشموع والنوايا، وورقة التاروت الجماعية لعام 2027، وتأمل العبور إلى العام الجديد قبل عطلة نهاية السنة.']
       ],
-      get_t: 'ماذا تحصل عليه', get: ['5 أمسيات مباشرة عن بُعد (Google Meet)', 'تسجيلات كل الأمسيات متاحة 30 يوماً في «حسابي»', 'دفتر العمل «2027» بصيغة PDF', 'تأمل مسجّل «استقبال 2027»', 'بطاقة نوايا قابلة للطباعة', 'تحدّي الوفرة لمدة 21 يوماً في يناير مع مجموعة المتابعة'],
+      get_t: 'ماذا تحصل عليه', get: ['5 أمسيات مباشرة عن بُعد (Google Meet)', 'تسجيلات كل الأمسيات متاحة لك بشكل دائم في «حسابي»', 'دفتر العمل «2027» بصيغة PDF', 'تأمل مسجّل «استقبال 2027»', 'بطاقة نوايا قابلة للطباعة', 'تحدّي الوفرة لمدة 21 يوماً في يناير مع مجموعة المتابعة'],
       offers_t: 'اختر صيغتك', most: 'الأكثر طلباً', book: 'احجز الآن',
       o1: ['كل محتوى الماستركلاس', 'التسجيلات والدفتر والتأمل', 'تحدّي الوفرة 21 يوماً'],
       o2: ['كل ما في الماستركلاس الكامل', 'جلسة خاصة 45 دقيقة مع راوية (سجلات أكاشية أو ثيتا هيلينغ) لنواياك', 'قراءة تاروت مكتوبة لعام 2027 (12 شهراً)', 'متابعة شخصية عبر واتساب خلال يناير'],
       times_t: 'المواعيد بتوقيتك', times_s: 'تُعرض المواعيد تلقائياً حسب البلد الذي تتصفّح منه.', tunis: 'بتوقيت تونس',
       about_t: 'من تقدّم الماستركلاس؟', about: 'راوية غربال معالجة شمولية ومرشدة روحية، ترافق الأفراد والمجموعات منذ أكثر من 8 سنوات بالريكي والثيتا هيلينغ وأكسس بارز والسجلات الأكاشية. أسلوبها يجمع بين العمق والبساطة، في مساحة آمنة وخالية من الأحكام.',
-      faq_t: 'أسئلة متكرّرة', faq: [['هل أحتاج إلى معرفة مسبقة؟', 'لا. الماستركلاس مفتوح للجميع، ويُشرح كل شيء خطوة بخطوة.'], ['ماذا لو فاتتني أمسية؟', 'ستجد التسجيل في «حسابي» خلال 24 ساعة، ويبقى متاحاً 30 يوماً.'], ['بأي لغة يُقدَّم؟', 'بالعربية، مع توضيحات بالفرنسية عند الحاجة. ويمكن طرح الأسئلة بالعربية أو الفرنسية أو الإنجليزية.'], ['كيف أدفع؟', 'بالبطاقة البنكية أو بالتحويل أو عبر الطرق المعروضة بعد الحجز، وتتلقّى تأكيداً عبر واتساب.']],
+      faq_t: 'أسئلة متكرّرة', faq: [['هل أحتاج إلى معرفة مسبقة؟', 'لا. الماستركلاس مفتوح للجميع، ويُشرح كل شيء خطوة بخطوة.'], ['ماذا لو فاتتني أمسية؟', 'ستجد التسجيل في «حسابي» خلال 24 ساعة، ويبقى متاحاً لك بشكل دائم.'], ['بأي لغة يُقدَّم؟', 'بالعربية، مع توضيحات بالفرنسية عند الحاجة. ويمكن طرح الأسئلة بالعربية أو الفرنسية أو الإنجليزية.'], ['كيف أدفع؟', 'بالبطاقة البنكية أو بالتحويل أو عبر الطرق المعروضة بعد الحجز، وتتلقّى تأكيداً عبر واتساب.']],
       final_t: 'ادخل 2027 بوعي ووضوح', final_s: 'المقاعد محدودة، والحجز مفتوح حتى 13 ديسمبر.',
       note: 'الماستركلاس مرافقة للتطوير الشخصي والرفاه، ولا يعوّض الاستشارة الطبية أو النفسية أو المالية.'
     },
     fr: {
       chip: '✨ Masterclass en ligne en direct · 14–18 décembre 2026', h1: 'Masterclass 2027', h1b: 'Abondance & Manifestation consciente',
       intro: 'Cinq soirées en direct avec Rawia Ghorbel pour clôturer 2026 en paix, libérer ce qui vous pèse, ouvrir la porte de l’abondance et poser vos intentions pour 2027 avec clarté… où que vous soyez dans le monde.',
-      cta: 'Réserver ma place', cta2: 'Voir le programme', starts: 'La masterclass commence dans', d: 'j', h: 'h', m: 'min', live_now: 'La masterclass a commencé ✨', seats: 'Places limitées : 40 participants',
+      cta: 'Réserver ma place', cta2: 'Voir le programme', starts: 'La masterclass commence dans', d: 'j', h: 'h', m: 'min', live_now: 'La masterclass a commencé ✨', seats: 'Places limitées',
       pain_t: 'Vous sentez que…', pains: ['L’année a été lourde et vous portez encore une fatigue profonde', 'Les mêmes schémas se répètent dans vos relations ou vos finances', 'Vous avez des rêves pour 2027 mais ne savez pas par où commencer', 'Vous voulez entrer dans la nouvelle année avec une énergie claire et une intention forte'],
       pain_c: 'Cette masterclass est faite pour vous.',
       prog_t: 'Le programme des 5 soirées', prog_s: 'Chaque soirée dure 90 minutes en direct : apports clairs, exercices pratiques, méditation guidée et temps de questions.',
@@ -44,20 +44,20 @@
         ['Soirée 4', 'La manifestation consciente de 2027', 'L’énergie de 2027 en numérologie, l’exercice du saut quantique « comme si c’était déjà là », le tableau de vision et vos trois intentions.'],
         ['Soirée 5', 'Le rituel d’intentions du Nouvel An', 'Rituel des bougies et des intentions, carte de Tarot collective pour 2027 et méditation de passage, avant les fêtes de fin d’année.']
       ],
-      get_t: 'Ce que vous recevez', get: ['5 soirées en direct en ligne (Google Meet)', 'Les replays de toutes les soirées pendant 30 jours dans « Mon espace »', 'Le cahier d’exercices « 2027 » en PDF', 'La méditation enregistrée « Accueillir 2027 »', 'Une carte d’intentions à imprimer', 'Le défi Abondance de 21 jours en janvier avec le groupe de suivi'],
+      get_t: 'Ce que vous recevez', get: ['5 soirées en direct en ligne (Google Meet)', 'Les replays de toutes les soirées, accessibles à vie dans « Mon espace »', 'Le cahier d’exercices « 2027 » en PDF', 'La méditation enregistrée « Accueillir 2027 »', 'Une carte d’intentions à imprimer', 'Le défi Abondance de 21 jours en janvier avec le groupe de suivi'],
       offers_t: 'Choisissez votre formule', most: 'Le plus choisi', book: 'Réserver',
       o1: ['Toute la masterclass', 'Replays, cahier et méditation', 'Défi Abondance de 21 jours'],
       o2: ['Tout le contenu de la masterclass complète', 'Une séance privée de 45 min avec Rawia (Annales Akashiques ou ThetaHealing®) pour vos intentions', 'Un tirage de Tarot écrit pour 2027 (12 mois)', 'Un suivi personnel par WhatsApp en janvier'],
       times_t: 'Les horaires chez vous', times_s: 'Les horaires s’affichent automatiquement selon le pays depuis lequel vous consultez la page.', tunis: 'heure de Tunisie',
       about_t: 'Qui anime la masterclass ?', about: 'Rawia Ghorbel est thérapeute holistique et guide spirituelle. Depuis plus de 8 ans, elle accompagne personnes et groupes avec le Reiki, le ThetaHealing®, les Access Bars® et les Annales Akashiques, avec profondeur et simplicité, dans un espace sûr et sans jugement.',
-      faq_t: 'Questions fréquentes', faq: [['Faut-il des connaissances préalables ?', 'Non. La masterclass est ouverte à tous et tout est expliqué pas à pas.'], ['Et si je manque une soirée ?', 'Le replay est disponible dans « Mon espace » sous 24 h, et reste accessible 30 jours.'], ['En quelle langue ?', 'En arabe, avec des explications en français si besoin. Vous pouvez poser vos questions en arabe, en français ou en anglais.'], ['Comment payer ?', 'Par carte bancaire, virement ou les moyens proposés après la réservation, avec une confirmation par WhatsApp.']],
+      faq_t: 'Questions fréquentes', faq: [['Faut-il des connaissances préalables ?', 'Non. La masterclass est ouverte à tous et tout est expliqué pas à pas.'], ['Et si je manque une soirée ?', 'Le replay est disponible dans « Mon espace » sous 24 h, et reste accessible à vie.'], ['En quelle langue ?', 'En arabe, avec des explications en français si besoin. Vous pouvez poser vos questions en arabe, en français ou en anglais.'], ['Comment payer ?', 'Par carte bancaire, virement ou les moyens proposés après la réservation, avec une confirmation par WhatsApp.']],
       final_t: 'Entrez en 2027 avec conscience et clarté', final_s: 'Places limitées, réservations ouvertes jusqu’au 13 décembre.',
       note: 'Cette masterclass est un accompagnement de développement personnel et de bien-être ; elle ne remplace pas un avis médical, psychologique ou financier.'
     },
     en: {
       chip: '✨ Live online masterclass · December 14–18, 2026', h1: 'Masterclass 2027', h1b: 'Abundance & Conscious Manifestation',
       intro: 'Five live evenings with Rawia Ghorbel to close 2026 in peace, release what weighs on you, open the door to abundance and set your intentions for 2027 with clarity… wherever you are in the world.',
-      cta: 'Book my seat', cta2: 'See the programme', starts: 'The masterclass starts in', d: 'd', h: 'h', m: 'min', live_now: 'The masterclass has started ✨', seats: 'Limited seats: 40 participants',
+      cta: 'Book my seat', cta2: 'See the programme', starts: 'The masterclass starts in', d: 'd', h: 'h', m: 'min', live_now: 'The masterclass has started ✨', seats: 'Limited seats',
       pain_t: 'Do you feel that…', pains: ['This year has been heavy and you still carry a deep tiredness', 'The same patterns keep repeating in your relationships or finances', 'You have dreams for 2027 but don’t know where to start', 'You want to enter the new year with clear energy and a strong intention'],
       pain_c: 'This masterclass was designed for you.',
       prog_t: 'The five-evening programme', prog_s: 'Each evening is 90 minutes live: clear teaching, practical exercises, guided meditation and time for questions.',
@@ -68,13 +68,13 @@
         ['Evening 4', 'Conscious manifestation for 2027', 'The energy of 2027 in numerology, the quantum-leap “as if it’s already here” exercise, the vision board and your three intentions.'],
         ['Evening 5', 'The New Year intention ritual', 'Candle and intention ritual, a collective Tarot card for 2027 and a passage meditation, before the holiday season.']
       ],
-      get_t: 'What you receive', get: ['5 live online evenings (Google Meet)', 'Replays of every evening for 30 days in “My space”', 'The “2027” PDF workbook', 'The recorded meditation “Welcoming 2027”', 'A printable intention card', 'A 21-day Abundance challenge in January with the support group'],
+      get_t: 'What you receive', get: ['5 live online evenings (Google Meet)', 'Lifetime access to the replays of every evening in “My space”', 'The “2027” PDF workbook', 'The recorded meditation “Welcoming 2027”', 'A printable intention card', 'A 21-day Abundance challenge in January with the support group'],
       offers_t: 'Choose your option', most: 'Most popular', book: 'Book now',
       o1: ['The whole masterclass', 'Replays, workbook and meditation', '21-day Abundance challenge'],
       o2: ['Everything in the full masterclass', 'A private 45-min session with Rawia (Akashic Records or ThetaHealing®) for your intentions', 'A written Tarot reading for 2027 (12 months)', 'Personal WhatsApp follow-up in January'],
       times_t: 'Times where you live', times_s: 'Times are shown automatically for the country you are browsing from.', tunis: 'Tunisia time',
       about_t: 'Who leads the masterclass?', about: 'Rawia Ghorbel is a holistic therapist and spiritual guide. For over 8 years she has supported individuals and groups with Reiki, ThetaHealing®, Access Bars® and the Akashic Records, with depth and simplicity, in a safe, judgment-free space.',
-      faq_t: 'FAQ', faq: [['Do I need any prior knowledge?', 'No. The masterclass is open to everyone and everything is explained step by step.'], ['What if I miss an evening?', 'The replay is in “My space” within 24 hours and stays available for 30 days.'], ['What language is it in?', 'Arabic, with French explanations when needed. You can ask questions in Arabic, French or English.'], ['How do I pay?', 'By card, bank transfer or the options shown after booking, with a WhatsApp confirmation.']],
+      faq_t: 'FAQ', faq: [['Do I need any prior knowledge?', 'No. The masterclass is open to everyone and everything is explained step by step.'], ['What if I miss an evening?', 'The replay is in “My space” within 24 hours and stays available for life.'], ['What language is it in?', 'Arabic, with French explanations when needed. You can ask questions in Arabic, French or English.'], ['How do I pay?', 'By card, bank transfer or the options shown after booking, with a WhatsApp confirmation.']],
       final_t: 'Enter 2027 with awareness and clarity', final_s: 'Limited seats, bookings open until December 13.',
       note: 'This masterclass is personal development and wellbeing support; it does not replace medical, psychological or financial advice.'
     }
