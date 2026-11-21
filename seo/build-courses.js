@@ -40,7 +40,7 @@ function courseBody(c, forPdf) {
   <h2>${lv.length ? 'المستويات والأسعار' : 'السعر'}</h2>
   ${lv.length ? `<div class="lv-table">${lv.map((x, i) => `<div class="lv-row"><b>${esc(L(x.nom))}</b><span dir="ltr">${esc(price(x.prix))}</span>${forPdf ? '' : `<a class="btn btn-soft btn-sm" href="${book(i)}">اختر</a>`}</div>`).join('')}</div>` : `<p class="seo-price" style="color:#5b3483;background:#f6f0fb;border-color:#e3d3f2"><span dir="ltr">${esc(price(c.prix))}</span></p>`}
   <div class="post-body">${B.md(L(c.programme))}</div>
-  <div class="seo-by"><img src="assets/icon-192.png" alt="" width="56" height="56"><p>تقدّمها <a href="rawia-ghorbel.html"><b>راوية غربال</b></a>، غراند ماستر في الريكي، معالجة بالطاقة وعضو الجمعية الدولية للمعالجين، في مركز هولستيك بصفاقس. الدورات بالعربية والفرنسية.</p></div>
+  <div class="seo-by"><img src="assets/icon-192.png" alt="" width="56" height="56"><p>تقدّمها <a href="rawia-ghorbel.html"><b>راوية غربال</b></a>، غراند ماستر في الريكي، معالجة بالطاقة وعضو الجمعية الدولية للمعالجين، في مركز هولستيك بتونس (صفاقس). الدورات بالعربية والفرنسية.</p></div>
   ${forPdf ? '' : `<div class="seo-cta"><h2>جاهز(ة) للبدء؟</h2><div class="form-actions"><a class="btn btn-primary" href="${book(0)}">سجّل الآن</a><a class="btn btn-soft" href="${WA}" target="_blank" rel="noopener">💬 واتساب</a></div></div>`}
 </div></section>`;
 }
