@@ -79,6 +79,7 @@ function page(c) {
 <main>${courseBody(c, false)}</main>
 <footer class="footer"><div class="container footer-bottom"><p>© ${new Date().getFullYear()} Centre Holistique · <a href="legal.html">Mentions légales & CGV</a></p><p class="disclaimer">الدورات للتطوّر الشخصي والرفاه، ولا تعوّض الاستشارة الطبية أو النفسية.</p></div></footer>
 <a class="wa-fab" href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+<script src="assets/consent.js"></script>
 </body></html>
 `;
 }
