@@ -24,14 +24,14 @@
       testi_title: 'آراء الحرفاء',
       book_eyebrow: 'حجز موعد', book_title: 'احجز جلستك مباشرة', book_text: 'املأ الاستمارة وسيصلني طلبك على واتساب، وأؤكد لك الموعد في أقرب وقت. التوقيت يُحتسب حسب بلدك تلقائياً.',
       f_name: 'الاسم واللقب *', f_phone: 'الهاتف / واتساب (مع رمز البلد) *', f_choice: 'الجلسة أو الدورة *', f_date: 'التاريخ المفضّل', f_time: 'الوقت (بتوقيتك)', tz_yours: 'توقيتك:', f_mode: 'الطريقة', f_msg: 'رسالتك / نيّتك', f_consent: 'أوافق على أن يتم التواصل معي لتأكيد الطلب.', f_note: 'ملاحظة', f_email: 'البريد الإلكتروني (للقراءة المكتوبة)', f_question: 'سؤالك أو موضوع القراءة', f_birth: 'تاريخ الميلاد (اختياري)',
-      mode_online: 'أونلاين (فيديو)', mode_center: 'في المركز بتونس (صفاقس)', choose: '— اختر —',
+      mode_online: 'أونلاين (فيديو)', mode_center: 'في المركز بصفاقس، تونس', choose: '— اختر —',
       send_wa: 'إرسال عبر واتساب', send_order: 'إرسال الطلب عبر واتساب', add_cart: 'أضف للسلة', add: 'أضف للسلة', choose_reading: 'اختر نوع القراءة ←',
       faq_title: 'أسئلة شائعة', follow_title: 'تابعني يومياً', follow_text: 'نصائح، طاقة اليوم، قراءات مجانية ولايفات على شبكات التواصل.',
       install: '📲 ثبّت التطبيق', install_ios: 'على iPhone: اضغط زر المشاركة ⬆️ ثم «إضافة إلى الشاشة الرئيسية».',
-      footer_contact: 'تواصل', footer_links: 'روابط', footer_admin: 'لوحة التحكم', rights: 'جميع الحقوق محفوظة.', legal: 'الشروط والخصوصية', more: 'اقرأ أكثر ←', about_page: 'تعرّف على Rawia Ghorbel ←', directions: 'كيف تصل إلى المركز ←', nl_eyebrow: 'ابقَ على تواصل 💌', nl_title: 'احصل على جديدنا وكل العروض', nl_text: 'دورات جديدة، أحداث الشهر، عروض خاصة بالمشتركين فقط وطاقة كل شهر… تصلك مباشرة في بريدك.', nl_name: 'اسمك', nl_email: 'بريدك الإلكتروني', nl_btn: 'اشترك ✨', nl_ok: '✓ شكراً! أنت الآن من عائلة Centre Holistique 💜 ستصلك كل الأخبار والعروض.', nl_go: '🌿 اكتشف الجلسات', nl_err: 'الرجاء كتابة بريد إلكتروني صحيح.', nl_privacy: 'لا رسائل مزعجة. يمكنك إلغاء الاشتراك في أي وقت.', accept_terms: 'بإرسال الطلب، أنت توافق على', disclaimer: 'العلاجات الشمولية مكمّلة ولا تعوّض الاستشارة الطبية.',
+      footer_contact: 'تواصل', footer_links: 'روابط', footer_admin: 'لوحة التحكم', rights: 'جميع الحقوق محفوظة.', legal: 'الشروط والخصوصية', more: 'اقرأ أكثر ←', about_page: 'تعرّف على راوية غربال ←', directions: 'كيف تصل إلى المركز ←', nl_eyebrow: 'ابقَ على تواصل 💌', nl_title: 'احصل على جديدنا وكل العروض', nl_text: 'دورات جديدة، أحداث الشهر، عروض خاصة بالمشتركين فقط وطاقة كل شهر… تصلك مباشرة في بريدك.', nl_name: 'اسمك', nl_email: 'بريدك الإلكتروني', nl_btn: 'اشترك ✨', nl_ok: '✓ شكراً! أنت الآن من عائلة Centre Holistique 💜 ستصلك كل الأخبار والعروض.', nl_go: '🌿 اكتشف الجلسات', nl_err: 'الرجاء كتابة بريد إلكتروني صحيح.', nl_privacy: 'لا رسائل مزعجة. يمكنك إلغاء الاشتراك في أي وقت.', accept_terms: 'بإرسال الطلب، أنت توافق على', disclaimer: 'العلاجات الشمولية مكمّلة ولا تعوّض الاستشارة الطبية.',
       cart_title: 'سلّتك', cart_empty: 'سلّتك فارغة 🌿', total: 'المجموع', chat: 'كيف يمكنني مساعدتك؟',
       bn_home: 'الرئيسية', bn_tarot: 'تاروت', bn_consult: 'استشارة', bn_events: 'أحداث الشهر', bn_cart: 'السلة',
-      online: 'أونلاين', new: 'جديد', places: 'أماكن', cards: 'أوراق', selected: '✓ تم الاختيار',
+      online: 'أونلاين', avail_both: '🌐 أونلاين وفي صفاقس', avail_sfax: '📍 في المركز بصفاقس فقط', price_request: 'السعر حسب البرنامج', new: 'جديد', places: 'أماكن', cards: 'أوراق', selected: '✓ تم الاختيار',
       t_soins: 'جلسة', t_formations: 'دورة', t_packs: 'باقة', t_lectures: 'قراءة', t_abonnements: 'اشتراك', t_evenements: 'حدث',
       g_sessions: 'الجلسات', g_lectures: 'قراءات التاروت والأوراكل', g_formations: 'الدورات', g_packs: 'الباقات', g_abonnements: 'الاشتراك الشهري',
       toast_added: 'تمت الإضافة إلى السلة ✓', err_fill: 'الرجاء إكمال: ', err_reading: 'اختر نوع القراءة أولاً', err_format: 'اختر الطريقة',
@@ -79,7 +79,7 @@
       footer_contact: 'Contact', footer_links: 'Liens', footer_admin: 'Espace admin', rights: 'Tous droits réservés.', legal: 'Mentions légales & CGV', more: 'En savoir plus →', about_page: 'Découvrir Rawia Ghorbel →', directions: 'Itinéraire vers le centre →', nl_eyebrow: 'Restons en contact 💌', nl_title: 'Recevez nos nouveautés et toutes nos offres', nl_text: 'Nouvelles formations, événements du mois, offres réservées aux abonnés et énergie du mois… directement dans votre boîte mail.', nl_name: 'Votre prénom', nl_email: 'Votre e-mail', nl_btn: 'Je m’inscris ✨', nl_ok: '✓ Merci ! Vous faites maintenant partie de la famille Centre Holistique 💜 Vous recevrez toutes nos nouveautés et offres.', nl_go: '🌿 Découvrir les séances', nl_err: 'Merci d’indiquer un e-mail valide.', nl_privacy: 'Pas de spam. Désinscription possible à tout moment.', accept_terms: 'En envoyant, vous acceptez les', disclaimer: 'Les soins holistiques sont complémentaires et ne remplacent pas un avis médical.',
       cart_title: 'Votre panier', cart_empty: 'Votre panier est vide 🌿', total: 'Total', chat: 'Comment puis-je vous aider ?',
       bn_home: 'Accueil', bn_tarot: 'Tarot', bn_consult: 'Consultation', bn_events: 'Événements', bn_cart: 'Panier',
-      online: 'En ligne', new: 'Nouveau', places: 'places', cards: 'cartes', selected: '✓ Sélectionné',
+      online: 'En ligne', avail_both: '🌐 En ligne & à Sfax', avail_sfax: '📍 Au centre à Sfax uniquement', price_request: 'Tarif selon le programme', new: 'Nouveau', places: 'places', cards: 'cartes', selected: '✓ Sélectionné',
       t_soins: 'Séance', t_formations: 'Formation', t_packs: 'Pack', t_lectures: 'Tirage', t_abonnements: 'Abonnement', t_evenements: 'Événement',
       g_sessions: 'Séances', g_lectures: 'Tirages Tarot & Oracle', g_formations: 'Formations', g_packs: 'Packs', g_abonnements: 'Abonnement mensuel',
       toast_added: 'Ajouté au panier ✓', err_fill: 'Merci de compléter : ', err_reading: "Choisissez d'abord un tirage", err_format: 'Choisissez un format',
@@ -127,7 +127,7 @@
       footer_contact: 'Contact', footer_links: 'Links', footer_admin: 'Admin', rights: 'All rights reserved.', legal: 'Legal & terms', more: 'Learn more →', about_page: 'Meet Rawia Ghorbel →', directions: 'Directions to the centre →', nl_eyebrow: 'Stay in touch 💌', nl_title: 'Get our news and all our offers', nl_text: 'New trainings, monthly events, subscriber-only offers and the energy of the month… straight to your inbox.', nl_name: 'Your first name', nl_email: 'Your email', nl_btn: 'Subscribe ✨', nl_ok: '✓ Thank you! You are now part of the Centre Holistique family 💜 You will receive all our news and offers.', nl_go: '🌿 Explore sessions', nl_err: 'Please enter a valid email.', nl_privacy: 'No spam. Unsubscribe anytime.', accept_terms: 'By sending, you accept the', disclaimer: 'Holistic sessions are complementary and do not replace medical advice.',
       cart_title: 'Your cart', cart_empty: 'Your cart is empty 🌿', total: 'Total', chat: 'How can I help you?',
       bn_home: 'Home', bn_tarot: 'Tarot', bn_consult: 'Consult', bn_events: 'Events', bn_cart: 'Cart',
-      online: 'Online', new: 'New', places: 'spots', cards: 'cards', selected: '✓ Selected',
+      online: 'Online', avail_both: '🌐 Online & Sfax', avail_sfax: '📍 Sfax centre only', price_request: 'Price depends on the programme', new: 'New', places: 'spots', cards: 'cards', selected: '✓ Selected',
       t_soins: 'Session', t_formations: 'Training', t_packs: 'Bundle', t_lectures: 'Reading', t_abonnements: 'Membership', t_evenements: 'Event',
       g_sessions: 'Sessions', g_lectures: 'Tarot & Oracle readings', g_formations: 'Trainings', g_packs: 'Bundles', g_abonnements: 'Monthly membership',
       toast_added: 'Added to cart ✓', err_fill: 'Please complete: ', err_reading: 'Choose a reading first', err_format: 'Choose a format',
@@ -312,7 +312,7 @@
     renderChoix(); renderModes(); renderTarot(); renderCart(); injectJsonLd();
     (window.CH_HOOKS || []).forEach(f => { try { f(); } catch (e) { console.error(e); } });
     // deep link from service pages: index.html?book=soins:reiki#reservation
-    const bk = new URLSearchParams(location.search).get('book'), sel = $('#booking-form select[name=choix]');
+    const bk = ({ 'soins:reiki': 'soins:soin-energetique', 'soins:prana-healing': 'soins:soin-energetique' })[new URLSearchParams(location.search).get('book')] || new URLSearchParams(location.search).get('book'), sel = $('#booking-form select[name=choix]');
     if (bk && sel && !renderAll.booked) { renderAll.booked = true; sel.value = bk; setTimeout(() => $('#reservation').scrollIntoView({ behavior: 'smooth' }), 300); }
   }
   // shared helpers for the other page scripts (account, meditations)
@@ -333,20 +333,20 @@
       row.closest('.rail-wrap').before(tabs);
       tabs.addEventListener('click', e => { const b = e.target.closest('button[data-cat]'); if (!b) return; sel.value = b.dataset.cat; renderSoins(); row.scrollTo({ left: 0 }); });
     }
-    const cats = (DATA.categories || []).filter(c => (DATA.soins || []).some(x => x.categorie === c.id));
+    const cats = (DATA.categories || []).filter(c => (DATA.soins || []).some(x => x.actif !== false && x.categorie === c.id));
     tabs.innerHTML = [['', t('all_cats')]].concat(cats.map(c => [c.id, L(c)]))
       .map(([id, name]) => `<button type="button" role="tab" data-cat="${esc(id)}" aria-selected="${sel.value === id}" class="${sel.value === id ? 'on' : ''}">${esc(name)}</button>`).join('');
-    const list = (DATA.soins || []).filter(x => !sel.value || x.categorie === sel.value);
+    const list = (DATA.soins || []).filter(x => x.actif !== false && (!sel.value || x.categorie === sel.value));
     row.innerHTML = list.map(x => `
       <article class="pcard">
-        ${media(x, catLabel(x.categorie), x.en_ligne ? `<span class="online-pill">🌐 ${esc(t('online'))}</span>` : '')}
+        ${media(x, catLabel(x.categorie), `<span class="online-pill${x.en_ligne ? '' : ' sfax'}">${esc(t(x.en_ligne ? 'avail_both' : 'avail_sfax'))}</span>`)}
         <div class="pbody">
           <div class="ptitle">${esc(L(x.titre))}</div>
           ${x.note ? `<div class="rating"><b>${esc(x.note)}</b><span class="stars">★★★★★</span>${x.avis ? `<span>(${esc(x.avis)})</span>` : ''}</div>` : ''}
           <p class="pdesc">${esc(L(x.description))}</p>
           ${SEO_PAGES[x.id] ? `<a class="more-link" href="${SEO_PAGES[x.id]}">${esc(t('more'))}</a>` : ''}
           <div class="pmeta">${L(x.duree) ? `<span>⏱ ${esc(L(x.duree))}</span>` : ''}</div>
-          <div class="pfoot"><span class="price">${money(x.prix)}</span>
+          <div class="pfoot"><span class="price">${money(x.prix) || `<small>${esc(t('price_request'))}</small>`}</span>
             ${x.lien ? `<a class="btn btn-soft add" href="${esc(x.lien)}">${esc(t('choose_reading'))}</a>` : `<button class="btn btn-soft add" data-add="soins" data-id="${esc(x.id)}">${esc(t('add'))}</button>`}</div>
         </div></article>`).join('');
   }
@@ -461,7 +461,7 @@
   // all bookable items, grouped
   function catalog() {
     return [
-      ['soins', 'g_sessions', (DATA.soins || []).filter(x => !x.lien)],
+      ['soins', 'g_sessions', (DATA.soins || []).filter(x => !x.lien && x.actif !== false)],
       ['lectures', 'g_lectures', (DATA.lectures || []).filter(x => x.actif !== false)],
       ['formations', 'g_formations', (DATA.formations || []).filter(x => x.actif !== false)],
       ['packs', 'g_packs', (DATA.packs || []).filter(x => x.actif !== false)]
@@ -473,7 +473,7 @@
       sel.innerHTML = `<option value="">${esc(t('choose'))}</option>` + catalog().map(([type, g, list]) => list.length ?
         `<optgroup label="${esc(t(g))}">${list.map(x => levels(x).length
           ? levels(x).map((l, i) => `<option value="${type}:${esc(x.id)}:${i}">${esc(L(x.titre))} · ${esc(L(l.nom))} — ${money(l.prix)}</option>`).join('')
-          : `<option value="${type}:${esc(x.id)}">${esc(L(x.titre))} — ${money(x.prix)}</option>`).join('')}</optgroup>` : '').join('');
+          : `<option value="${type}:${esc(x.id)}">${esc(L(x.titre))}${money(x.prix) ? ' — ' + money(x.prix) : ''}</option>`).join('')}</optgroup>` : '').join('');
       sel.value = prev;
     });
   }
