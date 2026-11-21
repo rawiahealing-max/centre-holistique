@@ -656,3 +656,16 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .c-how{margin-top:1.6rem}.c-how ol{line-height:2;padding-inline-start:1.3rem}
 @media (max-width:560px){.consult .form-grid{grid-template-columns:1fr}}
 .live-wa{font-size:.82rem;color:#1e8e4e;text-decoration:underline;margin-top:.2rem}
+
+/* ===== Safe space chat ===== */
+.chat-safe{background:#f4f8f5;border:1px solid #d7e8dc;border-radius:18px;padding:.8rem 1rem;margin-bottom:.8rem;color:#33493b}
+.chat-safe summary{cursor:pointer;font-weight:700;font-size:1.02rem;color:#2e6b4a}
+.chat-safe ul{list-style:none;padding:0;margin:.6rem 0;display:grid;gap:.35rem;line-height:1.7;font-size:.93rem}
+.chat-sos{background:#fff7ec;border:1px solid #f1dcb6;border-radius:12px;padding:.55rem .8rem;font-size:.86rem;line-height:1.7;margin:.4rem 0 0;color:#6b4a1d}
+.chat-safe-act{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem}
+.chat-exit{background:#eef1f4;color:#3c4652;border:1px solid #d6dce3}
+.chatbox.calm{border-color:#d7e8dc}
+.chatbox.calm .chat-msgs{background:#f7faf8}
+.chatbox.calm .msg.mine{background:#6e9c84;border-color:#6e9c84}
+.chatbox.calm .msg.adm:not(.mine){background:#fff;border-color:#e3d9ee}
+.chat-typing{font-size:.8rem;color:var(--muted);padding:.2rem 1rem .4rem;font-style:italic;background:#f7faf8}
