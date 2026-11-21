@@ -64,6 +64,15 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.centreholistique.net/consultation.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.centreholistique.net/entreprises.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.centreholistique.net/blog.html</loc>
     <lastmod>2026-11-19</lastmod>
     <priority>0.7</priority>
@@ -94,14 +103,5 @@
   <url>
     <loc>https://www.centreholistique.net/formations/prana-healing.html</loc>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.centreholistique.net/consultation.html</loc>
-    <lastmod>2026-11-21</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.centreholistique.net/entreprises.html</loc>
-    <priority>0.8</priority>
   </url>
 </urlset>
