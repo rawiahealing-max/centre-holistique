@@ -586,6 +586,17 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
     set('cercle-lumiere', '49', { tnd: '25', eur: '9', usd: '10' }, { tnd: '250', eur: '90', usd: '100' });
     set('cercle-ame', '129', { tnd: '69', eur: '25', usd: '27' }, { tnd: '690', eur: '250', usd: '270' });
   });
+  // online consultation prices (voice / video / chat) — editable in the dashboard
+  once('consult-online-2026-11', () => {
+    if (D.consult_tarifs && D.consult_tarifs.length) return;
+    const t = (mode, duree, tnd, eur, usd) => ({ id: `${mode}-${duree}`, mode, duree: String(duree), prix: { tnd: String(tnd), eur: String(eur), usd: String(usd) }, actif: true });
+    D.consult_tarifs = [t('audio', 30, 45, 18, 20), t('audio', 60, 90, 35, 40), t('video', 30, 50, 20, 22), t('video', 60, 100, 40, 45), t('chat', 30, 40, 15, 17), t('chat', 60, 75, 30, 33)];
+  });
+  // one Reiki course only: hide the old "Reiki Usui – level 1" (the new course with levels replaces it), no dates
+  once('hide-old-reiki-2026-11', () => {
+    const old = (D.formations || []).find(f => f.id === 'reiki-niveau-1');
+    if (old && (D.formations || []).some(f => f.id === 'reiki-usui')) old.actif = false;
+  });
   once('remove-example-testimonial', () => {
     D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
