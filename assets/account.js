@@ -2,8 +2,8 @@
   'use strict';
   const A = {
     ar: {
-      auth_title: 'فضائي', auth_sub: 'ادخل لحسابك لتجد دوراتك، تأملاتك، اشتراكك والشات مع المجتمع.',
-      perk1: '🎓 دوراتك وفيديوهاتها في مكان واحد', perk2: '🧘 تأملات خاصة بالأعضاء', perk3: '💬 شات مباشر مع المعالِجة والمجتمع', perk4: '📞 استشارة أونلاين: مكالمة، فيديو أو شات خاص',
+      auth_title: 'مساحتك الخاصة 🌙', auth_sub: 'ملجأ هادئ ترجع فيه لروحك: دوراتك، تأملاتك ومواعيدك مع راوية… الكل في مكان واحد، وبكل خصوصية.',
+      perk1: '🌿 مساحة آمنة وسرّية، بلا حكم', perk2: '📞 استشارة أونلاين مع راوية: مكالمة، فيديو أو شات خاص', perk3: '🧘 تأملات وطقوس ترافقك كل يوم', perk4: '🎓 دوراتك وفيديوهاتها تستنّاك في أي وقت',
       login: 'تسجيل الدخول', signup: 'إنشاء حساب', email: 'البريد الإلكتروني', password: 'كلمة السر', login_btn: 'دخول', forgot: 'نسيت كلمة السر؟',
       full_name: 'الاسم واللقب', phone: 'الهاتف / واتساب', country: 'البلد', password_new: 'كلمة السر (8 أحرف على الأقل)', signup_btn: 'إنشاء حسابي',
       forgot_text: 'اكتب بريدك وسنرسل لك رابطاً لتغيير كلمة السر.', send_link: 'أرسل الرابط', back_login: '← رجوع لتسجيل الدخول', reset_text: 'اختر كلمة سر جديدة.', save: 'حفظ',
@@ -21,8 +21,8 @@
       member_line_yes: '✨ عضو في الدائرة', member_line_no: 'حساب حريف'
     },
     fr: {
-      auth_title: 'Mon espace', auth_sub: 'Connectez-vous pour retrouver vos formations, méditations, abonnement et le chat de la communauté.',
-      perk1: '🎓 Vos formations et vidéos au même endroit', perk2: '🧘 Méditations réservées aux membres', perk3: '💬 Chat en direct avec la thérapeute et la communauté', perk4: '📞 Consultation en ligne : appel, vidéo ou chat privé',
+      auth_title: 'Votre espace à vous 🌙', auth_sub: 'Un refuge doux pour revenir à vous : vos formations, vos méditations et vos rendez-vous avec Rawia… tout au même endroit, en toute confidentialité.',
+      perk1: '🌿 Un espace sûr, confidentiel et sans jugement', perk2: '📞 Consultation en ligne avec Rawia : appel, vidéo ou chat privé', perk3: '🧘 Des méditations et rituels pour vous accompagner chaque jour', perk4: '🎓 Vos formations et vidéos disponibles à tout moment',
       login: 'Connexion', signup: 'Créer un compte', email: 'E-mail', password: 'Mot de passe', login_btn: 'Se connecter', forgot: 'Mot de passe oublié ?',
       full_name: 'Nom complet', phone: 'Téléphone / WhatsApp', country: 'Pays', password_new: 'Mot de passe (8 caractères min.)', signup_btn: 'Créer mon compte',
       forgot_text: 'Indiquez votre e-mail, nous vous enverrons un lien pour changer votre mot de passe.', send_link: 'Envoyer le lien', back_login: '← Retour à la connexion', reset_text: 'Choisissez un nouveau mot de passe.', save: 'Enregistrer',
@@ -40,8 +40,8 @@
       member_line_yes: '✨ Membre du Cercle', member_line_no: 'Compte client'
     },
     en: {
-      auth_title: 'My space', auth_sub: 'Sign in to find your trainings, meditations, membership and the community chat.',
-      perk1: '🎓 Your trainings and videos in one place', perk2: '🧘 Members-only meditations', perk3: '💬 Live chat with the therapist and community', perk4: '📞 Online consultation: call, video or private chat',
+      auth_title: 'Your own space 🌙', auth_sub: 'A gentle refuge to come back to yourself: your trainings, meditations and sessions with Rawia… all in one place, in complete privacy.',
+      perk1: '🌿 A safe, confidential, judgment-free space', perk2: '📞 Online consultation with Rawia: call, video or private chat', perk3: '🧘 Meditations and rituals to support you every day', perk4: '🎓 Your trainings and videos, available anytime',
       login: 'Sign in', signup: 'Create account', email: 'Email', password: 'Password', login_btn: 'Sign in', forgot: 'Forgot password?',
       full_name: 'Full name', phone: 'Phone / WhatsApp', country: 'Country', password_new: 'Password (min. 8 characters)', signup_btn: 'Create my account',
       forgot_text: "Enter your email and we'll send you a link to reset your password.", send_link: 'Send link', back_login: '← Back to sign in', reset_text: 'Choose a new password.', save: 'Save',
