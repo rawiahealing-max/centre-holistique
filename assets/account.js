@@ -245,8 +245,20 @@
     $('#courses-list').hidden = true; $('#course-view').hidden = false;
     const { data: ls } = await sb.from('lessons').select('*').eq('course_id', cid).order('position').order('id');
     lessons = ls || [];
-    $('#lessons').innerHTML = lessons.length ? lessons.map((l, i) => `<li><button data-lesson="${i}"><span class="l-ico">${{ video: '🎬', audio: '🎧', pdf: '📄', image: '🖼️', text: '📝', link: '🔗' }[l.kind] || '•'}</span>${esc(L(l.title))}</button></li>`).join('')
-      : `<li class="muted-s">${esc(a('no_lessons'))}</li>`;
+    // courses split into sections (e.g. the 5 evenings of the masterclass): group the lessons under each section
+    const secs = Array.isArray(f.sections) ? f.sections : [], secOf = l => (l.body && l.body.section) || '';
+    if (secs.length) {
+      const order = [''].concat(secs.map(s => s.id));
+      lessons = lessons.slice().sort((x, y) => order.indexOf(secOf(x)) - order.indexOf(secOf(y)));
+    }
+    const ico = l => ({ video: '🎬', audio: '🎧', pdf: '📄', image: '🖼️', text: '📝', link: '🔗' }[l.kind] || '•');
+    let lastSec = null;
+    $('#lessons').innerHTML = lessons.length ? lessons.map((l, i) => {
+      const s = secOf(l), sec = secs.find(x => x.id === s);
+      const head = secs.length && s !== lastSec && sec ? `<li class="lesson-sec">${esc(L(sec))}</li>` : '';
+      lastSec = s;
+      return `${head}<li><button data-lesson="${i}"><span class="l-ico">${ico(l)}</span>${esc(L(l.title))}</button></li>`;
+    }).join('') : `<li class="muted-s">${esc(a('no_lessons'))}</li>`;
     if (lessons.length) playLesson(0); else $('#player').innerHTML = '';
   }
   $('#lessons').addEventListener('click', e => { const b = e.target.closest('[data-lesson]'); if (b) playLesson(+b.dataset.lesson); });
