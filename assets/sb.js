@@ -647,7 +647,7 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
       categorie: { ar: 'ماستركلاس مباشر عن بُعد', fr: 'Masterclass en ligne en direct', en: 'Live online masterclass' },
       duree: { ar: '5 أمسيات مباشرة · 14–18 ديسمبر', fr: '5 soirées en direct · 14–18 décembre', en: '5 live evenings · Dec 14–18' },
       mode: { ar: 'مباشرة عن بُعد من أي مكان في العالم + التسجيلات', fr: 'En ligne et en direct, partout dans le monde + replays', en: 'Live online from anywhere + replays' },
-      places: '40', date: '2026-12-14', actif: true, nouveau: true, theme: 'gold',
+      places: '', date: '2026-12-14', actif: true, nouveau: true, theme: 'gold',
       lien: 'masterclass-2027.html',
       prix: { tnd: '150', eur: '49', usd: '55' },
       niveaux: [
@@ -661,6 +661,8 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
       }
     });
   });
+  // no participant number shown for the masterclass (Rawia's choice)
+  once('masterclass-2027-noseats', () => { const c = (D.formations || []).find(f => f.id === 'bawabat-2027'); if (c) c.places = ''; });
   once('remove-example-testimonial', () => {    D.temoignages = (D.temoignages || []).filter(t => !(t.nom === '—' || /مثال|Exemple|Example/.test(JSON.stringify(t.service || ''))));
   });
   return changed;
