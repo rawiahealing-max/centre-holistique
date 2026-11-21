@@ -669,3 +669,4 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .chatbox.calm .msg.mine{background:#6e9c84;border-color:#6e9c84}
 .chatbox.calm .msg.adm:not(.mine){background:#fff;border-color:#e3d9ee}
 .chat-typing{font-size:.8rem;color:var(--muted);padding:.2rem 1rem .4rem;font-style:italic;background:#f7faf8}
+/* account page: the help pill must never cover the sign-up / login buttons */[data-page="account"] .chat .chat-pill{display:none}
