@@ -119,6 +119,7 @@ function show(l){ls.forEach(function(a){a.hidden=a.dataset.lang!==l});[].forEach
 var want=null;try{want=JSON.parse(localStorage.getItem('ch_lang'))}catch(e){}
 show(ls.some(function(a){return a.dataset.lang===want})?want:ls[0].dataset.lang);
 document.addEventListener('click',function(e){var b=e.target.closest('[data-show]');if(b){show(b.dataset.show);try{localStorage.setItem('ch_lang',JSON.stringify(b.dataset.show))}catch(e){}}});})();</script>
+<script src="assets/consent.js"></script>
 </body>
 </html>
 `;
