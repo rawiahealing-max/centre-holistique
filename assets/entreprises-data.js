@@ -66,6 +66,37 @@
         ar: ['ورشة جماعية كل شهر (الضغط، النوم، الطاقة، التواصل…)', 'جلسات فردية سرّية للموظفين', 'مؤشّر رفاه وتقرير مجهول الهوية لإدارة الموارد البشرية كل ثلاثة أشهر'],
         en: ['One group workshop a month (stress, sleep, energy, communication…)', 'Confidential one-to-one sessions for employees', 'Quarterly wellbeing barometer and anonymous HR report'] })
   ];
-  const api = { PROGS };
+  // "Ateliers Pro": short, high-demand workshops (1h30 – 3 h), on site or online
+  const W = (id, icon, dur, t, d) => ({ id, icon, dur, t, d });
+  const WORKSHOPS = [
+    W('sommeil', '🌙', { fr: '2 h', ar: 'ساعتان', en: '2 h' },
+      { fr: 'Sommeil & énergie : récupérer pour mieux performer', ar: 'النوم والطاقة: الاسترجاع من أجل أداء أفضل', en: 'Sleep & energy: recover to perform better' },
+      { fr: 'Comprendre le lien entre sommeil, concentration et humeur, et repartir avec une routine du soir simple.', ar: 'فهم العلاقة بين النوم والتركيز والمزاج، والخروج بروتين مسائي بسيط.', en: 'Understand how sleep drives focus and mood, and leave with a simple evening routine.' }),
+    W('numerique', '📱', { fr: '2 h', ar: 'ساعتان', en: '2 h' },
+      { fr: 'Bien-être numérique : déconnexion et concentration', ar: 'الرفاه الرقمي: الانفصال عن الشاشات والتركيز', en: 'Digital wellbeing: disconnecting and focus' },
+      { fr: 'Notifications, réunions, IA : reprendre la main sur son attention et protéger ses temps de récupération.', ar: 'الإشعارات والاجتماعات والذكاء الاصطناعي: استعادة السيطرة على الانتباه وحماية أوقات الراحة.', en: 'Notifications, meetings, AI: take back control of attention and protect recovery time.' }),
+    W('respiration', '🌬️', { fr: '1 h 30', ar: 'ساعة ونصف', en: '1.5 h' },
+      { fr: 'Respiration anti-stress : 10 minutes pour retrouver son calme', ar: 'التنفّس المضادّ للضغط: 10 دقائق لاستعادة الهدوء', en: 'Anti-stress breathing: 10 minutes to calm down' },
+      { fr: 'Des techniques de respiration validées, faciles à pratiquer au bureau, avant une réunion ou une prise de parole.', ar: 'تقنيات تنفّس سهلة تُمارَس في المكتب، قبل اجتماع أو قبل التحدّث أمام الآخرين.', en: 'Easy breathing techniques to use at the desk, before a meeting or a presentation.' }),
+    W('securite', '🛡️', { fr: '3 h · managers', ar: '3 ساعات · للمديرين', en: '3 h · managers' },
+      { fr: 'Sécurité psychologique : une équipe où l’on ose parler', ar: 'الأمان النفسي: فريق يجرؤ أفراده على الكلام', en: 'Psychological safety: a team where people speak up' },
+      { fr: 'Créer un climat où les erreurs, les idées et les désaccords peuvent s’exprimer sans crainte.', ar: 'بناء مناخ يُعبَّر فيه عن الأخطاء والأفكار والاختلافات دون خوف.', en: 'Build a climate where mistakes, ideas and disagreement can be voiced without fear.' }),
+    W('secours', '🤝', { fr: '3 h · managers & RH', ar: '3 ساعات · للمديرين والموارد البشرية', en: '3 h · managers & HR' },
+      { fr: 'Premiers secours émotionnels : repérer, écouter, orienter', ar: 'الإسعافات العاطفية الأولية: الملاحظة، الإصغاء، التوجيه', en: 'Emotional first aid: notice, listen, refer' },
+      { fr: 'Reconnaître un collaborateur en difficulté, avoir les bons mots et savoir vers qui l’orienter.', ar: 'التعرّف على زميل يمرّ بصعوبة، واختيار الكلمات المناسبة، ومعرفة الجهة التي يُوجَّه إليها.', en: 'Spot a struggling colleague, find the right words and know where to refer them.' }),
+    W('anxiete', '🧩', { fr: '2 h', ar: 'ساعتان', en: '2 h' },
+      { fr: 'Apaiser l’anxiété et la rumination', ar: 'تهدئة القلق والتفكير المفرط', en: 'Calming anxiety and overthinking' },
+      { fr: 'Comprendre le mécanisme de l’inquiétude et pratiquer des outils pour sortir de la boucle des pensées.', ar: 'فهم آلية القلق وممارسة أدوات للخروج من دوّامة الأفكار.', en: 'Understand how worry works and practise tools to break the thought loop.' }),
+    W('equilibre', '⚖️', { fr: '2 h', ar: 'ساعتان', en: '2 h' },
+      { fr: 'Équilibre vie pro / vie perso et travail hybride', ar: 'التوازن بين الحياة المهنية والشخصية والعمل الهجين', en: 'Work–life balance and hybrid work' },
+      { fr: 'Poser des limites, organiser ses journées et préserver son énergie, au bureau comme en télétravail.', ar: 'وضع الحدود، وتنظيم اليوم، والحفاظ على الطاقة في المكتب وفي العمل عن بُعد.', en: 'Set boundaries, plan the day and protect energy, in the office or remote.' }),
+    W('emotions', '🌡️', { fr: '2 h', ar: 'ساعتان', en: '2 h' },
+      { fr: 'Gérer ses émotions sous pression', ar: 'إدارة المشاعر تحت الضغط', en: 'Managing emotions under pressure' },
+      { fr: 'Colère, frustration, découragement : les reconnaître à temps et répondre au lieu de réagir.', ar: 'الغضب والإحباط وفقدان الحماس: التعرّف عليها في الوقت المناسب والاستجابة بدل ردّ الفعل.', en: 'Anger, frustration, discouragement: catch them early and respond instead of react.' }),
+    W('codev', '🔄', { fr: 'Cycle de 4 × 3 h', ar: 'دورة من 4 لقاءات × 3 ساعات', en: '4 × 3-hour cycle' },
+      { fr: 'Co-développement entre managers', ar: 'التطوير المشترك بين المديرين', en: 'Peer coaching circles for managers' },
+      { fr: 'Des managers s’entraident sur leurs situations réelles, avec une méthode structurée et bienveillante.', ar: 'يتبادل المديرون الدعم حول مواقفهم الحقيقية، بمنهجية منظّمة ومحترمة.', en: 'Managers help each other on real situations, with a structured, supportive method.' })
+  ];
+  const api = { PROGS, WORKSHOPS };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.CH_B2B = api;
 })(typeof window !== 'undefined' ? window : globalThis);
