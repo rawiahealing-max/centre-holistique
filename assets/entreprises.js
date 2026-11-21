@@ -71,7 +71,7 @@
     document.querySelectorAll('[data-e]').forEach(el => { const v = m(el.dataset.e); if (typeof v === 'string') el.textContent = v; });
     document.querySelectorAll('[data-ep]').forEach(el => { el.placeholder = m(el.dataset.ep); });
     $('#e-why').innerHTML = m('why').map(([i, t, d]) => `<div class="b2b-why"><span>${i}</span><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('');
-    $('#e-progs').innerHTML = PROGS.map(p => `<article class="b2b-prog t-${esc(p.theme)}" id="prog-${esc(p.id)}">
+    $('#e-progs').innerHTML = PROGS.map(p => `<article class="b2b-prog b2b-c-${esc(p.theme)}" id="prog-${esc(p.id)}">
         <div class="b2b-prog-head"><span class="b2b-ico">${p.icon}</span><h3>${esc(pv(p.t))}</h3></div>
         <dl><dt>${esc(m('dur'))}</dt><dd>${esc(pv(p.dur))}</dd><dt>${esc(m('aud'))}</dt><dd>${esc(pv(p.aud))}</dd></dl>
         <p class="b2b-goals-t">${esc(m('goals'))}</p><ul>${pv(p.goals).map(g => `<li>${esc(g)}</li>`).join('')}</ul>
