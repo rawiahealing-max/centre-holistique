@@ -40,7 +40,7 @@
   let sel = { mode: 'video', id: '' };
 
   // the sessions that can be done online, each with its own price and duration (from the dashboard: 🌿 sessions)
-  const sessions = () => { const D = window.CH && window.CH.getData(); return ((D && D.soins) || []).filter(x => x.en_ligne !== false && !x.lien && x.prix); };
+  const sessions = () => { const D = window.CH && window.CH.getData(); return ((D && D.soins) || []).filter(x => x.actif !== false && x.en_ligne !== false && !x.lien && x.prix); };
   const current = () => sessions().find(x => x.id === sel.id);
   const priceTxt = x => x ? (window.CH.money ? window.CH.money(x.prix) : '') : '';
   const L = v => window.CH ? window.CH.L(v) : (v && v.ar) || '';
