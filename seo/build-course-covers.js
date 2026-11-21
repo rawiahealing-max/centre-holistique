@@ -1,4 +1,6 @@
-// Draws a cover image (1200×800 JPG) for every course in assets/courses-data.js → assets/courses/<id>.jpg
+// Draws two cover images (1200×800) for every course in assets/courses-data.js:
+//   assets/courses/<id>.jpg     no title (used on the cards, works in every language)
+//   assets/courses/<id>-ar.jpg  with the Arabic title (course page + social media)
 // Run: node seo/build-course-covers.js   (uses headless Chrome/Edge screenshots)
 const fs = require('fs'), path = require('path'), os = require('os'), { execFileSync } = require('child_process');
 const { COURSES } = require('../assets/courses-data.js');
@@ -20,7 +22,7 @@ function seed(r, stroke, op) {
 }
 function stars(n, seedN) { let s = seedN; const r = () => (s = (s * 9301 + 49297) % 233280) / 233280; return [...Array(n)].map(() => `<circle cx="${(r() * 1200).toFixed(0)}" cy="${(r() * 800).toFixed(0)}" r="${(r() * 2 + .4).toFixed(1)}" fill="#f0d79a" opacity="${(r() * .7 + .2).toFixed(2)}"/>`).join(''); }
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'covers-'));
-COURSES.forEach((c, k) => {
+for (const plainMode of [true, false]) COURSES.forEach((c, k) => {
   const [a, b, d] = THEMES[c.theme] || THEMES.violet, [t1, t2] = SHORT[c.id] || [c.titre.ar, ''];
   const lv = (c.niveaux || []).length;
   const html = `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
@@ -30,12 +32,12 @@ svg{position:absolute;inset:0}.txt{position:absolute;right:80px;top:0;bottom:0;w
 .k{color:#f0d79a;letter-spacing:.25em;font-size:22px;font-weight:700}.t{font-family:Amiri,serif;font-size:${t1.length > 14 ? 74 : 92}px;line-height:1.15;margin:18px 0 10px}
 .s{font-size:32px;color:#efe4fa;line-height:1.4}.pill{display:inline-block;margin-top:34px;border:2px solid #f0d79a;color:#f0d79a;border-radius:999px;padding:8px 26px;font-size:24px;font-weight:700}
 .f{position:absolute;bottom:34px;right:80px;font-size:20px;color:#d9c8ec;letter-spacing:.08em}</style></head><body>
-<svg viewBox="0 0 1200 800">${stars(90, k * 7 + 3)}<g transform="translate(260,400)">${seed(78, '#f0d79a', .85)}${seed(156, '#ffffff', .12)}<circle r="12" fill="#f0d79a"/></g></svg>
-<div class="txt"><div class="k">دورة تكوينية</div><div class="t">${esc(t1)}</div><div class="s">${esc(t2)}</div>${lv ? `<div><span class="pill">${lv} مستويات · شهادة</span></div>` : `<div><span class="pill">مع شهادة · في المركز أو أونلاين</span></div>`}</div>
-<div class="f">CENTRE HOLISTIQUE · RAWIA GHORBEL</div></body></html>`;
-  const h = path.join(tmp, c.id + '.html'), png = path.join(tmp, c.id + '.png');
+<svg viewBox="0 0 1200 800">${stars(90, k * 7 + 3)}<g transform="translate(${plainMode ? 600 : 260},400)">${seed(78, '#f0d79a', .85)}${seed(156, '#ffffff', .12)}<circle r="12" fill="#f0d79a"/></g></svg>
+${plainMode ? `<div class="f" style="right:0;left:0;text-align:center">CENTRE HOLISTIQUE</div>` : `<div class="txt"><div class="k">دورة تكوينية</div><div class="t">${esc(t1)}</div><div class="s">${esc(t2)}</div>${lv ? `<div><span class="pill">${lv} مستويات · شهادة</span></div>` : `<div><span class="pill">مع شهادة · في المركز أو أونلاين</span></div>`}</div>
+<div class="f">CENTRE HOLISTIQUE · RAWIA GHORBEL</div>`}</body></html>`;
+  const tag = plainMode ? '' : '-ar', h = path.join(tmp, c.id + tag + '.html'), png = path.join(tmp, c.id + tag + '.png');
   fs.writeFileSync(h, html);
   execFileSync(BROWSER, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--window-size=1200,800', '--virtual-time-budget=10000', `--screenshot=${png}`, 'file:///' + h.replace(/\\/g, '/')], { stdio: 'ignore' });
-  fs.copyFileSync(png, path.join(OUT, c.id + '.png'));
-  console.log('cover', c.id);
+  fs.copyFileSync(png, path.join(OUT, c.id + tag + '.png'));
+  console.log('cover', c.id + tag);
 });
