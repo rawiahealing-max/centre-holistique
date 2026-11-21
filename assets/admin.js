@@ -208,6 +208,7 @@
       if (url && !/^https?:\/\//.test(url)) return toast('الرابط لازم يبدا بـ https://');
       const row = { title: readField(f, ['title', '', 'i']), description: readField(f, ['description', '', 'it']), starts_at: toTunisISO(f.ld.value, f.lt.value || '20:00'),
         duration_min: Math.max(10, +f.dur.value || 60), url: url || null, members_only: f.members_only.checked, active: f.active.checked };
+      await autoFill(row, [['title', '', 'i'], ['description', '', 'it']]);
       const r = l.id ? await sb.from('lives').update(row).eq('id', l.id) : await sb.from('lives').insert(row);
       if (r.error) return toast('خطأ: ' + r.error.message);
       toast('✓ تحفظ'); vLives(V);
@@ -405,15 +406,21 @@
     const fs = content.formations || [];
     if (!lessonCourse && fs.length) lessonCourse = fs[0].id;
     V.innerHTML = `<div class="panel"><label>اختار الدورة<select id="lc">${fs.map(f => `<option value="${esc(f.id)}" ${f.id === lessonCourse ? 'selected' : ''}>${esc(L(f.titre))}</option>`).join('')}</select></label>
-      <p class="hint" style="margin-top:8px">الدروس هاذم يظهرو كان للحرفاء اللي عندهم الوصول للدورة. 🎬 فيديو: حط رابط YouTube (Non répertorié) ولا ارفع فيديو صغير. 🎧 صوت، 📄 PDF، 🖼️ صورة: ارفعهم مباشرة.</p></div>
+      <p class="hint" style="margin-top:8px">الدروس هاذم يظهرو كان للحرفاء اللي عندهم الوصول للدورة. 🎬 فيديو: حط رابط YouTube (Non répertorié) ولا ارفع فيديو صغير. 🎧 صوت، 📄 PDF، 🖼️ صورة: ارفعهم مباشرة.<br>🌐 اكتبي العنوان والشرح بالعربية فقط، وتُترجَم الفرنسية والإنجليزية تلقائياً عند الحفظ (ويمكنكِ تعديلها بعد ذلك).</p></div>
       <div class="panel"><div class="row between"><h3>الدروس</h3><button class="btn gold" id="addl">+ زيد درس</button></div><div id="llist"></div></div>`;
     $('#lc').onchange = e => { lessonCourse = e.target.value; vLessons(V); };
     $('#addl').onclick = () => lessonDialog(null, V);
     if (!lessonCourse) { $('#llist').innerHTML = '<p class="muted">زيد دورة من «محتوى الموقع ← الدورات» الأول.</p>'; return; }
     const { data: ls } = await sb.from('lessons').select('*').eq('course_id', lessonCourse).order('position').order('id');
     const ico = { video: '🎬', audio: '🎧', pdf: '📄', image: '🖼️', text: '📝', link: '🔗' };
-    $('#llist').innerHTML = (ls || []).length ? ls.map((l, i) => `<div class="item"><div class="grow"><b>${i + 1}. ${ico[l.kind] || ''} ${esc(L(l.title))}</b><br><small dir="ltr">${esc(l.url || l.storage_path || '')}</small></div>
-      <div class="row"><button class="btn line sm" data-up-l="${l.id}" ${i ? '' : 'disabled'}>↑</button><button class="btn line sm" data-edit-l="${l.id}">تعديل</button><button class="btn danger sm" data-del-l="${l.id}">🗑</button></div></div>`).join('') : '<p class="muted">ما فمّا حتى درس. اضغط «زيد درس».</p>';
+    // courses with sections (e.g. the 5 evenings of the masterclass): show lessons grouped by section
+    const secs = courseSections(lessonCourse), secOf = l => (l.body && l.body.section) || '';
+    const row = (l, i) => `<div class="item"><div class="grow"><b>${i + 1}. ${ico[l.kind] || ''} ${esc(L(l.title))}</b><br><small dir="ltr">${esc(l.url || l.storage_path || '')}</small></div>
+      <div class="row"><button class="btn line sm" data-up-l="${l.id}" ${i ? '' : 'disabled'}>↑</button><button class="btn line sm" data-edit-l="${l.id}">تعديل</button><button class="btn danger sm" data-del-l="${l.id}">🗑</button></div></div>`;
+    const idx = new Map((ls || []).map((l, i) => [l.id, i]));
+    $('#llist').innerHTML = !(ls || []).length ? '<p class="muted">لا توجد دروس بعد. اضغطي «زيد درس».</p>'
+      : !secs.length ? ls.map(row).join('')
+      : [{ id: '', ar: 'بدون قسم' }].concat(secs).map(s => { const g = ls.filter(l => secOf(l) === s.id); return g.length || s.id ? `<h4 class="lsec">${esc(s.ar)} <small>(${g.length})</small></h4>${g.map(l => row(l, idx.get(l.id))).join('') || '<p class="muted sm">—</p>'}` : ''; }).join('');
     V.querySelectorAll('[data-edit-l]').forEach(b => b.onclick = () => lessonDialog(ls.find(l => String(l.id) === b.dataset.editL), V));
     V.querySelectorAll('[data-del-l]').forEach(b => b.onclick = async () => { if (!confirm('تفسخ الدرس؟')) return; await sb.from('lessons').delete().eq('id', b.dataset.delL); vLessons(V); });
     V.querySelectorAll('[data-up-l]').forEach(b => b.onclick = async () => {
@@ -422,10 +429,12 @@
       await Promise.all(ls.map((l, j) => sb.from('lessons').update({ position: j }).eq('id', l.id))); vLessons(V);
     });
   }
+  function courseSections(cid) { const c = ((content && content.formations) || []).find(f => f.id === cid); return (c && Array.isArray(c.sections)) ? c.sections : []; }
   function lessonDialog(l, V) {
     l = l || { title: {}, kind: 'video', body: {} };
-    const f = $('#dlg-form');
+    const f = $('#dlg-form'), secs = courseSections(lessonCourse), cur = (l.body && l.body.section) || '';
     f.innerHTML = `<h2>${l.id ? 'تعديل' : 'زيد'} درس</h2><div class="g2">
+      ${secs.length ? `<label class="full">الأمسية / القسم<select name="section"><option value="">— بدون قسم —</option>${secs.map(s => `<option value="${esc(s.id)}" ${s.id === cur ? 'selected' : ''}>${esc(s.ar)}</option>`).join('')}</select></label>` : ''}
       ${field(['title', 'عنوان الدرس', 'i'], l.title)}
       <label>النوع<select name="kind">${[['video', '🎬 فيديو'], ['audio', '🎧 صوت'], ['pdf', '📄 PDF'], ['image', '🖼️ صورة'], ['text', '📝 نص'], ['link', '🔗 رابط']].map(([k, n]) => `<option value="${k}" ${l.kind === k ? 'selected' : ''}>${n}</option>`).join('')}</select></label>
       <label class="full">رابط (YouTube، Vimeo، Zoom، Drive…)<input name="url" dir="ltr" value="${esc(l.url || '')}" placeholder="https://youtu.be/…"></label>
@@ -435,7 +444,10 @@
     const d = $('#dlg'); d.returnValue = ''; d.showModal();
     d.onclose = async () => {
       if (d.returnValue !== 'ok') return;
-      const row = { course_id: lessonCourse, title: readField(f, ['title', '', 'i']), kind: f.kind.value, url: f.url.value.trim() || null, storage_path: f.storage_path.value.trim() || null, body: readField(f, ['body', '', 'it']) };
+      const tr = await autoFill({ title: readField(f, ['title', '', 'i']), body: readField(f, ['body', '', 'it']) }, [['title', '', 'i'], ['body', '', 'it']]);
+      const body = Object.assign({}, tr.body || {});
+      if (f.section) { if (f.section.value) body.section = f.section.value; else delete body.section; }
+      const row = { course_id: lessonCourse, title: tr.title, kind: f.kind.value, url: f.url.value.trim() || null, storage_path: f.storage_path.value.trim() || null, body };
       const r = l.id ? await sb.from('lessons').update(row).eq('id', l.id) : await sb.from('lessons').insert({ ...row, position: 999 });
       if (r.error) return toast('خطأ: ' + r.error.message);
       toast('✓ تحفظ'); vLessons(V);
@@ -476,6 +488,7 @@
       if (d.returnValue !== 'ok') return;
       const row = { title: readField(f, ['title', '', 'i']), description: readField(f, ['description', '', 'it']), kind: f.kind.value, category: f.category.value, duration: f.duration.value.trim(),
         theme: f.theme.value, members_only: f.members_only.checked, active: f.active.checked, url: f.url.value.trim() || null, storage_path: f.storage_path.value.trim() || null, cover: f.cover.value.trim() || null };
+      await autoFill(row, [['title', '', 'i'], ['description', '', 'it']]);
       if (row.members_only && row.storage_path && row.storage_path.startsWith('public/')) toast('⚠️ الملف في البلاصة العمومية. باش يكون محمي، عاود ارفعو بعد ما تختار «للأعضاء فقط».');
       const r = m.id ? await sb.from('meditations').update(row).eq('id', m.id) : await sb.from('meditations').insert(row);
       if (r.error) return toast('خطأ: ' + r.error.message);
@@ -603,6 +616,31 @@
     if (type === 'checkbox') { const on = val === '' || val === undefined ? def : val !== false; return `<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="${k}" ${on ? 'checked' : ''}> ${label}</label>`; }
     return `<label>${label}<input name="${k}" type="${type || 'text'}" value="${esc(val ?? '')}"></label>`;
   }
+  // ---- automatic translation: Rawia writes in one language, the empty languages are filled on save ----
+  async function translateText(text, to) {
+    const parts = String(text).split(/(\n{2,})/), out = [];
+    let chunk = '';
+    const flush = async () => {
+      if (!chunk.trim()) { out.push(chunk); chunk = ''; return; }
+      const r = await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=' + to + '&dt=t', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }, body: 'q=' + encodeURIComponent(chunk) });
+      const j = await r.json(); out.push((j[0] || []).map(x => x[0]).join('')); chunk = '';
+    };
+    for (const p of parts) { if ((chunk + p).length > 3500) await flush(); chunk += p; }
+    await flush();
+    return out.join('');
+  }
+  async function autoLang(o) {
+    if (!o || typeof o !== 'object') return o;
+    const src = o.ar || o.fr || o.en; if (!src) return o;
+    for (const l of ['ar', 'fr', 'en']) if (!o[l]) { try { o[l] = await translateText(src, l); } catch (e) { /* keep empty if offline */ } }
+    return o;
+  }
+  async function autoFill(obj, fields) {
+    const multi = fields.filter(fd => ['i', 'it', 'lt'].includes(fd[2]));
+    if (multi.some(fd => { const v = obj[fd[0]]; return v && (v.ar || v.fr || v.en) && !(v.ar && v.fr && v.en); })) toast('🌐 جارٍ الترجمة إلى اللغات الأخرى…');
+    for (const fd of multi) obj[fd[0]] = await autoLang(obj[fd[0]]);
+    return obj;
+  }
   function readField(f, [k, , type]) {
     if (type === 'i' || type === 'it' || type === 'lt') return { ar: f.elements[k + '.ar'].value.trim(), fr: f.elements[k + '.fr'].value.trim(), en: f.elements[k + '.en'].value.trim() };
     if (type === 'p') return { tnd: f.elements[k + '.tnd'].value.trim(), eur: f.elements[k + '.eur'].value.trim(), usd: f.elements[k + '.usd'].value.trim() };
@@ -636,9 +674,10 @@
     f.innerHTML = `<h2>${i >= 0 ? 'تعديل' : 'إضافة'}</h2><div class="g2">${S.fields.map(x => field(x, item[x[0]] ?? '')).join('')}</div>
       <div class="row" style="justify-content:flex-end"><button class="btn line" value="cancel" formnovalidate>إلغاء</button><button class="btn gold" value="ok">حفظ</button></div>`;
     d.returnValue = ''; d.showModal();
-    d.onclose = () => {
+    d.onclose = async () => {
       if (d.returnValue !== 'ok') return;
       const out = { ...item }; S.fields.forEach(fd => out[fd[0]] = readField(f, fd));
+      await autoFill(out, S.fields);
       if (key === 'blog') {
         if (!out.date) out.date = new Date().toISOString().slice(0, 10);
         const clean = s => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70).replace(/-$/, '');
