@@ -48,12 +48,15 @@
   const val = (v, l) => v && typeof v === 'object' ? (v[l] || '') : (l === 'ar' ? (v || '') : '');
   const langsOf = p => LANGS.filter(l => val(p.titre, l) && val(p.contenu, l));
   // best language for a visitor: their language if the article has it, otherwise the article's first language
-  const pick = (p, want) => { const ls = langsOf(p); return ls.includes(want) ? want : (ls[0] || want); };
+  // (an English visitor gets the French version before the Arabic one, and vice versa)
+  const pick = (p, want) => { const ls = langsOf(p); if (ls.includes(want)) return want; const pref = want === 'en' ? ['fr', 'ar'] : want === 'fr' ? ['en', 'ar'] : ['fr', 'en']; return pref.find(l => ls.includes(l)) || ls[0] || want; };
+  // "5 min read" in the right grammar for each language
+  const readLabel = (n, l) => l === 'ar' ? (n === 1 ? 'دقيقة قراءة' : n === 2 ? 'دقيقتا قراءة' : n <= 10 ? n + ' دقائق قراءة' : n + ' دقيقة قراءة') : l === 'fr' ? n + ' min de lecture' : n + ' min read';
   const excerpt = (p, l, n = 170) => { const r = val(p.resume, l) || plain(val(p.contenu, l)); return r.length > n ? r.slice(0, n).replace(/\s+\S*$/, '') + '…' : r; };
   const minutes = (p, l) => Math.max(1, Math.round(plain(val(p.contenu, l)).split(' ').length / 200));
   const published = D => (D && D.blog || []).filter(p => p.actif !== false && p.slug && langsOf(p).length && (!p.date || p.date <= new Date().toISOString().slice(0, 10)))
     .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
 
-  const api = { esc, md, inline, plain, val, langsOf, pick, excerpt, minutes, published, embed, LANGS };
+  const api = { esc, md, inline, plain, val, langsOf, pick, excerpt, minutes, readLabel, published, embed, LANGS };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.BLOG = api;
 })(typeof window !== 'undefined' ? window : globalThis);
