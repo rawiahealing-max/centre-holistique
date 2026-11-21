@@ -744,3 +744,6 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .cat-tabs button:hover{background:#f6f0fb}
 .cat-tabs button.on{background:#5b3483;border-color:#5b3483;color:#fff;font-weight:700}
 @media (max-width:640px){.cat-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.cat-tabs button{white-space:nowrap;flex:0 0 auto}}
+
+.online-pill.sfax{background:rgba(91,52,131,.75)}
+.pfoot .price small{font-size:.8rem;font-weight:600;opacity:.85}
