@@ -3,3 +3,4 @@ Allow: /
 Disallow: /admin.html
 
 Sitemap: https://www.centreholistique.net/sitemap.xml
+Disallow: /m/
