@@ -280,11 +280,59 @@
     const { data: ms } = await sb.from('messages').select('*').eq('room', r).order('created_at', { ascending: true }).limit(200);
     box.innerHTML = (ms || []).length ? '' : `<p class="chat-empty">${esc(a('chat_empty'))}</p>`;
     (ms || []).forEach(addMsg);
+    renderSafe(r, !(ms || []).length);
     if (channel) sb.removeChannel(channel);
     channel = sb.channel('room-' + r).on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages', filter: `room=eq.${r}` }, p => {
-      if (!box.querySelector(`[data-mid="${p.new.id}"]`)) { box.querySelector('.chat-empty')?.remove(); addMsg(p.new); }
-    }).subscribe();
+      if (!box.querySelector(`[data-mid="${p.new.id}"]`)) { box.querySelector('.chat-empty')?.remove(); addMsg(p.new); hideTyping(); }
+    }).on('broadcast', { event: 'typing' }, p => { if (p.payload && p.payload.u !== user.id) showTyping(); }).subscribe();
   }
+
+  // ---------- safe space (private chat with Rawia) ----------
+  const SAFE = {
+    ar: { t: '🌿 مساحتك الآمنة', l1: 'هذه المحادثة سرّية: لا يراها أحد غيرك وغير راوية.', l2: 'بلا أحكام: عبّر عمّا تشعر به بكلماتك وعلى راحتك.', l3: 'تجيبك راوية في أوقات الجلسات، وفي موعد جلستك تكون حاضرة معك بالكامل.', l4: 'يمكنك أن تطلب حذف محادثتك في أي وقت.',
+      sos: 'هذه مرافقة للرفاه، وليست خدمة طوارئ. إذا كنت في خطر أو تفكّر في إيذاء نفسك، اتصل فوراً بالإسعاف: في تونس 190 (الإسعاف) أو 197 (الشرطة)، أو برقم الطوارئ في بلدك.',
+      del: '🗑 اطلب حذف المحادثة', del_ok: 'أرسلنا طلب الحذف. ستُحذف المحادثة قريباً 🤍', del_confirm: 'هل تريد أن تطلب حذف كل هذه المحادثة؟', del_msg: '🗑 أطلب حذف هذه المحادثة من فضلك.',
+      exit: '🚪 خروج سريع', exit_t: 'يغلق الصفحة فوراً ويفتح صفحة عادية', typing: 'راوية تكتب…', typing_client: 'يكتب…', ph: 'اكتب بهدوء وبراحتك…' },
+    fr: { t: '🌿 Votre espace sûr', l1: 'Cette conversation est confidentielle : seules vous et Rawia la voyez.', l2: 'Sans jugement : exprimez ce que vous ressentez, avec vos mots, à votre rythme.', l3: 'Rawia vous répond pendant les heures de séance, et elle est pleinement présente à l’heure de votre rendez-vous.', l4: 'Vous pouvez demander la suppression de votre conversation à tout moment.',
+      sos: 'Ceci est un accompagnement de bien-être, pas un service d’urgence. Si vous êtes en danger ou pensez à vous faire du mal, appelez immédiatement les secours : en Tunisie le 190 (SAMU) ou le 197 (police), ou le numéro d’urgence de votre pays.',
+      del: '🗑 Demander la suppression', del_ok: 'Demande envoyée. La conversation sera bientôt supprimée 🤍', del_confirm: 'Voulez-vous demander la suppression de toute cette conversation ?', del_msg: '🗑 Je demande la suppression de cette conversation, s’il vous plaît.',
+      exit: '🚪 Sortie rapide', exit_t: 'Ferme la page tout de suite et ouvre une page neutre', typing: 'Rawia écrit…', typing_client: 'écrit…', ph: 'Écrivez calmement, à votre rythme…' },
+    en: { t: '🌿 Your safe space', l1: 'This conversation is confidential: only you and Rawia can see it.', l2: 'No judgment: share what you feel, in your own words and at your own pace.', l3: 'Rawia replies during session hours, and is fully present with you at your appointment time.', l4: 'You can ask for your conversation to be deleted at any time.',
+      sos: 'This is wellbeing support, not an emergency service. If you are in danger or thinking of harming yourself, call emergency services now: in Tunisia 190 (ambulance) or 197 (police), or your local emergency number.',
+      del: '🗑 Ask to delete', del_ok: 'Request sent. The conversation will be deleted soon 🤍', del_confirm: 'Do you want to ask for this whole conversation to be deleted?', del_msg: '🗑 Please delete this conversation.',
+      exit: '🚪 Quick exit', exit_t: 'Closes this page right away and opens a neutral page', typing: 'Rawia is typing…', typing_client: 'typing…', ph: 'Write calmly, at your own pace…' }
+  };
+  const sf = k => (SAFE[lg()] || SAFE.ar)[k];
+  function renderSafe(r, open) {
+    const el = $('#chat-safe'), dm = r && r.startsWith('dm:');
+    $('#chatbox').classList.toggle('calm', !!dm);
+    el.hidden = !dm; if (!dm) return;
+    $('#chat-form').body.placeholder = sf('ph');
+    el.innerHTML = `<details ${open ? 'open' : ''}><summary>${esc(sf('t'))}</summary>
+      <ul><li>🔒 ${esc(sf('l1'))}</li><li>🤍 ${esc(sf('l2'))}</li><li>🕊️ ${esc(sf('l3'))}</li><li>🗑 ${esc(sf('l4'))}</li></ul>
+      <p class="chat-sos">⚠️ ${esc(sf('sos'))}</p></details>
+      <div class="chat-safe-act"><button type="button" class="btn btn-soft btn-sm" data-chat-del>${esc(sf('del'))}</button>
+      <button type="button" class="btn btn-sm chat-exit" data-chat-exit title="${esc(sf('exit_t'))}">${esc(sf('exit'))}</button></div>`;
+  }
+  let typingTimer = null, lastTyping = 0;
+  function showTyping() { const t = $('#chat-typing'); if (!room || !room.startsWith('dm:')) return; t.textContent = isAdmin ? sf('typing_client') : sf('typing'); t.hidden = false; clearTimeout(typingTimer); typingTimer = setTimeout(hideTyping, 4000); }
+  function hideTyping() { const t = $('#chat-typing'); if (t) t.hidden = true; }
+  $('#chat-form').body.addEventListener('input', () => {
+    if (!channel || !room || !room.startsWith('dm:') || Date.now() - lastTyping < 2500) return;
+    lastTyping = Date.now(); channel.send({ type: 'broadcast', event: 'typing', payload: { u: user.id } });
+  });
+  document.addEventListener('click', async e => {
+    if (e.target.closest('[data-chat-exit]')) {
+      $('#chat-msgs').innerHTML = ''; document.title = 'Google';
+      location.replace('https://www.google.com/search?q=m%C3%A9t%C3%A9o');
+      return;
+    }
+    if (e.target.closest('[data-chat-del]')) {
+      if (!room || !room.startsWith('dm:') || !confirm(sf('del_confirm'))) return;
+      const { error } = await sb.from('messages').insert({ room, user_id: user.id, author_name: (profile.full_name || user.email.split('@')[0]), is_admin: false, body: sf('del_msg') });
+      window.CH.toast(error ? error.message : sf('del_ok'));
+    }
+  });
   function addMsg(m) {
     const box = $('#chat-msgs'), mine = m.user_id === user.id;
     const time = new Date(m.created_at).toLocaleString(window.CH.LOCALE[lg()], { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
