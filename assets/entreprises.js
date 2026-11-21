@@ -71,6 +71,7 @@
   function render() {
     document.querySelectorAll('[data-e]').forEach(el => { const v = m(el.dataset.e); if (typeof v === 'string') el.textContent = v; });
     document.querySelectorAll('[data-ep]').forEach(el => { el.placeholder = m(el.dataset.ep); });
+    const bro = $('#e-broch'); if (bro) bro.href = 'assets/brochure-entreprises-' + lg() + '.pdf';
     $('#e-why').innerHTML = m('why').map(([i, t, d]) => `<div class="b2b-why"><span>${i}</span><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('');
     $('#e-progs').innerHTML = PROGS.map(p => `<article class="b2b-prog b2b-c-${esc(p.theme)}" id="prog-${esc(p.id)}">
         <div class="b2b-prog-head"><span class="b2b-ico">${p.icon}</span><h3>${esc(pv(p.t))}</h3></div>
