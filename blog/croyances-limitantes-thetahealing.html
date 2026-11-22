@@ -90,7 +90,7 @@
 <script>(function(){var ls=[].slice.call(document.querySelectorAll('[data-lang]'));if(ls.length<2)return;
 function show(l){ls.forEach(function(a){a.hidden=a.dataset.lang!==l});[].forEach.call(document.querySelectorAll('[data-show]'),function(b){b.classList.toggle('on',b.dataset.show===l)});}
 var want=null;try{want=JSON.parse(localStorage.getItem('ch_lang'))}catch(e){}
-show(ls.some(function(a){return a.dataset.lang===want})?want:ls[0].dataset.lang);
+var has=function(l){return ls.some(function(a){return a.dataset.lang===l})};show(has(want)?want:(has('ar')?'ar':ls[0].dataset.lang));
 document.addEventListener('click',function(e){var b=e.target.closest('[data-show]');if(b){show(b.dataset.show);try{localStorage.setItem('ch_lang',JSON.stringify(b.dataset.show))}catch(e){}}});})();</script>
 <script src="assets/consent.js"></script>
 </body>
