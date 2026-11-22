@@ -186,7 +186,8 @@
   // language
   const urlLang = new URLSearchParams(location.search).get('lang');
   let lang = ['ar', 'fr', 'en'].includes(urlLang) ? urlLang : store.get('ch_lang', null);
-  if (!lang) { const n = (navigator.language || 'ar').slice(0, 2); lang = n === 'fr' ? 'fr' : n === 'ar' ? 'ar' : (TZ === 'Africa/Tunis' ? 'ar' : 'en'); }
+  // Arabic is always the default; French/English only when the visitor picks them (remembered) or ?lang= is in the link
+  if (!['ar', 'fr', 'en'].includes(lang)) lang = 'ar';
   // currency
   let cur = store.get('ch_cur', null);
   if (!cur) cur = TZ === 'Africa/Tunis' ? 'tnd' : /^America\//.test(TZ) ? 'usd' : 'eur';
