@@ -6,16 +6,16 @@
 const fs = require('fs'), path = require('path'), os = require('os'), { execFileSync } = require('child_process');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'assets', 'promo');
 fs.mkdirSync(OUT, { recursive: true });
-const PORTRAIT = 'https://mhhzppszrqzjktqlgqag.supabase.co/storage/v1/object/public/public/images/mwmkvanl-whatsapp-image-2026-11-18-at-21-29-12.jpeg';
-const BROWSER = [process.env.CHROME, 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'].find(p => p && fs.existsSync(p));
+const PORTRAIT = process.env.PORTRAIT || 'https://mhhzppszrqzjktqlgqag.supabase.co/storage/v1/object/public/public/images/mwmkvanl-whatsapp-image-2026-11-18-at-21-29-12.jpeg';
+const BROWSER = [process.env.CHROME, '/usr/bin/google-chrome', 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'].find(p => p && fs.existsSync(p));
 const T = {
   ar: { dir: 'rtl', kicker: 'ماستركلاس مباشر عن بُعد', t1: 'ماستركلاس 2027', t2: 'الوفرة والتجلّي الواعي',
     lines: ['اختم 2026 بسلام', 'حرّر ما أثقلك', 'افتح باب الوفرة', 'ضع نواياك لعام 2027 بوعي'],
-    when: '5 أمسيات مباشرة · 14–18 ديسمبر', time: 'الساعة 20:00 بتوقيت تونس · من أي مكان في العالم',
+    when: '3 أمسيات مباشرة · 18 و19 و20 ديسمبر', time: 'الساعة 20:00 بتوقيت تونس · من أي مكان في العالم',
     price: 'ابتداءً من 44 €', cta: 'احجز مقعدك', by: 'مع راوية غربال', seats: 'المقاعد محدودة', url: 'centreholistique.net/masterclass-2027' },
   fr: { dir: 'ltr', kicker: 'Masterclass en ligne en direct', t1: 'Masterclass 2027', t2: 'Abondance & Manifestation consciente',
     lines: ['Clôturez 2026 en paix', 'Libérez ce qui vous pèse', 'Ouvrez la porte de l’abondance', 'Posez vos intentions pour 2027'],
-    when: '5 soirées en direct · 14–18 décembre', time: '20 h heure de Tunisie · partout dans le monde',
+    when: '3 soirées en direct · 18, 19 et 20 décembre', time: '20 h heure de Tunisie · partout dans le monde',
     price: 'À partir de 44 €', cta: 'Réservez votre place', by: 'avec Rawia Ghorbel', seats: 'Places limitées', url: 'centreholistique.net/masterclass-2027' }
 };
 function seed(r, stroke, op) {

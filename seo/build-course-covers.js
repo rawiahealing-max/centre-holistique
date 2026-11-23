@@ -6,13 +6,13 @@ const fs = require('fs'), path = require('path'), os = require('os'), { execFile
 const { COURSES } = require('../assets/courses-data.js');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'assets', 'courses');
 fs.mkdirSync(OUT, { recursive: true });
-const BROWSER = [process.env.CHROME, 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'].find(p => p && fs.existsSync(p));
+const BROWSER = [process.env.CHROME, '/usr/bin/google-chrome', 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'].find(p => p && fs.existsSync(p));
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const THEMES = { violet: ['#6b3f98', '#3b2550', '#1e1128'], rose: ['#b0477e', '#5e2a52', '#2a1328'], gold: ['#a8782a', '#5a3c22', '#24152f'], green: ['#2f7d62', '#22463f', '#122421'], indigo: ['#4b4fb8', '#2b2a6b', '#151433'], blue: ['#2e6fae', '#1f3c63', '#101d33'] };
 // short title shown on the image (the full title stays on the site)
 const SHORT = {
   'reiki-usui': ['الريكي أوسوي', 'من المستوى 1 إلى الماستر'], 'karuna-reiki': ['كارونا ريكي', 'ريكي الرحمة'], 'kundalini-reiki': ['كونداليني ريكي', 'إيقاظ الطاقة بلطف'],
-  'prana-healing': ['البرانا هيلينغ', 'العلاج بطاقة الحياة'], 'annales-akashiques': ['السجلات الأكاشية', 'افتح كتاب روحك'], 'bawabat-2027': ['ماستركلاس 2027', 'الوفرة والتجلّي الواعي', '5 أمسيات مباشرة · 14–18 ديسمبر'],
+  'prana-healing': ['البرانا هيلينغ', 'العلاج بطاقة الحياة'], 'annales-akashiques': ['السجلات الأكاشية', 'افتح كتاب روحك'], 'bawabat-2027': ['ماستركلاس 2027', 'الوفرة والتجلّي الواعي', '3 أمسيات مباشرة · 18–20 ديسمبر'],
   'jourouh-toufoula': ['جروح الطفولة الخمس', 'رحلة شفاء مع طفلك الداخلي'], 'alaqat-wa3iya': ['العلاقات الواعية', 'من التعلّق إلى الحب الحر'], 'karma-3oqoud': ['الكارما والعقود الروحية', 'حرّر ما أدّى مهمته'],
   'qouwat-al-sou2al': ['قوة السؤال', 'سؤال واحد يفتح كل الإمكانيات']
 };
