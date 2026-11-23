@@ -116,7 +116,7 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .t-gold{background:linear-gradient(135deg,#e3c47a,#9b6b2e)}
 
 /* packs */
-.packs{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,380px));justify-content:center;gap:1.2rem}
 .pack{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
 .pack-top{position:relative;padding:1.4rem;color:#fff;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end}
 .pack-top .tag{position:static;align-self:flex-start;margin-bottom:.6rem}
