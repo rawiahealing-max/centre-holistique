@@ -212,6 +212,19 @@
   const money = p => { const x = priceOf(p); return x ? fmtMoney(x.v, x.c) : ''; };
 
   let DATA = null;
+  function applyEarlyBird(d) {
+    // Early-bird prices: a course can carry { early: { until, prix, niveaux: [price per level] } }.
+    // Before "until" those prices replace the normal ones everywhere (cards, cart, course page).
+    try {
+      (d && d.formations || []).forEach(f => {
+        const e = f && f.early; if (!e || !e.until || !(Date.now() < Date.parse(e.until))) return;
+        (f.niveaux || []).forEach((n, i) => { const p = e.niveaux && e.niveaux[i]; if (n && p) { n.prix_full = n.prix; n.prix = p; } });
+        if (e.prix) { f.ancien_prix = f.ancien_prix || f.prix; f.prix = e.prix; }
+        f._early = e.until;
+      });
+    } catch (err) { /* keep normal prices */ }
+    return d;
+  }
   let cart = store.get('ch_cart2', []);
   let favs = new Set(store.get('ch_favs', []));
   let billing = 'm';
@@ -239,7 +252,7 @@
 
   applyStatic(); // show the right language immediately, before the content arrives
   (window.loadSiteContent ? window.loadSiteContent() : fetch('data/site.json?v=' + Date.now()).then(r => r.json()))
-    .then(d => { DATA = d; renderAll(); }).catch(() => {
+    .then(d => { DATA = applyEarlyBird(d); renderAll(); }).catch(() => {
       document.body.insertAdjacentHTML('afterbegin', '<p style="background:#fde;padding:8px;text-align:center">Content could not be loaded.</p>');
     });
 

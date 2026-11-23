@@ -11,10 +11,19 @@ vm.runInContext(fs.readFileSync(path.join(ROOT, 'assets/courses-data.js'), 'utf8
 vm.runInContext(fs.readFileSync(path.join(ROOT, 'assets/sb.js'), 'utf8'), sandbox);
 const CFG = sandbox.window.SB_CONFIG;
 
+// early-bird prices (same rule as the site): before early.until, show the early prices
+function earlyBird(d) {
+  (d && d.formations || []).forEach(f => {
+    const e = f && f.early; if (!e || !e.until || !(Date.now() < Date.parse(e.until))) return;
+    (f.niveaux || []).forEach((n, i) => { const p = e.niveaux && e.niveaux[i]; if (n && p) n.prix = p; });
+    if (e.prix) f.prix = e.prix;
+  });
+  return d;
+}
 async function loadContent() {
   try {
     const r = await fetch(`${CFG.url}/rest/v1/site_content?id=eq.1&select=data`, { headers: { apikey: CFG.key, Authorization: 'Bearer ' + CFG.key } });
-    const j = await r.json(); if (Array.isArray(j) && j[0] && j[0].data) return j[0].data;
+    const j = await r.json(); if (Array.isArray(j) && j[0] && j[0].data) return earlyBird(j[0].data);
   } catch (e) { console.warn('database unreachable:', e.message); }
   return JSON.parse(fs.readFileSync(path.join(ROOT, 'data/site.json'), 'utf8'));
 }
