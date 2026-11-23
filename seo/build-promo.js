@@ -12,11 +12,11 @@ const T = {
   ar: { dir: 'rtl', kicker: 'ماستركلاس مباشر عن بُعد', t1: 'ماستركلاس 2027', t2: 'الوفرة والتجلّي الواعي',
     lines: ['اختم 2026 بسلام', 'حرّر ما أثقلك', 'افتح باب الوفرة', 'ضع نواياك لعام 2027 بوعي'],
     when: '3 أمسيات مباشرة · 18 و19 و20 ديسمبر', time: 'الساعة 20:00 بتوقيت تونس · من أي مكان في العالم',
-    price: 'ابتداءً من 152 د.ت', cta: 'احجز مقعدك', by: 'مع راوية غربال', seats: 'المقاعد محدودة', url: 'centreholistique.net/masterclass-2027' },
+    price: '🎁 152 د.ت حتى 15/12', cta: 'احجز مقعدك', by: 'مع راوية غربال', seats: 'المقاعد محدودة', url: 'centreholistique.net/masterclass-2027' },
   fr: { dir: 'ltr', kicker: 'Masterclass en ligne en direct', t1: 'Masterclass 2027', t2: 'Abondance & Manifestation consciente',
     lines: ['Clôturez 2026 en paix', 'Libérez ce qui vous pèse', 'Ouvrez la porte de l’abondance', 'Posez vos intentions pour 2027'],
     when: '3 soirées en direct · 18, 19 et 20 décembre', time: '20 h heure de Tunisie · partout dans le monde',
-    price: 'À partir de 152 DT', cta: 'Réservez votre place', by: 'avec Rawia Ghorbel', seats: 'Places limitées', url: 'centreholistique.net/masterclass-2027' }
+    price: '🎁 152 DT · 15/12', cta: 'Réservez votre place', by: 'avec Rawia Ghorbel', seats: 'Places limitées', url: 'centreholistique.net/masterclass-2027' }
 };
 function seed(r, stroke, op) {
   const c = [[0, 0]].concat([...Array(6)].map((_, i) => [r * Math.cos(i * Math.PI / 3), r * Math.sin(i * Math.PI / 3)]));
@@ -29,7 +29,7 @@ const BASE = (w, h) => `html,body{margin:0;width:${w}px;height:${h}px;overflow:h
 .kicker{display:inline-block;border:2px solid rgba(240,215,154,.7);color:#f0d79a;border-radius:999px;padding:10px 30px;font-weight:700}
 .t1{color:#fff;line-height:1.05;margin:0}.t2{color:#f0d79a;line-height:1.2;margin:0}
 .lines{list-style:none;padding:0;margin:0}.lines li{color:#f3eafc}.lines li::before{content:"✦";color:#f0d79a;margin-inline-end:14px}
-.when{font-weight:800;color:#fff}.time{color:#e8dcf5}.price{display:inline-block;background:#f0d79a;color:#3b2550;font-weight:800;border-radius:18px}
+.when{font-weight:800;color:#fff}.time{color:#e8dcf5}.price{display:inline-block;white-space:nowrap;background:#f0d79a;color:#3b2550;font-weight:800;border-radius:18px}
 .cta{display:inline-block;border:3px solid #fff;color:#fff;font-weight:800;border-radius:999px}.portrait{border-radius:50%;object-fit:cover;border:5px solid #f0d79a}
 .by{color:#f0d79a;font-weight:700}.url{color:#e8dcf5;letter-spacing:.02em}.seats{color:#f0d79a;font-weight:700}`;
 
@@ -40,7 +40,7 @@ function post(l) {
   .kicker{font-size:30px}.t1{font-size:${l === 'ar' ? 122 : 112}px;margin-top:34px}.t2{font-size:${l === 'ar' ? 64 : 56}px;margin-top:10px}
   .lines{margin-top:46px;display:grid;gap:14px}.lines li{font-size:36px}
   .when{font-size:44px;margin-top:48px}.time{font-size:30px;margin-top:10px}
-  .row{display:flex;align-items:center;gap:28px;margin-top:44px}.portrait{width:150px;height:150px;box-shadow:0 0 40px rgba(240,215,154,.4)}.by{font-size:34px}
+  .row{display:flex;align-items:center;gap:28px;margin-top:44px}.portrait{width:150px;height:150px;box-shadow:0 0 40px rgba(240,215,154,.4)}.by{font-size:34px;white-space:nowrap}
   .price{font-size:40px;padding:16px 34px}.foot{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center}
   .cta{font-size:32px;padding:16px 40px}.url{font-size:26px}</style></head><body class="${l}">
   <svg class="bg" viewBox="0 0 ${W} ${H}">${stars(120, W, H, 5)}<g transform="translate(${W / 2},${H * .43})">${seed(150, '#f0d79a', .16)}</g></svg>
