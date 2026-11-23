@@ -1,0 +1,6 @@
+# GitHub Pages: these folders/files are for building and documentation only.
+# They stay in the repository but are NOT published on www.centreholistique.net
+exclude:
+  - supabase
+  - seo
+  - README.md
