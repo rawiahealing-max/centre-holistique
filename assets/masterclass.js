@@ -115,7 +115,7 @@
     }
     // show the price on the main hero button too (visible on the first screen on phones)
     const heroCta = document.querySelector('.hero-cta [data-k="cta"]');
-    if (heroCta && lv[0]) heroCta.innerHTML = `${esc(m('cta'))} · <b dir="ltr">${money(lv[0].prix)}</b>`;
+    if (heroCta && lv[0]) heroCta.innerHTML = `${esc(m('cta'))} · <bdi><b>${money(lv[0].prix)}</b></bdi>`;
     $('#k-times').innerHTML = recorded() ? '' : SESSIONS.map((s, i) => `<li><b>${esc(m('days')[i][0].split(' · ')[0])}</b><span>${esc(fmtWhen(s, tz))}</span>${fmtWhen(s, tz) !== fmtWhen(s, 'Africa/Tunis') ? `<small>${esc(fmtWhen(s, 'Africa/Tunis'))} (${esc(m('tunis'))})</small>` : ''}</li>`).join('');
     $('#k-faq').innerHTML = m('faq').map(([q, r]) => `<details><summary>${esc(q)}</summary><p>${esc(r)}</p></details>`).join('');
     const portrait = window.CH && window.CH.getData() && (window.CH.getData().settings || {}).portrait;
