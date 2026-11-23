@@ -94,8 +94,10 @@
     // two offers = the course levels (prices set in the dashboard: 🎓 courses)
     const c = course(), lv = (c && c.niveaux) || [], money = window.CH ? window.CH.money : (p => p && p.eur + ' €');
     const L = window.CH ? window.CH.L : (v => v && v.ar);
+    const tndOf = pr => (pr && pr.tnd && window.CH) ? window.CH.fmtMoney(+pr.tnd, 'tnd') : money(pr);
+    const priceHtml = pr => { const a = tndOf(pr), b = money(pr); return b && b !== a ? `${a} <small class="mc-alt">(≈ ${b})</small>` : a; };
     $('#k-offers').innerHTML = [0, 1].filter(i => lv[i]).map(i => `<article class="mc-offer${i === 1 ? ' vip' : ''}">${i === 1 ? `<span class="mc-badge">⭐ VIP</span>` : `<span class="mc-badge soft">${esc(m('most'))}</span>`}
-        <h3>${esc(L(lv[i].nom))}</h3><div class="mc-price">${money(lv[i].prix)}</div>
+        <h3>${esc(L(lv[i].nom))}</h3><div class="mc-price">${priceHtml(lv[i].prix)}</div>
         <ul>${m(i ? 'o2' : 'o1').map(x => `<li>${esc(x)}</li>`).join('')}</ul>
         <button class="btn ${i ? 'btn-gold' : 'btn-primary'} btn-block" data-mc="${i}">${esc(m('book'))}</button></article>`).join('');
     const tz = (window.CH && window.CH.tz) || Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -103,11 +105,11 @@
     const fx = $('#k-facts');
     if (fx) {
       const row = (ic, k, v) => `<li><span class="mc-f-ic" aria-hidden="true">${ic}</span><div><b>${esc(m(k))}</b><span>${esc(m(v))}</span></div></li>`;
-      const p0 = lv[0] ? money(lv[0].prix) : '', p1 = lv[1] ? money(lv[1].prix) : '';
+      const p0 = lv[0] ? tndOf(lv[0].prix) : '', p1 = lv[1] ? tndOf(lv[1].prix) : '', p0alt = lv[0] ? money(lv[0].prix) : '';
       const localT = !recorded() && fmtWhen(SESSIONS[0], tz) !== fmtWhen(SESSIONS[0], 'Africa/Tunis')
         ? `<li class="mc-f-local"><span class="mc-f-ic" aria-hidden="true">🌍</span><div><span>${esc(new Date(SESSIONS[0]).toLocaleTimeString(lg() === 'ar' ? 'ar-TN' : lg() === 'fr' ? 'fr-FR' : 'en-GB', { timeZone: tz, hour: '2-digit', minute: '2-digit' }))} · ${esc(tz)}</span></div></li>` : '';
       fx.innerHTML = `<h2 class="mc-f-t">${esc(m('f_title'))}</h2>
-        ${p0 ? `<div class="mc-f-price"><span>${esc(m('f_price'))}</span><strong>${p0}</strong>${p1 ? `<small>${esc(m('f_vip'))} <b>${p1}</b></small>` : ''}</div>` : ''}
+        ${p0 ? `<div class="mc-f-price"><span>${esc(m('f_price'))}</span><strong>${p0}</strong>${p0alt && p0alt !== p0 ? `<small class="mc-alt">≈ ${p0alt}</small>` : ''}${p1 ? `<small>${esc(m('f_vip'))} <b>${p1}</b></small>` : ''}</div>` : ''}
         <ul class="mc-f-list">${row('📅', 'f_dates', 'f_dates_v')}${row('🕗', 'f_time', 'f_time_v')}${localT}${row('💻', 'f_where', 'f_where_v')}${row('🎧', 'f_rec', 'f_rec_v')}${row('🗣️', 'f_lang', 'f_lang_v')}</ul>
         <button class="btn btn-gold btn-block" data-mc="0">${esc(m('book'))}${p0 ? ' · ' + p0 : ''}</button>
         <a class="mc-f-more" href="#offres">${esc(m('f_compare'))}</a>
@@ -115,7 +117,7 @@
     }
     // show the price on the main hero button too (visible on the first screen on phones)
     const heroCta = document.querySelector('.hero-cta [data-k="cta"]');
-    if (heroCta && lv[0]) heroCta.innerHTML = `${esc(m('cta'))} · <bdi><b>${money(lv[0].prix)}</b></bdi>`;
+    if (heroCta && lv[0]) heroCta.innerHTML = `${esc(m('cta'))} · <bdi><b>${tndOf(lv[0].prix)}</b></bdi>`;
     $('#k-times').innerHTML = recorded() ? '' : SESSIONS.map((s, i) => `<li><b>${esc(m('days')[i][0].split(' · ')[0])}</b><span>${esc(fmtWhen(s, tz))}</span>${fmtWhen(s, tz) !== fmtWhen(s, 'Africa/Tunis') ? `<small>${esc(fmtWhen(s, 'Africa/Tunis'))} (${esc(m('tunis'))})</small>` : ''}</li>`).join('');
     $('#k-faq').innerHTML = m('faq').map(([q, r]) => `<details><summary>${esc(q)}</summary><p>${esc(r)}</p></details>`).join('');
     const portrait = window.CH && window.CH.getData() && (window.CH.getData().settings || {}).portrait;

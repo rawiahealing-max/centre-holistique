@@ -12,11 +12,11 @@ const T = {
   ar: { dir: 'rtl', kicker: 'ماستركلاس مباشر عن بُعد', t1: 'ماستركلاس 2027', t2: 'الوفرة والتجلّي الواعي',
     lines: ['اختم 2026 بسلام', 'حرّر ما أثقلك', 'افتح باب الوفرة', 'ضع نواياك لعام 2027 بوعي'],
     when: '3 أمسيات مباشرة · 18 و19 و20 ديسمبر', time: 'الساعة 20:00 بتوقيت تونس · من أي مكان في العالم',
-    price: 'ابتداءً من 44 €', cta: 'احجز مقعدك', by: 'مع راوية غربال', seats: 'المقاعد محدودة', url: 'centreholistique.net/masterclass-2027' },
+    price: 'ابتداءً من 152 د.ت', cta: 'احجز مقعدك', by: 'مع راوية غربال', seats: 'المقاعد محدودة', url: 'centreholistique.net/masterclass-2027' },
   fr: { dir: 'ltr', kicker: 'Masterclass en ligne en direct', t1: 'Masterclass 2027', t2: 'Abondance & Manifestation consciente',
     lines: ['Clôturez 2026 en paix', 'Libérez ce qui vous pèse', 'Ouvrez la porte de l’abondance', 'Posez vos intentions pour 2027'],
     when: '3 soirées en direct · 18, 19 et 20 décembre', time: '20 h heure de Tunisie · partout dans le monde',
-    price: 'À partir de 44 €', cta: 'Réservez votre place', by: 'avec Rawia Ghorbel', seats: 'Places limitées', url: 'centreholistique.net/masterclass-2027' }
+    price: 'À partir de 152 DT', cta: 'Réservez votre place', by: 'avec Rawia Ghorbel', seats: 'Places limitées', url: 'centreholistique.net/masterclass-2027' }
 };
 function seed(r, stroke, op) {
   const c = [[0, 0]].concat([...Array(6)].map((_, i) => [r * Math.cos(i * Math.PI / 3), r * Math.sin(i * Math.PI / 3)]));

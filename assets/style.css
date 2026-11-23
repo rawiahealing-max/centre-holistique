@@ -761,3 +761,4 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .mc-f-more{display:block;text-align:center;margin-top:.6rem;font-size:.9rem;color:var(--primary);font-weight:600}
 .mc-f-dl{margin:.5rem 0 0;text-align:center;font-size:.82rem;color:#8a5a12;font-weight:600}
 @media (max-width:860px){.mc-days{grid-template-columns:1fr}}
+.mc-alt{font-size:.55em;font-weight:600;color:#8a7a6a}.mc-f-price small.mc-alt{flex-basis:auto;font-size:.85rem}
