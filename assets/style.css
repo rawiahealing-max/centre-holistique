@@ -871,3 +871,76 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .sl-picked small{color:#5a6b5e}
 .co-slots{margin:.3rem 0 .6rem}
 .drawer .slot-pick{padding:.7rem}.drawer .sl-times{grid-template-columns:repeat(auto-fill,minmax(70px,1fr))}
+/* ===== "Enter the centre" scroll visit (assets/visite.js) ===== */
+.visite{padding:70px 0 0;background:linear-gradient(#fff,#f7f1e8)}
+.vz-head{text-align:center;margin-bottom:18px}
+.vz-kicker{display:inline-block;font-size:.85rem;letter-spacing:.14em;color:#9a6b1f;font-weight:700;text-transform:uppercase}
+.vz-head h2{margin:.3rem 0 0;font-size:clamp(1.6rem,3.4vw,2.4rem);color:#3b2550}
+.vz-track{position:relative;height:calc(var(--n) * 90vh)}
+.vz-stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#1d1426}
+.vz-scene{position:absolute;inset:0;margin:0;opacity:0;will-change:opacity}
+.vz-scene picture,.vz-scene img{display:block;width:100%;height:100%}
+.vz-scene img{object-fit:cover;will-change:transform;transform-origin:50% 42%}
+.vz-scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,20,38,.15) 0%,rgba(29,20,38,0) 40%,rgba(29,20,38,.55) 100%);pointer-events:none}
+.vz-scene figcaption{position:absolute;left:0;right:0;bottom:16vh;z-index:2;text-align:center;font-family:'Amiri',var(--font);font-size:clamp(1.8rem,5vw,3.4rem);font-weight:700;color:#fff8e8;text-shadow:0 2px 24px rgba(0,0,0,.45),0 0 40px rgba(243,215,154,.5);padding:0 20px}
+.vz-glow{position:absolute;inset:0;z-index:20;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 42%,rgba(255,244,214,.9),rgba(255,244,214,0) 60%)}
+.vz-dots{position:absolute;z-index:21;inset-inline-end:18px;top:50%;transform:translateY(-50%);display:grid;gap:10px}
+.vz-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);transition:.3s}
+.vz-dots i.on{background:#f3d79a;box-shadow:0 0 12px #f3d79a;transform:scale(1.4)}
+.vz-hint{position:absolute;z-index:21;left:0;right:0;bottom:4vh;text-align:center;color:#fff;font-size:.95rem;letter-spacing:.06em;transition:opacity .4s}
+.vz-hint span{display:inline-block;animation:vzBob 1.6s ease-in-out infinite}
+@keyframes vzBob{50%{transform:translateY(6px)}}
+.vz-cta{position:absolute;z-index:22;left:50%;bottom:6vh;transform:translate(-50%,20px);opacity:0;pointer-events:none;transition:.5s}
+.vz-cta.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.visite.vz-static .vz-track{height:auto}
+.visite.vz-static .vz-stage{position:relative;height:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;background:none;padding:0 12px 24px}
+.visite.vz-static .vz-scene{position:relative;opacity:1;height:320px;border-radius:14px;overflow:hidden}
+.visite.vz-static .vz-scene figcaption{bottom:16px;font-size:1.5rem}
+.visite.vz-static .vz-glow,.visite.vz-static .vz-dots,.visite.vz-static .vz-hint{display:none}
+.visite.vz-static .vz-cta{position:static;transform:none;opacity:1;pointer-events:auto;grid-column:1/-1;justify-self:center}
+.vz-scene[data-i="0"]{background:#e9dccb url(centre/porte.jpg) center/cover}
+.vz-scene[data-i="0"]::before{content:"";position:absolute;inset:0;backdrop-filter:blur(18px) brightness(.85);-webkit-backdrop-filter:blur(18px) brightness(.85)}
+.vz-scene[data-i="0"] picture{position:relative}
+.vz-scene[data-i="0"] img{object-fit:contain;transform-origin:50% 38%}
+@media (max-aspect-ratio:3/4){.vz-scene[data-i="0"] img{object-fit:cover}}
+/* ===== Hero breath: flower of life draws itself, lotus blooms, everything breathes (assets/hero-motion.js) ===== */
+.sg-lotus{inset:30%;color:#f3d79a;filter:drop-shadow(0 0 8px rgba(243,215,154,.7))}
+.sg-lotus path,.sg-lotus circle{fill:rgba(243,215,154,0)}
+.sacred.sg-ready .sg-lotus path{fill:rgba(243,215,154,.14)}
+.sacred.sg-draw :is(.sg-flower,.sg-ring) .sgd,.sg-sym .sgd{stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.sacred.sg-go :is(.sg-flower,.sg-ring) .sgd{animation:sgDraw 1.6s cubic-bezier(.6,.1,.3,1) forwards;animation-delay:calc(.25s + var(--k) * .07s)}
+.sacred.sg-go .sg-lotus path{animation:sgDraw 1.8s ease forwards,sgFill 2s ease forwards;animation-delay:calc(1.6s + var(--k) * .04s),calc(3.2s + var(--k) * .04s)}
+.sacred.sg-go{animation:sgBreatheAll 7s ease-in-out 4s infinite}
+.sacred.sg-go .sg-lotus{animation:sgLotus 7s ease-in-out 4s infinite}
+@keyframes sgDraw{to{stroke-dashoffset:0}}
+@keyframes sgFill{to{fill:rgba(243,215,154,.16)}}
+@keyframes sgBreatheAll{0%,100%{scale:1}50%{scale:1.045}}
+@keyframes sgLotus{0%,100%{filter:drop-shadow(0 0 6px rgba(243,215,154,.55))}50%{filter:drop-shadow(0 0 18px rgba(255,232,170,.95))}}
+.hero h1 .hw{display:inline-block;opacity:0;filter:blur(8px);transform:translateY(.35em);animation:hwIn .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.5s + var(--w) * .16s)}
+@keyframes hwIn{to{opacity:1;filter:blur(0);transform:none}}
+@media (prefers-reduced-motion:reduce){.hero h1 .hw{animation:none;opacity:1;filter:none;transform:none}.sacred.sg-draw svg .sgd{stroke-dashoffset:0}}
+.sacred.sg-draw .sg-star{display:none}
+
+.sg-cycle{inset:17%;color:#f3d79a}
+.sg-sym{position:absolute;inset:0;filter:drop-shadow(0 0 7px rgba(243,215,154,.65));transition:opacity 1.4s ease,transform 1.6s ease,filter 1.4s ease}
+.sg-sym svg{width:100%;height:100%;overflow:visible}
+.sg-sym .thin{stroke-width:.55;opacity:.8}
+.sg-sym path,.sg-sym circle,.sg-sym polygon{fill:rgba(243,215,154,0)}
+.sg-sym.on .sgd{animation:sgDraw 1.4s cubic-bezier(.6,.1,.3,1) forwards;animation-delay:calc(var(--k) * var(--step))}
+.sg-sym.is-lotus.on path{animation:sgDraw 1.6s ease forwards,sgFill 2s ease 2.2s forwards;animation-delay:calc(var(--k) * var(--step)),2.2s}
+.sg-sym.still .sgd{stroke-dashoffset:0;animation:none}
+.sg-sym.out{opacity:0;transform:scale(1.18) rotate(8deg);filter:blur(6px) drop-shadow(0 0 14px rgba(243,215,154,.9))}
+.sacred.sg-go .sg-cycle{animation:sgLotus 7s ease-in-out infinite}
+
+.sg-breath{position:absolute;left:0;right:0;bottom:-6%;text-align:center;font-family:'Amiri',var(--font);font-size:1.05rem;letter-spacing:.06em;color:#fbe8bf;opacity:0;transition:opacity 1.2s ease,transform 3.5s ease-in-out,letter-spacing 3.5s ease-in-out;text-shadow:0 0 12px rgba(243,215,154,.7)}
+.sg-breath.on{opacity:.85}
+.sg-breath.in{letter-spacing:.22em;transform:translateY(-3px)}
+.sg-ripple{position:absolute;z-index:3;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;border:1.5px solid rgba(255,232,170,.9);box-shadow:0 0 18px rgba(255,225,160,.8),inset 0 0 12px rgba(255,225,160,.6);pointer-events:none;animation:sgRipple 1.3s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes sgRipple{to{transform:scale(26);opacity:0}}
+.sg-dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.hero-text{position:relative;z-index:3}
+.hero .btn-white{position:relative;overflow:hidden}
+.hero .btn-white::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(243,215,154,.55),transparent);transform:skewX(-20deg);animation:btnShine 5s ease-in-out 3s infinite}
+@keyframes btnShine{0%,70%{left:-60%}100%{left:130%}}
+@media (max-width:720px){.sg-breath{bottom:auto;top:104%;font-size:.95rem}}
+@media (prefers-reduced-motion:reduce){.hero .btn-white::after,.sg-breath{display:none}}
