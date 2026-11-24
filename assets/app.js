@@ -291,7 +291,8 @@
     try {
       await window.sb.from('orders').insert({
         user_id: USER?.id || null, name: o.name || '', phone: o.phone || '', email: o.email || USER?.email || '',
-        items: o.items || [], total: o.total || '', note: o.note || '', lang, timezone: TZ
+        items: o.items || [], total: o.total || '', note: o.note || '', lang, timezone: TZ,
+        ...(o.booking_id ? { booking_id: o.booking_id } : {})
       });
     } catch (e) { /* never block the client */ }
   }
@@ -534,28 +535,46 @@
   });
   $('#formats-list')?.addEventListener('click', e => {
     const b = e.target.closest('[data-format]'); if (!b) return;
-    tarotSel.format = b.dataset.format; renderTarot();
+    tarotSel.format = b.dataset.format; renderTarot(); tarotSlot();
     $('#tarot-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+  function tarotSlot() {
+    const f = $('#tarot-form'); if (!f || !window.CHSlots) return null;
+    let box = $('#tarot-slots');
+    if (!box) { box = document.createElement('div'); box.id = 'tarot-slots'; box.className = 'co-slots'; const b = f.querySelector('button[type=submit]'); b.parentNode.insertBefore(box, $('#tarot-error') || b); }
+    const live = LIVE_FORMATS.includes(tarotSel.format), it = DATA && (DATA.lectures || []).find(x => x.id === tarotSel.id);
+    box.hidden = !live;
+    if (live) { const mins = slotMinutes('lectures', it); if (box._slots) window.CHSlots.setMinutes(box, mins); else window.CHSlots.mount(box, { minutes: mins }); }
+    return live ? box : null;
+  }
   function tarotCheck() {
     const err = $('#tarot-error');
     if (!tarotSel.id) { err.textContent = t('err_reading'); err.hidden = false; return false; }
     if (!tarotSel.format) { err.textContent = t('err_format'); err.hidden = false; return false; }
     err.hidden = true; return true;
   }
-  $('#tarot-form')?.addEventListener('submit', e => {
+  $('#tarot-form')?.addEventListener('submit', async e => {
     e.preventDefault(); if (!tarotCheck()) return;
     const f = e.target, v = n => f.elements[n].value.trim(), err = $('#tarot-error');
-    const miss = []; if (!v('nom')) miss.push(t('lbl_name')); if (!v('tel')) miss.push(t('lbl_phone'));
+    const tbox = tarotSlot();
+    const miss = []; if (!v('nom')) miss.push(t('lbl_name')); if (!v('tel')) miss.push(t('lbl_phone')); if (tbox && !window.CHSlots.value(tbox)) miss.push(window.CHSlots.need());
     if (miss.length) { err.textContent = t('err_fill') + miss.join(', '); err.hidden = false; return; }
     const sel = DATA.lectures.find(x => x.id === tarotSel.id), fmt = DATA.formats.find(x => x.id === tarotSel.format);
+    let booking_id = null, slot = null;
+    if (tbox) {
+      const btn = f.querySelector('button[type=submit]'); btn.disabled = true;
+      try { slot = window.CHSlots.value(tbox); booking_id = await window.CHSlots.book(tbox, { service: (sel.titre && sel.titre.ar) || sel.id, mode: fmt.id, name: v('nom'), phone: v('tel') }); }
+      catch (x) { btn.disabled = false; err.textContent = x.message; err.hidden = false; return; }
+      btn.disabled = false;
+    }
     const lines = [t('m_tarot'), `${t('w_choice')}: ${L(sel.titre)} (${money(sel.prix)})`, `${t('w_format')}: ${L(fmt)}`, `${t('lbl_name')}: ${v('nom')}`, `${t('lbl_phone')}: ${v('tel')}`];
+    if (slot) lines.push(`📅 ${slot.labelLocal}`, `🇹🇳 ${slot.labelTunis}`);
     if (v('email')) lines.push(`${t('w_email')}: ${v('email')}`);
     if (v('naissance')) lines.push(`${t('w_birth')}: ${v('naissance')}`);
     if (v('question')) lines.push(`${t('w_question')}: ${v('question')}`);
     lines.push(`${t('lbl_tz')}: ${TZ}`, `${t('w_lang')}: ${lang.toUpperCase()}`);
-    saveOrder({ name: v('nom'), phone: v('tel'), email: v('email'), total: money(sel.prix),
-      note: [v('question') && `${t('w_question')}: ${v('question')}`, v('naissance') && `${t('w_birth')}: ${v('naissance')}`].filter(Boolean).join('\n'),
+    saveOrder({ name: v('nom'), phone: v('tel'), email: v('email'), total: money(sel.prix), booking_id,
+      note: [slot && `📅 ${slot.labelTunis}`, v('question') && `${t('w_question')}: ${v('question')}`, v('naissance') && `${t('w_birth')}: ${v('naissance')}`].filter(Boolean).join('\n'),
       items: [{ type: 'lectures', id: sel.id, format: fmt.id, title: L(sel.titre), price: money(sel.prix), option: L(fmt) }] });
     sendWA(lines);
     showPay(money(sel.prix));
@@ -582,6 +601,21 @@
       return { c, it, p, fmt };
     }).filter(Boolean);
   }
+  // appointments: sessions, bundles and readings need a time slot (assets/slots.js)
+  const NEEDS_SLOT = ['soins', 'packs', 'lectures'], LIVE_FORMATS = ['video', 'cabinet'];
+  const slotMinutes = (type, it) => type === 'packs' ? 60 : (window.CHSlots ? window.CHSlots.minutesOf(it && it.duree) : 60);
+  function cartSlot() {
+    const f = $('#checkout'); if (!f || !window.CHSlots) return null;
+    let box = $('#co-slots');
+    if (!box) { box = document.createElement('div'); box.id = 'co-slots'; box.className = 'co-slots'; const first = f.querySelector('label'); f.insertBefore(box, first); }
+    const need = cartLines().filter(({ c }) => NEEDS_SLOT.includes(c.type) && (c.type !== 'lectures' || LIVE_FORMATS.includes(c.format)));
+    box.hidden = !need.length;
+    if (need.length) {
+      const mins = Math.min(180, Math.max(30, need.reduce((a, { c, it }) => Math.max(a, slotMinutes(c.type, it)), 0)));
+      if (box._slots) window.CHSlots.setMinutes(box, mins); else window.CHSlots.mount(box, { minutes: mins });
+    }
+    return need.length ? box : null;
+  }
   function renderCart() {
     if (!DATA) return;
     const lines = cartLines(), n = lines.length;
@@ -593,6 +627,7 @@
         <button data-rm="${esc(c.key)}" aria-label="✕">✕</button></div>`).join('');
     const tot = totals(lines);
     $('#cart-total').textContent = tot;
+    if (n) cartSlot();
   }
   function totals(lines) {
     const by = {}; lines.forEach(({ p }) => { if (p) by[p.c] = (by[p.c] || 0) + p.v; });
@@ -610,16 +645,26 @@
   $('#overlay').addEventListener('click', closeCart);
   addEventListener('keydown', e => { if (e.key === 'Escape') closeCart(); });
 
-  $('#checkout').addEventListener('submit', e => {
+  $('#checkout').addEventListener('submit', async e => {
     e.preventDefault();
     const f = e.target, err = $('#checkout-error'), nom = f.nom.value.trim(), tel = f.tel.value.trim();
     if (!nom || !tel) { err.textContent = t('err_fill') + [!nom && t('lbl_name'), !tel && t('lbl_phone')].filter(Boolean).join(', '); err.hidden = false; return; }
+    const sbox = cartSlot();
+    if (sbox && !window.CHSlots.value(sbox)) { err.textContent = window.CHSlots.need(); err.hidden = false; sbox.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     err.hidden = true;
     const lines = cartLines();
+    let booking_id = null, slot = null;
+    if (sbox) {
+      const btn = f.querySelector('button[type=submit]'); btn.disabled = true;
+      try { slot = window.CHSlots.value(sbox); booking_id = await window.CHSlots.book(sbox, { service: lines.map(({ it }) => (it.titre && (it.titre.ar || it.titre.fr)) || '').join(' + '), mode: '', name: nom, phone: tel }); }
+      catch (x) { btn.disabled = false; err.textContent = x.message; err.hidden = false; return; }
+      btn.disabled = false;
+    }
     const out = [t('m_order'), ...lines.map(({ c, it, p, fmt }) => `• ${L(it.titre)} (${t('t_' + c.type)}${fmt ? ' – ' + fmt : ''}) – ${p ? fmtMoney(p.v, p.c) : ''}`),
       `${t('w_total')}: ${totals(lines)}`, `${t('lbl_name')}: ${nom}`, `${t('lbl_phone')}: ${tel}`, `${t('lbl_tz')}: ${TZ}`, `${t('w_lang')}: ${lang.toUpperCase()}`];
+    if (slot) out.push(`📅 ${slot.labelLocal}`, `🇹🇳 ${slot.labelTunis}`);
     if (f.message.value.trim()) out.push(`${t('f_note')}: ${f.message.value.trim()}`);
-    saveOrder({ name: nom, phone: tel, note: f.message.value.trim(), total: totals(lines),
+    saveOrder({ name: nom, phone: tel, note: [slot && `📅 ${slot.labelTunis}`, f.message.value.trim()].filter(Boolean).join('\n'), total: totals(lines), booking_id,
       items: lines.map(({ c, it, p, fmt }) => ({ type: c.type, id: c.id, format: c.format, title: L(it.titre), price: p ? fmtMoney(p.v, p.c) : '', option: fmt })) });
     const tot = totals(lines);
     sendWA(out);
@@ -661,28 +706,37 @@
   }
   const bf = $('#booking-form');
   if (bf) {
-    const upd = () => {
-      const d = bf.date.value, h = bf.heure.value, out = $('#tz-conv');
-      out.textContent = d && h && TZ !== 'Africa/Tunis' ? `→ ${localToTunis(d, h)} (${t('tunis_time')})` : '';
+    const bfSlots = $('#bf-slots');
+    const bfNeed = () => { const [ty, id] = (bf.choix.value || ':').split(':'); return NEEDS_SLOT.includes(ty) ? slotMinutes(ty, findItem(ty, id)) : 0; };
+    const bfUpd = () => {
+      if (!bfSlots || !window.CHSlots) return;
+      const mins = bfNeed(); bfSlots.hidden = !mins;
+      if (mins) { if (bfSlots._slots) window.CHSlots.setMinutes(bfSlots, mins); else window.CHSlots.mount(bfSlots, { minutes: mins }); }
     };
-    bf.date.addEventListener('change', upd); bf.heure.addEventListener('change', upd);
-    bf.addEventListener('submit', e => {
+    bf.choix.addEventListener('change', bfUpd);
+    (window.CH_HOOKS = window.CH_HOOKS || []).push(() => setTimeout(bfUpd, 0));
+    bf.addEventListener('submit', async e => {
       e.preventDefault();
       const v = n => (bf.elements[n]?.value || '').trim(), err = $('#form-error'), miss = [];
       if (!v('nom')) miss.push(t('lbl_name')); if (!v('tel')) miss.push(t('lbl_phone')); if (!v('choix')) miss.push(t('lbl_choice'));
+      const needSlot = bfSlots && window.CHSlots && bfNeed();
+      if (needSlot && !window.CHSlots.value(bfSlots)) miss.push(window.CHSlots.need());
       if (!bf.elements.ok.checked) miss.push(t('lbl_consent'));
       if (miss.length) { err.textContent = t('err_fill') + miss.join(', '); err.hidden = false; return; }
       err.hidden = true;
-      const lines = [t('m_booking'), `${t('w_choice')}: ${bf.choix.selectedOptions[0].textContent}`, `${t('lbl_name')}: ${v('nom')}`, `${t('lbl_phone')}: ${v('tel')}`];
-      if (v('date')) lines.push(`${t('w_date')}: ${fmtDate(v('date'))}`);
-      if (v('date') && v('heure')) {
-        lines.push(`${t('w_time_local')}: ${v('heure')} (${TZ})`);
-        if (TZ !== 'Africa/Tunis') lines.push(`${t('w_time_tunis')}: ${localToTunis(v('date'), v('heure'))}`);
+      let booking_id = null, slot = null;
+      if (needSlot) {
+        const btn = bf.querySelector('button[type=submit]'); btn.disabled = true;
+        try { slot = window.CHSlots.value(bfSlots); booking_id = await window.CHSlots.book(bfSlots, { service: bf.choix.selectedOptions[0].textContent, mode: v('mode'), name: v('nom'), phone: v('tel') }); }
+        catch (x) { btn.disabled = false; err.textContent = x.message; err.hidden = false; return; }
+        btn.disabled = false;
       }
+      const lines = [t('m_booking'), `${t('w_choice')}: ${bf.choix.selectedOptions[0].textContent}`, `${t('lbl_name')}: ${v('nom')}`, `${t('lbl_phone')}: ${v('tel')}`];
+      if (slot) lines.push(`📅 ${slot.labelLocal}`, `🇹🇳 ${slot.labelTunis}`);
       lines.push(`${t('w_mode')}: ${v('mode')}`, `${t('w_lang')}: ${lang.toUpperCase()}`);
       if (v('message')) lines.push(`${t('w_msg')}: ${v('message')}`);
       const [ty, id, lvi] = v('choix').split(':'), it = findItem(ty, id), pr = it ? money(ty === 'formations' ? lvPrice(it, lvi) : it.prix) : '';
-      saveOrder({ name: v('nom'), phone: v('tel'), total: pr,
+      saveOrder({ name: v('nom'), phone: v('tel'), total: pr, booking_id,
         note: lines.slice(4).join('\n'),
         items: [{ type: ty, id, format: lvi || '', title: it ? L(it.titre) + (lvi ? ' · ' + lvName(it, lvi) : '') : '', price: pr, option: v('mode') }] });
       sendWA(lines);

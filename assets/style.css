@@ -854,3 +854,20 @@ h2{font-size:clamp(1.5rem,3vw,2rem)}
 .mc-live-bar:hover{filter:brightness(1.06)}
 @media (max-width:860px){.lv-pts{grid-template-columns:1fr}}
 .mc-facts .lv-form-s,.mc-facts .lv-privacy{color:#6b5a48!important}.mc-facts .lv-privacy span{color:inherit}
+/* ===== Appointment picker (assets/slots.js) ===== */
+.slot-pick{border:1px solid var(--line);border-radius:16px;padding:.9rem;background:#fffdf8;display:grid;gap:.55rem}
+.slot-pick .sl-h{margin:0;font-weight:700;font-size:.92rem;color:var(--ink)}.slot-pick .sl-h small{font-weight:500;color:var(--muted)}
+.sl-days{display:flex;gap:.45rem;overflow-x:auto;padding-bottom:.3rem;scrollbar-width:thin}
+.sl-day{flex:none;border:1px solid #e3d6bf;background:#fff;border-radius:12px;padding:.5rem .75rem;font:inherit;font-size:.88rem;cursor:pointer;white-space:nowrap;color:var(--ink)}
+.sl-day.sel{background:linear-gradient(135deg,#9a6b1f,#c9a45a);color:#fff;border-color:transparent;font-weight:700}
+.sl-day:disabled{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+.sl-times{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:.45rem}
+.sl-time{border:1px solid #e3d6bf;background:#fff;border-radius:12px;padding:.55rem .3rem;font:inherit;font-weight:700;cursor:pointer;display:grid;gap:.1rem;color:var(--ink)}
+.sl-time small{font-weight:500;font-size:.72rem;color:var(--muted)}
+.sl-time.sel{background:#3b2550;color:#fff;border-color:#3b2550}.sl-time.sel small{color:#e9dcf5}
+.sl-time:hover:not(.sel),.sl-day:hover:not(.sel):not(:disabled){border-color:#c9a45a}
+.sl-none,.sl-load{margin:0;color:var(--muted);font-size:.9rem}
+.sl-picked{margin:.2rem 0 0;background:#f2fbf4;border:1px solid #bfe5c8;border-radius:12px;padding:.6rem .8rem;font-size:.92rem;line-height:1.6}
+.sl-picked small{color:#5a6b5e}
+.co-slots{margin:.3rem 0 .6rem}
+.drawer .slot-pick{padding:.7rem}.drawer .sl-times{grid-template-columns:repeat(auto-fill,minmax(70px,1fr))}

@@ -84,6 +84,7 @@
     const V = $('#view'); V.innerHTML = '<p class="muted">…</p>';
     if (v === 'home') return vHome(V);
     if (v === 'orders') return vOrders(V);
+    if (v === 'agenda') return vAgenda(V);
     if (v === 'clients') return vClients(V);
     if (v === 'chat') return vChat(V);
     if (v === 'lives') return vLives(V);
@@ -169,6 +170,82 @@
       <div class="row"><a class="btn line sm" href="https://meet.google.com/new" target="_blank" rel="noopener">➕ اعمل رابط Meet جديد</a><button type="button" class="btn line sm" data-schat>💬 شات في الموقع</button><button class="btn gold sm" data-ssave="${o.id}">💾 حفظ</button>
       ${o.meeting_url && o.phone ? `<a class="btn ok sm" href="${esc(waSessionLink(o))}" target="_blank" rel="noopener">📲 ابعثلو الرابط على واتساب</a>` : ''}${o.meeting_url === 'chat' && o.user_id ? `<button type="button" class="btn line sm" data-sdm="${esc(o.user_id)}">💬 افتح الشات متاعو</button>` : (o.meeting_url && o.meeting_url !== 'chat' ? `<a class="btn line sm" href="${esc(o.meeting_url)}" target="_blank" rel="noopener">▶ ادخل للجلسة</a>` : '')}</div>
       <p class="hint">📞/🎥 صوت ولا فيديو: «اعمل رابط Meet جديد» ← انسخ الرابط ← حطّو هنا وحفظ (في المكالمة الصوتية الحريف يسكّر الكاميرا). 💬 شات: اضغط «شات في الموقع» وحفظ، والحريف يكتبلك من «حسابي» وإنتِ تجاوبيه من 💬 الشات هنا.</p></details>`;
+  }
+
+  // ================= AGENDA (appointments) =================
+  // Mon–Sat 10:00–19:00 Tunis time · 1 h break after each session · a time chosen on the site is held 48 h until payment
+  const AG_BREAK = 60;
+  const agDay = iso => new Date(iso).toLocaleDateString('ar-TN', { timeZone: 'Africa/Tunis', weekday: 'long', day: 'numeric', month: 'long' });
+  const agTime = iso => new Date(iso).toLocaleTimeString('ar-TN', { timeZone: 'Africa/Tunis', hour: '2-digit', minute: '2-digit' });
+  function agWa(b) {
+    const ph = (b.phone || '').replace(/\D/g, '');
+    const txt = `السلام عليكم ${b.name || ''} 🌿\nنذكّرك بموعدك في Centre Holistique: ${agDay(b.start_at)} على الساعة ${agTime(b.start_at)} (توقيت تونس)${b.service ? '\n' + b.service : ''}.\nفي انتظارك 🤍`;
+    return `https://wa.me/${ph}?text=${encodeURIComponent(txt)}`;
+  }
+  async function vAgenda(V) {
+    const from = new Date(Date.now() - 2 * 864e5).toISOString();
+    await sb.rpc('agenda_busy', { p_from: from, p_to: from }); // frees the expired 48 h holds
+    const [{ data, error }, feed] = await Promise.all([
+      sb.from('bookings').select('*').gte('start_at', from).in('status', ['hold', 'confirmed']).order('start_at').limit(500),
+      sb.from('app_secrets').select('value').eq('key', 'agenda_feed_token').maybeSingle()
+    ]);
+    if (error) { V.innerHTML = `<div class="status err">${esc(error.message)}</div>`; return; }
+    const list = data || [], now = Date.now();
+    const upcoming = list.filter(b => Date.parse(b.end_at) > now);
+    const feedUrl = feed && feed.data && feed.data.value ? `https://mhhzppszrqzjktqlgqag.supabase.co/functions/v1/agenda-ics?t=${feed.data.value}` : '';
+    const days = {}; list.forEach(b => { const k = new Date(Date.parse(b.start_at) + 3600e3).toISOString().slice(0, 10); (days[k] = days[k] || []).push(b); });
+    const today = new Date(now + 3600e3).toISOString().slice(0, 10);
+    V.innerHTML = `<div class="stats">
+        <div class="stat"><b>${upcoming.filter(b => b.kind === 'client' && b.status === 'confirmed').length}</b><span>✅ موعد مؤكّد قادم</span></div>
+        <div class="stat"><b>${upcoming.filter(b => b.status === 'hold').length}</b><span>⏳ محجوز يستنّى الخلاص (48 س)</span></div>
+        <div class="stat"><b>${(days[today] || []).filter(b => b.kind === 'client').length}</b><span>📅 مواعيد اليوم</span></div></div>
+      <div class="panel"><h3 style="margin-top:0">➕ زيد موعد (حريف بالواتساب) ولا سكّر وقت</h3>
+        <form id="ag-form" class="sess-grid">
+          <label>النوع<select name="kind"><option value="client">👤 موعد حريف</option><option value="block">🚫 وقت مسكّر (عطلة / خاص)</option></select></label>
+          <label>الحالة<select name="status"><option value="confirmed">✅ مؤكّد (خلّص)</option><option value="hold">⏳ يستنّى الخلاص (48 س)</option></select></label>
+          <label>التاريخ<input type="date" name="d" required></label>
+          <label>الساعة (توقيت تونس)<input type="time" name="t" step="1800" required value="10:00"></label>
+          <label>المدّة<select name="min"><option>30</option><option>45</option><option selected>60</option><option>75</option><option>90</option><option>120</option><option>180</option><option value="540">النهار الكل</option></select></label>
+          <label>الجلسة<input name="service" placeholder="مثلاً: ثيتا هيلينغ"></label>
+          <label>الاسم<input name="name"></label>
+          <label>الهاتف / واتساب<input name="phone" dir="ltr" placeholder="+216…"></label>
+          <label>الطريقة<select name="mode"><option value="">—</option><option value="cabinet">🏡 في المركز</option><option value="video">🎥 فيديو</option><option value="audio">📞 صوت</option><option value="chat">💬 شات</option></select></label>
+          <label class="full">ملاحظة<input name="note"></label>
+          <div class="full row"><button class="btn gold" type="submit">💾 زيد في الأجندة</button><span class="muted small">بعد كل جلسة تتحسب ساعة استراحة أوتوماتيك، والوقت يتسكّر في الموقع.</span></div>
+        </form></div>
+      ${feedUrl ? `<div class="panel"><h3 style="margin-top:0">📲 المواعيد الكل في كالندار تليفونك</h3>
+        <p class="muted small">زيدي الرابط هذا مرّة وحدة في <b>Google Calendar</b> (من الكمبيوتر: «Autres agendas» ← «+» ← «À partir de l’URL»)، والمواعيد الكل يظهرو وحدهم في تليفونك. Google يحدّثو كل بضعة ساعات. ⚠️ الرابط سرّي، ما تبعثيهولش لحد.</p>
+        <div class="row"><input id="ag-feed" dir="ltr" readonly value="${esc(feedUrl)}" style="flex:1;min-width:240px"><button class="btn line" id="ag-copy">📋 انسخ</button><a class="btn line" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/r/settings/addbyurl">➕ افتح Google Calendar</a></div></div>` : ''}
+      ${Object.keys(days).length ? Object.entries(days).map(([d, bs]) => `<div class="panel"><h3 style="margin-top:0">${d === today ? '🌟 اليوم · ' : ''}${esc(agDay(d + 'T12:00:00+01:00'))}</h3>
+        ${bs.map(b => `<div class="order ${b.status === 'hold' ? 'pending' : ''}" style="margin-bottom:8px"><div>
+          <b>${esc(agTime(b.start_at))} → ${esc(agTime(b.end_at))}</b>
+          ${b.kind === 'block' ? '<span class="pill">🚫 وقت مسكّر</span>' : b.status === 'confirmed' ? '<span class="pill paid">✅ مؤكّد</span>' : `<span class="pill">⏳ محجوز حتى ${esc(fmtD(b.hold_until))}</span>`}
+          ${b.source === 'site' ? '<span class="pill">🌐 من الموقع</span>' : ''}${b.order_id ? `<span class="pill">🧾 طلب #${b.order_id}</span>` : ''}<br>
+          ${b.service ? esc(b.service) + ' · ' : ''}${esc(b.name || '')}${b.phone ? ` · <a href="https://wa.me/${esc(b.phone.replace(/\D/g, ''))}" target="_blank" dir="ltr">${esc(b.phone)}</a>` : ''}${b.mode ? ` · ${esc(b.mode)}` : ''}
+          ${b.note ? `<p class="small muted" style="white-space:pre-line;margin:.3rem 0 0">${esc(b.note)}</p>` : ''}</div>
+          <div class="row">${b.status === 'hold' ? `<button class="btn ok sm" data-agok="${b.id}">✅ أكّد</button>` : ''}
+            ${b.phone && b.kind === 'client' ? `<a class="btn line sm" href="${esc(agWa(b))}" target="_blank" rel="noopener">📲 ذكّرو</a>` : ''}
+            <button class="btn line sm" data-agx="${b.id}">✕ ألغي (يتحلّ الوقت)</button></div></div>`).join('')}</div>`).join('') : '<div class="panel"><p class="muted">ما فمّا حتى موعد قادم.</p></div>'}`;
+    const f = $('#ag-form');
+    f.d.value = new Date(now + 3600e3).toISOString().slice(0, 10);
+    f.kind.onchange = () => { f.status.value = 'confirmed'; f.status.disabled = f.kind.value === 'block'; };
+    f.onsubmit = async e => {
+      e.preventDefault();
+      const block = f.kind.value === 'block', min = +f.min.value;
+      const start = block && min === 540 ? `${f.d.value}T10:00:00+01:00` : `${f.d.value}T${f.t.value}:00+01:00`;
+      const s0 = Date.parse(start), e0 = s0 + (block && min === 540 ? 540 : min) * 6e4;
+      if (!block && (!f.name.value.trim())) return toast('اكتب اسم الحريف');
+      const row = { start_at: new Date(s0).toISOString(), end_at: new Date(e0).toISOString(), block_end: new Date(e0 + (block ? 0 : AG_BREAK * 6e4)).toISOString(),
+        status: block ? 'confirmed' : f.status.value, hold_until: !block && f.status.value === 'hold' ? new Date(now + 48 * 3600e3).toISOString() : null,
+        kind: block ? 'block' : 'client', service: f.service.value.trim() || (block ? 'وقت مسكّر' : ''), name: f.name.value.trim(), phone: f.phone.value.trim(),
+        mode: f.mode.value, note: f.note.value.trim(), source: 'admin' };
+      const { error: er } = await sb.from('bookings').insert(row);
+      if (er) return toast(/no_overlap|exclusion|conflict/i.test(er.message + er.code) ? '⚠️ الوقت هذا (ولا ساعة الاستراحة متاعو) محجوز من قبل. اختاري وقت آخر.' : 'خطأ: ' + er.message);
+      toast('✓ تزاد في الأجندة، والوقت تسكّر في الموقع'); vAgenda(V);
+    };
+    V.querySelectorAll('[data-agok]').forEach(b => b.onclick = async () => { const { error: er } = await sb.from('bookings').update({ status: 'confirmed', hold_until: null }).eq('id', b.dataset.agok); if (er) return toast('خطأ: ' + er.message); toast('✓ تأكّد'); vAgenda(V); });
+    V.querySelectorAll('[data-agx]').forEach(b => b.onclick = async () => { if (!confirm('تلغي الموعد؟ الوقت يرجع فارغ في الموقع.')) return; await sb.from('bookings').update({ status: 'cancelled' }).eq('id', b.dataset.agx); toast('✓ تلغى'); vAgenda(V); });
+    const cp = $('#ag-copy'); if (cp) cp.onclick = async () => { try { await navigator.clipboard.writeText($('#ag-feed').value); toast('✓ تنسخ'); } catch { $('#ag-feed').select(); } };
   }
 
   // ================= LIVES =================

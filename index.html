@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=20261124d">
+  <link rel="stylesheet" href="assets/style.css?v=20261124e">
 </head>
 <body data-page="home">
 
@@ -267,11 +267,7 @@
         <label><span data-i="f_phone">الهاتف / واتساب (مع رمز البلد) *</span><input name="tel" type="tel" dir="ltr" required autocomplete="tel" placeholder="+33 6 12 34 56 78"></label>
       </div>
       <label><span data-i="f_choice">الجلسة أو الدورة *</span><select name="choix" class="js-choix" required></select></label>
-      <div class="row2">
-        <label><span data-i="f_date">التاريخ المفضّل</span><input name="date" type="date"></label>
-        <label><span data-i="f_time">الوقت (بتوقيتك)</span><input name="heure" type="time"></label>
-      </div>
-      <p class="tz-note"><span data-i="tz_yours">توقيتك:</span> <b id="tz-name" dir="ltr"></b> <span id="tz-conv"></span></p>
+      <div id="bf-slots" class="bf-slots" hidden></div>
       <label><span data-i="f_mode">الطريقة</span><select name="mode" id="mode-select"></select></label>
       <label><span data-i="f_msg">رسالتك / نيّتك</span><textarea name="message" rows="3"></textarea></label>
       <label class="check"><input type="checkbox" name="ok"> <span data-i="f_consent">أوافق على أن يتم التواصل معي لتأكيد الطلب.</span></label>
@@ -364,7 +360,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="assets/courses-data.js?v=20261123a"></script>
 <script src="assets/sb.js?v=20261123a"></script>
-<script src="assets/app.js?v=20261124c"></script>
+<script src="assets/app.js?v=20261124d"></script>
+<script src="assets/slots.js?v=20261124a"></script>
 <script src="assets/consent.js?v=20261124a"></script>
 <script src="assets/fx3d.js?v=20261123a" defer></script>
 <script src="assets/blog-render.js?v=20261123a"></script>

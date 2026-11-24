@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=20261123a">
+  <link rel="stylesheet" href="assets/style.css?v=20261124e">
   <link rel="stylesheet" href="assets/seo.css?v=20261123a">
 </head>
 <body data-page="consultation">
@@ -76,9 +76,7 @@
       <h2 class="c-step" data-c="s3"></h2>
       <div class="form-grid">
         <label class="full"><span data-c="topic"></span><select name="topic"></select></label>
-        <label><span data-c="date"></span><input type="date" name="date"></label>
-        <label><span data-c="time"></span><input type="time" name="heure"></label>
-        <p class="c-tzline full"><span data-c="tz"></span>: <b id="c-tz" dir="ltr"></b></p>
+        <div id="c-slots" class="full c-slots"></div>
         <label class="full"><textarea name="question" rows="3" data-cp="q"></textarea></label>
       </div>
       <h2 class="c-step" data-c="s4"></h2>
@@ -140,9 +138,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="assets/courses-data.js?v=20261123a"></script>
 <script src="assets/sb.js?v=20261123a"></script>
-<script src="assets/app.js?v=20261124c"></script>
+<script src="assets/app.js?v=20261124d"></script>
+<script src="assets/slots.js?v=20261124a"></script>
 <script src="assets/consent.js?v=20261124a"></script>
 <script src="assets/fx3d.js?v=20261123a" defer></script>
-<script src="assets/consultation.js?v=20261123a"></script>
+<script src="assets/consultation.js?v=20261124a"></script>
 </body>
 </html>

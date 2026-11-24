@@ -56,7 +56,8 @@
     $('#c-modes').innerHTML = ss.map(x => `<button type="button" class="c-mode c-sess ${sel.id === x.id ? 'sel' : ''}" data-sess="${esc(x.id)}"><b>${esc(L(x.titre))}</b><span>${esc(L(x.duree) || '')}</span><i>${esc(priceTxt(x))}</i></button>`).join('');
     $('#c-durs').innerHTML = ['audio', 'video', 'chat'].map(mo => `<button type="button" class="c-dur ${sel.mode === mo ? 'sel' : ''}" data-mode="${mo}"><b>${esc(m(mo))}</b><span>${esc(m(mo + '_d'))}</span></button>`).join('');
     const f = $('#c-form'); const tl = f.topic && f.topic.closest('label'); if (tl) tl.hidden = true;
-    $('#c-tz').textContent = TZ || '—';
+    const cs = $('#c-slots'), mins = window.CHSlots && current() ? window.CHSlots.minutesOf(current().duree) : 0;
+    if (cs && window.CHSlots && mins) { if (cs._slots) window.CHSlots.setMinutes(cs, mins); else window.CHSlots.mount(cs, { minutes: mins }); }
     $('#c-total').textContent = priceTxt(current());
     $('#c-acc').hidden = !!(window.CH.getUser && window.CH.getUser());
   }
@@ -64,19 +65,27 @@
     const se = e.target.closest('[data-sess]'); if (se) { sel.id = se.dataset.sess; render(); return; }
     const mo = e.target.closest('[data-mode]'); if (mo) { sel.mode = mo.dataset.mode; render(); }
   });
-  $('#c-form').addEventListener('submit', e => {
+  $('#c-form').addEventListener('submit', async e => {
     e.preventDefault();
     const f = e.target, v = n => (f.elements[n].value || '').trim(), x = current(), err = $('#c-err');
-    const miss = []; if (!x) miss.push(m('s1').replace(/^\d+\.\s*/, '')); if (!v('nom')) miss.push(m('name')); if (!v('tel')) miss.push(m('phone'));
+    const cs = $('#c-slots'), hasSlots = cs && window.CHSlots;
+    const miss = []; if (!x) miss.push(m('s1').replace(/^\d+\.\s*/, '')); if (hasSlots && !window.CHSlots.value(cs)) miss.push(window.CHSlots.need()); if (!v('nom')) miss.push(m('name')); if (!v('tel')) miss.push(m('phone'));
     if (miss.length) { err.textContent = m('err') + miss.join('، '); err.hidden = false; return; }
     err.hidden = true;
-    const when = v('date') ? `${v('date')}${v('heure') ? ' ' + v('heure') : ''} (${TZ})` : '';
+    let booking_id = null, slot = null;
+    if (hasSlots) {
+      const btn = f.querySelector('button[type=submit]'); btn.disabled = true;
+      try { slot = window.CHSlots.value(cs); booking_id = await window.CHSlots.book(cs, { service: (x.titre && x.titre.ar) || x.id, mode: sel.mode, name: v('nom'), phone: v('tel') }); }
+      catch (y) { btn.disabled = false; err.textContent = y.message; err.hidden = false; return; }
+      btn.disabled = false;
+    }
+    const when = slot ? `${slot.labelLocal} — ${slot.labelTunis}` : '';
     const title = `${M.ar.h1} · ${(x.titre && x.titre.ar) || x.id} · ${M.ar[sel.mode]}`;
     const lines = [m('m_head'), `${m('w_topic')}: ${L(x.titre)} — ${priceTxt(x)}`, `${m('w_mode')}: ${m(sel.mode)}`, `${m('w_dur')}: ${L(x.duree) || ''}`];
     if (when) lines.push(`${m('w_when')}: ${when}`);
     if (v('question')) lines.push(`${m('w_q')}: ${v('question')}`);
     lines.push(`${m('w_name')}: ${v('nom')}`, `${m('w_phone')}: ${v('tel')}`);
-    window.CH.saveOrder({ name: v('nom'), phone: v('tel'), email: v('email'), total: priceTxt(x),
+    window.CH.saveOrder({ name: v('nom'), phone: v('tel'), email: v('email'), total: priceTxt(x), booking_id,
       note: [`${M.ar.w_mode}: ${M.ar[sel.mode]}`, `${M.ar.w_topic}: ${(x.titre && x.titre.ar) || x.id}`, when && `${M.ar.w_when}: ${when}`, v('question') && `${M.ar.w_q}: ${v('question')}`].filter(Boolean).join('\n'),
       items: [{ type: 'soins', id: x.id, format: sel.mode, title, price: priceTxt(x), option: sel.mode }] });
     window.CH.sendWA(lines);
