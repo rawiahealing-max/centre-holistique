@@ -645,9 +645,9 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
     Object.assign(c, {
       titre: { ar: 'ماستركلاس 2027: الوفرة والتجلّي الواعي', fr: 'Masterclass 2027 : Abondance & Manifestation consciente', en: 'Masterclass 2027: Abundance & Conscious Manifestation' },
       categorie: { ar: 'ماستركلاس مباشر عن بُعد', fr: 'Masterclass en ligne en direct', en: 'Live online masterclass' },
-      duree: { ar: '5 أمسيات مباشرة · 14–18 ديسمبر', fr: '5 soirées en direct · 14–18 décembre', en: '5 live evenings · Dec 14–18' },
+      duree: { ar: '3 أمسيات مباشرة · 18–20 ديسمبر', fr: '3 soirées en direct · 18–20 décembre', en: '3 live evenings · Dec 18–20' },
       mode: { ar: 'مباشرة عن بُعد من أي مكان في العالم + التسجيلات', fr: 'En ligne et en direct, partout dans le monde + replays', en: 'Live online from anywhere + replays' },
-      places: '', date: '2026-12-14', actif: true, nouveau: true, theme: 'gold',
+      places: '', date: '2026-12-18', actif: true, nouveau: true, theme: 'gold',
       lien: 'masterclass-2027.html',
       prix: { tnd: '150', eur: '49', usd: '55' },
       niveaux: [
@@ -655,9 +655,9 @@ Pour un accompagnement plus profond, le [soin énergétique](soin-energetique-sf
         { nom: { ar: 'الماستركلاس + جلسة خاصة VIP', fr: 'Masterclass + séance privée VIP', en: 'Masterclass + private VIP session' }, prix: { tnd: '390', eur: '129', usd: '139' } }
       ],
       description: {
-        ar: 'خمس أمسيات مباشرة لتغلق 2026 بسلام وتدخل 2027 بطاقة جديدة: القوانين الكونية، تحرير الكارما والعقود القديمة، تنظيف الطاقة، فتح باب الوفرة، والتجلّي الواعي لنواياك… مع طقس نوايا العام الجديد.',
-        fr: 'Cinq soirées en direct pour clôturer 2026 en paix et entrer dans 2027 avec une énergie nouvelle : lois universelles, libération du karma et des anciens contrats, nettoyage énergétique, ouverture à l’abondance et manifestation consciente… avec un rituel d’intentions pour la nouvelle année.',
-        en: 'Five live evenings to close 2026 in peace and enter 2027 with new energy: universal laws, releasing karma and old contracts, energy cleansing, opening to abundance and conscious manifestation… with a New Year intention ritual.'
+        ar: 'ثلاث أمسيات مباشرة لتغلق 2026 بسلام وتدخل 2027 بطاقة جديدة: القوانين الكونية، تحرير الكارما والعقود القديمة، تنظيف الطاقة، فتح باب الوفرة، والتجلّي الواعي لنواياك… مع طقس نوايا العام الجديد.',
+        fr: 'Trois soirées en direct pour clôturer 2026 en paix et entrer dans 2027 avec une énergie nouvelle : lois universelles, libération du karma et des anciens contrats, nettoyage énergétique, ouverture à l’abondance et manifestation consciente… avec un rituel d’intentions pour la nouvelle année.',
+        en: 'Three live evenings to close 2026 in peace and enter 2027 with new energy: universal laws, releasing karma and old contracts, energy cleansing, opening to abundance and conscious manifestation… with a New Year intention ritual.'
       }
     });
   });
