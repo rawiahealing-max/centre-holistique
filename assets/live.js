@@ -6,7 +6,7 @@
   'use strict';
   const START = '2026-12-10T20:00:00+01:00', END = '2026-12-10T21:30:00+01:00', EVENT = 'live-2026-12-10';
   const SHEET_URL = ''; // Google Apps Script web-app URL (…/exec); can also come from settings.live_sheet_url
-  const YT_URL = '';    // YouTube live link; can also come from settings.live_youtube
+  const YT_URL = 'https://www.youtube.com/live/3zyCQ21mhRQ'; // YouTube live link; can also come from settings.live_youtube
   const page = document.body.dataset.live; // 'form' | 'merci'
 
   const M = {
