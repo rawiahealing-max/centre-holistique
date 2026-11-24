@@ -1,10 +1,10 @@
-// Free live: "Harvest 2026 & your spiritual mission for 2027" — Sunday Dec 6, 2026, 20:00 Tunisia time.
+// Free live: "Harvest 2026 & your spiritual mission for 2027" — Thursday Dec 10, 2026, 20:00 Tunisia time.
 // live-2027.html: landing + registration form.  live-merci.html: thank-you page (YouTube link, Google Calendar, Meta "Lead").
 // Registrations are saved in Supabase (table live_registrations, insert-only) and copied to a Google Sheet
 // through a Google Apps Script web app (SHEET_URL below, or settings.live_sheet_url in the dashboard data).
 (function () {
   'use strict';
-  const START = '2026-12-06T20:00:00+01:00', END = '2026-12-06T21:30:00+01:00', EVENT = 'live-2026-12-06';
+  const START = '2026-12-10T20:00:00+01:00', END = '2026-12-10T21:30:00+01:00', EVENT = 'live-2026-12-10';
   const SHEET_URL = ''; // Google Apps Script web-app URL (…/exec); can also come from settings.live_sheet_url
   const YT_URL = '';    // YouTube live link; can also come from settings.live_youtube
   const page = document.body.dataset.live; // 'form' | 'merci'
@@ -12,7 +12,7 @@
   const M = {
     ar: {
       chip: '🎁 لايف مجاني · مباشر على YouTube', h1: 'لايف مجاني', h1b: 'حصاد 2026 ومهمتك الروحية لعام 2027',
-      when: 'الأحد 6 ديسمبر 2026 · 20:00 بتوقيت تونس', local: 'بتوقيتك:', intro: 'ساعة من الصدق والنور مع راوية غربال، لتودّع 2026 بامتنان، وتفهم ما الذي يتكرّر في حياتك، وتلمس مهمتك الروحية للعام الجديد.',
+      when: 'الخميس 10 ديسمبر 2026 · 20:00 بتوقيت تونس', local: 'بتوقيتك:', intro: 'ساعة من الصدق والنور مع راوية غربال، لتودّع 2026 بامتنان، وتفهم ما الذي يتكرّر في حياتك، وتلمس مهمتك الروحية للعام الجديد.',
       starts: 'يبدأ اللايف بعد', d: 'يوم', h: 'ساعة', m: 'دقيقة', live_now: 'اللايف جارٍ الآن ✨', ended: 'انتهى اللايف، شكراً لكل من حضر 🤍',
       cta: 'سجّل مجاناً', free: 'مجاني 100% · بدون بطاقة بنكية',
       what_t: 'ماذا سنعيش معاً في هذه الأمسية؟',
@@ -22,14 +22,14 @@
       send: 'سجّلني في اللايف', sending: 'جارٍ التسجيل…', err_name: 'اكتب اسمك من فضلك.', err_phone: 'اكتب رقم هاتف صحيح من فضلك.', err_email: 'الإيميل غير صحيح.', err_send: 'صار مشكل في التسجيل، عاود من فضلك ولا ابعثلنا على واتساب.',
       privacy: 'معلوماتك تُستعمل فقط لإرسال رابط اللايف والتذكير، ولا تُشارك مع أي جهة.',
       mc_t: 'وبعد اللايف؟', mc_s: 'من 18 إلى 20 ديسمبر: ماستركلاس 2027 «الوفرة والتجلّي الواعي»، 3 أمسيات مباشرة لتكمل الرحلة.', mc_cta: 'اكتشف الماستركلاس',
-      thx_chip: '✅ تم تسجيلك', thx_t: 'شكراً {name}، مكانك محجوز 🤍', thx_s: 'نلتقي الأحد 6 ديسمبر 2026 على الساعة 20:00 بتوقيت تونس.',
+      thx_chip: '✅ تم تسجيلك', thx_t: 'شكراً {name}، مكانك محجوز 🤍', thx_s: 'نلتقي الخميس 10 ديسمبر 2026 على الساعة 20:00 بتوقيت تونس.',
       yt: '▶️ رابط البث على YouTube', yt_soon: 'رابط البث على YouTube يوصلك على واتساب قبل اللايف.', cal: '📅 أضف إلى Google Calendar',
       tips_t: 'لتستفيد أكثر', tips: ['حضّر ورقة وقلماً لتمرين الحصاد', 'اختر مكاناً هادئاً للتأمل في آخر اللايف', 'فكّر في سؤال تحب أن تطرحه على راوية'],
       cal_title: 'لايف مجاني: حصاد 2026 ومهمتك الروحية لعام 2027', cal_desc: 'لايف مجاني مع راوية غربال — Centre Holistique'
     },
     fr: {
       chip: '🎁 Live gratuit · en direct sur YouTube', h1: 'Live gratuit', h1b: 'La récolte de 2026 et votre mission spirituelle pour 2027',
-      when: 'Dimanche 6 décembre 2026 · 20 h heure de Tunisie', local: 'Chez vous :', intro: 'Une heure de vérité et de lumière avec Rawia Ghorbel pour dire au revoir à 2026 avec gratitude, comprendre ce qui se répète dans votre vie et toucher votre mission spirituelle pour la nouvelle année.',
+      when: 'Jeudi 10 décembre 2026 · 20 h heure de Tunisie', local: 'Chez vous :', intro: 'Une heure de vérité et de lumière avec Rawia Ghorbel pour dire au revoir à 2026 avec gratitude, comprendre ce qui se répète dans votre vie et toucher votre mission spirituelle pour la nouvelle année.',
       starts: 'Le live commence dans', d: 'j', h: 'h', m: 'min', live_now: 'Le live est en cours ✨', ended: 'Le live est terminé, merci à tous 🤍',
       cta: 'Je m’inscris gratuitement', free: '100 % gratuit · sans carte bancaire',
       what_t: 'Ce que nous allons vivre ensemble',
@@ -39,14 +39,14 @@
       send: 'Je réserve ma place', sending: 'Inscription…', err_name: 'Merci d’indiquer votre nom.', err_phone: 'Merci d’indiquer un numéro valide.', err_email: 'E-mail invalide.', err_send: 'L’inscription n’a pas fonctionné, réessayez ou écrivez-nous sur WhatsApp.',
       privacy: 'Vos informations servent uniquement à vous envoyer le lien et le rappel du live. Elles ne sont jamais partagées.',
       mc_t: 'Et après le live ?', mc_s: 'Du 18 au 20 décembre : la Masterclass 2027 « Abondance & Manifestation consciente », 3 soirées en direct pour aller plus loin.', mc_cta: 'Découvrir la masterclass',
-      thx_chip: '✅ Inscription confirmée', thx_t: 'Merci {name}, votre place est réservée 🤍', thx_s: 'Rendez-vous le dimanche 6 décembre 2026 à 20 h, heure de Tunisie.',
+      thx_chip: '✅ Inscription confirmée', thx_t: 'Merci {name}, votre place est réservée 🤍', thx_s: 'Rendez-vous le jeudi 10 décembre 2026 à 20 h, heure de Tunisie.',
       yt: '▶️ Le lien du live sur YouTube', yt_soon: 'Le lien YouTube du live vous sera envoyé sur WhatsApp avant le live.', cal: '📅 Ajouter à Google Agenda',
       tips_t: 'Pour en profiter pleinement', tips: ['Préparez une feuille et un stylo pour l’exercice de la récolte', 'Choisissez un endroit calme pour la méditation finale', 'Pensez à une question à poser à Rawia'],
       cal_title: 'Live gratuit : la récolte de 2026 et votre mission spirituelle pour 2027', cal_desc: 'Live gratuit avec Rawia Ghorbel — Centre Holistique'
     },
     en: {
       chip: '🎁 Free live · on YouTube', h1: 'Free live', h1b: 'The harvest of 2026 and your spiritual mission for 2027',
-      when: 'Sunday, December 6, 2026 · 8 pm Tunisia time', local: 'Your time:', intro: 'An hour of truth and light with Rawia Ghorbel to say goodbye to 2026 with gratitude, understand what keeps repeating in your life and touch your spiritual mission for the new year.',
+      when: 'Thursday, December 10, 2026 · 8 pm Tunisia time', local: 'Your time:', intro: 'An hour of truth and light with Rawia Ghorbel to say goodbye to 2026 with gratitude, understand what keeps repeating in your life and touch your spiritual mission for the new year.',
       starts: 'The live starts in', d: 'd', h: 'h', m: 'min', live_now: 'The live is on now ✨', ended: 'The live has ended, thank you all 🤍',
       cta: 'Register for free', free: '100% free · no card needed',
       what_t: 'What we will live together',
@@ -56,7 +56,7 @@
       send: 'Save my seat', sending: 'Registering…', err_name: 'Please enter your name.', err_phone: 'Please enter a valid phone number.', err_email: 'Invalid e-mail.', err_send: 'Registration failed, please try again or message us on WhatsApp.',
       privacy: 'Your details are only used to send you the live link and reminder. They are never shared.',
       mc_t: 'And after the live?', mc_s: 'December 18–20: Masterclass 2027 “Abundance & Conscious Manifestation”, 3 live evenings to go further.', mc_cta: 'Discover the masterclass',
-      thx_chip: '✅ You are registered', thx_t: 'Thank you {name}, your seat is saved 🤍', thx_s: 'See you on Sunday, December 6, 2026 at 8 pm Tunisia time.',
+      thx_chip: '✅ You are registered', thx_t: 'Thank you {name}, your seat is saved 🤍', thx_s: 'See you on Thursday, December 10, 2026 at 8 pm Tunisia time.',
       yt: '▶️ The YouTube live link', yt_soon: 'The YouTube link will be sent to you on WhatsApp before the live.', cal: '📅 Add to Google Calendar',
       tips_t: 'To get the most out of it', tips: ['Have a sheet of paper and a pen for the harvest exercise', 'Choose a quiet place for the final meditation', 'Think of a question you would like to ask Rawia'],
       cal_title: 'Free live: the harvest of 2026 and your spiritual mission for 2027', cal_desc: 'Free live with Rawia Ghorbel — Centre Holistique'
@@ -130,7 +130,7 @@
   (window.CH_HOOKS = window.CH_HOOKS || []).push(render);
   if (window.CH && window.CH.getData()) render(); else document.addEventListener('DOMContentLoaded', () => { if (!window.CH || !window.CH.getData()) render(); });
 
-  if (page === 'merci') { try { window.chTrack && window.chTrack('Lead', { content_name: 'Live 2026-12-06' }); } catch (e) { /* */ } }
+  if (page === 'merci') { try { window.chTrack && window.chTrack('Lead', { content_name: 'Live 2026-12-10' }); } catch (e) { /* */ } }
 
   // registration
   document.addEventListener('change', e => {
