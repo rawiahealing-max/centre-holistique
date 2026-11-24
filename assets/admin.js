@@ -209,6 +209,7 @@
           <label>الجلسة<input name="service" placeholder="مثلاً: ثيتا هيلينغ"></label>
           <label>الاسم<input name="name"></label>
           <label>الهاتف / واتساب<input name="phone" dir="ltr" placeholder="+216…"></label>
+          <label>الإيميل (يوصلو تأكيد وتذكير)<input name="email" type="email" dir="ltr" placeholder="exemple@gmail.com"></label>
           <label>الطريقة<select name="mode"><option value="">—</option><option value="cabinet">🏡 في المركز</option><option value="video">🎥 فيديو</option><option value="audio">📞 صوت</option><option value="chat">💬 شات</option></select></label>
           <label class="full">ملاحظة<input name="note"></label>
           <div class="full row"><button class="btn gold" type="submit">💾 زيد في الأجندة</button><span class="muted small">بعد كل جلسة تتحسب ساعة استراحة أوتوماتيك، والوقت يتسكّر في الموقع.</span></div>
@@ -238,7 +239,7 @@
       const row = { start_at: new Date(s0).toISOString(), end_at: new Date(e0).toISOString(), block_end: new Date(e0 + (block ? 0 : AG_BREAK * 6e4)).toISOString(),
         status: block ? 'confirmed' : f.status.value, hold_until: !block && f.status.value === 'hold' ? new Date(now + 48 * 3600e3).toISOString() : null,
         kind: block ? 'block' : 'client', service: f.service.value.trim() || (block ? 'وقت مسكّر' : ''), name: f.name.value.trim(), phone: f.phone.value.trim(),
-        mode: f.mode.value, note: f.note.value.trim(), source: 'admin' };
+        mode: f.mode.value, note: f.note.value.trim(), email: f.email.value.trim() || null, source: 'admin' };
       const { error: er } = await sb.from('bookings').insert(row);
       if (er) return toast(/no_overlap|exclusion|conflict/i.test(er.message + er.code) ? '⚠️ الوقت هذا (ولا ساعة الاستراحة متاعو) محجوز من قبل. اختاري وقت آخر.' : 'خطأ: ' + er.message);
       toast('✓ تزاد في الأجندة، والوقت تسكّر في الموقع'); vAgenda(V);
