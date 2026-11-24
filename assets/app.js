@@ -4,6 +4,7 @@
   const T = {
     ar: {
       topbar: '🌐 جلسات أونلاين في كل العالم · ردّ خلال 24 ساعة',
+      livebar: '🎁 لايف مجاني الخميس 10 ديسمبر على 20:00: حصاد 2026 ومهمتك الروحية لعام 2027', livebar_cta: 'سجّل مجاناً ←',
       nav_seances: 'الجلسات', nav_tarot: 'تاروت وأوراكل', nav_formations: 'الدورات', nav_cercle: 'الاشتراك الشهري', nav_events: 'أحداث الشهر', nav_about: 'من أنا', nav_faq: 'أسئلة', nav_medit: 'التأملات', nav_blog: 'المدونة', nav_consult: 'استشارة أونلاين', nav_b2b: 'للشركات', account: 'حسابي', bn_medit: 'تأملات', bn_account: 'حسابي',
       hero_chip: 'طاقة · وعي · شفاء', cta_discovery: '📅 احجز استشارة', cta_discover: 'اكتشف الجلسات',
       trust_online: '🌐 أونلاين في كل العالم', trust_private: '🔒 سرية تامة', trust_certified: '🎓 معالجة ومكوّنة معتمدة', trust_langs: '💬 عربي · Français · English',
@@ -52,6 +53,7 @@
     },
     fr: {
       topbar: '🌐 Séances en ligne dans le monde entier · réponse sous 24 h',
+      livebar: '🎁 Live gratuit le jeudi 10 décembre à 20 h : la récolte de 2026 et votre mission spirituelle 2027', livebar_cta: 'Je m’inscris →',
       nav_seances: 'Séances', nav_tarot: 'Tarot & Oracle', nav_formations: 'Formations', nav_cercle: 'Abonnement', nav_events: 'Événements', nav_about: 'À propos', nav_faq: 'FAQ', nav_medit: 'Méditations', nav_blog: 'Blog', nav_consult: 'Consultation en ligne', nav_b2b: 'Entreprises', account: 'Mon espace', bn_medit: 'Méditations', bn_account: 'Mon espace',
       hero_chip: 'Énergie · Conscience · Guérison', cta_discovery: '📅 Réserver une consultation', cta_discover: 'Découvrir les séances',
       trust_online: '🌐 En ligne partout dans le monde', trust_private: '🔒 Confidentialité totale', trust_certified: '🎓 Thérapeute & formatrice certifiée', trust_langs: '💬 عربي · Français · English',
@@ -100,6 +102,7 @@
     },
     en: {
       topbar: '🌐 Online sessions worldwide · reply within 24 h',
+      livebar: '🎁 Free live on Thursday, December 10 at 8 pm: the harvest of 2026 and your spiritual mission for 2027', livebar_cta: 'Register →',
       nav_seances: 'Sessions', nav_tarot: 'Tarot & Oracle', nav_formations: 'Trainings', nav_cercle: 'Membership', nav_events: 'Events', nav_about: 'About', nav_faq: 'FAQ', nav_medit: 'Meditations', nav_blog: 'Blog', nav_consult: 'Online consultation', nav_b2b: 'For companies', account: 'My space', bn_medit: 'Meditate', bn_account: 'Account',
       hero_chip: 'Energy · Awareness · Healing', cta_discovery: '📅 Book a consultation', cta_discover: 'Explore sessions',
       trust_online: '🌐 Online worldwide', trust_private: '🔒 Fully confidential', trust_certified: '🎓 Certified therapist & trainer', trust_langs: '💬 عربي · Français · English',
@@ -235,6 +238,8 @@
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     $$('[data-i]').forEach(el => { el.textContent = t(el.dataset.i); });
+    // free-live banner: disappears by itself after the live (Dec 10, 2026, 21:30 Tunis time)
+    $$('[data-live-bar]').forEach(el => { el.hidden = Date.now() > Date.parse('2026-12-10T21:30:00+01:00'); });
     const s = DATA?.settings || {};
     $$('[data-s]').forEach(el => { const v = L(s[el.dataset.s]); if (v !== '') el.textContent = v; });
     $('#lang').value = lang; $('#cur').value = cur;
